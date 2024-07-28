@@ -6,10 +6,10 @@ See backend platform at [`nova-platform-api` repo](https://github.com/neo-soluti
 
 ## Apps and Packages
 
-- `nova-english-marketing-website`: a [Next.js](https://nextjs.org/) app
-- `spaced-repetition-tool`: a React app
-- `student-platform`: a Next.js app
-- `admin-portal`: a React app, most likely it will be based on React Admin 
+- `nova-english-marketing-website`: a [Next.js](https://nextjs.org/) app, runs on port 8000
+- `student-platform`: a Next.js app, runs on port 8001
+- `admin-portal`: a React app, most likely it will be based on React Admin, runs on port 8002
+- `spaced-repetition-tool`: a React app, runs on port 8003
 - `@repo/ui`: a React component library shared by every application
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
@@ -38,4 +38,12 @@ pnpm build
 ## Adding a new app or package
 
 `npx turbo gen workspace --copy`
+
+
+### Adding a package as dependency to other packages
+
+1. `npx turbo gen workspace --copy`
+2. Choose `package` and copy from any existing package so most of files are auto-created
+3. Ensure your package is named `@repo/<your-package-name>`
+4. Add the package as a dependency to any apps you want: `@repo/<your-package-name>: "*"`
 

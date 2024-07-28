@@ -1,15 +1,16 @@
 {
-  "name": "docs",
+  "name": "nova-english-marketing-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo --port 3001",
+    "dev": "next dev --turbo --port 8000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@repo/ui": "*",
+    "@repo/shared-types": "*",
     "react": "19.0.0-rc-f994737d14-20240522",
     "react-dom": "19.0.0-rc-f994737d14-20240522",
     "next": "15.0.0-rc.0"

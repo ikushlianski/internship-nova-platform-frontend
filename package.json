@@ -19,5 +19,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "ra-data-json-server": "^5.1.0",
+    "react-admin": "^5.1.0"
+  }
 }

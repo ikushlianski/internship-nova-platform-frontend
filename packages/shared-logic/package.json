@@ -1,9 +1,9 @@
 {
-  "name": "@repo/shared-types",
+  "name": "shared-logic",
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./user": "./src/user.ts"
+    "./phoneMask": "./src/phoneMask.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -22,6 +22,5 @@
     "eslint": "^8.57.0",
     "typescript": "^5.3.3"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

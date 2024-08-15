@@ -18,14 +18,18 @@ See backend platform at [`nova-platform-api` repo](https://github.com/neo-soluti
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 
-## Develop
+## Working locally
 
-To develop all apps and packages, run the following command:
+- To run monorepo commands, install `turbo` globally: `npm install turbo --global`
+- To develop all apps and packages, run the following command:
 
 ```
 cd my-turborepo
 npm run dev
 ```
+
+- You can run all tests from the root dir with `npx vitest` or `turbo test`. The latter will run tests in parallel and show you all test runs from all projects where there's a `test` script in `package.json`. Choose whatever option you like.
+- To run tests for a specific file, run `npx vitest <path-to-file>`.
 
 ## Build
 

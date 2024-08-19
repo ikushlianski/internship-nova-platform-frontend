@@ -6,11 +6,11 @@ See backend platform at [`nova-platform-api` repo](https://github.com/neo-soluti
 
 ## Apps and Packages
 
-- `nova-english-marketing-website`: a [Next.js](https://nextjs.org/) app, runs on port 8000
-- `student-platform`: a Next.js app, runs on port 8001
-- `admin-portal`: a React app, most likely it will be based on React Admin, runs on port 8002
-- `spaced-rep-tool-web`: a React app, runs on port 8003
-- `spaced-rep-tool-mobile`: a React Native app, runs on port 8004 (needs to be converted into a React Native app, currently just a React app)
+- `nova-english-marketing-website`: a [Next.js](https://nextjs.org/) app
+- `student-platform`: a Next.js app
+- `admin-portal`: a React app, based on React Admin
+- `spaced-rep-tool-web`: a React app
+- `spaced-rep-tool-mobile`: a React Native app (needs to be converted into a React Native app, currently just a React app)
 - `@repo/ui`: a React component library shared by every application
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo

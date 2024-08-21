@@ -1,0 +1,26 @@
+{
+  "users": [
+    { "id": 1, "name": "John Doe", "role": "student", "studentId": 1111 },
+    { "id": 2, "name": "Jane Doe", "role": "mentor", "mentorId": 11 },
+    { "id": 3, "name": "Leanne Graham", "role": "student", "studentId": 111 },
+    { "id": 4, "name": "Ervin Howell", "role": "student", "studentId": 101 },
+    { "id": 5, "name": "Clementine Bauch", "role": "mentor", "mentorId": 22 },
+    { "id": 6, "name": "Patricia Lebsack", "role": "student", "studentId": 1101 },
+    { "id": 7, "name": "L'etoile du Nord", "role": "student", "studentId": 1011 },
+    { "id": 8, "name": "Chelsey Dietrich", "role": "admin", "adminId": 1 },
+    { "id": 9, "name": "Johnny Mnemonic",  "role": "student", "studentId": 1001 },
+    { "id": 10, "name": "Kurtis Jackson", "role": "mentor", "mentorId": 33 }
+  ],
+  "students": [
+    { "id": 101, "userId": 1, "pathId": 1, "mentorId": 11 }
+  ],
+  "mentors": [
+    { "id": 11, "userId": 2, "expertise": "Fullstack Development", "classIds": [1], "pathIds": [1], "studentIds": [101] }
+  ],
+  "paths": [
+    { "id": 1, "name": "Fullstack Development", "classIds": [1], "studentIds": [101], "mentorIds": [11] }
+  ],
+  "classes": [
+    { "id": 1, "pathId": 1, "mentorIds": [11], "studentIds": [101], "startDate": "2024-09-01", "endDate": "2024-12-31" }
+  ]
+}

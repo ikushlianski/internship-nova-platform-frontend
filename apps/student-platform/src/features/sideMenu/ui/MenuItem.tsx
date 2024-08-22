@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function MenuItem({ img, title, link }: MenuItemProps) {
   return (
-    <li className={"box-border flex w-52 p-3"}>
+    <li className={"box-border flex w-52 p-3 hover:bg-sky-100 rounded-3xl "}>
       <Image
         src={img}
         alt={""}

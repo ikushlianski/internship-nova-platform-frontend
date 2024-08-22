@@ -35,7 +35,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Folder structure
 
-- **/api** - api requsts and models
 - **/components** - shared UI components and overridden components
+- **/features** - complicated components that are valuable for business
+  - **/types** - data model: interfaces, stores, and business logic.
+  - **/api** - api requests
+  - **/lib** - utils code
+  - **/ui** - everything related to UI display: UI components, styles etc.
 - **/views** - pages UI and components
 - **/shared** - shared app logic(hooks, libs, utils and etc.)

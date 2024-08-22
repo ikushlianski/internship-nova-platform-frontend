@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import NavLink from "@componentsNavLink";
 
 export default function MenuItem({ img, title, link }: MenuItemProps) {
   return (
@@ -11,7 +11,7 @@ export default function MenuItem({ img, title, link }: MenuItemProps) {
         height={24}
         className={"w-6 h-6 bg-sky-100 rounded-full mr-3"}
       />
-      <Link href={link}>{title}</Link>
+      <NavLink href={link}>{title}</NavLink>
     </li>
   );
 }

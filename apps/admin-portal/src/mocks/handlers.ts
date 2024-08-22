@@ -6,20 +6,21 @@ import { IMentor } from '../types/Mentor'
 import { IPath } from '../types/Path'
 import { IClass } from '../types/Class'
 
+
 export const handlers = [
-    http.get('https://jsonplaceholder.typicode.com/users', () => {
+    http.get('/users', () => {
         return HttpResponse.json(users as IUser[])
     }),
-    http.get('https://jsonplaceholder.typicode.com/students', () => {
+    http.get('/students', () => {
         return HttpResponse.json(students as IStudent[])
     }),
-    http.get('https://jsonplaceholder.typicode.com/mentors', () => {
+    http.get('/mentors', () => {
         return HttpResponse.json(mentors as IMentor[])
     }),
-    http.get('https://jsonplaceholder.typicode.com/paths', () => {
+    http.get('/paths', () => {
         return HttpResponse.json(paths as IPath[])
     }),
-    http.get('https://jsonplaceholder.typicode.com/classes', () => {
+    http.get('/classes', () => {
         return HttpResponse.json(classes as IClass[])
     }),
 ]

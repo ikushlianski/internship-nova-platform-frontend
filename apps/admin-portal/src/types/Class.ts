@@ -1,6 +1,6 @@
 export interface IClass {
     id: number
-    name: string
+    // name: string
     pathId: number
     startDate: string
     endDate: string

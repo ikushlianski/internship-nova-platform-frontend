@@ -7,20 +7,34 @@
     { "id": 5, "name": "Clementine Bauch", "role": "mentor", "mentorId": 22 },
     { "id": 6, "name": "Patricia Lebsack", "role": "student", "studentId": 1101 },
     { "id": 7, "name": "L'etoile du Nord", "role": "student", "studentId": 1011 },
-    { "id": 8, "name": "Chelsey Dietrich", "role": "admin", "adminId": 1 },
-    { "id": 9, "name": "Johnny Mnemonic",  "role": "student", "studentId": 1001 },
-    { "id": 10, "name": "Kurtis Jackson", "role": "mentor", "mentorId": 33 }
+    { "id": 9, "name": "Johnny Mnemonic", "role": "student", "studentId": 1001 },
+    { "id": 10, "name": "Kurtis Jackson", "role": "mentor", "mentorId": 33 },
+    { "id": 12, "name": "Alice Wonderland", "role": "student", "studentId": 2001 },
+    { "id": 13, "name": "Bob Builder", "role": "mentor", "mentorId": 44 },
+    { "id": 14, "name": "Charlie Brown", "role": "student", "studentId": 3001 }
+
   ],
   "students": [
-    { "id": 101, "userId": 1, "pathId": 1, "mentorId": 11 }
+    { "id": 101, "userId": 4, "pathId": 1, "mentorId": 11 },
+    { "id": 102, "userId": 12, "pathId": 2, "mentorId": 44 },
+    { "id": 103, "userId": 14, "pathId": 3, "mentorId": 33 }
   ],
   "mentors": [
-    { "id": 11, "userId": 2, "expertise": "Fullstack Development", "classIds": [1], "pathIds": [1], "studentIds": [101] }
+    { "id": 11, "userId": 2, "expertise": "Fullstack Development", "classIds": [1], "pathIds": [1], "studentIds": [101] },
+    { "id": 22, "userId": 5, "expertise": "Frontend Development", "classIds": [2], "pathIds": [2], "studentIds": [102] },
+    { "id": 33, "userId": 10, "expertise": "Backend Development", "classIds": [3], "pathIds": [3], "studentIds": [103] },
+    { "id": 44, "userId": 13, "expertise": "DevOps", "classIds": [4], "pathIds": [4], "studentIds": [104] }
   ],
   "paths": [
-    { "id": 1, "name": "Fullstack Development", "classIds": [1], "studentIds": [101], "mentorIds": [11] }
+    { "id": 1, "name": "Fullstack Development", "classIds": [1], "studentIds": [101], "mentorIds": [11] },
+    { "id": 2, "name": "Frontend Development", "classIds": [2], "studentIds": [102], "mentorIds": [22] },
+    { "id": 3, "name": "Backend Development", "classIds": [3], "studentIds": [103], "mentorIds": [33] },
+    { "id": 4, "name": "DevOps", "classIds": [4], "studentIds": [104], "mentorIds": [44] }
   ],
   "classes": [
-    { "id": 1, "pathId": 1, "mentorIds": [11], "studentIds": [101], "startDate": "2024-09-01", "endDate": "2024-12-31" }
+    { "id": 1, "pathId": 1, "mentorIds": [11], "studentIds": [101], "startDate": "2024-09-01", "endDate": "2024-12-31" },
+    { "id": 2, "pathId": 2, "mentorIds": [22], "studentIds": [102], "startDate": "2024-10-01", "endDate": "2025-01-31" },
+    { "id": 3, "pathId": 3, "mentorIds": [33], "studentIds": [103], "startDate": "2024-11-01", "endDate": "2025-02-28" },
+    { "id": 4, "pathId": 4, "mentorIds": [44], "studentIds": [104], "startDate": "2024-12-01", "endDate": "2025-03-31" }
   ]
 }

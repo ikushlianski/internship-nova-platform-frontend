@@ -18,7 +18,7 @@ export function fetchCourseData(req: Request) {
     courseLevel: 'INTERMEDIATE — UPPER-INTERMEDIATE',
     courseDescription:
       'Научим уверенно проходить интервью и работать в международных проектах!',
-    courseStartDate: '21 декабря 2024',
+    courseStartDate: '15 октября 2024',
   };
 
   return courseData;

@@ -31,6 +31,26 @@ npm run dev
 - You can run all tests from the root dir with `npx vitest` or `turbo test`. The latter will run tests in parallel and show you all test runs from all projects where there's a `test` script in `package.json`. Choose whatever option you like.
 - To run tests for a specific file, run `npx vitest <path-to-file>`.
 
+## Suggested Folder Structure
+
+### General Repo Structure
+
+Monorepo based on Turborepo.
+
+- `apps/`: all frontend applications
+- `packages/`: all packages that are shared between all frontends
+
+### Single App Structure
+
+- `app`: Next.js-specific routes and nothing else
+- `features`: folders by each particular business feature
+  - `feature-name/`, e.g. `calendar`
+    - `api`: all hooks and fetch calls to backend
+    - `logic`: all business logic and pure data manipulation. No side effects like data fetching, no `.tsx` files
+    - `types`: all types related to this feature
+    - `ui`: all React components that are used in this feature
+    - `utils`: if you prefer, but should be covered in `logic` already :)
+
 ## Build
 
 To build all apps and packages, run the following command:

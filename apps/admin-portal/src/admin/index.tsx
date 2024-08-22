@@ -1,5 +1,5 @@
-import { Admin, Resource, ListGuesser } from "react-admin"
-import dataProvider from "../mocks/dataProvider"
+import { Admin, Resource, ListGuesser } from "react-admin";
+import dataProvider from "../mocks/dataProvider";
 
 const App = () => (
   <Admin dataProvider={dataProvider}>
@@ -9,6 +9,6 @@ const App = () => (
     <Resource name="paths" list={ListGuesser} />
     <Resource name="classes" list={ListGuesser} />
   </Admin>
-)
+);
 
-export default App
+export default App;

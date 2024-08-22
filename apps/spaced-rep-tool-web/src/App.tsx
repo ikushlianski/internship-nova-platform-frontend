@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { url } from "./mocks/handlers";
 import "./App.css";
 
 function App() {
   async function getCards() {
-    let response = await fetch(url);
-    let data = await response.json();
+    const response = await fetch(url);
+    const data = await response.json();
     return data;
   }
 

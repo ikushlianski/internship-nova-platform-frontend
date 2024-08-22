@@ -2,7 +2,10 @@ import { Admin, Resource, ListGuesser } from "react-admin";
 import dataProvider from "../mocks/dataProvider";
 
 const App = () => (
-  <Admin dataProvider={dataProvider}>
+  <Admin
+    // @ts-expect-error this is temporary
+    dataProvider={dataProvider}
+  >
     <Resource name="users" list={ListGuesser} />
     <Resource name="students" list={ListGuesser} />
     <Resource name="mentors" list={ListGuesser} />

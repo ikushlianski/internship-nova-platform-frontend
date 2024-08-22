@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npx turbo test
+        run: npx turbo test --continue
 
       - name: Build the project
-        run: npx turbo build
+        run: npx turbo build --continue

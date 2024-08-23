@@ -1,163 +1,170 @@
-import { IUser } from '../types/User';
-import { IStudent } from '../types/Student';
-import { IMentor } from '../types/Mentor';
-import { IPath } from '../types/Path';
-import { IClass } from '../types/Class';
-import { users, students, mentors, paths, classes } from './data/entities.json';
-import {  DataStore, DataProvider, IEntity, GetManyReferenceParams, GetManyReferenceResult, CreateParams, CreateResult } from '../types/DataProviderTypes';
-const dataStore: DataStore = {
-    users: users as IUser[],
-    students: students as IStudent[],
-    mentors: mentors as IMentor[],
-    paths: paths as IPath[],
-    classes: classes as IClass[],
-};
-console.log('DataStore:', dataStore);
+import { CreateParams, CreateResult, DataProvider, DeleteParams, DeleteResult, Identifier, RaRecord } from "react-admin"
+import { updateResourceData, getDataForResource, generateNewId } from '../utils/Utils'
 
-const dataProvider: DataProvider<IUser | IStudent | IMentor | IPath | IClass> = {
-    getList: (resource) => {
-        switch (resource) {
-            case 'users':
-                return Promise.resolve({ data: users as IUser[], total: users.length });
-            case 'students':
-                return Promise.resolve({ data: students as IStudent[], total: students.length });
-            case 'mentors':
-                return Promise.resolve({ data: mentors as IMentor[], total: mentors.length });
-            case 'paths':
-                return Promise.resolve({ data: paths as IPath[], total: paths.length });
-            case 'classes':
-                return Promise.resolve({ data: classes as IClass[], total: classes.length });
-            default:
-                return Promise.reject('Unknown resource');
-        }
-    },
-    getOne: (resource, { id }) => {
-        const data = { users, students, mentors, paths, classes }[resource];
-        const item = (data as (IUser | IStudent | IMentor | IPath | IClass)[]).find(
-            (item) => item.id === id
-        );
+const dataProvider: DataProvider = {
+    getList: async (resource, params) => {
+        const { page = 1, perPage = 10 } = params.pagination || {}
+        const { field = 'id', order = 'ASC' || 'DESC' } = params.sort || {}
 
-        if (!item) {
-            return Promise.reject(new Error(`Item with id ${id} not found in ${resource}`));
-        }
+        const data = getDataForResource(resource)
 
-        return Promise.resolve({ data: item });
-    },
-    getMany: (resource, { ids }) => {
-        const data = dataStore[resource];
-        console.log(`Resource: ${resource}, Data:`, data);
-        if (!data) {
-            return Promise.reject(new Error(`Resource ${resource} not found`));
-        }
-        const items = (data as (IUser | IStudent | IMentor | IPath | IClass)[]).filter(item => ids.includes(item.id));
-        return Promise.resolve({ data: items });
-    },
-    getManyReference: <R extends IEntity>(resource: string, { target, id, pagination, sort }: GetManyReferenceParams<R>): Promise<GetManyReferenceResult<R>> => {
-        const data = dataStore[resource] as R[];
+        const total = data.length
+        const sortedData = [...data].sort((a, b) => {
+            if (a[field] < b[field]) return order === 'ASC' ? -1 : 1;
+            if (a[field] > b[field]) return order === 'ASC' ? 1 : -1;
+            return 0;
+        })
 
-        // Фильтрация
-        const items = data.filter((item) => item[target] === id);
+        const paginatedData = sortedData.slice((page - 1) * perPage, page * perPage)
 
-        // Сортировка
-        const sortedItems = items.sort((a, b) => {
-            const aValue = a[sort.field];
-            const bValue = b[sort.field];
-
-            if (sort.order === 'ASC') {
-                return aValue > bValue ? 1 : (aValue < bValue ? -1 : 0);
-            } else {
-                return aValue < bValue ? 1 : (aValue > bValue ? -1 : 0);
-            }
-        });
-
-        // Пагинация
-        const start = (pagination.page - 1) * pagination.perPage;
-        const end = start + pagination.perPage;
-        const paginatedItems = sortedItems.slice(start, end);
-        const total = sortedItems.length;
-
-        return Promise.resolve({
-            data: paginatedItems,
+        return {
+            data: paginatedData,
             total,
-            pageInfo: {
-                hasNextPage: end < total,
-                hasPreviousPage: start > 0
-            }
-        });
+        }
     },
-    create: <T extends IEntity>(resource: string, { data }: CreateParams<T>): Promise<CreateResult<T>> => {
-        // Генерация нового ID
-        const newId = Date.now(); // Простейший способ генерации уникального ID, замените на ваш механизм
-
-        // Создание новой записи
-        const newItem = { id: newId, ...data } as T;
-
-        // Добавление новой записи в соответствующий ресурс
-        if (dataStore[resource]) {
-            dataStore[resource].push(newItem);
-        } else {
-            dataStore[resource] = [newItem];
+    getOne: async (resource, params) => {
+        const data = getDataForResource(resource);        
+        const item = data.find((item: { id: number }) =>String(item.id) == params.id)
+        if (!item) {
+            throw new Error(`Resource ${resource} with ID ${params.id} not found`)
         }
 
-        return Promise.resolve({ data: newItem });
+        return {
+            data: item
+        }
+    },
+    getMany: async (resource, params) => {
+        const data = getDataForResource(resource);
+        const items = data.filter((item: { id: number }) => params.ids.includes(item.id));
+
+        if (items.length === 0) {
+            throw new Error(`No resources found for IDs: ${params.ids.join(', ')}`);
+        }
+
+        return {
+            data: items
+        };
+    },
+    getManyReference: async (resource, params) => {
+        const { target, id } = params;
+        const { page = 1, perPage = 10 } = params.pagination || {};
+        const { field = 'id', order = 'ASC' || 'DESC' } = params.sort || {};
+
+        const data = getDataForResource(resource);
+        
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const filteredData = data.filter((item: any) => item[target] === id);
+        const total = filteredData.length;
+        
+        const sortedData = [...filteredData].sort((a, b) => {
+            if (a[field] < b[field]) return order === 'ASC' ? -1 : 1;
+            if (a[field] > b[field]) return order === 'ASC' ? 1 : -1;
+            return 0;
+        });
+
+        const paginatedData = sortedData.slice((page - 1) * perPage, page * perPage);
+
+        return {
+            data: paginatedData,
+            total,
+        };
     },
 
-    update: (resource, { id, data }) => {
-        const dataStore = { users, students, mentors, paths, classes };
-        const resourceData = dataStore[resource] as (IUser | IStudent | IMentor | IPath | IClass)[];
+    updateMany: async (resource, params) => {
+        const data = getDataForResource(resource);
+        const updatedData = data.map((item) => {
+            if (params.ids.includes(item.id)) {
+                return { ...item, ...params.data }; 
+            }
+            return item;
+        });
 
-        const itemIndex = resourceData.findIndex(item => item.id === id);
+        updateResourceData(resource, updatedData);
+
+        return {
+            data: params.ids, 
+        };
+    },
+    deleteMany: async (resource, params) => {
+        const data = getDataForResource(resource);
+        const filteredData = data.filter(item => !params.ids.includes(item.id));
+
+        updateResourceData(resource, filteredData);
+
+        return {
+            data: params.ids, 
+        };
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    create: async <RecordType extends Omit<RaRecord, "id"> = any, ResultRecordType extends RaRecord = RecordType & { id: Identifier; }>(
+        resource: string,
+        params: CreateParams<RecordType>
+    ): Promise<CreateResult<ResultRecordType>> => {
+        const data = getDataForResource(resource);
+        
+        // Генерация нового уникального ID
+        const newId = generateNewId(data);
+        
+        // Создание новой записи с сгенерированным ID
+        const newItem: ResultRecordType = { id: newId, ...params.data } as unknown as ResultRecordType;
+        
+        // Добавление новой записи в массив данных
+        const updatedData = [...data, newItem];
+        
+        // Обновление данных ресурса
+        updateResourceData(resource, updatedData);
+
+        return {
+            data: newItem,
+        };
+    },
+
+    update: async (resource, params) => {
+        const data = getDataForResource(resource);
+
+        // Найти индекс записи с указанным id
+        const itemIndex = data.findIndex((item: { id: number }) => item.id === params.id);
+
         if (itemIndex === -1) {
-            return Promise.reject(new Error(`Item with id ${id} not found in ${resource}`));
+            throw new Error(`Resource ${resource} with ID ${params.id} not found`);
         }
 
-        // Обновление записи
-        const updatedItem = { ...resourceData[itemIndex], ...data };
-        resourceData[itemIndex] = updatedItem;
+        // Обновить запись с указанным id
+        const updatedItem = { ...data[itemIndex], ...params.data };
 
-        return Promise.resolve({ data: updatedItem });
+        // Обновить массив данных с новыми значениями
+        const updatedData = [
+            ...data.slice(0, itemIndex),
+            updatedItem,
+            ...data.slice(itemIndex + 1),
+        ];
+
+        // Сохранить обновленные данные в ресурс
+        updateResourceData(resource, updatedData);
+
+        return {
+            data: updatedItem, // Возвращаем обновленный объект
+        };
     },
-    updateMany: (resource, { ids, data }) => {
-        const dataStore = { users, students, mentors, paths, classes };
-        const resourceData = dataStore[resource] as (IUser | IStudent | IMentor | IPath | IClass)[];
-        const updatedIds: number[] = [];
 
-        ids.forEach(id => {
-            const itemIndex = resourceData.findIndex(item => item.id === id);
-            if (itemIndex !== -1) {
-                resourceData[itemIndex] = { ...resourceData[itemIndex], ...data };
-                updatedIds.push(id);
-            }
-        });
+    delete: async <RecordType extends RaRecord>(resource: string, params: DeleteParams<RecordType>): Promise<DeleteResult<RecordType>> => {
+        const data = getDataForResource(resource);
+        const itemIndex = data.findIndex((item: RecordType) => item.id === params.id);
 
-        return Promise.resolve({ data: updatedIds });
-    },
-    delete: (resource, { id }) => {
-        const dataStore = { users, students, mentors, paths, classes };
-        const resourceData = dataStore[resource] as (IUser | IStudent | IMentor | IPath | IClass)[];
-        const itemIndex = resourceData.findIndex(item => item.id === id);
         if (itemIndex === -1) {
-            return Promise.reject(new Error(`Item with id ${id} not found in ${resource}`));
+            throw new Error(`Resource ${resource} with ID ${params.id} not found`);
         }
 
-        const deletedItem = resourceData.splice(itemIndex, 1)[0];
+        const updatedData = [
+            ...data.slice(0, itemIndex),
+            ...data.slice(itemIndex + 1),
+        ];
 
-        return Promise.resolve({ data: deletedItem });
-    },
-    deleteMany: (resource, { ids }) => {
-        const dataStore = { users, students, mentors, paths, classes };
-        const resourceData = dataStore[resource] as (IUser | IStudent | IMentor | IPath | IClass)[];
-        const deletedIds: number[] = [];
+        updateResourceData(resource, updatedData);
 
-        ids.forEach(id => {
-            const itemIndex = resourceData.findIndex(item => item.id === id);
-            if (itemIndex !== -1) {
-                resourceData.splice(itemIndex, 1);
-                deletedIds.push(id);
-            }
-        });
-
-        return Promise.resolve({ data: deletedIds });
+        return {
+            data: { id: params.id } as RecordType, // Возвращаем объект с id в формате RecordType
+        };
     },
 }
 

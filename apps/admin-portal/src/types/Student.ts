@@ -1,7 +1,6 @@
 export interface IStudent {
     id: number
-    name: string
-    userId: number //пользователь, который является студентом
-    pathId: number //курс этого студента
-    mentorId: number //ментор этого студента
+    userId: number //user who is a student
+    pathId: number //this student's course
+    teacherId: number //this student's teacher
 }

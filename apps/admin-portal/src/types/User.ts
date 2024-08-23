@@ -1,8 +1,13 @@
 export interface IUser {
     id: number
     name: string
-    role: 'student' | 'mentor' | 'admin'
+    roles: Array<'No role' | 'Spectator' | 'Student' | 'Teacher' | 'Manager' | 'Sales' | 'Admin'>
     studentId?: number
-    mentorId?: number
+    teacherId?: number
     adminId?: number
+    managerId?: number
+    salesId?: number
+    spectatorId?: number
+    noRoleId?: number
+    manageUserIds?: number
 }

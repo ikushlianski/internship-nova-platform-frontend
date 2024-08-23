@@ -11,7 +11,7 @@ async function enableMocking() {
   // once the Service Worker is up and ready to intercept requests.
   const { worker } = await import("./mocks/browser")
   return worker.start({
-    onUnhandledRequest: "bypass", // Игнорирует необработанные запросы
+    onUnhandledRequest: "bypass", // Ignores unprocessed requests
   })
 }
 

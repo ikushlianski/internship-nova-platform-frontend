@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ROUTES } from "@/shared/routes/routes";
+import { ROUTES } from "@sharedroutes/routes";
 
 export default function Navigation() {
   return (

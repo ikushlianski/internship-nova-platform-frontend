@@ -1,5 +1,3 @@
-"use client";
-
-export default function PrivatePolicy() {
-  return <>PrivatePolicy</>;
+export default function PrivacyPolicy() {
+  return <>PrivacyPolicy</>;
 }

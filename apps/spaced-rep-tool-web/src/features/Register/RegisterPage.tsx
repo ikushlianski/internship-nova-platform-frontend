@@ -20,7 +20,7 @@ const RegisterPage = () => {
 
       // send data to backend
       const res = await axios.post(
-        'http://localhost:3000/auth/google/callback',
+        '${process.env.NEXT_PUBLIC_API_HOST}/auth/google/callback',
         {
           privacyAccepted,
           token,

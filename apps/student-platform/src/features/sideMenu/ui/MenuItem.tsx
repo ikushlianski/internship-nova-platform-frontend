@@ -1,5 +1,5 @@
 import Image from "next/image";
-import NavLink from "@componentsNavLink";
+import NavLink from "@componentsNavLink/NavLink";
 
 export default function MenuItem({ img, title, link }: MenuItemProps) {
   return (

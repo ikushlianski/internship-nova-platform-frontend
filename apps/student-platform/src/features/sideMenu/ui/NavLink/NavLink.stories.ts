@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import NavLink, { NavLinkProps } from "@componentsNavLink/NavLink";
+import NavLink, { NavLinkProps } from "./NavLink";
 
 const meta: Meta<NavLinkProps> = {
   title: "Components/NavLink",

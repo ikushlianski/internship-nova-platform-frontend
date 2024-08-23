@@ -11,6 +11,8 @@
     "test:watch": "vitest --watch"
   },
   "dependencies": {
+    "@repo/shared-types": "*",
+    "@repo/ui": "*",
     "babel-plugin-react-compiler": "^0.0.0-experimental-334f00b-20240725",
     "next": "15.0.0-canary.111",
     "react": "19.0.0-rc-187dd6a7-20240806",

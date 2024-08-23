@@ -6,5 +6,10 @@ import { ReactNode } from "react";
 export default function SideMenuLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const noMenuRoutes = ["/login", "/logout"];
-  return <>{!noMenuRoutes.includes(pathname) && <SideMenu />}</>;
+  return (
+    <>
+      {!noMenuRoutes.includes(pathname) && <SideMenu />}
+      {children}
+    </>
+  );
 }

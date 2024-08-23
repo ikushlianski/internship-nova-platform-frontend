@@ -1,3 +1,4 @@
+
 export async function POST(request: Response) {
     const { accepted } = await request.json();
 

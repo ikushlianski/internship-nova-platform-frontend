@@ -14,6 +14,6 @@ const App = () => (
     <Resource name="noRoles" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
     <Resource name="sales" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
   </Admin>
-)
+);
 
-export default App
+export default App;

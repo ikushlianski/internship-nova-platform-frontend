@@ -23,7 +23,7 @@ const dataProvider: DataProvider = {
         }
     },
     getOne: async (resource, params) => {
-        const data = getDataForResource(resource);        
+        const data = getDataForResource(resource);
         const item = data.find((item: { id: number }) =>String(item.id) == params.id)
         if (!item) {
             throw new Error(`Resource ${resource} with ID ${params.id} not found`)
@@ -51,11 +51,11 @@ const dataProvider: DataProvider = {
         const { field = 'id', order = 'ASC' || 'DESC' } = params.sort || {};
 
         const data = getDataForResource(resource);
-        
+
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const filteredData = data.filter((item: any) => item[target] === id);
         const total = filteredData.length;
-        
+
         const sortedData = [...filteredData].sort((a, b) => {
             if (a[field] < b[field]) return order === 'ASC' ? -1 : 1;
             if (a[field] > b[field]) return order === 'ASC' ? 1 : -1;
@@ -74,7 +74,7 @@ const dataProvider: DataProvider = {
         const data = getDataForResource(resource);
         const updatedData = data.map((item) => {
             if (params.ids.includes(item.id)) {
-                return { ...item, ...params.data }; 
+                return { ...item, ...params.data };
             }
             return item;
         });
@@ -82,7 +82,7 @@ const dataProvider: DataProvider = {
         updateResourceData(resource, updatedData);
 
         return {
-            data: params.ids, 
+            data: params.ids,
         };
     },
     deleteMany: async (resource, params) => {
@@ -92,7 +92,7 @@ const dataProvider: DataProvider = {
         updateResourceData(resource, filteredData);
 
         return {
-            data: params.ids, 
+            data: params.ids,
         };
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -101,16 +101,16 @@ const dataProvider: DataProvider = {
         params: CreateParams<RecordType>
     ): Promise<CreateResult<ResultRecordType>> => {
         const data = getDataForResource(resource);
-        
+
         // Генерация нового уникального ID
         const newId = generateNewId(data);
-        
+
         // Создание новой записи с сгенерированным ID
         const newItem: ResultRecordType = { id: newId, ...params.data } as unknown as ResultRecordType;
-        
+
         // Добавление новой записи в массив данных
         const updatedData = [...data, newItem];
-        
+
         // Обновление данных ресурса
         updateResourceData(resource, updatedData);
 
@@ -166,6 +166,6 @@ const dataProvider: DataProvider = {
             data: { id: params.id } as RecordType, // Возвращаем объект с id в формате RecordType
         };
     },
-}
+  };
 
-export default dataProvider
+export default dataProvider;

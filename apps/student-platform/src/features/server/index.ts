@@ -3,7 +3,7 @@ export async function POST(request: Response) {
     const { accepted } = await request.json();
 
     if (!accepted) {
-        return new Response(JSON.stringify({ error: 'You must read and accept Privacy Policy' }), {
+        return new Response(JSON.stringify({ error: 'Вам необходимо принять политику соглашение Google' }), {
             status: 400,
             headers: {
                 'Content-Type': 'application/json',

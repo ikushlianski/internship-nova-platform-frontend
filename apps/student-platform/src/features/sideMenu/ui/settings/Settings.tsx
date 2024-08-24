@@ -1,4 +1,4 @@
-import MenuItem from "@featuressideMenu/ui/MenuItem";
+import MenuItem from "../menuItem/MenuItem";
 
 export default function Settings() {
   return (

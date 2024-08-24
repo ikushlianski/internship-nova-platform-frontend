@@ -1,6 +1,6 @@
-import NavMenu from "@featuressideMenu/ui/NavMenu";
-import ImagesBlock from "@featuressideMenu/ui/ImagesBlock";
-import Settings from "@featuressideMenu/ui/Settings";
+import NavMenu from "../navMenu/NavMenu";
+import ImagesBlock from "../imagesBlock/ImagesBlock";
+import Settings from "../settings/Settings";
 
 export default function SideMenu() {
   return (

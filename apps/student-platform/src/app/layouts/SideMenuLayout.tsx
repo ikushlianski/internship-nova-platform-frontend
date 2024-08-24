@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import SideMenu from "@featuressideMenu/ui/SideMenu";
+import SideMenu from "../../features/sideMenu/ui/sideMenu/SideMenu";
 import { ReactNode } from "react";
 
 export default function SideMenuLayout({ children }: { children: ReactNode }) {

@@ -4,6 +4,10 @@ import NavLink, { NavLinkProps } from "./NavLink";
 const meta: Meta<NavLinkProps> = {
   title: "Components/NavLink",
   component: NavLink,
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
 };
 
 export default meta;

@@ -1,13 +1,13 @@
 import './App.css'
-
+import { RoutesEnum } from './utils/RoutesEnum'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import RegisterPage from './features/Register/RegisterPage'
+import SignUpPage from './features/SignUp/SignUpPage'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="register" element={<RegisterPage />} />
+        <Route path={RoutesEnum.SIGNUP} element={<SignUpPage />} />
       </Routes>
     </BrowserRouter>
   )

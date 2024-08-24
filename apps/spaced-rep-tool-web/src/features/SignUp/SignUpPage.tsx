@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
 import PagePhoto from '../../assets/man-and-woman-in-gadgets.svg'
 
-const RegisterPage = () => {
+const SignUpPage = () => {
   const [privacyAccepted, setPrivacyAccepted] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -113,4 +113,4 @@ const RegisterPage = () => {
   )
 }
 
-export default RegisterPage
+export default SignUpPage

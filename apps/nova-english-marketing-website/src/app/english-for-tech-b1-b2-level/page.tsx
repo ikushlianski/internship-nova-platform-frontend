@@ -15,6 +15,7 @@ export default function Page() {
           courseLevel={courseData.courseLevel}
           courseDescription={courseData.courseDescription}
           courseStartDate={courseData.courseStartDate}
+          courseImage="/man-and-woman-in-gadgets.svg" 
         />
       </div>
     </div>

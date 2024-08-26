@@ -1,5 +1,6 @@
+// heroSection.component.tsx
 import React from 'react';
-import styles from './heroSection.module.css'; 
+import styles from './heroSection.module.css';
 import { HeroSectionProps } from '../types/heroSection.types';
 
 const HeroSection: React.FC<HeroSectionProps> = ({
@@ -7,6 +8,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   courseLevel,
   courseDescription,
   courseStartDate,
+  courseImage,
 }) => {
   return (
     <section className={styles.courseSection}>
@@ -17,12 +19,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <p className={styles.courseDescription}>{courseDescription}</p>
         <button className={styles.ctaButton}>ХОЧУ УЧИТЬСЯ</button>
         <p className={styles.courseStartDateText}>
-          Дата начала курса: <span className={styles.courseStartDateValue}>{courseStartDate}</span>
+          Дата начала курса:{' '}
+          <span className={styles.courseStartDateValue}>{courseStartDate}</span>
         </p>
       </div>
       <div className={styles.imageContainer}>
         <img
-          src="/man-and-woman-in-gadgets.svg"
+          src={courseImage}
           alt="Course illustration"
           className={styles.courseImage}
         />

@@ -3,4 +3,5 @@ export interface HeroSectionProps {
   courseLevel: string;
   courseDescription: string;
   courseStartDate: string;
+  courseImage: string;
 }

@@ -1,94 +1,36 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fetchCourseData } from './fetchCourseData.logic';
+import { CourseLevel } from '../types/heroSection.types';
+
+vi.mock('next/config', () => ({
+  default: () => ({
+    publicRuntimeConfig: {
+      DEFAULT_HOST: 'test.com',
+    },
+  }),
+}));
 
 describe('fetchCourseData', () => {
-  it('should return the correct course data when hostname is localhost:8000', () => {
-    const req = {
-      headers: {
-        get: vi.fn().mockReturnValue('localhost:8000'),
-      },
-    } as unknown as Request;
-
-    const result = fetchCourseData(req);
-
-    expect(result).toEqual({
-      finalCourseTitle: 'Английский для IT',
-      courseLevel: 'INTERMEDIATE — UPPER-INTERMEDIATE',
-      courseDescription:
-        'Научим уверенно проходить интервью и работать в международных проектах!',
-      courseStartDate: '15 октября 2024',
-    });
+  it('should return English for Tech when hostname does not end with .by or .ru', async () => {
+    const courseData = await fetchCourseData();
+    expect(courseData?.finalCourseTitle).toBe('English for Tech');
+    expect(courseData?.courseLevel).toBe(CourseLevel.INTERMEDIATE);
+    expect(courseData?.courseDescription).toBe('Научим уверенно проходить интервью и работать в международных проектах!');
+    expect(courseData?.courseStartDate).toBe('15 октября 2024');
+    expect(courseData?.courseImage).toBe('/man-and-woman-in-gadgets.svg');
   });
 
-  it('should return the correct course data when hostname ends with .by', () => {
-    const req = {
-      headers: {
-        get: vi.fn().mockReturnValue('example.by'),
-      },
-    } as unknown as Request;
-
-    const result = fetchCourseData(req);
-
-    expect(result).toEqual({
-      finalCourseTitle: 'Английский для IT',
-      courseLevel: 'INTERMEDIATE — UPPER-INTERMEDIATE',
-      courseDescription:
-        'Научим уверенно проходить интервью и работать в международных проектах!',
-      courseStartDate: '15 октября 2024',
-    });
+  it('should return Английский для IT when hostname ends with .by or .ru', async () => {
+    vi.spyOn(process, 'env', 'get').mockReturnValue({ DEFAULT_HOST: 'example.by' });
+    
+    const courseData = await fetchCourseData();
+    expect(courseData?.finalCourseTitle).toBe('Английский для IT');
   });
 
-  it('should return the correct course data when hostname ends with .ru', () => {
-    const req = {
-      headers: {
-        get: vi.fn().mockReturnValue('example.ru'),
-      },
-    } as unknown as Request;
-
-    const result = fetchCourseData(req);
-
-    expect(result).toEqual({
-      finalCourseTitle: 'Английский для IT',
-      courseLevel: 'INTERMEDIATE — UPPER-INTERMEDIATE',
-      courseDescription:
-        'Научим уверенно проходить интервью и работать в международных проектах!',
-      courseStartDate: '15 октября 2024',
-    });
-  });
-
-  it('should return the correct course data when hostname does not end with .by or .ru', () => {
-    const req = {
-      headers: {
-        get: vi.fn().mockReturnValue('example.com'),
-      },
-    } as unknown as Request;
-
-    const result = fetchCourseData(req);
-
-    expect(result).toEqual({
-      finalCourseTitle: 'English for Tech',
-      courseLevel: 'INTERMEDIATE — UPPER-INTERMEDIATE',
-      courseDescription:
-        'Научим уверенно проходить интервью и работать в международных проектах!',
-      courseStartDate: '15 октября 2024',
-    });
-  });
-
-  it('should default to "localhost:8000" if hostname is missing', () => {
-    const req = {
-      headers: {
-        get: vi.fn().mockReturnValue(null),
-      },
-    } as unknown as Request;
-
-    const result = fetchCourseData(req);
-
-    expect(result).toEqual({
-      finalCourseTitle: 'Английский для IT',
-      courseLevel: 'INTERMEDIATE — UPPER-INTERMEDIATE',
-      courseDescription:
-        'Научим уверенно проходить интервью и работать в международных проектах!',
-      courseStartDate: '15 октября 2024',
-    });
+  it('should return Английский для IT when hostname ends with .ru', async () => {
+    vi.spyOn(process, 'env', 'get').mockReturnValue({ DEFAULT_HOST: 'example.ru' });
+    
+    const courseData = await fetchCourseData();
+    expect(courseData?.finalCourseTitle).toBe('Английский для IT');
   });
 });

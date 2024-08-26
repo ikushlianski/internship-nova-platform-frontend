@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HeroSection from '@/features/heroSection/ui/heroSection.component';
 import { fetchCourseData } from '@/features/heroSection/logic/fetchCourseData.logic';
 
 
-export default function Page() {
-  const courseData = fetchCourseData(new Request('http://localhost:8000'));
+export default async function Page(){
+  const courseData = await fetchCourseData();
 
   return (
     <div>
@@ -15,7 +15,7 @@ export default function Page() {
           courseLevel={courseData.courseLevel}
           courseDescription={courseData.courseDescription}
           courseStartDate={courseData.courseStartDate}
-          courseImage="/man-and-woman-in-gadgets.svg" 
+          courseImage={courseData.courseImage} 
         />
       </div>
     </div>

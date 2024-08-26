@@ -1,4 +1,3 @@
-// heroSection.component.tsx
 import React from 'react';
 import styles from './heroSection.module.css';
 import { HeroSectionProps } from '../types/heroSection.types';

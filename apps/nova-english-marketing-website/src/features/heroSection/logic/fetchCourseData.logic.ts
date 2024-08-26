@@ -1,24 +1,23 @@
-export function fetchCourseData(req: Request) {
-  let hostname = req.headers.get('host') || '';
+import { NextRequest } from 'next/server';
+import { CourseLevel, HeroSectionProps } from '../types/heroSection.types';
 
-  if (!hostname) {
-    hostname = 'localhost:8000';
+function getFinalCourseTitle(hostname: string): string {
+  if (hostname.endsWith('.by') || hostname.endsWith('.ru')) {
+    return 'Английский для IT';
   }
+  return 'English for Tech';
+}
 
-  let finalCourseTitle = 'Английский для IT';
+export async function fetchCourseData(): Promise<HeroSectionProps | null> {
+  const hostname = process.env.DEFAULT_HOST || 'localhost:8000';
+  const finalCourseTitle = getFinalCourseTitle(hostname);
 
-  if (hostname === 'localhost:8000') {
-    finalCourseTitle = 'Английский для IT';
-  } else if (!hostname.endsWith('.by') && !hostname.endsWith('.ru')) {
-    finalCourseTitle = 'English for Tech';
-  }
-
-  const courseData = {
+  const courseData: HeroSectionProps = {
     finalCourseTitle,
-    courseLevel: 'INTERMEDIATE — UPPER-INTERMEDIATE',
-    courseDescription:
-      'Научим уверенно проходить интервью и работать в международных проектах!',
+    courseLevel: CourseLevel.INTERMEDIATE,
+    courseDescription: 'Научим уверенно проходить интервью и работать в международных проектах!',
     courseStartDate: '15 октября 2024',
+    courseImage: '/man-and-woman-in-gadgets.svg', 
   };
 
   return courseData;

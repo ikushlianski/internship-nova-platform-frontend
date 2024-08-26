@@ -1,0 +1,91 @@
+
+.courseSection {
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  background: var(--background-color);
+  padding: 80px;
+  border-radius: 20px;
+  max-width: 1420px;
+  margin: 0 auto;
+}
+
+.textContainer {
+  grid-column: 1 / 2;
+}
+
+.courseLevel, .courseTitle, .courseSubtitle, .courseDescription, .courseStartDateText {
+  margin-bottom: 10px;
+}
+
+.courseLevel {
+  color: var(--course-level-color);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
+.courseTitle, .courseSubtitle {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+}
+
+.courseTitle {
+  color: var(--cta-button-bg-color);
+  margin-bottom: 10px;
+}
+
+.courseSubtitle {
+  color: var(--course-title-color);
+  margin-bottom: 40px;
+}
+
+.courseDescription {
+  color: var(--course-description-color);
+  margin-bottom: 80px;
+
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.ctaButton {
+  background-color: var(--cta-button-bg-color);
+  color: var(--cta-button-text-color);
+  padding: 14px 60px;
+  border: none;
+  border-radius: 32px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 40px;
+}
+
+.ctaButton:hover {
+  background-color: var(--cta-button-hover-bg-color);
+}
+
+.courseStartDateText {
+  color: var(--course-description-color);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.courseStartDateValue {
+  color: var(--course-start-date-color-value);
+  font-weight: 700;
+}
+
+.imageContainer {
+  grid-column: 2 / 3;
+}
+
+.courseImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}

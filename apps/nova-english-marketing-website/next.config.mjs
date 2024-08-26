@@ -3,14 +3,14 @@ const nextConfig = {
   experimental: {
     reactCompiler: true,
   },
-   async redirects() {
+  async redirects() {
     return [
       {
         source: '/',
         destination: '/english-for-tech-b1-b2-level',
         permanent: false,
       },
-    ]
+    ];
   },
 };
 

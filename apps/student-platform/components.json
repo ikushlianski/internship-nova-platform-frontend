@@ -9,6 +9,6 @@
     },
     "aliases": {
         "components": "@/components",
-        "utils": "@/shared/utils/utils"
+        "utils": "@/shared/utils/cn"
     }
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Navigation from "@/app/navigation/Navigation";
 import Message from "@/features/Message";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
         This is the home page of the app. You can navigate to the login page by
         clicking <Link href={"/login"}>here</Link>.
       </p>
+      <Navigation />
       <Message />
     </div>
   );

@@ -42,11 +42,11 @@ jobs:
           name: spaced-rep-tool-web
           path: |
             apps/spaced-rep-tool-web/dist
-      - name: Copy needed modules nova-english-marketing-website
-        run: |
-          cp -r node_modules/@next/ apps/nova-english-marketing-website/node_modules/
-          cp -r node_modules/@swc/ apps/nova-english-marketing-website/node_modules/
-          cp -r node_modules/styled-jsx/ apps/nova-english-marketing-website/node_modules/
+      # - name: Copy needed modules nova-english-marketing-website
+      #   run: |
+      #     cp -r node_modules/@next/ apps/nova-english-marketing-website/node_modules/
+      #     cp -r node_modules/@swc/ apps/nova-english-marketing-website/node_modules/
+      #     cp -r node_modules/styled-jsx/ apps/nova-english-marketing-website/node_modules/
       - name: Archive production artifacts nova-english-marketing-website
         uses: actions/upload-artifact@v4
         with:

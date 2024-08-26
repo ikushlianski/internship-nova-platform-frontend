@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest",
+    "test": "vitest run",
     "test:watch": "vitest --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -16,6 +16,10 @@
     "@repo/shared-types": "*",
     "@repo/ui": "*",
     "babel-plugin-react-compiler": "^0.0.0-experimental-334f00b-20240725",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7",
     "next": "14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

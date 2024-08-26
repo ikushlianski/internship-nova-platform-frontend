@@ -32,3 +32,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Running Storybook
+
+To start Storybook in development mode, run the following command:
+
+```bash
+npm run storybook
+# or
+yarn storybook
+# or
+pnpm storybook
+# or
+bun storybook.
+```
+
+## Building Storybook
+
+To create a static build of your Storybook for deployment, use the following command:
+
+```bash
+npm run build-storybook
+# or
+yarn build-storybook
+# or
+pnpm build-storybook
+# or
+bun build-storybook
+```

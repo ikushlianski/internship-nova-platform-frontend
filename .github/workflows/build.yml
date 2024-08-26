@@ -1,0 +1,62 @@
+name: Test and Build on Pull Request
+
+on: workflow_dispatch
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npx turbo test --continue
+
+      - name: Build the project
+        run: npx turbo build --continue
+      
+      - name: Archive production artifacts admin-portal
+        uses: actions/upload-artifact@v4
+        with:
+          name: admin-portal
+          path: |
+            apps/admin-portal/dist
+      - name: Archive production artifacts spaced-rep-tool-mobile
+        uses: actions/upload-artifact@v4
+        with:
+          name: spaced-rep-tool-mobile
+          path: |
+            apps/spaced-rep-tool-mobile/dist
+      - name: Archive production artifacts spaced-rep-tool-web
+        uses: actions/upload-artifact@v4
+        with:
+          name: spaced-rep-tool-web
+          path: |
+            apps/spaced-rep-tool-web/dist
+      - name: Archive production artifacts nova-english-marketing-website
+        uses: actions/upload-artifact@v4
+        with:
+          name: nova-english-marketing-website
+          path: |
+            apps/nova-english-marketing-website/.next
+            apps/nova-english-marketing-website/next.config.*js
+            apps/nova-english-marketing-website/node_modules
+            apps/nova-english-marketing-website/package.json
+      - name: Archive production artifacts student-platform
+        uses: actions/upload-artifact@v4
+        with:
+          name: student-platform
+          path: |
+            apps/student-platform/.next
+            apps/student-platform/next.config.*js
+            apps/student-platform/node_modules
+            apps/student-platform/package.json

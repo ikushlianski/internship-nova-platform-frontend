@@ -2,6 +2,7 @@ import React from 'react';
 import HeroSection from '@/features/heroSection/ui/heroSection.component';
 import { fetchCourseData } from '@/features/heroSection/logic/fetchCourseData.logic';
 
+
 export default function Page() {
   const courseData = fetchCourseData(new Request('http://localhost:8000'));
 

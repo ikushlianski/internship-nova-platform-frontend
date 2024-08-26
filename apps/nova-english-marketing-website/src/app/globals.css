@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --background-color: radial-gradient(
+    50% 50% at 50% 50%,
+    #b7e1ff 0%,
+    #e6f5ff 100%
+  );
+  --course-level-color: #b8b8b8;
+  --course-title-color: #1f2937; /* Темно-синий текст */
+  --course-description-color: rgba(63, 62, 62, 1);
+  --cta-button-bg-color: rgba(0, 146, 252, 1);
+  --cta-button-hover-bg-color: rgba(62, 173, 255, 1);
+  --course-start-date-color-value: rgba(0, 146, 252, 1);
+  --cta-button-text-color: rgba(252, 254, 255, 1);
+}
+
+
+* {
+  font-family: 'Manrope', sans-serif;
+}
+
+

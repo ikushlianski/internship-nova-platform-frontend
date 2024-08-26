@@ -8,7 +8,7 @@ function getFinalCourseTitle(hostname: string): string {
   return 'English for Tech';
 }
 
-export async function fetchCourseData(): Promise<HeroSectionProps | null> {
+export async function fetchCourseData(): Promise<HeroSectionProps> {
   const hostname = process.env.DEFAULT_HOST || 'localhost:8000';
   const finalCourseTitle = getFinalCourseTitle(hostname);
 

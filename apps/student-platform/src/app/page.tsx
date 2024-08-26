@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Navigation from "@/app/navigation/Navigation";
-import Message from "@/features/Message";
 
 export default function Home() {
   return (
@@ -11,7 +10,6 @@ export default function Home() {
         clicking <Link href={"/login"}>here</Link>.
       </p>
       <Navigation />
-      <Message />
     </div>
   );
 }

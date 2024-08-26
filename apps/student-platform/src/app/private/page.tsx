@@ -6,7 +6,7 @@ export default async function PrivatePage() {
     {
       headers: { Cookie: cookies().toString() },
       cache: "no-store",
-    },
+    }
   );
 
   if (!response.ok) {

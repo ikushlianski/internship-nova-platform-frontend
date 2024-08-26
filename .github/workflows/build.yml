@@ -51,6 +51,9 @@ jobs:
             apps/nova-english-marketing-website/next.config.*js
             apps/nova-english-marketing-website/node_modules
             apps/nova-english-marketing-website/package.json
+            node_modules/@next
+            node_modules/@swc
+            node_modules/styled-jsx
       - name: Archive production artifacts student-platform
         uses: actions/upload-artifact@v4
         with:
@@ -60,3 +63,6 @@ jobs:
             apps/student-platform/next.config.*js
             apps/student-platform/node_modules
             apps/student-platform/package.json
+            node_modules/@next
+            node_modules/@swc
+            node_modules/styled-jsx

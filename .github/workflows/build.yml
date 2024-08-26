@@ -42,6 +42,11 @@ jobs:
           name: spaced-rep-tool-web
           path: |
             apps/spaced-rep-tool-web/dist
+      - name: Copy needed modules nova-english-marketing-website
+        run: |
+          cp -r node_modules/@next/ apps/nova-english-marketing-website/node_modules/
+          cp -r node_modules/@swc/ apps/nova-english-marketing-website/node_modules/
+          cp -r node_modules/styled-jsx/ apps/nova-english-marketing-website/node_modules/
       - name: Archive production artifacts nova-english-marketing-website
         uses: actions/upload-artifact@v4
         with:
@@ -51,9 +56,11 @@ jobs:
             apps/nova-english-marketing-website/next.config.*js
             apps/nova-english-marketing-website/node_modules
             apps/nova-english-marketing-website/package.json
-            node_modules/@next
-            node_modules/@swc
-            node_modules/styled-jsx
+      - name: Copy needed modules student-platform
+        run: |
+          cp -r node_modules/@next/ apps/student-platform/node_modules/
+          cp -r node_modules/@swc/ apps/student-platform/node_modules/
+          cp -r node_modules/styled-jsx/ apps/student-platform/node_modules/
       - name: Archive production artifacts student-platform
         uses: actions/upload-artifact@v4
         with:
@@ -63,6 +70,4 @@ jobs:
             apps/student-platform/next.config.*js
             apps/student-platform/node_modules
             apps/student-platform/package.json
-            node_modules/@next
-            node_modules/@swc
-            node_modules/styled-jsx
+            

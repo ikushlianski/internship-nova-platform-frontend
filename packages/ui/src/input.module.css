@@ -1,0 +1,46 @@
+.input {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-width: 300px;
+  border: 2px solid hsla(0, 0%, 85%, 1);
+  border-radius: 32px;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus-within {
+  border-color: hsla(205, 100%, 49%, 1);
+}
+
+.input_filled {
+  background-color: hsla(203, 100%, 96%, 1);
+  border-color: hsla(205, 100%, 49%, 1);
+}
+
+.input.large {
+  padding: 18px 20px;
+  font-size: 20px;
+}
+
+.input.small {
+  padding: 15px 20px;
+  font-size: 16px;
+}
+
+.input_textField {
+  border: none;
+  outline: none;
+}
+
+.select {
+  display: flex;
+  gap: 4px;
+  outline: none;
+}
+
+.select_item {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 4px;
+  outline: none;
+}

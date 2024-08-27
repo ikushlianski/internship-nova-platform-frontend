@@ -3,8 +3,11 @@
   "compilerOptions": {
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src", "src/components/ui/input.tsx", "src/lib/utils.ts"],
   "exclude": ["node_modules", "dist"]
 }

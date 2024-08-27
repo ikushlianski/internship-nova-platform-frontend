@@ -38,6 +38,7 @@ export const InputComponent = ({
   );
 
   const [inputValue, setInputValue] = useState('');
+  
   return (
     <div
       className={`${className || ''} ${styles.input} ${size === 'L' ? styles.large : styles.small} ${

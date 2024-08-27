@@ -6,7 +6,8 @@
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",
     "./code": "./src/code.tsx",
-    "./input": "./src/input.tsx"
+    "./input": "./src/input.tsx",
+    "./link": "./src/link.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -34,7 +35,9 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.436.0",
-    "react": "^18.2.0",
+    "next": "^14.2.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
     "shadcn-ui": "^0.8.0",
     "tailwind-merge": "^2.5.2",

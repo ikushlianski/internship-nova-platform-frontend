@@ -11,6 +11,7 @@ interface ButtonProps {
   size: 'L' | 'S';
   imageLink?: string;
   outline?: string;
+  callback: () => void;
 }
 
 export const Button = ({
@@ -21,18 +22,19 @@ export const Button = ({
   size = 'L',
   imageLink,
   outline,
+  callback,
 }: ButtonProps) => {
   return (
     <button
-      className={`${className || ''} ${styles.button} ${form === 'REC' ? size === 'L' ? styles.large :styles.small : styles.round} ${outline ? styles.outline : ''}`}
-      onClick={() => alert(`Hello from your ${appName} app!`)}
+      className={`${className || ''} ${styles.button} ${form === 'REC' ? (size === 'L' ? styles.large : styles.small) : styles.round} ${outline ? styles.outline : ''}`}
+      onClick={() => callback()}
     >
       {children}
       {imageLink && (
         <img
           src={imageLink}
           alt="Button Icon"
-          className={`${styles.image} ${form === 'REC' ? size === 'L' ? styles.recl : styles.recs : size === 'L' ? styles.roundl : styles.rounds } ${className || ''}`}
+          className={`${styles.image} ${form === 'REC' ? (size === 'L' ? styles.recl : styles.recs) : size === 'L' ? styles.roundl : styles.rounds} ${className || ''}`}
         />
       )}
     </button>

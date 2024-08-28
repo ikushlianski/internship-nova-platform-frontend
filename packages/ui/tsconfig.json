@@ -12,7 +12,6 @@
     "src",
     "src/components/ui/input.tsx",
     "src/lib/utils.ts",
-    "../../apps/nova-english-marketing-website/src/app/english-for-tech-b1-b2-level/link.tsx"
   ],
   "exclude": ["node_modules", "dist"]
 }

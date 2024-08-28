@@ -49,10 +49,4 @@ To create a static build of your Storybook for deployment, use the following com
 
 ```bash
 npm run build-storybook
-# or
-yarn build-storybook
-# or
-pnpm build-storybook
-# or
-bun build-storybook
 ```

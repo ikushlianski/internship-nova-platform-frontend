@@ -46,6 +46,9 @@ jobs:
         run: |
           cp -r node_modules/@next/ apps/nova-english-marketing-website/node_modules/
           cp -r node_modules/@swc/ apps/nova-english-marketing-website/node_modules/
+          cp -r node_modules/next/ apps/nova-english-marketing-website/node_modules/
+          cp -r node_modules/react/ apps/nova-english-marketing-website/node_modules/
+          cp -r node_modules/react-dom/ apps/nova-english-marketing-website/node_modules/
           cp -r node_modules/styled-jsx/ apps/nova-english-marketing-website/node_modules/
       - name: Archive production artifacts nova-english-marketing-website
         uses: actions/upload-artifact@v4
@@ -60,6 +63,9 @@ jobs:
         run: |
           cp -r node_modules/@next/ apps/student-platform/node_modules/
           cp -r node_modules/@swc/ apps/student-platform/node_modules/
+          cp -r node_modules/next/ apps/student-platform/node_modules/
+          cp -r node_modules/react/ apps/student-platform/node_modules/
+          cp -r node_modules/react-dom/ apps/student-platform/node_modules/
           cp -r node_modules/styled-jsx/ apps/student-platform/node_modules/
       - name: Archive production artifacts student-platform
         uses: actions/upload-artifact@v4

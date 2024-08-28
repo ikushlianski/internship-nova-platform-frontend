@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 interface NavLinkProps {
 	label: string
@@ -16,7 +16,7 @@ const NavLink = ({ label, path }: NavLinkProps) => {
 	return (
 		<Link
 			href={path}
-			className={`${isActive ? 'text-primary-blue' : ''} text-2xl`}
+			className={`${isActive ? "text-primary-blue" : ""} text-2xl`}
 		>
 			{label}
 		</Link>

@@ -8,7 +8,7 @@ const config: Config = {
 				'primary-blue': '#0092FC'
 			},
 			fontFamily: {
-				sans: ['Manrope', 'sans-serif']
+				sans: ['Manrope']
 			}
 		}
 	},

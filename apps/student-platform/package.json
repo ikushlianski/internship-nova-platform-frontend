@@ -16,6 +16,7 @@
     "@repo/shared-types": "*",
     "@repo/ui": "*",
     "babel-plugin-react-compiler": "^0.0.0-experimental-334f00b-20240725",
+    "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.5.2",

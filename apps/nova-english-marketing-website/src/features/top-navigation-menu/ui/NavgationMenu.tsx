@@ -1,3 +1,4 @@
+import IconGift from "@/assets/icons/IconGift.svg"
 import Link from "next/link"
 import { NavItem, NavPath, NavRoutes } from "../types/navigation.type"
 import { Logo } from "./Logo"
@@ -18,7 +19,12 @@ const navItems: NavItem[] = [
 	},
 	{
 		label: "Онлайн тест",
-		path: NavPath[NavRoutes.ONLINE_TEST]
+		path: NavPath[NavRoutes.ENGLISH_ASSESSMENT],
+		icon: (
+			<>
+				+<IconGift />
+			</>
+		)
 	}
 ]
 
@@ -29,13 +35,13 @@ export const NavgationMenu = () => {
 				<Link href={NavPath.main}>
 					<Logo />
 				</Link>
-
 				<ul className="flex gap-[52px]">
-					{navItems.map(({ label, path }) => (
+					{navItems.map(({ label, path, icon }) => (
 						<li key={path}>
 							<NavLink
 								label={label}
 								path={path}
+								icon={icon}
 							/>
 						</li>
 					))}

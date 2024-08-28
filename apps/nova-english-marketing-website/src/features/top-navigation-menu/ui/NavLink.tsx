@@ -2,13 +2,15 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { ReactNode } from "react"
 
 interface NavLinkProps {
-	label: string
+	label?: string
 	path: string
+	icon?: ReactNode
 }
 
-const NavLink = ({ label, path }: NavLinkProps) => {
+const NavLink = ({ label, path, icon }: NavLinkProps) => {
 	const pathname = usePathname()
 
 	const isActive = pathname === path
@@ -16,9 +18,12 @@ const NavLink = ({ label, path }: NavLinkProps) => {
 	return (
 		<Link
 			href={path}
-			className={`${isActive ? "text-primary-blue" : ""} text-2xl`}
+			className={`${isActive ? "text-[#0092fc]" : ""} text-2xl`}
 		>
-			{label}
+			<span className="flex items-center">
+				{label}
+				{icon}
+			</span>
 		</Link>
 	)
 }

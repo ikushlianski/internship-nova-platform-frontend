@@ -20,7 +20,8 @@
 		],
 		"paths": {
 			"@/*": ["./src/*"],
-			"@packages/ui/*": ["../../packages/ui/src/*"]
+			"@packages/ui/*": ["../../packages/ui/src/*"],
+			"@assets/*": ["./src/assets/*"]
 		}
 	},
 	"include": [

@@ -1,9 +1,11 @@
+import { ReactNode } from "react"
+
 export enum NavRoutes {
 	MAIN = "main",
 	WHY_US = "why_us",
 	FAQ = "faq",
 	PRICING = "pricing",
-	ONLINE_TEST = "online_test"
+	ENGLISH_ASSESSMENT = "english_level_assessment"
 }
 
 export const NavPath: Record<NavRoutes, string> = {
@@ -12,10 +14,11 @@ export const NavPath: Record<NavRoutes, string> = {
 	[NavRoutes.WHY_US]: "/why-us",
 	[NavRoutes.FAQ]: "/faq",
 	[NavRoutes.PRICING]: "/pricing",
-	[NavRoutes.ONLINE_TEST]: "/online-test"
+	[NavRoutes.ENGLISH_ASSESSMENT]: "/english-level-assessment"
 }
 
 export interface NavItem {
 	label: string
 	path: string
+	icon?: ReactNode
 }

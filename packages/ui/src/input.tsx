@@ -3,17 +3,11 @@
 import { ReactNode, useState } from 'react';
 import styles from './input.module.css';
 import { Input } from './components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from './components/ui/select';
+import { SelectComponent } from './select';
 
-interface country {
+export interface prop {
   name: string;
-  image: string;
+  content: string;
 }
 
 interface InputProps {
@@ -22,7 +16,7 @@ interface InputProps {
   type: 'input';
   size: 'L' | 'S';
   placeholder: string;
-  countries?: country[];
+  props?: prop[];
 }
 
 export const InputComponent = ({
@@ -31,11 +25,8 @@ export const InputComponent = ({
   type = 'input',
   size = 'L',
   placeholder,
-  countries,
+  props,
 }: InputProps) => {
-  const [selectedCountry, setSelectedCountry] = useState(
-    countries ? countries[0] : null
-  );
 
   const [inputValue, setInputValue] = useState('');
   
@@ -45,33 +36,13 @@ export const InputComponent = ({
         inputValue ? styles.input_filled : ''
       }`}
     >
-      {countries && (
-        <Select defaultValue={selectedCountry?.name}>
-          <SelectTrigger className={`w-[35px] ${styles.select}`}>
-            <SelectValue
-              placeholder={<img src={selectedCountry?.image}></img>}
-            />
-          </SelectTrigger>
-          <SelectContent>
-            {countries.map((country, index) => {
-              return (
-                <SelectItem
-                  className={styles.select_item}
-                  key={index}
-                  value={country.name}
-                  onSelect={() => setSelectedCountry(country)}
-                >
-                  <img src={country.image}></img>
-                </SelectItem>
-              );
-            })}
-          </SelectContent>
-        </Select>
+      {props && (
+        <SelectComponent appName={appName} type={type} size='L' props={props} />
       )}
       <Input
         type={type}
         placeholder={placeholder}
-        className={`${className || ''} ${styles.input_textField} ${
+        className={`${className || ''} ${styles.input_textField} ${size === 'L' ? styles.large : styles.small} ${
           inputValue ? styles.input_filled : ''
         }`}
         onChange={(event) => setInputValue(event.target.value)}

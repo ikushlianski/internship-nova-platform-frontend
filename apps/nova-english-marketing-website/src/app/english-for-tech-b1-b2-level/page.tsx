@@ -4,16 +4,24 @@ import { InputComponent } from '@repo/ui/input';
 
 import { title } from 'process';
 import { LinkComponent } from './link';
+import { SelectComponent } from '../../../../../packages/ui/src/select';
 
 export default function Page() {
-  interface country {
-    name: string;
-    image: string;
-  }
-
-  const countries: country[] = [
-    { name: 'Belarus', image: 'assets/icons/countryBelarus.svg' },
+  const countries = [
+    {
+      name: 'Belarus',
+      content: '<img src="assets/icons/countryBelarus.svg"/>',
+    },
+    {
+      name: 'Italy',
+      content: '<img src="assets/icons/arrow_blue.svg"/>',
+    },
+    {
+      name: 'Greece',
+      content: '<img src="assets/icons/button_present.svg"/>',
+    },
   ];
+  
   return (
     <div>
       <h1>Hello im B1 and B2 level course!!</h1>
@@ -62,9 +70,19 @@ export default function Page() {
         appName="WBS"
         placeholder="Text"
         type="input"
-        countries={countries}
+        props={countries}
         size="S"
       />
+      <InputComponent
+        className="bg"
+        appName="WBS"
+        placeholder="Text"
+        type="input"
+        props={countries}
+        size="L"
+      />
+      <SelectComponent appName="WBS" type='select' size='L' props={countries} />
+      <SelectComponent appName="WBS" type='select' size='S' props={countries} />
       <LinkComponent appName="WBS" navLink={[{ title: 'Home', path: '/' }]}>
         Link
       </LinkComponent>

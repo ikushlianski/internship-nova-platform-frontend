@@ -1,48 +1,38 @@
-.input {
+.select_form {
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: space-between;
   max-width: 342px;
   border: 2px solid hsla(0, 0%, 85%, 1);
   border-radius: 32px;
   transition: border-color 0.3s ease;
 }
 
-.input:focus-within {
+.select_form:focus-within {
   border-color: hsla(205, 100%, 49%, 1);
 }
 
-.input_filled {
-  background-color: hsla(203, 100%, 96%, 1);
-  border-color: hsla(205, 100%, 49%, 1);
-}
-
-.input.large {
+.select_form.large {
   padding: 18px 20px;
   font-size: 20px;
 }
 
-.input.small {
+.select_form.small {
   padding: 15px 20px;
   font-size: 16px;
 }
 
-.input_textField {
+.input {
   border: none;
   outline: none;
+  padding: 0px 0px;
 }
-
-.input_textField.large {
- height: 24px;
-}
-
-.input_textField.small {
-  height: 18px;
-}
-
 
 .select {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
   gap: 4px;
   outline: none;
 }
@@ -50,7 +40,14 @@
 .select_item {
   display: flex;
   flex-direction: row-reverse;
+  padding: 18px 20px;
+  width: 100%;
   gap: 4px;
+  border: none;
   outline: none;
 }
 
+.select_item:hover {
+  background-color: hsla(203, 100%, 96%, 1);
+  color: hsla(205, 100%, 49%, 1);
+}

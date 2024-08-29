@@ -6,8 +6,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "prepare": "husky"
   },
   "devDependencies": {
     "husky": "^9.1.5",
@@ -28,8 +27,9 @@
     "vitest": "^2.0.5"
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": [
-      "eslint"
-    ]
+"apps/*/src/**/*.{ts,tsx}": [
+     "eslint --fix",
+      "prettier --write"
+  ]
   }
 }

@@ -1,4 +1,4 @@
-import { DashboardCell } from "./ui/Cell/DashboardCell";
+import { DashboardCell } from "./DashboardCell";
 
 export default function Dashboard() {
     return (<div className="grow flex min-h-full">
@@ -17,8 +17,8 @@ export default function Dashboard() {
                     </div>
                     <p className="text-xl">Have a nice coding time!</p>
                 </div>
-                <DashboardCell color="white" isSingleInRow title="Title" isBtnNeeded />
-                <DashboardCell color="white" isSingleInRow title="Title" isBtnNeeded />
+                <DashboardCell color="white" isSingleInRow title="Title" seeDetailsLink seeDetailsLabel="More" />
+                <DashboardCell color="white" isSingleInRow title="Title" seeDetailsLink seeDetailsLabel="More" />
                 <DashboardCell color="gray-300" isSingleInRow title="Title" />
                 <DashboardCell color="white" title="Title" />
                 <DashboardCell color="white" title="Title" />
@@ -27,7 +27,7 @@ export default function Dashboard() {
             </div>
             <div className="grid grid-cols-1 gap-5">
                 <DashboardCell color="white" title="Title" />
-                <DashboardCell color="white" title="Title" isBtnNeeded />
+                <DashboardCell color="white" title="Title" seeDetailsLink seeDetailsLabel="More" />
                 <DashboardCell color="gray-300" title="Title" />
                 <DashboardCell color="white" title="Title" />
             </div>

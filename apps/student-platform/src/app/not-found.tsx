@@ -1,6 +1,12 @@
-import {ROUTES} from '@sharedroutes/routes'
+import { Metadata } from 'next'
+import { ROUTES } from '@sharedroutes/routes'
 import { Button } from '@componentsButton/Button'
  
+export const metadata: Metadata = {
+  title: '404 - Not Found',
+  description: 'Page not found',
+}
+
 export default function NotFound() {
   return (
     <div className=" bg-background h-screen justify-center">

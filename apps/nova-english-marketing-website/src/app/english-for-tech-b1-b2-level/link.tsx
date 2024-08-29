@@ -24,7 +24,7 @@ export const LinkComponent = ({ children, className, appName, navLink }: LinkPro
         <li key={index}>
           <a
             href={link.path}
-            className={`${className} ${styles.link}`}
+            className={`${className} hover:text-secondary-foreground`}
             onClick={(e) => {
               e.preventDefault();
               router.push(link.path);

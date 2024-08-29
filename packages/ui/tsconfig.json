@@ -10,8 +10,6 @@
   },
   "include": [
     "src",
-    "src/components/ui/input.tsx",
-    "src/lib/utils.ts",
   ],
   "exclude": ["node_modules", "dist"]
 }

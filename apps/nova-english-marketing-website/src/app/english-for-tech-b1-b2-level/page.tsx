@@ -3,7 +3,7 @@ import { Button } from '@repo/ui/button';
 import { InputComponent } from '@repo/ui/input';
 
 import { title } from 'process';
-import { LinkComponent } from './link';
+import { LinkComponent } from '../components/link';
 import { SelectComponent } from '../../../../../packages/ui/src/select';
 
 export default function Page() {

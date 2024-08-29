@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactNode } from 'react';
-import styles from './link.module.css';
 import { useRouter } from 'next/navigation';
 
 interface Link {

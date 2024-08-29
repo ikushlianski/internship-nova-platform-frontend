@@ -59,6 +59,12 @@ const config = {
           900: "hsl(var(--blue900))",
           950: "hsl(var(--blue950))",
         },
+        font: {
+          normal:  "--font-weight-normal",
+          medium:  "--font-weight-medium",
+          semibold:  "--font-weight-semibold",
+          bold:  "--font-weight-bold"
+        },
       },
       keyframes: {
         "accordion-down": {

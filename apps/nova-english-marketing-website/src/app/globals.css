@@ -37,9 +37,18 @@
     --blue800: 205, 100%, 20%;
     --blue900: 205, 100%, 10%;
     --blue950: 205, 100%, 5%;
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight800: 800;
+    --font-weight900: 900;
+  }
+    
   }
 
-}
+
 
 @layer base {
   * {

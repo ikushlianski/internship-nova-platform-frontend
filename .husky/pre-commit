@@ -1,1 +1,1 @@
-npx lint-staged && npm run build && npx turbo run test --continue
+npx lint-staged && rm -rf .next && npm run build && npx turbo run test --continue

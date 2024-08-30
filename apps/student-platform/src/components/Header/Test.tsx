@@ -1,9 +1,7 @@
-// test-file.ts
 
-// 1. Ошибка неиспользуемой переменной
-// const unusedVariable: string = 'This is unused';
+// import React from 'react';
 
-// 2. Ошибка типа
+// // 2. Ошибка типа
 // const num: number = 'This should be a number';
 // console.log(num);
 
@@ -15,7 +13,7 @@
 // // Неправильное использование функции
 // testFunction(123);
 
-// // 4. Ошибка типизации
+// 4. Ошибка типизации
 // interface Person {
 //   name: string;
 //   age: number;
@@ -27,3 +25,12 @@
 //   age: 'Doe'
 // };
 // console.log(person);
+
+export const Test = () => {
+  return (
+    <div>
+
+    </div>
+  );
+};
+

@@ -1,5 +1,5 @@
 {
-  "name": "myapp",
+  "name": "memo",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest --watchAll"
+    "test": "jest"
   },
   "jest": {
     "preset": "jest-expo"

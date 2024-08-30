@@ -1,9 +1,9 @@
-// // test-file.ts
+// test-file.ts
 
-// // // 1. Ошибка неиспользуемой переменной
-// // const unusedVariable: string = 'This is unused';
+// // 1. Ошибка неиспользуемой переменной
+// const unusedVariable: string = 'This is unused';
 
-// // 2. Ошибка типа
+// 2. Ошибка типа
 // const num: number = 'This should be a number';
 // console.log(num);
 

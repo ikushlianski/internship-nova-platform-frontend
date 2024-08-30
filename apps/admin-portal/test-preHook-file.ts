@@ -1,9 +1,9 @@
-// // test-file.ts
+// test-file.ts
 
-// // 1. Ошибка неиспользуемой переменной
+// 1. Ошибка неиспользуемой переменной
 // const unusedVariable: string = 'This is unused';
 
-// // 2. Ошибка типа
+// 2. Ошибка типа
 // const num: number = 'This should be a number';
 // console.log(num);
 
@@ -15,7 +15,7 @@
 // // Неправильное использование функции
 // testFunction(123);
 
-// // 4. Ошибка типизации
+// 4. Ошибка типизации
 // interface Person {
 //   name: string;
 //   age: number;
@@ -26,4 +26,4 @@
 //   // Ошибка: ожидается number, но передано string
 //   age: 'Doe'
 // };
-// // console.log(person);
+// console.log(person);

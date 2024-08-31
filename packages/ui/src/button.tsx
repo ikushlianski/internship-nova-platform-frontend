@@ -21,7 +21,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`${classNameButton} flex justify-center items-center pt-4 pb-4 rounded-3xl font-bold uppercase transition-colors duration-300 ease-in-out hover:bg-hover active:bg-white active:outline active:outline-secondary-foreground active:outline-2 active:outline-offset-[-2px] disabled:bg-disabled disabled:outline disabled:outline-secondary-foreground disabled:outline-2 disabled:outline-offset-[-2px] cursor-pointer`}
+      className={`${classNameButton} flex justify-center items-center pt-4 pb-4 rounded-3xl font-bold uppercase transition-colors duration-300 ease-in-out hover:bg-hover active:bg-blue-50 active:outline active:outline-secondary-foreground active:outline-2 active:outline-offset-[-2px] disabled:bg-disabled disabled:outline disabled:outline-secondary-foreground disabled:outline-2 disabled:outline-offset-[-2px] cursor-pointer`}
       onClick={callback}
     >
       {children}

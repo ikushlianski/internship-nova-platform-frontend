@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactNode, useState } from 'react';
-import styles from './select.module.css';
 import {
   Select,
   SelectContent,

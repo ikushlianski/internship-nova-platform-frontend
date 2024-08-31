@@ -1,11 +1,11 @@
 'use client';
+
 import React from 'react';
 import { Button } from '@repo/ui/button';
 import { InputComponent } from '@repo/ui/input';
-
-import { title } from 'process';
+import { SelectComponent } from '@repo/ui/select';
 import { LinkComponent } from '../components/link';
-import { SelectComponent } from '../../../../../packages/ui/src/select';
+
 
 export default function Page() {
   const countries = [
@@ -86,8 +86,18 @@ export default function Page() {
         type="input"
         props={countries}
       />
-      <SelectComponent classNameSelect="bg" appName="WBS" type="select" props={countries} />
-      <SelectComponent classNameSelect="bg" appName="WBS" type="select" props={countries} />
+      <SelectComponent
+        classNameSelect="bg"
+        appName="WBS"
+        type="select"
+        props={countries}
+      />
+      <SelectComponent
+        classNameSelect="bg"
+        appName="WBS"
+        type="select"
+        props={countries}
+      />
       <LinkComponent appName="WBS" navLink={[{ title: 'Home', path: '/' }]}>
         Link
       </LinkComponent>

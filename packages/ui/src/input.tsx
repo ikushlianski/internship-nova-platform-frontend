@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactNode, useState } from 'react';
-import styles from './input.module.css';
 import { Input } from './components/ui/input';
 import { SelectComponent } from './select';
 
@@ -42,7 +41,6 @@ export const InputComponent = ({
           classNameSelect={classNameSelect || ''}
           appName={appName}
           type={type}
-          size="L"
           props={props}
         />
       )}

@@ -1,4 +1,4 @@
 export enum RoutesEnum {
   Main = '/',
-  PrivacyPolicy = 'privacy-policy',
+  PrivacyPolicy = '/privacy-policy',
 }

@@ -86,8 +86,8 @@ export default function Page() {
         type="input"
         props={countries}
       />
-      <SelectComponent classNameSelect="bg" appName="WBS" type="select" size="L" props={countries} />
-      <SelectComponent classNameSelect="bg" appName="WBS" type="select" size="S" props={countries} />
+      <SelectComponent classNameSelect="bg" appName="WBS" type="select" props={countries} />
+      <SelectComponent classNameSelect="bg" appName="WBS" type="select" props={countries} />
       <LinkComponent appName="WBS" navLink={[{ title: 'Home', path: '/' }]}>
         Link
       </LinkComponent>

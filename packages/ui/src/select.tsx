@@ -12,7 +12,7 @@ import {
 import { prop } from './input';
 
 interface SelectProps {
-  className?: string;
+  classNameSelect: string;
   appName: string;
   type: string;
   size: 'L' | 'S';
@@ -20,22 +20,22 @@ interface SelectProps {
 }
 
 export const SelectComponent = ({
-  className,
+  classNameSelect,
   appName,
   type = 'select',
   size = 'L',
   props,
 }: SelectProps) => {
   const [selectedProp, setSelectedProp] = useState(props[0]);
-  
+
   return (
     <div
-      className={`${className || ''} ${styles.select_form} ${type === 'input' ? styles.input: size === 'L' ? styles.large : styles.small} ${
-        selectedProp ? styles.select_form_filled : ''
-      }`}
+      className={`${classNameSelect} flex gap-2 items-center justify-between max-w-[342px] border-2 border-input rounded-[32px] transition-colors duration-300 ease-in-out focus-within:border-blue-500" ${type === 'input' ? 'border-0 outline-none p-0' : ''}`}
     >
       <Select defaultValue={selectedProp?.name}>
-        <SelectTrigger className={`w-[35px] ${styles.select}`}>
+        <SelectTrigger
+          className={`w-[35px] flex justify-between w-full gap-1 outline-none`}
+        >
           <SelectValue
             placeholder={
               <div
@@ -50,7 +50,7 @@ export const SelectComponent = ({
           {props.map((prop, index) => {
             return (
               <SelectItem
-                className={styles.select_item}
+                className={`flex flex-row-reverse p-[18px] w-full gap-1 border-none outline-none hover:bg-secondary hover:text-secondary-foreground`}
                 key={index}
                 value={prop.name}
                 onSelect={() => setSelectedProp(prop)}

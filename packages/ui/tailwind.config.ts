@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss';
+
+const config = {
   darkMode: ['class'],
   content: ['**/*.{ts,tsx}'],
   prefix: '',
@@ -23,7 +24,10 @@ module.exports = {
         DEFAULT: 'hsl(var(--disabled))',
       },
       stroke: {
-        DEFAULT: 'hsl(var(205, 100%, 49%))',
+        DEFAULT: 'hsl(var(--stroke))',
+      },
+      input: {
+        DEFAULT: 'hsl(var(--input))',
       },
       white: {
         foreground: 'hsl(var(--white-foreground))',
@@ -72,4 +76,6 @@ module.exports = {
     },
   },
   plugins: [require('tailwindcss-animate')],
-};
+} satisfies Config;
+
+export default config;

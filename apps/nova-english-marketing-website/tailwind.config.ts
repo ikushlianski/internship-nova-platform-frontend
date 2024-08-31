@@ -3,7 +3,9 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 const config = {
   darkMode: ['class'],
-  content: ['**/*.{ts,tsx}'],
+  content: ['**/*.{ts,tsx}',
+    "../../packages/ui/**/*{.js,.ts,.jsx,.tsx}",
+  ],
   prefix: '',
   theme: {
     container: {},
@@ -29,7 +31,10 @@ const config = {
           DEFAULT: 'hsl(var(--disabled))',
         },
         stroke: {
-          DEFAULT: 'hsl(var(205, 100%, 49%))',
+          DEFAULT: 'hsl(var(--stroke))',
+        },
+        input: {
+          DEFAULT: 'hsl(var(--input))',
         },
         white: {
           foreground: 'hsl(var(--white-foreground))',

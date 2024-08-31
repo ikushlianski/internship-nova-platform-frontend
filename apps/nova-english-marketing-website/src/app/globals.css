@@ -17,6 +17,7 @@
     --hover: 205, 100%, 62%;
     --disabled: 0, 0%, 91%;
     --stroke: 205, 100%, 49%;
+    --input:: 0, 0%, 85%;
 
     --foreground: 0, 1%, 25%;
     --primary-foreground: 0, 1%, 25%;
@@ -41,8 +42,6 @@
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
-    --font-weight800: 800;
-    --font-weight900: 900;
   }
 }
 

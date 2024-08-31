@@ -11,39 +11,46 @@ export interface prop {
 }
 
 interface InputProps {
-  className?: string;
+  classNameComponent: string;
+  classNameInput: string;
+  classNameSelect?: string;
   appName: string;
   type: 'input';
-  size: 'L' | 'S';
   placeholder: string;
   props?: prop[];
 }
 
 export const InputComponent = ({
-  className,
+  classNameComponent,
+  classNameInput,
+  classNameSelect,
   appName,
   type = 'input',
-  size = 'L',
   placeholder,
   props,
 }: InputProps) => {
-
   const [inputValue, setInputValue] = useState('');
-  
+
   return (
     <div
-      className={`${className || ''} ${styles.input} ${size === 'L' ? styles.large : styles.small} ${
-        inputValue ? styles.input_filled : ''
+      className={`${classNameComponent} flex gap-2 items-center max-w-[342px] pr-[20px] pl-[20px] rounded-3xl border-2 border-input transition-colors duration-300 ease-in-out focus-within:border-blue-600 ${
+        inputValue ? 'bg-secondary border-2 border-blue-500' : ''
       }`}
     >
       {props && (
-        <SelectComponent appName={appName} type={type} size='L' props={props} />
+        <SelectComponent
+          classNameSelect={classNameSelect || ''}
+          appName={appName}
+          type={type}
+          size="L"
+          props={props}
+        />
       )}
       <Input
         type={type}
         placeholder={placeholder}
-        className={`${className || ''} ${styles.input_textField} ${size === 'L' ? styles.large : styles.small} ${
-          inputValue ? styles.input_filled : ''
+        className={`${classNameInput} border-0 outline-none ${
+          inputValue ? 'bg-secondary border-2 border-blue-500' : ''
         }`}
         onChange={(event) => setInputValue(event.target.value)}
       ></Input>

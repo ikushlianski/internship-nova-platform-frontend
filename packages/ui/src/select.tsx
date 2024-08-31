@@ -15,7 +15,6 @@ interface SelectProps {
   classNameSelect: string;
   appName: string;
   type: string;
-  size: 'L' | 'S';
   props: prop[];
 }
 
@@ -23,18 +22,17 @@ export const SelectComponent = ({
   classNameSelect,
   appName,
   type = 'select',
-  size = 'L',
   props,
 }: SelectProps) => {
   const [selectedProp, setSelectedProp] = useState(props[0]);
 
   return (
     <div
-      className={`${classNameSelect} flex gap-2 items-center justify-between max-w-[342px] border-2 border-input rounded-[32px] transition-colors duration-300 ease-in-out focus-within:border-blue-500" ${type === 'input' ? 'border-0 outline-none p-0' : ''}`}
+      className={`${classNameSelect} flex gap-2 items-center justify-between max-w-[342px] rounded-[32px] transition-colors duration-300 ease-in-out focus-within:border-blue-500" ${type === 'select' ? 'border-2 border-input' : ''}`}
     >
       <Select defaultValue={selectedProp?.name}>
         <SelectTrigger
-          className={`w-[35px] flex justify-between w-full gap-1 outline-none`}
+          className={`w-[35px] flex justify-between w-full gap-1 outline-none ${type === 'select' ? 'pr-[20px] pl-[20px]' : ''}`}
         >
           <SelectValue
             placeholder={

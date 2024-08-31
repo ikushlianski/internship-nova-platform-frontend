@@ -33,7 +33,7 @@ const config = {
         stroke: {
           DEFAULT: 'hsl(var(--stroke))',
         },
-        input: {
+        inputborder: {
           DEFAULT: 'hsl(var(--input))',
         },
         white: {

@@ -33,7 +33,7 @@ export const InputComponent = ({
 
   return (
     <div
-      className={`${classNameComponent} flex gap-2 items-center max-w-[342px] pr-[20px] pl-[20px] rounded-3xl border-2 border-input transition-colors duration-300 ease-in-out focus-within:border-blue-600 ${
+      className={`${classNameComponent} flex gap-2 items-center max-w-[342px] pr-[20px] pl-[20px] rounded-3xl border-2 border-inputborder transition-colors duration-300 ease-in-out focus-within:border-blue-600 ${
         inputValue ? 'bg-secondary border-2 border-blue-500' : ''
       }`}
     >
@@ -50,7 +50,7 @@ export const InputComponent = ({
         type={type}
         placeholder={placeholder}
         className={`${classNameInput} border-0 outline-none ${
-          inputValue ? 'bg-secondary border-2 border-blue-500' : ''
+          inputValue ? 'bg-secondary' : ''
         }`}
         onChange={(event) => setInputValue(event.target.value)}
       ></Input>

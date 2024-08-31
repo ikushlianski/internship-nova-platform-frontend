@@ -1,18 +1,18 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import App from "./App.tsx"
-import "./index.css"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./globals.css";
 
 async function enableMocking() {
   if (process.env.NODE_ENV !== "development") {
-    return
+    return;
   }
   // `worker.start()` returns a Promise that resolves
   // once the Service Worker is up and ready to intercept requests.
-  const { worker } = await import("./mocks/browser")
+  const { worker } = await import("./mocks/browser");
   return worker.start({
     onUnhandledRequest: "bypass", // Ignores unprocessed requests
-  })
+  });
 }
 
 enableMocking()
@@ -20,9 +20,9 @@ enableMocking()
     ReactDOM.createRoot(document.getElementById("root")!).render(
       <React.StrictMode>
         <App />
-      </React.StrictMode>
-    )
+      </React.StrictMode>,
+    );
   })
   .catch((error) => {
-    console.error("Failed to initialize the app:", error)
-  })
+    console.error("Failed to initialize the app:", error);
+  });

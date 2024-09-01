@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "ui": "tui",
+  "ui": "stream",
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -14,7 +14,9 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
-    "test": {},
+    "test": {
+      "persistent": false
+    },
     "test:watch": {
       "cache": false,
       "persistent": true

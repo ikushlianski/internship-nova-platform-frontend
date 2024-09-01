@@ -43,3 +43,19 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   - **/ui** - everything related to UI display: UI components, styles etc.
 - **/views** - pages UI and components
 - **/shared** - shared app logic(hooks, libs, utils and etc.)
+
+## Running Storybook
+
+To start Storybook in development mode, run the following command:
+
+```bash
+npm run storybook
+```
+
+## Building Storybook
+
+To create a static build of your Storybook for deployment, use the following command:
+
+```bash
+npm run build-storybook
+```

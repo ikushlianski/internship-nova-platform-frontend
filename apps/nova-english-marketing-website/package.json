@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@repo/shared-types": "*",
-    "@repo/ui": "^0.0.0",
+    "@repo/ui": "*",
     "@shadcn/ui": "^0.0.4",
     "class-variance-authority": "^0.7.0",
     "@radix-ui/react-slot": "^1.1.0",

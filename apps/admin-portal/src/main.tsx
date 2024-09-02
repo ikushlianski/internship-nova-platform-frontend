@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
+
+import './index.css';
 import './globals.css';
 
 async function enableMocking() {
+  return;
   if (process.env.NODE_ENV !== 'development') {
     return;
   }

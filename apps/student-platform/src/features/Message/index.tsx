@@ -1,5 +1,4 @@
-"use client";
-import { useState, useEffect } from "react";
+// Файл: app/components/Message.tsx
 
 interface MessageArrayT {
   time: string;
@@ -10,6 +9,10 @@ interface MessageArrayT {
 interface MessageVariantT {
   message: string;
 }
+
+// #TO DO, after Swagger implementations we need to remove the variable that we put static, and also it will be an example for Back developer what kind of array he will get 
+
+// #INFO This page supposedly implements the server side, in my experience
 
 const MessageArrayVariant: MessageArrayT[] = [
   {
@@ -25,6 +28,23 @@ const MessageArrayVariant: MessageArrayT[] = [
           "Make your breakfast not just delicious but also useful — add some English!",
       },
       { message: "It's a great day to learn something new in English!" },
+    ],
+  },
+  {
+    time: "9",
+    MessageVariant: [
+      {
+        message:
+          "It's 9 AM! A perfect time to warm up your brain with English.",
+      },
+      {
+        message: "Start your morning productivity with a quick English lesson.",
+      },
+      {
+        message:
+          "A cup of coffee and a few new English words — the best combination!",
+      },
+      { message: "Boost your day with some morning English practice!" },
     ],
   },
   {
@@ -85,30 +105,44 @@ const MessageArrayVariant: MessageArrayT[] = [
       { message: "Decided to take a late-night English class. Way to go," },
     ],
   },
+  {
+    time: "23",
+    MessageVariant: [
+      { message: "Almost midnight, but it's never too late to learn English!" },
+      {
+        message:
+          "Finish your day strong with a bit of English. Tomorrow will thank you!",
+      },
+      {
+        message: "A little evening English practice can make a big difference!",
+      },
+      {
+        message:
+          "Prepare for a good night by adding a few more English words to your knowledge.",
+      },
+    ],
+  },
 ];
 
 export default function Message() {
-  const [defaultMessage, setDefaultMessage] = useState<string>("Hello");
+  const currentTimeUser = new Date().getHours();
+  let defaultMessage = "Time to learn English!";
 
-  useEffect(() => {
-    const currentTimeUser = new Date().getHours();
-
-    MessageArrayVariant.map((item: MessageArrayT) => {
-      if (item.time === String(currentTimeUser)) {
-        if (item.message) {
-          setDefaultMessage(item.message);
-        } else if (item.MessageVariant) {
-          const randomIndex = Math.floor(
-            Math.random() * item.MessageVariant.length,
-          );
-          setDefaultMessage(item.MessageVariant[randomIndex].message);
-        }
+  MessageArrayVariant.forEach((item: MessageArrayT) => {
+    if (item.time === String(currentTimeUser)) {
+      if (item.MessageVariant) {
+        const randomIndex = Math.floor(
+          Math.random() * item.MessageVariant.length,
+        );
+        defaultMessage = item.MessageVariant[randomIndex].message;
+      } else if (item.message) {
+        defaultMessage = item.message;
       }
-    });
-  }, []);
+    }
+  });
 
   return (
-    <div className="border-solid border-black border-[1px] rounded-md w-[410px] h-[90px]">
+    <div className="border-solid border-black border-[1px] rounded-md w-[410px] h-[90px] flex items-center justify-center">
       <p>{defaultMessage}</p>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Course } from "../types/courses.types"
+import { Course } from "@repo/shared-types/course"
 
 export const fetchCourses = async () => {
 	await new Promise((resolve) => setTimeout(resolve, 1000))
@@ -8,7 +8,7 @@ export const fetchCourses = async () => {
 			courseId: 1,
 			courseName: "Frontend Development",
 			courseLevel: "B1-B2",
-			courseTime: "Утренний"
+			courseTime: "Вечерний"
 		},
 		{
 			courseId: 2,

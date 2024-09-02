@@ -7,7 +7,6 @@ import {
 	CardTitle
 } from "@/features/Card/Card.component"
 import { fetchCourses } from "@/features/Carousel/api/fetchMockCourses"
-import { Course } from "@/features/Carousel/types/courses.types"
 import {
 	Carousel,
 	CarouselContent,
@@ -15,10 +14,12 @@ import {
 	CarouselNext,
 	CarouselPrevious
 } from "@/features/Carousel/ui/Carousel.component"
+import { Course } from "@repo/shared-types/course"
 import Link from "next/link"
 
 const NotFound = async () => {
 	let courses: Course[] = []
+
 	let error: string | null = null
 
 	try {

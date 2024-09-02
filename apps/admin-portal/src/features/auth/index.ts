@@ -1,2 +1,2 @@
-export { authProvider } from "./logic";
-export * from "./ui";
+export { authProvider } from './logic';
+export * from './ui';

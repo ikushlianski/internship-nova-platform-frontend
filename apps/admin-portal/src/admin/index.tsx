@@ -1,9 +1,15 @@
-import { Admin, Resource, ListGuesser, EditGuesser, ShowGuesser } from 'react-admin';
+import { Admin, EditGuesser, ListGuesser, Resource, ShowGuesser } from 'react-admin';
+import { authProvider, LoginPage } from '../features';
 import dataProvider from '../mocks/dataProvider';
 import NotFound from '../not-found.tsx';
 
 const App = () => (
-  <Admin dataProvider={dataProvider} catchAll={NotFound}>
+  <Admin
+    dataProvider={dataProvider}
+    authProvider={authProvider}
+    loginPage={LoginPage}
+    catchAll={NotFound}
+  >
     <Resource name="users" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
     <Resource name="students" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
     <Resource name="teachers" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />

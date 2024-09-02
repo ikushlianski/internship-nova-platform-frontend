@@ -12,14 +12,13 @@ export const authProvider: AuthProvider = {
   // called when the API returns an error
   checkError: ({ status }: { status: number }) => {
     if (status === 401 || status === 403) {
-      return Promise.reject();
+      return Promise.resolve();
     }
-    return Promise.resolve();
   },
   // called when the user navigates to a new location, to check for authentication
   checkAuth: () => {
-    const auth = true;
-    if (auth) {
+    const token = localStorage.getItem('token');
+    if (token) {
       return Promise.resolve();
     } else {
       return Promise.reject();

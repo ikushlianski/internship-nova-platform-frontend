@@ -5,7 +5,7 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle
-} from "@/components/ui/card"
+} from "@/features/Card/Card.component"
 import { fetchCourses } from "@/features/Carousel/api/fetchMockCourses"
 import { Course } from "@/features/Carousel/types/courses.types"
 import {

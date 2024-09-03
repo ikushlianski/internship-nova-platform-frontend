@@ -50,30 +50,35 @@ jobs:
           cp -r node_modules/react/ apps/nova-english-marketing-website/node_modules/
           cp -r node_modules/react-dom/ apps/nova-english-marketing-website/node_modules/
           cp -r node_modules/styled-jsx/ apps/nova-english-marketing-website/node_modules/
-      - name: Archive production artifacts nova-english-marketing-website
-        uses: actions/upload-artifact@v4
-        with:
-          name: nova-english-marketing-website
-          path: |
-            apps/nova-english-marketing-website/.next
-            apps/nova-english-marketing-website/next.config.*js
-            apps/nova-english-marketing-website/node_modules
-            apps/nova-english-marketing-website/package.json
-      - name: Copy needed modules student-platform
+      - name: test
         run: |
-          cp -r node_modules/@next/ apps/student-platform/node_modules/
-          cp -r node_modules/@swc/ apps/student-platform/node_modules/
-          cp -r node_modules/next/ apps/student-platform/node_modules/
-          cp -r node_modules/react/ apps/student-platform/node_modules/
-          cp -r node_modules/react-dom/ apps/student-platform/node_modules/
-          cp -r node_modules/styled-jsx/ apps/student-platform/node_modules/
-      - name: Archive production artifacts student-platform
-        uses: actions/upload-artifact@v4
-        with:
-          name: student-platform
-          path: |
-            apps/student-platform/.next
-            apps/student-platform/next.config.*js
-            apps/student-platform/node_modules
-            apps/student-platform/package.json
+          ls -al
+          ls -al apps/nova-english-marketing-website
+          ls -al apps/student-platform
+      # - name: Archive production artifacts nova-english-marketing-website
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: nova-english-marketing-website
+      #     path: |
+      #       apps/nova-english-marketing-website/.next
+      #       apps/nova-english-marketing-website/next.config.*js
+      #       apps/nova-english-marketing-website/node_modules
+      #       apps/nova-english-marketing-website/package.json
+      # - name: Copy needed modules student-platform
+      #   run: |
+      #     cp -r node_modules/@next/ apps/student-platform/node_modules/
+      #     cp -r node_modules/@swc/ apps/student-platform/node_modules/
+      #     cp -r node_modules/next/ apps/student-platform/node_modules/
+      #     cp -r node_modules/react/ apps/student-platform/node_modules/
+      #     cp -r node_modules/react-dom/ apps/student-platform/node_modules/
+      #     cp -r node_modules/styled-jsx/ apps/student-platform/node_modules/
+      # - name: Archive production artifacts student-platform
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: student-platform
+      #     path: |
+      #       apps/student-platform/.next
+      #       apps/student-platform/next.config.*js
+      #       apps/student-platform/node_modules
+      #       apps/student-platform/package.json
             

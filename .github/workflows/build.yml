@@ -55,6 +55,13 @@ jobs:
           ls -al
           ls -al apps/nova-english-marketing-website
           ls -al apps/student-platform
+      - name: zip
+        working-directory: ./apps/nova-english-marketing-website
+        run: |
+          zip -r ../nova-english-marketing-website.zip .next next.config.*js node_modules package.json
+          ls -al 
+          ls -al apps
+          ls -al apps/nova-english-marketing-website
       # - name: Archive production artifacts nova-english-marketing-website
       #   uses: actions/upload-artifact@v4
       #   with:

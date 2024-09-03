@@ -23,66 +23,66 @@ jobs:
         with:
           node-version: '22'
 
-      # - name: Install dependencies
-      #   run: npm install
+      - name: Install dependencies
+        run: npm install
 
-      # - name: Run tests
-      #   run: npx turbo test --continue
+      - name: Run tests
+        run: npx turbo test --continue
 
-      # - name: Build the project
-      #   run: npx turbo build --continue
+      - name: Build the project
+        run: npx turbo build --continue
       
-      # - name: Archive production artifacts admin-portal
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: admin-portal
-      #     path: |
-      #       apps/admin-portal/dist
-      # - name: Archive production artifacts spaced-rep-tool-mobile
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: spaced-rep-tool-mobile
-      #     path: |
-      #       apps/spaced-rep-tool-mobile/dist
-      # - name: Archive production artifacts spaced-rep-tool-web
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: spaced-rep-tool-web
-      #     path: |
-      #       apps/spaced-rep-tool-web/dist
-      # - name: Copy all modules nova-english-marketing-website
-      #   run: |
-      #     cp -r node_modules/ apps/nova-english-marketing-website/
-      # - name: zip nova-english-marketing-website
-      #   working-directory: ./apps/nova-english-marketing-website
-      #   run: |
-      #     zip -r -y ../../nova-english-marketing-website.zip .next next.config.*js node_modules package.json
-      # - name: Push nova-english-marketing-website.zip via ssh 
-      #   uses: appleboy/scp-action@v0.1.7
-      #   with:
-      #     host: ${{ secrets.HOST_FOR_UPLOAD }}
-      #     username: ${{ secrets.USERNAME_FOR_UPLOAD }}
-      #     port: ${{ secrets.PORT_FOR_UPLOAD }}
-      #     key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
-      #     source: "nova-english-marketing-website.zip"
-      #     target: /usr/share/nginx/html/nova-qa1/
+      - name: Archive production artifacts admin-portal
+        uses: actions/upload-artifact@v4
+        with:
+          name: admin-portal
+          path: |
+            apps/admin-portal/dist
+      - name: Archive production artifacts spaced-rep-tool-mobile
+        uses: actions/upload-artifact@v4
+        with:
+          name: spaced-rep-tool-mobile
+          path: |
+            apps/spaced-rep-tool-mobile/dist
+      - name: Archive production artifacts spaced-rep-tool-web
+        uses: actions/upload-artifact@v4
+        with:
+          name: spaced-rep-tool-web
+          path: |
+            apps/spaced-rep-tool-web/dist
+      - name: Copy all modules nova-english-marketing-website
+        run: |
+          cp -r node_modules/ apps/nova-english-marketing-website/
+      - name: zip nova-english-marketing-website
+        working-directory: ./apps/nova-english-marketing-website
+        run: |
+          zip -r -y ../../nova-english-marketing-website.zip .next next.config.*js node_modules package.json
+      - name: Push nova-english-marketing-website.zip via ssh 
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST_FOR_UPLOAD }}
+          username: ${{ secrets.USERNAME_FOR_UPLOAD }}
+          port: ${{ secrets.PORT_FOR_UPLOAD }}
+          key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
+          source: "nova-english-marketing-website.zip"
+          target: /usr/share/nginx/html/nova-qa1/
 
-      # - name: Copy all modules student-platform
-      #   run: |
-      #     cp -r node_modules/ apps/student-platform/
-      # - name: zip student-platform
-      #   working-directory: ./apps/student-platform
-      #   run: |
-      #     zip -r -y ../../student-platform.zip .next next.config.*js node_modules package.json
-      # - name: Push student-platform.zip via ssh 
-      #   uses: appleboy/scp-action@v0.1.7
-      #   with:
-      #     host: ${{ secrets.HOST_FOR_UPLOAD }}
-      #     username: ${{ secrets.USERNAME_FOR_UPLOAD }}
-      #     port: ${{ secrets.PORT_FOR_UPLOAD }}
-      #     key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
-      #     source: "student-platform.zip"
-      #     target: /usr/share/nginx/html/nova-qa1/
+      - name: Copy all modules student-platform
+        run: |
+          cp -r node_modules/ apps/student-platform/
+      - name: zip student-platform
+        working-directory: ./apps/student-platform
+        run: |
+          zip -r -y ../../student-platform.zip .next next.config.*js node_modules package.json
+      - name: Push student-platform.zip via ssh 
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST_FOR_UPLOAD }}
+          username: ${{ secrets.USERNAME_FOR_UPLOAD }}
+          port: ${{ secrets.PORT_FOR_UPLOAD }}
+          key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
+          source: "student-platform.zip"
+          target: /usr/share/nginx/html/nova-qa1/
 
 
 

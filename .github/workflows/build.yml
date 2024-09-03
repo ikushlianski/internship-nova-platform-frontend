@@ -5,6 +5,9 @@ on: workflow_dispatch
 env:
  BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
 
+permissions:
+  contents: write
+
 jobs:
   test-and-build:
     runs-on: ubuntu-latest

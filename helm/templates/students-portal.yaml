@@ -13,7 +13,6 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "nova-front.deploymentLabels" . | nindent 6 }}
       app: {{ include "nova-front.fullname" . }}-{{ $front_name }}
   template:
     metadata:

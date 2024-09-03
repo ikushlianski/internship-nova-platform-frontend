@@ -84,8 +84,8 @@ jobs:
           valueFile: 'helm/values.yaml'
           propertyPath: 'build_hash'
           value: currentbuild
-          commitChange: true
-          message: "Update build number"
+          commitChange: false
+          # message: "Update build number"
 
 
 

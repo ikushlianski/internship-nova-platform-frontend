@@ -75,6 +75,14 @@ jobs:
           key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
           source: "student-platform.zip"
           target: /usr/share/nginx/html/nova-qa1/
+      - name: Update values.yaml    
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          valueFile: 'helm/templates/_helpers.tpl'
+          propertyPath: 'app.kubernetes.io/version'
+          value: currentbuild
+          commitChange: true
+          message: "Update build number"
       # - name: Archive production artifacts nova-english-marketing-website
       #   uses: actions/upload-artifact@v4
       #   with:

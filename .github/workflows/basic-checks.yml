@@ -1,10 +1,11 @@
 name: Test and Build on Pull Request
 
-on:
-  pull_request:
-  push:
-    branches:
-      - main
+# on:
+#   pull_request:
+#   push:
+#     branches:
+#       - main
+on: workflow_dispatch
 
 jobs:
   test-and-build:

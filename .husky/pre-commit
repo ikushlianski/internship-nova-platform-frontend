@@ -1,3 +1,4 @@
 npx lint-staged
+rm -rf .next
 npx turbo build --continue --force
 npx turbo run test --continue

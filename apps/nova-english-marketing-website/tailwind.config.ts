@@ -66,9 +66,6 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
-    fontFamily: {
-      manrope: "Manrope",
-    },
   },
   plugins: [],
 };

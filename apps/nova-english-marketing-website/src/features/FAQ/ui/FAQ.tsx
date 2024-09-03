@@ -1,7 +1,7 @@
 import { questions } from "../api/questions";
 import QuestionComponent from "./Question.component";
 
-export default function Main() {
+export default function FAQ() {
   return (
     <section>
       <h1 className="text-4xl font-bold text-center mb-5 relative">

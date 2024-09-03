@@ -1,7 +1,7 @@
 import { IUser } from "../types/User"
 import { Users, Students, Teachers, Paths, Classes, Admins, Managers, Sales, Spectators, NoRoles } from '../mocks/data/entities.json'
 
-// A user can have multiple roles in ecosystem applications, with 
+// A user can have multiple roles in ecosystem applications, with
 // the most powerful role being dominant.
 type Role = 'Admin' | 'Manager' | 'Sales' | 'Teacher' | 'Student' | 'Spectator' | 'No role'
 
@@ -92,4 +92,12 @@ export const updateResourceData = (resource: string, updatedData: any[]): void =
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const generateNewId = (data: any[]): number => {
     return data.length ? Math.max(...data.map(item => item.id)) + 1 : 1;
+};
+
+//tailwind classes for Toast
+export const toastClasses: Record<string, string> = {
+  success: "bg-green-500 text-white",
+  error: "bg-red-500 text-white",
+  warning: "bg-yellow-500 text-white",
+  info: "bg-blue-500 text-white",
 };

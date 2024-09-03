@@ -2,9 +2,6 @@ name: Build project
 
 on: workflow_dispatch
 
-env:
- BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
-
 permissions:
   id-token: write
   contents: write
@@ -96,7 +93,7 @@ jobs:
           propertyPath: 'build_hash'
           value: ${{ github.sha }}
           commitChange: true
-          branch: $BRANCH_NAME
+          branch: ${{ github.head_ref || github.ref_name }} 
           message: "Update build number"
           token: ${{ secrets.GITHUB_TOKEN }}
 

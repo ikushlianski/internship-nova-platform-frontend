@@ -42,14 +42,9 @@ jobs:
           name: spaced-rep-tool-web
           path: |
             apps/spaced-rep-tool-web/dist
-      - name: Copy needed modules nova-english-marketing-website
+      - name: Copy all modules nova-english-marketing-website
         run: |
-          cp -r node_modules/@next/ apps/nova-english-marketing-website/node_modules/
-          cp -r node_modules/@swc/ apps/nova-english-marketing-website/node_modules/
-          cp -r node_modules/next/ apps/nova-english-marketing-website/node_modules/
-          cp -r node_modules/react/ apps/nova-english-marketing-website/node_modules/
-          cp -r node_modules/react-dom/ apps/nova-english-marketing-website/node_modules/
-          cp -r node_modules/styled-jsx/ apps/nova-english-marketing-website/node_modules/
+          cp -r node_modules/
       - name: zip
         working-directory: ./apps/nova-english-marketing-website
         run: |
@@ -67,7 +62,7 @@ jobs:
           port: ${{ secrets.PORT_FOR_UPLOAD }}
           key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
           source: "nova-english-marketing-website.zip"
-          target: /usr/share/nginx/html/qa1/
+          target: /usr/share/nginx/html/nova-qa1/
       # - name: Archive production artifacts nova-english-marketing-website
       #   uses: actions/upload-artifact@v4
       #   with:

@@ -13,14 +13,14 @@ export default function ButtonComponent({
     <section>
       {isActive ? (
         <button
-          className="bg-transparent border border-[#0092FC] rounded-full h-12 w-12 text-3xl  text-[#0092FC] font-thin "
+          className="bg-transparent border border-blue-500 rounded-full h-12 w-12 text-3xl  text-blue-500 font-thin "
           onClick={() => setIsActive(!isActive)}
         >
           &#x2715;
         </button>
       ) : (
         <button
-          className=" bg-[#0092FC] rounded-full h-12 w-12 text-white text-5xl font-thin"
+          className=" bg-blue-500 rounded-full h-12 w-12 text-white-foreground text-5xl font-thin"
           onClick={() => setIsActive(!isActive)}
         >
           &#43;

@@ -15,7 +15,7 @@ export default function QuestionComponent({
   return (
     <section className="flex justify-between w-3/5 mx-auto  font-semibold border-b-2 border-gray-100 py-5">
       <QuestionOrderComponent order={order} />
-      <div className="text-left ml-5 w-full text-[#3F3E3E] mr-10">
+      <div className="text-left ml-5 w-full text-foreground mr-10">
         <h3 className="text-2xl">{question.question}</h3>
         {isActive && (
           <div className="mt-2 text-sm">

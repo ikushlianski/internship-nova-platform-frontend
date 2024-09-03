@@ -1,4 +1,3 @@
-import FAQ from "@/features/FAQ/ui/FAQ";
 import React from "react";
 
 export default function Page() {
@@ -39,7 +38,6 @@ export default function Page() {
       </section>
       <section>
         <h2>FAQ section</h2>
-        <FAQ />
       </section>
       <section>
         <h2>Support common section</h2>

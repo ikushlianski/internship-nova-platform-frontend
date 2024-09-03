@@ -90,7 +90,7 @@ jobs:
           commitChange: true
           branch: $BRANCH_NAME
           message: "Update build number"
-          token: ${{ secrets.TOKEN_FOR_BUILD_UPDATE }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
 
 

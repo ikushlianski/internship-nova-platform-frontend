@@ -1,4 +1,6 @@
-import React from 'react';
+import ButtonComponent from "@/features/FAQ/ui/Button.component";
+import FAQ from "@/features/FAQ/ui/FAQ";
+import React from "react";
 
 export default function Page() {
   return (
@@ -37,7 +39,7 @@ export default function Page() {
         <h2>Contact form section</h2>
       </section>
       <section>
-        <h2>FAQ section</h2>
+        <FAQ />
       </section>
       <section>
         <h2>Support common section</h2>

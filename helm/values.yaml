@@ -92,3 +92,4 @@ affinity: {}
 #########
 application_environment: dev
 domain_name: nova.local
+build_hash: empty

@@ -81,8 +81,8 @@ jobs:
       - name: Update values.yaml    
         uses: fjogeleit/yaml-update-action@main
         with:
-          valueFile: 'helm/templates/_helpers.tpl'
-          propertyPath: 'app.kubernetes.io/version'
+          valueFile: 'helm/values.yaml'
+          propertyPath: 'build_hash'
           value: currentbuild
           commitChange: true
           message: "Update build number"

@@ -13,7 +13,6 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "nova-front.deploymentLabels" . | nindent 4 }}
       app: {{ include "nova-front.fullname" . }}-{{ $front_name }}
   template:
     metadata:
@@ -22,7 +21,6 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "nova-front.deploymentLabels" . | nindent 4 }}
         app: {{ include "nova-front.fullname" . }}-{{ $front_name }}
     spec:
       {{- with .Values.imagePullSecrets }}

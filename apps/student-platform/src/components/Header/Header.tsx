@@ -1,5 +1,4 @@
 export const Header = () => {
-  //added alt
     return (<header className="flex px-7 py-5 justify-between items-center">
         <div className="w-16 h-16 overflow-hidden">
             <img src="https://cdn-icons-png.flaticon.com/256/5309/5309804.png"

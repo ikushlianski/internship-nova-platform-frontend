@@ -36,7 +36,6 @@ Common labels
 {{- define "nova-front.labels" -}}
 helm.sh/chart: {{ include "nova-front.chart" . }}
 {{ include "nova-front.selectorLabels" . }}
-app.kubernetes.io/version: "{{ .Values.build_hash }}"
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
@@ -46,6 +45,12 @@ Selector labels
 {{- define "nova-front.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "nova-front.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+{{/*
+Deployment labels
+*/}}
+{{- define "nova-front.deploymentLabels" -}}
+app.kubernetes.io/version: "{{ .Values.build_hash }}"
 {{- end }}
 
 {{/*

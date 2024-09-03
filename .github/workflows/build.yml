@@ -44,7 +44,7 @@ jobs:
             apps/spaced-rep-tool-web/dist
       - name: Copy all modules nova-english-marketing-website
         run: |
-          cp -r node_modules/
+          cp -r node_modules/ apps/nova-english-marketing-website/
       - name: zip
         working-directory: ./apps/nova-english-marketing-website
         run: |

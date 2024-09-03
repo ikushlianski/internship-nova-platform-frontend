@@ -50,18 +50,24 @@ jobs:
           cp -r node_modules/react/ apps/nova-english-marketing-website/node_modules/
           cp -r node_modules/react-dom/ apps/nova-english-marketing-website/node_modules/
           cp -r node_modules/styled-jsx/ apps/nova-english-marketing-website/node_modules/
+      - name: zip
+        working-directory: ./apps/nova-english-marketing-website
+        run: |
+          zip -r -y ../../nova-english-marketing-website.zip .next next.config.*js node_modules package.json
       - name: test
         run: |
           ls -al
           ls -al apps/nova-english-marketing-website
           ls -al apps/student-platform
-      - name: zip
-        working-directory: ./apps/nova-english-marketing-website
-        run: |
-          zip -r ../nova-english-marketing-website.zip .next next.config.*js node_modules package.json
-          ls -al 
-          ls -al apps
-          ls -al apps/nova-english-marketing-website
+      - name: copy nova-english-marketing-website.zip via ssh 
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST_FOR_UPLOAD }}
+          username: ${{ secrets.USERNAME_FOR_UPLOAD }}
+          port: ${{ secrets.PORT_FOR_UPLOAD }}
+          key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
+          source: "nova-english-marketing-website.zip"
+          target: /usr/share/nginx/html/qa1/
       # - name: Archive production artifacts nova-english-marketing-website
       #   uses: actions/upload-artifact@v4
       #   with:

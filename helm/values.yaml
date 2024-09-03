@@ -43,4 +43,4 @@ tolerations: []
 affinity: {}
 application_environment: dev
 domain_name: nova.local
-build_hash: c8ae375b2b2a2a1224ceee67ce3d1c89538e1a5f
+build_hash: ee6146fac8557269750ce1dba15c99c92df83948

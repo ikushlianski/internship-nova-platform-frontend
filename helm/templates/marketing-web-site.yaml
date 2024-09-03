@@ -5,6 +5,7 @@ kind: Deployment
 metadata:
   name: {{ include "nova-front.fullname" . }}-{{ $front_name }}
   labels:
+    {{- include "nova-front.deploymentLabels" . | nindent 4 }}
     app: {{ include "nova-front.fullname" . }}-{{ $front_name }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
@@ -20,6 +21,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
+        {{- include "nova-front.deploymentLabels" . | nindent 8 }}
         app: {{ include "nova-front.fullname" . }}-{{ $front_name }}
     spec:
       {{- with .Values.imagePullSecrets }}

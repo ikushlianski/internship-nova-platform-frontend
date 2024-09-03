@@ -86,7 +86,7 @@ jobs:
 
 
 
-      - name: Update values.yaml    
+      - name: Update build hash in values.yaml    
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: 'helm/values.yaml'

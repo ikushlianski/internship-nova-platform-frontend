@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { defineAbilitiesFor } from "@/middlewareLogic/defineAbilityForRoles";
 
 export async function middleware(req: NextRequest) {
   const googleToken = req.cookies.get("googleToken");
@@ -55,6 +56,16 @@ export async function middleware(req: NextRequest) {
 
   const meResponse = await fetch("/me");
   const role = await meResponse.json(); //get role
+
+  // Define abilities based on the user's role
+  const ability = defineAbilitiesFor(role);
+
+  // Check if the user can view the Curriculum
+  if (!ability.can("view", "Curriculum")) {
+    // If not, redirect to an unauthorized page or homepage
+    url.pathname = "/unauthorized";
+    return NextResponse.redirect(url);
+  }
 
   return NextResponse.next();
 }

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const googleToken = req.cookies.get("googleToken");
 
   let tokenData;
@@ -48,6 +48,13 @@ export function middleware(req: NextRequest) {
   } else {
     return NextResponse.next();
   }
+
+  //------------------    my code --------------------------------
+
+  //request to Me endpoint
+
+  const meResponse = await fetch("/me");
+  const role = await meResponse.json(); //get role
 
   return NextResponse.next();
 }

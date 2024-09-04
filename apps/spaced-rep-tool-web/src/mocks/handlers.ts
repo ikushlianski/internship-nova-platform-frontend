@@ -2,7 +2,7 @@ import { http, HttpResponse } from "msw";
 
 import { data } from "./mockData";
 
-export const url = `http://${import.meta.env.GATEWAY_HOST}:${import.meta.env.GATEWAY_PORT}`;
+export const url = `http://${import.meta.env.VITE_GATEWAY_HOST}:${import.meta.env.VITE_GATEWAY_PORT}`;
 
 const userSettingsEndpoint = "/user/settings";
 const cardsEndpoint = `/cards`;

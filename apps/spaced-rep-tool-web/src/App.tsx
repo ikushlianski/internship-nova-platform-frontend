@@ -1,16 +1,22 @@
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
+import { PrivacyPolicy } from "./app/PrivacyPolicy/PrivacyPolicy";
 import { RoutesEnum } from "./utils/RoutesEnum";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SignInPage from "./features/SignIn/SignInPage";
+import { Main } from "./app/Main/Main";
+import SignIn from "./features/SignIn/SignIn";
 
 function App() {
   return (
-    <BrowserRouter>
+    <div>
       <Routes>
-        <Route path={RoutesEnum.LOGIN} element={<SignInPage />} />
+        <Route path={RoutesEnum.Main} element={<Main />} />
+        <Route index element={<Navigate to={RoutesEnum.PrivacyPolicy} />} />
+        <Route path={RoutesEnum.PrivacyPolicy} element={<PrivacyPolicy />} />
+        <Route path={RoutesEnum.Login} element={<SignIn />} />
+
       </Routes>
-    </BrowserRouter>
-  )
+    </div>
+  );
 }
 
 export default App;

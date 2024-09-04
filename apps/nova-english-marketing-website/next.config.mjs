@@ -1,12 +1,6 @@
 /** @type {import('next').NextConfig} */
-import createNextIntlPlugin from "next-intl/plugin"
-
-const withNextIntl = createNextIntlPlugin()
 
 const nextConfig = {
-	experimental: {
-		reactCompiler: true
-	},
 	async redirects() {
 		return [
 			{
@@ -15,7 +9,15 @@ const nextConfig = {
 				permanent: false
 			}
 		]
+	},
+	webpack(config) {
+		config.module.rules.push({
+			test: /\.svg$/i,
+			use: ["@svgr/webpack"]
+		})
+
+		return config
 	}
 }
 
-export default withNextIntl(nextConfig)
+export default nextConfig

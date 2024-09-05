@@ -3,21 +3,18 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { PrivacyPolicy } from "./app/PrivacyPolicy/PrivacyPolicy";
 import { RoutesEnum } from "./utils/RoutesEnum";
 import { Main } from "./app/Main/Main";
-import { Cards } from "../../../packages/ui/src/Cards";
+import { Cards } from "./components/Cards/Cards.component";
 import { url } from "./mocks/handlers";
+import { getCards } from "./shared/utils/setCards";
 import "./App.css";
 
 function App() {
   const [cards, setCards] = useState([]);
 
-  async function getCards() {
-    const response = await fetch(`${url}/cards`);
-    console.log(response);
-    setCards(await response.json());
-  }
-
   useEffect(() => {
-    getCards();
+    getCards(url).then((data) => {
+      setCards(data);
+    });
   }, []);
 
   return (

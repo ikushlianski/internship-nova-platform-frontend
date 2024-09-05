@@ -9,7 +9,7 @@ interface DashboardCellProps {
     moreLink?: string
     moreLabel?: string
     isSingleInRow?: boolean
-    classNameComponent?: string
+    classes?: string
     classNameTitle?: string
 }
 
@@ -21,11 +21,11 @@ export const DashboardCell = ({
     locked,
     moreLink,
     moreLabel,
-    classNameComponent,
+    classes,
     classNameTitle,
     isSingleInRow
 }: DashboardCellProps) => {
-    return (<div className={`${classNameComponent} flex flex-col w-full rounded-[20px] p-5 
+    return (<div className={`${classes} flex flex-col w-full rounded-[20px] p-5 
     ${isSingleInRow ? 'col-span-full' : ''}`}>
         <div className="flex justify-between items-center gap-2">
             <div className="flex gap-2 grow">

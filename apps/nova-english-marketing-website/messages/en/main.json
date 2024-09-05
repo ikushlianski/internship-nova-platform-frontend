@@ -48,7 +48,7 @@
 		"cta": {
 			"learn_more": "Learn to confidently pass interviews and work on international projects",
 			"want_to_learn": "I want to learn",
-			"course_start_date": "Course start date: December 21, 2024"
+			"course_start_date": "Course start date: {date}"
 		}
 	},
 

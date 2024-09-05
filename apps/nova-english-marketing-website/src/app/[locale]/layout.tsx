@@ -5,7 +5,7 @@ import type { Metadata } from "next"
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages } from "next-intl/server"
 import { Manrope } from "next/font/google"
-import "../global.css"
+import "../globals.css"
 
 export const metadata: Metadata = {
 	title: "Create Next App",

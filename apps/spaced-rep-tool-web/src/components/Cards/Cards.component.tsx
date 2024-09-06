@@ -19,12 +19,22 @@ export const Cards: FC<CardsProps> = ({ cards }) => {
   return (
     <table>
       <tbody>
+        <tr>
+          <td className="font-bold">Deck</td>
+          <td>Question</td>
+          <td>Answer</td>
+          <td>Last answered</td>
+          <td>Due to</td>
+          <td>Lapses</td>
+        </tr>
         {cards.map((card) => (
           <tr key={card.card_id}>
+            <td>{card.deck_id}</td>
             <td>{card.question}</td>
             <td>{card.answer}</td>
             <td>{card.updated_date}</td>
             <td>{card.due_date}</td>
+            <td>{card.lapses}</td>
           </tr>
         ))}
       </tbody>

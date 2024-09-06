@@ -1,4 +1,4 @@
-name: Build project
+name: Build project and deploy to qa1
 
 on: workflow_dispatch
 
@@ -96,33 +96,4 @@ jobs:
           branch: ${{ github.head_ref || github.ref_name }} 
           message: "Update build number"
           token: ${{ secrets.GITHUB_TOKEN }}
-
-
-
-      # - name: Archive production artifacts nova-english-marketing-website
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: nova-english-marketing-website
-      #     path: |
-      #       apps/nova-english-marketing-website/.next
-      #       apps/nova-english-marketing-website/next.config.*js
-      #       apps/nova-english-marketing-website/node_modules
-      #       apps/nova-english-marketing-website/package.json
-      # - name: Copy needed modules student-platform
-      #   run: |
-      #     cp -r node_modules/@next/ apps/student-platform/node_modules/
-      #     cp -r node_modules/@swc/ apps/student-platform/node_modules/
-      #     cp -r node_modules/next/ apps/student-platform/node_modules/
-      #     cp -r node_modules/react/ apps/student-platform/node_modules/
-      #     cp -r node_modules/react-dom/ apps/student-platform/node_modules/
-      #     cp -r node_modules/styled-jsx/ apps/student-platform/node_modules/
-      # - name: Archive production artifacts student-platform
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: student-platform
-      #     path: |
-      #       apps/student-platform/.next
-      #       apps/student-platform/next.config.*js
-      #       apps/student-platform/node_modules
-      #       apps/student-platform/package.json
             

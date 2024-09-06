@@ -1,4 +1,4 @@
-interface MenuItemProps {
+export interface MenuItemProps {
   img: string;
   title: string;
   link: string;

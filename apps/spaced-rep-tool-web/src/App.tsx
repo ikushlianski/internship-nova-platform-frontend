@@ -13,7 +13,6 @@ function App() {
         <Route index element={<Navigate to={RoutesEnum.PrivacyPolicy} />} />
         <Route path={RoutesEnum.PrivacyPolicy} element={<PrivacyPolicy />} />
         <Route path={RoutesEnum.Login} element={<SignIn />} />
-
       </Routes>
     </div>
   );

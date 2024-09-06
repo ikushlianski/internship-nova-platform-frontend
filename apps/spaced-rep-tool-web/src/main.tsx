@@ -1,10 +1,25 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, useNavigate } from 'react-router-dom';
 import App from './App.tsx';
 import "./globals.css";
+import axios from "axios";
 
+
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      // Handle 401 globally
+      const navigate = useNavigate();
+      console.error("Unauthorized: Redirecting to login");
+      navigate('/login'); // Redirect to login page
+      return Promise.reject(error);
+    }
+    return Promise.reject(error);
+  }
+);
 
 async function enableMocking() {
   if (import.meta.env.VITE_API_MOCKING !== "true") {

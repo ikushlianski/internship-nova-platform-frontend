@@ -1,27 +1,45 @@
 import React, { FC, useState } from 'react'
 import signInImg from '../../assets/man-and-woman-in-gadgets.svg'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
 
 const SignIn: FC = () => {
     const [acceptPolicy, setAcceptPolicy] = useState(false)
     const [error, setError] = useState<string | null>(null)
+    const [authError, setAuthError] = useState<string | null>(null);
 
-    const handleGoogleSignIn = () => {
+    const handleGoogleSignIn = async() => {
         if (!acceptPolicy) {
             setError('You must read and accept the Privacy Policy.')
             return
         }
 
-        const VITE_GOOGLE_CALLBACK_URL = 'http://localhost:3000/api/v1'
-        const googleAuthUrl = `${VITE_GOOGLE_CALLBACK_URL}/auth/google/callback`;
-
-        window.location.href = googleAuthUrl
+        try {
+            const response = await axios.post(
+              `${import.meta.env.VITE_API_V1_URL}/auth/google/callback`,
+            );
+          
+            if (response.data.redirectUrl) {
+              window.location.href = response.data.redirectUrl;
+            } else {
+              const googleAuthUrl = `http://localhost:3000/api/v1/auth/google/callback`;
+              console.log(googleAuthUrl);
+              window.location.href = googleAuthUrl;
+            }
+          } catch (error: any) {
+            if (error.response && error.response.status === 401) {
+                setAuthError("You are not authorized. Please login again."); // Уведомление при 401 ошибке
+            } else {
+                setError("Ошибка при отправке запроса. Попробуйте снова.");
+            }
+        }
     }
 
     const handleCheckBoxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setAcceptPolicy(event.target.checked)
-        if (error) {
-            setError(null)
+        if (error || authError) {
+            setError(null);
+            setAuthError(null); // Reset notification when checkbox is changed
         }
     }
 
@@ -41,7 +59,7 @@ const SignIn: FC = () => {
                 <h1 className="text-4xl font-bold text-black mb-8">Sign in</h1>
                 <button
                     onClick={handleGoogleSignIn}
-                    className="bg-green-200 hover:bg-green-300 text-black font-semibold py-3 px-6 rounded-lg w-56 mb-6 transition duration-150 ease-in-out"
+                    className="bg-[#0092FC] hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-lg w-56 mb-6 transition duration-150 ease-in-out"
                 >
                     Sign in with Google
                 </button>
@@ -55,7 +73,7 @@ const SignIn: FC = () => {
                         className="form-checkbox h-5 w-5 text-black mr-2"
                     />
                     <label htmlFor="acceptPolicy" className="text-black">
-                        I accept the{' '}
+                        I accept the {' '}
                         <Link
                             to="/privacy-policy"
                             target="_blank"
@@ -69,6 +87,12 @@ const SignIn: FC = () => {
 
                 {error && (
                     <p className="text-red-600 text-sm mb-4">{error}</p>
+                )}
+
+                {authError && (
+                    <p className="text-red-600 text-sm mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+                        {authError}
+                    </p> // Ошибка авторизации 401
                 )}
             </div>
         </div>

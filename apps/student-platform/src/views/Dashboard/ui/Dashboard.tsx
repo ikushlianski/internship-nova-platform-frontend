@@ -1,4 +1,4 @@
-import { DashboardCell } from "./DashboardCell";
+import { DashboardCell } from "@packages/ui/src/dashboardCell"
 
 export default function Dashboard() {
     return (<div className="grow flex min-h-full">
@@ -8,28 +8,44 @@ export default function Dashboard() {
         clicking <Link href={"/login"}>here</Link>.
       </p> 
         <Navigation />*/}
-        <div className="grow bg-gray-200 grid grid-cols-3 p-10 gap-5">
+        <div className="grow grid bg-gray-200 grid-cols-3 p-10 gap-5">
             <div className="col-span-2 grid grid-cols-2 gap-5">
-                <div className="bg-white w-full rounded-[20px] p-5 col-span-2">
-                    <div className="flex gap-5">
-                        <h2 className="text-3xl font-bold">Hello devs!</h2>
-                        <div className="w-10 h-10 rounded-full bg-gray-200"></div>
-                    </div>
-                    <p className="text-xl">Have a nice coding time!</p>
-                </div>
-                <DashboardCell color="white" isSingleInRow title="Title" seeDetailsLink seeDetailsLabel="More" />
-                <DashboardCell color="white" isSingleInRow title="Title" seeDetailsLink seeDetailsLabel="More" />
-                <DashboardCell color="gray-300" isSingleInRow title="Title" />
-                <DashboardCell color="white" title="Title" />
-                <DashboardCell color="white" title="Title" />
-                <DashboardCell color="white" title="Title" />
-                <DashboardCell color="white" title="Title" />
+                <DashboardCell
+                    classes="bg-white"
+                    classNameTitle="text-3xl order-first"
+                    title="Hello devs!"
+                    icon={<div className="w-8 h-8 rounded-full bg-gray-200"></div>}
+                    isSingleInRow />
+                <DashboardCell isSingleInRow title="Title"
+                    classes="bg-white"
+                    moreLink='#' moreLabel="More"
+                    icon={<div className="w-8 h-8 rounded-full bg-gray-200"></div>}>
+                    <p>More context inside</p>
+                </DashboardCell>
+                <DashboardCell
+                    classes="bg-white"
+                    desc="Description" isSingleInRow title="Title" moreLink='#' moreLabel="More"
+                    icon={<div className="w-8 h-8 rounded-full bg-gray-200"></div>} />
+                <DashboardCell classes="bg-gray-300" isSingleInRow title="Title"
+                    icon={<div className="w-8 h-8 rounded-full bg-gray-200"></div>} />
+                <DashboardCell classes="bg-white" desc="Description" title="Title" locked
+                    icon={<div className="w-8 h-8 rounded-full bg-gray-200"></div>} />
+                <DashboardCell classes="bg-white" desc="Description" title="Title" locked
+                    icon={<div className="w-8 h-8 rounded-full bg-gray-200"></div>} />
+                <DashboardCell classes="bg-white" desc="Description" title="Title"
+                    icon={<div className="w-8 h-8 rounded-full bg-gray-200"></div>} />
+                <DashboardCell classes="bg-white" classNameTitle="w-full text-center"
+                    title="Title" />
             </div>
             <div className="grid grid-cols-1 gap-5">
-                <DashboardCell color="white" title="Title" />
-                <DashboardCell color="white" title="Title" seeDetailsLink seeDetailsLabel="More" />
-                <DashboardCell color="gray-300" title="Title" />
-                <DashboardCell color="white" title="Title" />
+                <DashboardCell classes="bg-white" desc="Description" title="Title" locked
+                    icon={<div className="w-8 h-8 rounded-full bg-gray-200"></div>} />
+                <DashboardCell classes="bg-white" desc="Description" title="Title"
+                    moreLink='#' moreLabel="More" locked
+                    icon={<div className="w-8 h-8 rounded-full bg-gray-200"></div>} />
+                <DashboardCell classes="bg-gray-300" title="Title" classNameTitle="w-full text-center" />
+                <DashboardCell classes="bg-white" desc="Description" title="Title"
+                    icon={<div className="w-8 h-8 rounded-full bg-gray-200"></div>} />
             </div>
         </div>
     </div >)

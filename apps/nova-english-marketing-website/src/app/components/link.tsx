@@ -15,7 +15,7 @@ interface LinkProps {
   navLink: Link[];
 }
 
-export const LinkComponent = ({ children, className, appName, navLink }: LinkProps) => {
+export const LinkComponent = ({ className, navLink }: LinkProps) => {
   const router = useRouter();
   return (
     <ul>

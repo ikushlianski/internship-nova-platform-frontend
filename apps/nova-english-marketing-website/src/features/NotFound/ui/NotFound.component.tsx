@@ -9,10 +9,13 @@ import {
 	CarouselNext,
 	CarouselPrevious
 } from "@repo/ui/carousel"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { fetchCourses } from "../api/fetchMockCourses"
 
 const NotFound = async () => {
+	const t = useTranslations("not_found")
+
 	let courses: Class[] = []
 
 	let error: string | null = null
@@ -33,7 +36,7 @@ const NotFound = async () => {
 
 	return (
 		<div className="flex flex-col items-center justify-center gap-8 pt-6">
-			<h1 className="text-2xl">Доступные курсы:</h1>
+			<h1 className="text-2xl">{t("courses")}</h1>
 			<Carousel className="w-2/3">
 				<CarouselContent>
 					{courses.map(({ classId, className, classLevel, classTime }) => (
@@ -57,7 +60,7 @@ const NotFound = async () => {
 				<CarouselNext />
 			</Carousel>
 			<div className="flex flex-col gap-6">
-				<p className="text-xl">Остались вопросы? Свяжитесь с нами!</p>
+				<p className="text-xl">{t("contact")}</p>
 				<div className="flex justify-center gap-6">
 					<Link href={"/"}>
 						<WALogo />

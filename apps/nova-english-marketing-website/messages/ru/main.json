@@ -1,4 +1,20 @@
 {
+	"locale_layout": {
+		"title": "novaenglish",
+		"description": "Сгенерировано next app"
+	},
+
+	"locale_switcher": {
+		"label": "Изменить язык",
+		"locale": "{locale, select, ru {Ru} en {En} other {Unknown}}"
+	},
+
+	"not_found": {
+		"title": "К сожалению, страница, которую вы ищете, не существует или была перемещена",
+		"courses": "Доступные курсы:",
+		"contact": "Остались вопросы? Свяжитесь с нами!"
+	},
+
 	"temporary": {
 		"b1_b2_level_course": "Привет, я курс B1-B2 уровень!",
 		"hero_section": "Баннер",

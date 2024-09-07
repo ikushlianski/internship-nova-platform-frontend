@@ -11,7 +11,7 @@ export function useLocaleSwitcher() {
 		const nextLocale = event.target.value
 		startTransition(() => {
 			router.push(
-				// @ts-ignore
+				// @ts-expect-error
 				{ pathname, params },
 				{ locale: nextLocale }
 			)

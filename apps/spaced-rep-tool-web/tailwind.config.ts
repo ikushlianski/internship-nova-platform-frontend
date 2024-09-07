@@ -1,8 +1,12 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: ["./src/**/*.{ts,tsx,mdx}"],
   theme: {
+    fontFamily: {
+      sans: ["Manrope", ...defaultTheme.fontFamily.sans],
+    },
     container: {
       center: true,
       padding: "2rem",

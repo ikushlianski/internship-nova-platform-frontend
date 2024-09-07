@@ -9,8 +9,8 @@ export interface Card {
   deck_id: string;
   question: string;
   answer: string;
-  created_date: string;
-  updated_date: string;
+  create_date: string;
+  update_date: string;
   due_date: string;
   lapses: number;
 }
@@ -20,20 +20,20 @@ export const Cards: FC<CardsProps> = ({ cards }) => {
     <table>
       <tbody>
         <tr>
-          <td className="font-bold">Deck</td>
-          <td>Question</td>
-          <td>Answer</td>
-          <td>Last answered</td>
-          <td>Due to</td>
-          <td>Lapses</td>
+          <td className="font-semibold text-l">Deck</td>
+          <td className="font-semibold text-l">Question</td>
+          <td className="font-semibold text-l">Answer</td>
+          <td className="font-semibold text-l">Last answered</td>
+          <td className="font-semibold text-l">Due to</td>
+          <td className="font-semibold text-l">Lapses</td>
         </tr>
         {cards.map((card) => (
           <tr key={card.card_id}>
             <td>{card.deck_id}</td>
             <td>{card.question}</td>
             <td>{card.answer}</td>
-            <td>{card.updated_date}</td>
-            <td>{card.due_date}</td>
+            <td>{card.create_date}</td>
+            <td>{card.update_date}</td>
             <td>{card.lapses}</td>
           </tr>
         ))}

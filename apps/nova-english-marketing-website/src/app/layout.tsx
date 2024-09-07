@@ -1,4 +1,4 @@
-import { locales } from "@/i18n/config"
+import { locales } from "@/i18n/routing"
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server"
 import { Manrope } from "next/font/google"
 import { ReactNode } from "react"

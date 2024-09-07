@@ -1,4 +1,4 @@
-import { locales } from "@/i18n/config"
+import { locales } from "@/i18n/routing"
 import { useLocale, useTranslations } from "next-intl"
 import LocaleSwitcherSelect from "./LocaleSwitcherSelect.component"
 

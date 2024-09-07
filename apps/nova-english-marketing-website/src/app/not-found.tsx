@@ -6,8 +6,8 @@ const NotFoundPage = () => {
 			<body>
 				<div className="pt-16 flex flex-col justify-center items-center gap-16">
 					<h1 className="text-xl font-bold">
-						Unfortunately, the page you're looking for doesn't exist or has been
-						moved.
+						Unfortunately, the page you are looking for does not exist or has
+						been moved.
 					</h1>
 					<NotFound />
 				</div>

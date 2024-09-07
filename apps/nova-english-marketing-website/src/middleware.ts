@@ -1,34 +1,11 @@
 import createMiddleware from "next-intl/middleware"
-import { NextRequest } from "next/server"
-import { routing } from "./i18n/routing"
+import { locales } from "./i18n/config"
 
-// Middleware для определения языка по домену
-function detectLocale(request: NextRequest): string {
-	const hostname = request.headers.get("host")
-	if (hostname?.endsWith(".ru") || hostname?.endsWith(".by")) {
-		return "ru"
-	}
-	return "en"
-}
-
-// Основной middleware для работы с локалями
-const intlMiddleware = createMiddleware({
-	routing,
-	localeDetection: false // Отключаем автоматическое определение
+export default createMiddleware({
+	locales,
+	defaultLocale: "en"
 })
 
-// Объединяем пользовательский middleware с next-intl middleware
-export function middleware(request: NextRequest) {
-	// Определяем локаль
-	const locale = detectLocale(request)
-
-	// Создаем ответ с установленной локалью
-	const response = intlMiddleware(request)
-	response.headers.set("Content-Language", locale)
-
-	return response
-}
-
 export const config = {
-	matcher: ["/((?!api|_next|.*\\..*).*)"]
+	matcher: ["/", "/(en|ru)/:path*"]
 }

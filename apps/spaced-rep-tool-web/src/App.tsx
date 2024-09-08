@@ -3,16 +3,36 @@ import "./App.css";
 import { PrivacyPolicy } from "./app/PrivacyPolicy/PrivacyPolicy";
 import { RoutesEnum } from "./utils/RoutesEnum";
 import { Main } from "./app/Main/Main";
+import Toast from "./components/Toast/Toast";
+import { useEffect, useState } from "react";
+import { setToastFunction } from "./utils/ShowToast";
 
 function App() {
+  const [toast, setToast] = useState<{ message: string; type: string } | null>(
+    null,
+  );
+
+  useEffect(() => {
+    setToastFunction(setToast);
+  }, []);
+
   return (
-    <div>
-      <Routes>
-        <Route path={RoutesEnum.Main} element={<Main />} />
-        <Route index element={<Navigate to={RoutesEnum.PrivacyPolicy} />} />
-        <Route path={RoutesEnum.PrivacyPolicy} element={<PrivacyPolicy />} />
-      </Routes>
-    </div>
+    <>
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type as "success" | "error" | "warning" | "info"}
+          onClose={() => setToast(null)}
+        />
+      )}
+      <div>
+        <Routes>
+          <Route path={RoutesEnum.Main} element={<Main />} />
+          <Route index element={<Navigate to={RoutesEnum.PrivacyPolicy} />} />
+          <Route path={RoutesEnum.PrivacyPolicy} element={<PrivacyPolicy />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 

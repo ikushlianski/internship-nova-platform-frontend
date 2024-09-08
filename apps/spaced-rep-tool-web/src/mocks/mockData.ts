@@ -49,8 +49,8 @@ export const data = {
       answer: "В нашем приложении реализована двухфакторная аутентификация",
       example:
         "Two-factor authentication adds an extra layer of security to identity and access management programs.",
-      createdDate: "2024-09-03",
-      updatedDate: "2024-09-09",
+      created_date: "2024-09-03",
+      updated_date: "2024-09-09",
       lapses: 0,
     },
     {
@@ -60,8 +60,8 @@ export const data = {
       answer: "Нам нужно настроить параметры межсетевого экрана",
       example:
         "A firewall helps protect your network by filtering traffic according to security rules.",
-      createdDate: "2024-08-10",
-      updatedDate: "2024-08-15",
+      created_date: "2024-08-10",
+      updated_date: "2024-08-15",
       lapses: 1,
     },
     {
@@ -70,8 +70,8 @@ export const data = {
       question: "This database uses SQL for data management",
       answer: "Эта база данных использует SQL для управления данными",
       example: "SQL allows querying and managing data in relational databases.",
-      createdDate: "2024-07-25",
-      updatedDate: "2024-07-30",
+      created_date: "2024-07-25",
+      updated_date: "2024-07-30",
       lapses: 2,
     },
     {
@@ -81,8 +81,8 @@ export const data = {
       answer: "API предоставляет доступ к ресурсам сервера",
       example:
         "An API (Application Programming Interface) allows software to communicate with each other.",
-      createdDate: "2024-06-12",
-      updatedDate: "2024-06-20",
+      created_date: "2024-06-12",
+      updated_date: "2024-06-20",
       lapses: 0,
     },
     {
@@ -92,8 +92,8 @@ export const data = {
       answer: "Приложение использует шифрование для защиты данных",
       example:
         "Encryption converts data into a secure format, ensuring only authorized access.",
-      createdDate: "2024-05-15",
-      updatedDate: "2024-05-22",
+      created_date: "2024-05-15",
+      updated_date: "2024-05-22",
       lapses: 3,
     },
     {
@@ -103,8 +103,8 @@ export const data = {
       answer: "Мы создаем адаптивный веб-сайт с использованием HTML и CSS",
       example:
         "HTML defines the structure, while CSS controls the layout and style of web pages.",
-      createdDate: "2024-04-05",
-      updatedDate: "2024-04-12",
+      created_date: "2024-04-05",
+      updated_date: "2024-04-12",
       lapses: 1,
     },
     {
@@ -114,8 +114,8 @@ export const data = {
       answer: "Сервер отключен для технического обслуживания",
       example:
         "A server may be temporarily unavailable while updates or repairs are being applied.",
-      createdDate: "2024-03-18",
-      updatedDate: "2024-03-22",
+      created_date: "2024-03-18",
+      updated_date: "2024-03-22",
       lapses: 0,
     },
     {
@@ -125,8 +125,8 @@ export const data = {
       answer: "Наша компания переходит на облачное хранилище",
       example:
         "Cloud storage allows data to be stored remotely and accessed over the internet.",
-      createdDate: "2024-02-11",
-      updatedDate: "2024-02-16",
+      created_date: "2024-02-11",
+      updated_date: "2024-02-16",
       lapses: 1,
     },
     {
@@ -136,8 +136,8 @@ export const data = {
       answer: "Мы разворачиваем виртуальную машину для тестирования",
       example:
         "A virtual machine allows running an operating system within another OS environment.",
-      createdDate: "2024-01-25",
-      updatedDate: "2024-01-30",
+      created_date: "2024-01-25",
+      updated_date: "2024-01-30",
       lapses: 0,
     },
     {
@@ -147,8 +147,8 @@ export const data = {
       answer: "Нам нужно регулярно делать резервное копирование базы данных",
       example:
         "Regular backups help prevent data loss in case of system failure or corruption.",
-      createdDate: "2024-01-10",
-      updatedDate: "2024-01-15",
+      created_date: "2024-01-10",
+      updated_date: "2024-01-15",
       lapses: 2,
     },
   ],

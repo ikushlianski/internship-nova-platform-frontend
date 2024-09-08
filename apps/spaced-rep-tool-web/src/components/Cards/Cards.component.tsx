@@ -2,6 +2,7 @@ import { FC } from "react";
 
 export interface CardsProps {
   cards: Card[];
+  colNames: string[];
 }
 
 export interface Card {
@@ -9,32 +10,31 @@ export interface Card {
   deck_id: string;
   question: string;
   answer: string;
-  create_date: string;
-  update_date: string;
-  due_date: string;
+  created_date: string;
+  updated_date: string;
   lapses: number;
 }
 
-export const Cards: FC<CardsProps> = ({ cards }) => {
+export const Cards: FC<CardsProps> = ({ cards, colNames }) => {
   return (
-    <table>
-      <tbody>
+    <table className="container p-10 w-full">
+      <tbody className="">
         <tr>
-          <td className="font-semibold text-l">Deck</td>
-          <td className="font-semibold text-l">Question</td>
-          <td className="font-semibold text-l">Answer</td>
-          <td className="font-semibold text-l">Last answered</td>
-          <td className="font-semibold text-l">Due to</td>
-          <td className="font-semibold text-l">Lapses</td>
+          {colNames.map((col) => (
+            <th key={col} className="text-left font-semibold text-l">
+              {col}
+            </th>
+          ))}
         </tr>
         {cards.map((card) => (
-          <tr key={card.card_id}>
-            <td>{card.deck_id}</td>
-            <td>{card.question}</td>
-            <td>{card.answer}</td>
-            <td>{card.create_date}</td>
-            <td>{card.update_date}</td>
-            <td>{card.lapses}</td>
+          <tr key={card.card_id} className="">
+            {/* Deck name schould be gotten from deck ID */}
+            <td className="">DeckName</td>
+            <td className="">{card.question}</td>
+            <td className="">{card.answer}</td>
+            <td className="">{card.created_date}</td>
+            <td className="">{card.updated_date}</td>
+            <td className="text-center">{card.lapses}</td>
           </tr>
         ))}
       </tbody>

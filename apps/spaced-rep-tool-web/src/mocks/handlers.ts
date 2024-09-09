@@ -21,7 +21,7 @@ export const handlers = [
       showToast(`Card with ID: ${params.id} successfully found!`, "success")
       return HttpResponse.json(response);
     } else {
-      showToast(`Card with ID: ${params.id} not found!`, "success")
+      showToast(`Card with ID: ${params.id} not found!`, "error")
       return HttpResponse.json(null, { status: 404 });
     }
   }),
@@ -70,7 +70,7 @@ export const handlers = [
       showToast(`Decks with ID: ${params.id} successfully found!`, "success")
       return HttpResponse.json(response);
     } else {
-      showToast(`Decks with ID: ${params.id} not found!`, "success")
+      showToast(`Decks with ID: ${params.id} not found!`, "error")
       return HttpResponse.json(null, { status: 404 });
     }
   }),

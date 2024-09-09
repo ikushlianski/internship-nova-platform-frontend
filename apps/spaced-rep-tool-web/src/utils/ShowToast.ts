@@ -10,7 +10,7 @@ export const showToast = (
 ) => {
   if (toastSetter) {
     toastSetter({ message, type });
-    setTimeout(() => toastSetter?.(null), 3000); // Скрываем тост через 3 секунды
+    setTimeout(() => toastSetter?.(null), 3000);
   } else {
     console.warn("setToastFunction not initialized.");
   }

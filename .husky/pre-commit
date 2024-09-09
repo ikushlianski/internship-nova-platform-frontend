@@ -1,0 +1,4 @@
+rm -rf .next
+npx turbo run lint
+npx turbo build --force
+npx turbo run test --continue

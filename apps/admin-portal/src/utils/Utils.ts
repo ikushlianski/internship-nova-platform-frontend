@@ -1,5 +1,7 @@
 import { IUser } from "../types/User"
 import { Users, Students, Teachers, Paths, Classes, Admins, Managers, Sales, Spectators, NoRoles } from '../mocks/data/entities.json'
+import { HttpResponse } from 'msw'
+import { showNotify } from "./globalNotify"
 
 // A user can have multiple roles in ecosystem applications, with
 // the most powerful role being dominant.
@@ -101,3 +103,72 @@ export const toastClasses: Record<string, string> = {
   warning: "bg-yellow-500 text-white",
   info: "bg-blue-500 text-white",
 };
+
+// GET request function
+export const handleGetRequest = <T>(collection: T[], map:  Map<number, T>, entityName: string) =>{
+  showNotify(`${entityName} successfully loaded!`, { type: "success", autoHideDuration: 1500 })
+  return HttpResponse.json([...collection, ...map]);
+}
+
+// GET by Id request function
+export const handleGetIdRequest =<T extends { id: number }>( params: { id?: string }, collection: T[], entityName: string) => {
+  const id = params.id ? Number(params.id) : null;
+
+  const response = id ? collection.find(item => item.id === id) : [...collection];
+
+  if (response) {
+    showNotify(`${entityName} with ID ${id} successfully found!`, { type: "success", autoHideDuration: 3000 });
+    return HttpResponse.json(response);
+  } else {
+    showNotify(`${entityName} with ID ${id} not found!`, { type: "error", autoHideDuration: 3000 });
+    return HttpResponse.json(null, { status: 404 })
+  }
+}
+
+// POST request function
+export const handlePostRequest = async <T>(request: Request, collection: Map<number, T>, entityName: string) => {
+  try {
+    const newItem = await request.json() as T & { id: number };
+
+    if (!newItem || typeof newItem.id !== 'number') {
+        return HttpResponse.json({ error: `Invalid ${entityName} data` }, { status: 400 })
+    }
+
+    collection.set(newItem.id, newItem)
+    showNotify(`${entityName} successfully loaded!`, { type: "success", autoHideDuration: 3000 })
+    return HttpResponse.json(newItem, { status: 201 })
+} catch (error) {
+    showNotify("Failed to parse request body", { type: "error", autoHideDuration: 3000 })
+    return HttpResponse.json({ error: 'Failed to parse request body' }, { status: 400 })
+}
+}
+
+// PUT request function
+export const handlePutRequest = async<T extends { id: number }>(params: { id?: string }, request: Request, collection: T[], map: Map<number, T>, entityName: string) => {
+  try {
+    const { id } = params
+    const updatedItem = await request.json() as T & { id: number };
+
+    if (!updatedItem || typeof updatedItem.id !== 'number') {
+        return HttpResponse.json({ error: `Invalid ${entityName} data` }, { status: 400 })
+    }
+
+     collection  = collection.map(item => item.id === Number(id) ? updatedItem : item)
+    if (map.has(Number(id))) {
+        map.set(Number(id), updatedItem);
+      }
+      showNotify(`${entityName} with ID ${id} successfully updated`, { type: "success", autoHideDuration: 3000 })
+    return HttpResponse.json(updatedItem)
+} catch (error) {
+  showNotify(`'Failed to parse request body'`, { type: "error", autoHideDuration: 3000 })
+    return HttpResponse.json({ error: 'Failed to parse request body' }, { status: 400 })
+}
+}
+
+// DELETE request function
+export const handleDeleteRequest = <T extends { id: number }>(params: { id?: string }, collection: T[], entityName: string) => {
+  const { id } = params
+  collection = collection.filter(item => String(item.id) !== id)
+  showNotify(`${entityName} with ID ${id} successfully deleted`, { type: "success", autoHideDuration: 3000 })
+  return HttpResponse.json({ id })
+}

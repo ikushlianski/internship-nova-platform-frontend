@@ -5,7 +5,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CloseIcon from "@mui/icons-material/Close";
 import { ToastContext } from "./ToastContext";
 
-interface ToastProps {
+export interface ToastProps {
   children: ReactNode;
   type: "success" | "warning" | "error";
   close: () => void;
@@ -21,7 +21,7 @@ export default function Toast({ children, type, close }: ToastProps) {
   const toastIcon = iconMap[type] || null;
   return (
     <div role="alert" className="relative">
-      <div className="flex items-center justify-between p-4 w-80 border border-gray shadow-md rounded-lg my-3">
+      <div className="flex items-center justify-between p-4 w-80 border border-gray shadow-md rounded-lg my-3 animation-semicircle">
         {toastIcon && <div className="text-6xl mr-5">{toastIcon}</div>}
         <div className="text-wrap text-center w-full">{children}</div>
       </div>
@@ -49,13 +49,16 @@ export function ToastProvider({ children }: ToastProviderProps) {
   const [toasts, setToasts] = useState<ToastType[]>([]);
 
   function create(content: ReactNode, type: "success" | "warning" | "error") {
+    const toastId = Date.now();
     const newToast: ToastType = {
-      id: Date.now(),
+      id: toastId,
       content: content,
       type: type,
     };
-    console.log(toasts);
     setToasts((previousToasts) => [...previousToasts, newToast]);
+    setTimeout(() => {
+      remove(toastId);
+    }, 10000);
   }
 
   function remove(id: number) {

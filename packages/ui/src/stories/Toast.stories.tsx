@@ -1,35 +1,50 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import Toast from "./../Toast/Toast.component";
+import React from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import { useToast } from "./../Toast/ToastContext";
+import Toast, { ToastProps, ToastProvider } from "./../Toast/Toast.component";
 
-const meta: Meta<typeof Toast> = {
+export default {
   title: "Components/Toast",
-  parameters: {
-    layout: "centered",
-  },
-  tags: ["autodocs"],
   component: Toast,
+  decorators: [
+    (Story) => (
+      <ToastProvider>
+        <Story />
+      </ToastProvider>
+    ),
+  ],
+} as Meta<typeof Toast>;
+
+const Template: StoryFn<ToastProps> = () => {
+  const { create } = useToast();
+
+  return (
+    <div className="flex flex-col justify-center items-center min-h-screen space-y-4">
+      <button
+        className="p-2 bg-green-500 text-white rounded"
+        onClick={() => create("This is a success message!", "success")}
+      >
+        Show Success Toast
+      </button>
+      <button
+        className="p-2 bg-yellow-500 text-white rounded"
+        onClick={() => create("This is a warning message!", "warning")}
+      >
+        Show Warning Toast
+      </button>
+      <button
+        className="p-2 bg-red-500 text-white rounded"
+        onClick={() => create("This is an error message!", "error")}
+      >
+        Show Error Toast
+      </button>
+    </div>
+  );
 };
 
-export default meta;
-type Story = StoryObj<typeof Toast>;
-
-export const ToastWarning: Story = {
-  args: {
-    type: "warning",
-    children: "This toast appears to alert a warning",
-  },
-};
-
-export const ToastError: Story = {
-  args: {
-    type: "error",
-    children: "This toast appears to alert an error",
-  },
-};
-
-export const ToastSuccess: Story = {
-  args: {
-    type: "success",
-    children: "This toast appears when everything is fine",
-  },
+export const Default = Template.bind({});
+Default.args = {
+  type: "success",
+  children: "This is a default success toast!",
+  close: () => alert("Toast closed!"),
 };

@@ -1,6 +1,8 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}", // Adjust the paths as needed
+    "./stories/**/*.{js,jsx,ts,tsx}", // Include your Storybook folder
+  ],
   theme: {
     extend: {},
   },

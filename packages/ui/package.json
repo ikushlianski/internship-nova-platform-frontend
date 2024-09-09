@@ -10,7 +10,7 @@
 		"./carousel": "./src/Carousel/Carousel.component.tsx",
 		"./card": "./src/Card/Card.component.tsx",
 		"./appButton": "./src/AppButton/AppButton.component.tsx",
-		"./reactErrorComponent": "./react/error.component.tsx"
+		"./reactErrorComponent": "./src/error.component.tsx"
 	},
 	"scripts": {
 		"lint": "eslint . --max-warnings 0",
@@ -42,7 +42,7 @@
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"react-hook-form": "^7.53.0",
-		"shadcn-ui": "^0.8.0",
+		"shadcn-ui": "^0.2.3",
 		"ui": "*",
 		"zod": "^3.23.8"
 	}

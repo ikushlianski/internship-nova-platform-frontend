@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
+'use client';
 
 // Props for the ErrorComponent
+
 interface ErrorComponentProps {
   message: string; // The main error message
   description: string; // A description or additional information about the error
@@ -33,10 +33,7 @@ interface ErrorContainerProps {
 }
 
 // ErrorContainer is a container for displaying error messages
-export const ErrorContainer: React.FC<ErrorContainerProps> = ({
-  children,
-  className,
-}) => {
+export const ErrorContainer: React.FC<ErrorContainerProps> = ({ children, className }) => {
   return (
     <div
       className={`flex min-h-[200px] w-full flex-col items-center justify-center gap-6 rounded-lg bg-background p-6 shadow-sm md:min-h-[300px] ${className}`}
@@ -44,7 +41,7 @@ export const ErrorContainer: React.FC<ErrorContainerProps> = ({
       {children}
     </div>
   );
-}
+};
 
 // Props for the ErrorImage
 interface ErrorImageProps {
@@ -56,14 +53,14 @@ interface ErrorImageProps {
 export const ErrorImage: React.FC<ErrorImageProps> = ({ image, className }) => {
   return (
     <div className={className}>
-      {image && typeof image === "string" ? (
+      {image && typeof image === 'string' ? (
         <img src={image} className="h-12 w-12 text-primary" />
       ) : (
         image
       )}
     </div>
   );
-}
+};
 
 // Props for the ErrorMessage
 interface ErrorMessageProps {
@@ -78,7 +75,7 @@ export const ErrorMessage: React.FC<ErrorMessageProps> = ({ message, className }
       <h2 className="text-2xl font-bold text-foreground md:text-3xl">{message}</h2>
     </div>
   );
-}
+};
 
 // Props for the ErrorDescription
 interface ErrorDescriptionProps {
@@ -93,7 +90,7 @@ export const ErrorDescription: React.FC<ErrorDescriptionProps> = ({ description,
       <p className="text-muted-foreground">{description}</p>
     </div>
   );
-}
+};
 
 // ErrorLink displays a link to the homepage
 export const ErrorLink: React.FC = () => {
@@ -107,4 +104,4 @@ export const ErrorLink: React.FC = () => {
       </a>
     </div>
   );
-}
+};

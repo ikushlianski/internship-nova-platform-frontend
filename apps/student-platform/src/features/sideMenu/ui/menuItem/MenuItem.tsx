@@ -1,6 +1,6 @@
 import Image from "next/image";
 import NavLink from "../navLink/NavLink";
-
+import {MenuItemProps} from "../../types/types"
 export default function MenuItem({ img, title, link }: MenuItemProps) {
   return (
     <li

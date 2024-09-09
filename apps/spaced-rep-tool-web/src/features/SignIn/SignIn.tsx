@@ -12,7 +12,7 @@ const SignIn: FC = () => {
       return;
     }
 
-    window.location.href = `${import.meta.env.VITE_API_V1_URL}/auth/google/callback`;
+    window.location.href = `${import.meta.env.VITE_API_V1_URL}/auth/google/callback?ssr=false`;
   };
 
   const handleCheckBoxChange = (event: React.ChangeEvent<HTMLInputElement>) => {

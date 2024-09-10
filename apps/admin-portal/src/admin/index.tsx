@@ -12,6 +12,7 @@ import { InitNotification } from "../components/InitNotification";
 import { Button, Dialog, DialogTitle, DialogContent } from "@mui/material";
 import { useState } from "react";
 import UserCreateForm from "../components/UserCreateForm";
+import NotFound from "../not-found.tsx";
 
 const CustomLayout = (props: any) => {
   const [open, setOpen] = useState(false);
@@ -54,7 +55,7 @@ const App = () => {
   return (
     <>
       <InitNotification />
-      <Admin dataProvider={dataProvider} layout={CustomLayout}>
+      <Admin dataProvider={dataProvider} layout={CustomLayout} catchAll={NotFound}>
         <Resource
           name="users"
           list={ListGuesser}

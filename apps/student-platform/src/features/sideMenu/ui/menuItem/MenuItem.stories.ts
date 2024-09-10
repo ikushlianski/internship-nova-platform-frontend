@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 import MenuItem from "./MenuItem";
-//add import
 import {MenuItemProps} from "../../types/types"
 
 const meta: Meta<MenuItemProps> = {

@@ -5,59 +5,56 @@ import {
   ListGuesser,
   EditGuesser,
   ShowGuesser,
+  Layout,
 } from "react-admin";
 import dataProvider from "../mocks/dataProvider";
-import Toast from "../components/Toast";
+import { InitNotification } from "../components/InitNotification";
+import { Button, Dialog, DialogTitle, DialogContent } from "@mui/material";
 import { useState } from "react";
+import UserCreateForm from "../components/UserCreateForm";
 
-const App = () => {
-  const [toast, setToast] = useState<{ message: string; type: string } | null>(
-    null,
-  );
+const CustomLayout = (props: any) => {
+  const [open, setOpen] = useState(false);
 
-  const showToast = (
-    message: string,
-    type: "success" | "error" | "warning" | "info",
-  ) => {
-    setToast({ message, type });
-    setTimeout(() => setToast(null), 3000);
+  const handleOpen = () => {
+    setOpen(true);
   };
 
-  // const handleError = (error: string) => {
-  //   showToast(error, "error");
-  // };
-  const handleFetchData = async () => {
-    showToast("Загрузка данных...", "info");
-    try {
-      const data = 1;
-      // const data = await fetch('').then(res => res.json());
-      setTimeout(() => showToast("Данные успешно загружены!", "success"), 3000);
-      return data;
-    } catch (error: any) {
-      showToast(`Ошибка: ${error.message}`, "error");
-    }
+  const handleClose = () => {
+    setOpen(false);
   };
 
-  // useEffect(() => {
-  //   showToast("This is a test message!", "warning");
-  // }, []);
   return (
     <>
-      <button
-        className="fixed bottom-20 right-5 p-3 bg-violet-800 text-white z-20"
-        onClick={handleFetchData}
+      <InitNotification />
+      <Layout {...props} />
+      <Button
+        onClick={handleOpen}
+        style={{
+          position: "fixed",
+          right: 30,
+          bottom: 30,
+          backgroundColor: "#CCC",
+          zIndex: 2000,
+        }}
       >
-        Загрузить данные
-      </button>
-      {toast && (
-        <Toast
-          message={toast.message}
-          type={toast.type as "success" | "error" | "warning" | "info"}
-          onClose={() => setToast(null)}
-        />
-      )}
+        Create User
+      </Button>
+      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
+        <DialogTitle>Create User</DialogTitle>
+        <DialogContent>
+          <UserCreateForm dataProvider={dataProvider} {...props} />
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+};
 
-      <Admin dataProvider={dataProvider}>
+const App = () => {
+  return (
+    <>
+      <InitNotification />
+      <Admin dataProvider={dataProvider} layout={CustomLayout}>
         <Resource
           name="users"
           list={ListGuesser}

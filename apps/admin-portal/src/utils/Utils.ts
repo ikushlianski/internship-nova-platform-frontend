@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IUser } from "../types/User"
 import { Users, Students, Teachers, Paths, Classes, Admins, Managers, Sales, Spectators, NoRoles } from '../mocks/data/entities.json'
 import { HttpResponse } from 'msw'
@@ -172,3 +173,14 @@ export const handleDeleteRequest = <T extends { id: number }>(params: { id?: str
   showNotify(`${entityName} with ID ${id} successfully deleted`, { type: "success", autoHideDuration: 3000 })
   return HttpResponse.json({ id })
 }
+
+//functions to make arrays in UserCreateForm
+export const parseToNumberArray = (input: any) => {
+  if (typeof input === "string") {
+    return input.split(",").map((id: string) => Number(id.trim()));
+  }
+  if (Array.isArray(input)) {
+    return input.map((id: any) => Number(id));
+  }
+  return typeof input !== "undefined" ? [Number(input)] : [];
+};

@@ -1,5 +1,15 @@
 import { CreateParams, CreateResult, DataProvider, DeleteParams, DeleteResult, Identifier, RaRecord } from "react-admin"
 import { updateResourceData, getDataForResource, generateNewId } from '../utils/Utils'
+import  {IUser}  from '../types/User';
+import  {IStudent}  from '../types/Student';
+import { ITeacher } from "../types/Teacher";
+import { IAdmin } from "../types/Admin";
+import { IManager } from "../types/Manager";
+import { ISales } from "../types/Sales";
+import { ISpectator } from "../types/Spectator";
+import { INoRole } from "../types/NoRole";
+
+type ResourceTypes = IUser | IStudent | ITeacher | IAdmin | IManager | ISales | ISpectator | INoRole;
 
 const dataProvider: DataProvider = {
     getList: async (resource, params) => {
@@ -35,7 +45,10 @@ const dataProvider: DataProvider = {
     },
     getMany: async (resource, params) => {
         const data = getDataForResource(resource);
-        const items = data.filter((item: { id: number }) => params.ids.includes(item.id));
+        const items = data.filter((item: { id: number }) =>{
+
+         return params.ids.includes(item.id)
+        });
 
         if (items.length === 0) {
             throw new Error(`No resources found for IDs: ${params.ids.join(', ')}`);
@@ -95,23 +108,12 @@ const dataProvider: DataProvider = {
             data: params.ids,
         };
     },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    create: async <RecordType extends Omit<RaRecord, "id"> = any, ResultRecordType extends RaRecord = RecordType & { id: Identifier; }>(
-        resource: string,
-        params: CreateParams<RecordType>
-    ): Promise<CreateResult<ResultRecordType>> => {
+
+    create: async <T extends Omit<ResourceTypes, "id">>(resource: string, params: CreateParams<T>): Promise<CreateResult<T & { id: Identifier }>> => {
         const data = getDataForResource(resource);
-
-        // Генерация нового уникального ID
         const newId = generateNewId(data);
-
-        // Создание новой записи с сгенерированным ID
-        const newItem: ResultRecordType = { id: newId, ...params.data } as unknown as ResultRecordType;
-
-        // Добавление новой записи в массив данных
+        const newItem = { id: newId, ...params.data } as T & { id: Identifier };
         const updatedData = [...data, newItem];
-
-        // Обновление данных ресурса
         updateResourceData(resource, updatedData);
 
         return {
@@ -121,29 +123,22 @@ const dataProvider: DataProvider = {
 
     update: async (resource, params) => {
         const data = getDataForResource(resource);
-
-        // Найти индекс записи с указанным id
-        const itemIndex = data.findIndex((item: { id: number }) => item.id === params.id);
+        const itemIndex = data.findIndex((item: { id: number }) => String(item.id) === params.id);
 
         if (itemIndex === -1) {
             throw new Error(`Resource ${resource} with ID ${params.id} not found`);
         }
 
-        // Обновить запись с указанным id
         const updatedItem = { ...data[itemIndex], ...params.data };
-
-        // Обновить массив данных с новыми значениями
         const updatedData = [
             ...data.slice(0, itemIndex),
             updatedItem,
             ...data.slice(itemIndex + 1),
         ];
-
-        // Сохранить обновленные данные в ресурс
         updateResourceData(resource, updatedData);
 
         return {
-            data: updatedItem, // Возвращаем обновленный объект
+            data: updatedItem,
         };
     },
 
@@ -163,7 +158,7 @@ const dataProvider: DataProvider = {
         updateResourceData(resource, updatedData);
 
         return {
-            data: { id: params.id } as RecordType, // Возвращаем объект с id в формате RecordType
+            data: { id: params.id } as RecordType,
         };
     },
   };

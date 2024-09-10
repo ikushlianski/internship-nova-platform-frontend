@@ -1,4 +1,4 @@
-import { ErrorContainer, ErrorMessage, ErrorDescription } from "@repo/ui/error";
+import { ErrorContainer, ErrorMessage, ErrorDescription } from '@repo/ui/error';
 
 export default function NotFound() {
   return (

@@ -52537,7 +52537,7 @@ var { VERSIONCHECK: aHe } = xe, Rte = (0, Ate.default)(1)(() => {
       if (l) {
         if (!l.version || !c.version)
           return !0;
-        let h = !!Oo.default.prerelease(c.version) ? `${Oo.default.major(c.version)}.${Oo.default.minor(c.version)}.${Oo.default.patch(
+        let h = Oo.default.prerelease(c.version) ? `${Oo.default.major(c.version)}.${Oo.default.minor(c.version)}.${Oo.default.patch(
           c.version
         )}` : c.version, v = Oo.default.diff(h, l.version);
         return Oo.default.gt(l.version, h) && v !== "patch" && !v.includes("pre");

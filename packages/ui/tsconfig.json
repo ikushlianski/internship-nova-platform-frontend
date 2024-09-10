@@ -4,12 +4,13 @@
   "compilerOptions": {
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "target": "ES2022",
     "outDir": "dist",
-    "rootDir": "./src",
+    "rootDir": "./",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["./src", "./react"],
+  "include": ["src/**/*", "packages/ui/**/*", "storybook-static/**/*", "turbo/generators/**/*"],
   "exclude": ["node_modules", "dist"]
 }

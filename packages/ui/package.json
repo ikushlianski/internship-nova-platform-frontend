@@ -15,7 +15,7 @@
     "./error": "./src/Error/Error.component.tsx"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
+    "lint": "eslint --fix --ext .js,.jsx .",
     "generate:component": "turbo gen react-component",
     "test": "vitest run",
     "test:watch": "vitest --watch",

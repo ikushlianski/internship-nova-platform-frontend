@@ -1,8 +1,8 @@
 import { http, HttpResponse } from "msw";
 
-import { data } from "./mockData";
+import { BACKEND_URL } from "../shared/utils/url";
 
-export const url = `http://${import.meta.env.VITE_GATEWAY_HOST}:${import.meta.env.VITE_GATEWAY_PORT}`;
+import { data } from "./mockData";
 
 const userSettingsEndpoint = "/user/settings";
 const cardsEndpoint = `/cards`;
@@ -10,16 +10,16 @@ const decksEndpoint = `/decks`;
 
 export const handlers = [
   // cards
-  http.get(cardsEndpoint, () => {
+  http.get(BACKEND_URL + cardsEndpoint, () => {
     return HttpResponse.json(data.cards);
   }),
 
-  http.get(cardsEndpoint + "/:id", ({ params }) => {
+  http.get(BACKEND_URL + cardsEndpoint + "/:id", ({ params }) => {
     const response = data.cards.find((item) => item.card_id === params.id);
     return HttpResponse.json(response);
   }),
 
-  http.post(cardsEndpoint, async ({ request }) => {
+  http.post(BACKEND_URL + cardsEndpoint, async ({ request }) => {
     const info = await request.formData();
     console.log("*POST* Card: ", info);
     return new HttpResponse(null, {
@@ -28,18 +28,21 @@ export const handlers = [
     });
   }),
 
-  http.put(cardsEndpoint + "/:id", async ({ request, params }) => {
-    const { id } = params;
-    const updatedCard = await request.json();
-    console.log("*PUT* Card: ", id, "Updated card:", updatedCard);
+  http.put(
+    BACKEND_URL + cardsEndpoint + "/:id",
+    async ({ request, params }) => {
+      const { id } = params;
+      const updatedCard = await request.json();
+      console.log("*PUT* Card: ", id, "Updated card:", updatedCard);
 
-    return new HttpResponse(null, {
-      status: 201,
-      statusText: "Updated successfully",
-    });
-  }),
+      return new HttpResponse(null, {
+        status: 201,
+        statusText: "Updated successfully",
+      });
+    },
+  ),
 
-  http.delete(cardsEndpoint + "/:id", ({ params }) => {
+  http.delete(BACKEND_URL + cardsEndpoint + "/:id", ({ params }) => {
     const { id } = params;
     console.log("*DELETE* Card: ", id);
     return new HttpResponse(null, {
@@ -50,16 +53,16 @@ export const handlers = [
 
   //decks
 
-  http.get(decksEndpoint, () => {
+  http.get(BACKEND_URL + decksEndpoint, () => {
     return HttpResponse.json(data.decks);
   }),
 
-  http.get(decksEndpoint + "/:id", ({ params }) => {
+  http.get(BACKEND_URL + decksEndpoint + "/:id", ({ params }) => {
     const response = data.decks.find((item) => item.deck_id === params.id);
     return HttpResponse.json(response);
   }),
 
-  http.post(decksEndpoint, async ({ request }) => {
+  http.post(BACKEND_URL + decksEndpoint, async ({ request }) => {
     const info = await request.formData();
     console.log("*POST* Deck: ", info);
     return new HttpResponse(null, {
@@ -68,18 +71,21 @@ export const handlers = [
     });
   }),
 
-  http.put(decksEndpoint + "/:id", async ({ request, params }) => {
-    const { id } = params;
-    const updatedDeck = await request.json();
-    console.log("*PUT* Deck: ", id, "Updated deck:", updatedDeck);
+  http.put(
+    BACKEND_URL + decksEndpoint + "/:id",
+    async ({ request, params }) => {
+      const { id } = params;
+      const updatedDeck = await request.json();
+      console.log("*PUT* Deck: ", id, "Updated deck:", updatedDeck);
 
-    return new HttpResponse(null, {
-      status: 201,
-      statusText: "Updated successfully",
-    });
-  }),
+      return new HttpResponse(null, {
+        status: 201,
+        statusText: "Updated successfully",
+      });
+    },
+  ),
 
-  http.delete(decksEndpoint + "/:id", ({ params }) => {
+  http.delete(BACKEND_URL + decksEndpoint + "/:id", ({ params }) => {
     const { id } = params;
     console.log("*DELETE* Deck: ", id);
     return new HttpResponse(null, {
@@ -90,7 +96,7 @@ export const handlers = [
 
   //user
 
-  http.get(userSettingsEndpoint, () => {
+  http.get(BACKEND_URL + userSettingsEndpoint, () => {
     return HttpResponse.json(data.settings);
   }),
 ];

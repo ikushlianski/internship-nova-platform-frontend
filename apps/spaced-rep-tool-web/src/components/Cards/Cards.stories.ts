@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { data } from "../../mocks/mockData";
-import { colNames } from "../../shared/utils/cards";
+import { COL_NAMES } from "../../shared/utils/cards/constants";
 
 import { Cards } from "./Cards.component";
 
@@ -21,6 +21,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     cards: data.cards,
-    colNames,
+    colNames: COL_NAMES,
   },
 };

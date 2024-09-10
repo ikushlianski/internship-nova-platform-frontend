@@ -10,7 +10,9 @@
     "./select": "./src/select.tsx",
     "./carousel": "./src/Carousel/Carousel.component.tsx",
     "./card": "./src/Card/Card.component.tsx",
-    "./appButton": "./src/AppButton/AppButton.component.tsx"
+    "./appButton": "./src/AppButton/AppButton.component.tsx",
+    "./toast": "./src/Toast/Toast.component.tsx",
+    "./error": "./src/Error/Error.component.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

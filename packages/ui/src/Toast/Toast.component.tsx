@@ -1,8 +1,5 @@
-import React, { ReactNode, useMemo, useState } from "react";
-import ErrorIcon from "@mui/icons-material/Error";
-import DangerousIcon from "@mui/icons-material/Dangerous";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CloseIcon from "@mui/icons-material/Close";
+import { ReactNode, useMemo, useState } from "react";
+import { MailCheck, X, CircleAlert, CircleX } from "lucide-react";
 import { ToastContext } from "./ToastContext";
 
 export interface ToastProps {
@@ -13,9 +10,9 @@ export interface ToastProps {
 
 export default function Toast({ children, type, close }: ToastProps) {
   const iconMap = {
-    success: <CheckCircleIcon color="success" fontSize="inherit" />,
-    warning: <ErrorIcon color="warning" fontSize="inherit" />,
-    error: <DangerousIcon color="error" fontSize="inherit" />,
+    success: <MailCheck color="green" size={40} />,
+    warning: <CircleX color="red" fontSize="inherit" size={40} />,
+    error: <CircleAlert color="orange" fontSize="inherit" size={40} />,
   };
 
   const toastIcon = iconMap[type] || null;
@@ -29,7 +26,7 @@ export default function Toast({ children, type, close }: ToastProps) {
         className="absolute top-2 right-2 cursor-pointer"
         onClick={() => close()}
       >
-        <CloseIcon color="action" />
+        <X color="black" />
       </div>
     </div>
   );

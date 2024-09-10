@@ -15,7 +15,7 @@
     "./error": "./src/Error/Error.component.tsx"
   },
   "scripts": {
-    "lint": "eslint --fix --ext .js,.jsx .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx . --max-warnings=0",
     "generate:component": "turbo gen react-component",
     "test": "vitest run",
     "test:watch": "vitest --watch",
@@ -41,6 +41,7 @@
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
     "eslint": "^8.57.0",
     "eslint-plugin-storybook": "^0.8.0",
     "storybook": "^8.2.9",

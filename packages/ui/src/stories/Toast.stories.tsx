@@ -1,10 +1,9 @@
-import React from "react";
-import { Meta, StoryFn } from "@storybook/react";
-import { useToast } from "./../Toast/ToastContext";
-import Toast, { ToastProps, ToastProvider } from "./../Toast/Toast.component";
+import { Meta, StoryFn } from '@storybook/react';
+import { useToast } from '@/Toast/ToastContext';
+import Toast, { ToastProps, ToastProvider } from './../Toast/Toast.component';
 
 export default {
-  title: "Components/Toast",
+  title: 'Components/Toast',
   component: Toast,
   decorators: [
     (Story) => (
@@ -22,19 +21,19 @@ const Template: StoryFn<ToastProps> = () => {
     <div className="flex flex-col justify-center items-center min-h-screen space-y-4">
       <button
         className="p-2 bg-green-500 text-white rounded"
-        onClick={() => create("This is a success message!", "success")}
+        onClick={() => create('This is a success message!', 'success')}
       >
         Show Success Toast
       </button>
       <button
         className="p-2 bg-yellow-500 text-white rounded"
-        onClick={() => create("This is a warning message!", "warning")}
+        onClick={() => create('This is a warning message!', 'warning')}
       >
         Show Warning Toast
       </button>
       <button
         className="p-2 bg-red-500 text-white rounded"
-        onClick={() => create("This is an error message!", "error")}
+        onClick={() => create('This is an error message!', 'error')}
       >
         Show Error Toast
       </button>
@@ -44,7 +43,7 @@ const Template: StoryFn<ToastProps> = () => {
 
 export const Default = Template.bind({});
 Default.args = {
-  type: "success",
-  children: "This is a default success toast!",
-  close: () => alert("Toast closed!"),
+  type: 'success',
+  children: 'This is a default success toast!',
+  close: () => alert('Toast closed!'),
 };

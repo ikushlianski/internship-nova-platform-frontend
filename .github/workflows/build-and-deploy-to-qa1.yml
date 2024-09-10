@@ -32,24 +32,24 @@ jobs:
       - name: Build the project
         run: npx turbo build --continue
       
-      - name: Archive production artifacts admin-portal
-        uses: actions/upload-artifact@v4
-        with:
-          name: admin-portal
-          path: |
-            apps/admin-portal/dist
-      - name: Archive production artifacts spaced-rep-tool-mobile
-        uses: actions/upload-artifact@v4
-        with:
-          name: spaced-rep-tool-mobile
-          path: |
-            apps/spaced-rep-tool-mobile/dist
-      - name: Archive production artifacts spaced-rep-tool-web
-        uses: actions/upload-artifact@v4
-        with:
-          name: spaced-rep-tool-web
-          path: |
-            apps/spaced-rep-tool-web/dist
+      # - name: Archive production artifacts admin-portal
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: admin-portal
+      #     path: |
+      #       apps/admin-portal/dist
+      # - name: Archive production artifacts spaced-rep-tool-mobile
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: spaced-rep-tool-mobile
+      #     path: |
+      #       apps/spaced-rep-tool-mobile/dist
+      # - name: Archive production artifacts spaced-rep-tool-web
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: spaced-rep-tool-web
+      #     path: |
+      #       apps/spaced-rep-tool-web/dist
       - name: Copy all modules nova-english-marketing-website
         run: |
           cp -r node_modules/ apps/nova-english-marketing-website/

@@ -25,7 +25,6 @@ export function getPrimaryRole(user: IUser): string {
 }
 
 //Function for gettin data from `entities.json` file
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getDataForResource = (resource: string): any[] => {
     switch (resource) {
         case 'users':
@@ -54,7 +53,6 @@ export const getDataForResource = (resource: string): any[] => {
 }
 
 //Function for "UpdateMany "to update data in the `entities.json` file
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const updateResourceData = (resource: string, updatedData: any[]): void => {
     switch (resource) {
         case 'users':
@@ -92,7 +90,6 @@ export const updateResourceData = (resource: string, updatedData: any[]): void =
     }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const generateNewId = (data: any[]): number => {
     return data.length ? Math.max(...data.map(item => item.id)) + 1 : 1;
 };

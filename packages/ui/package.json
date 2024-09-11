@@ -12,7 +12,7 @@
     "./card": "./src/Card/Card.component.tsx",
     "./appButton": "./src/AppButton/AppButton.component.tsx",
     "./toast": "./src/Toast/Toast.component.tsx",
-    "./error": "./src/Error/Error.component.tsx"
+    "./error": "./src/error/Error.component.tsx"
   },
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx . --max-warnings=0",

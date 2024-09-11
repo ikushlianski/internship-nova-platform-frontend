@@ -10,7 +10,7 @@ export const pathnames = {
 
 export const routing = defineRouting({
   locales,
-  defaultLocale: 'en',
+  defaultLocale: 'ru',
   domains: [
     {
       domain: 'novaenglish.by',

@@ -26,7 +26,8 @@
     "baseUrl": "./",
     "paths": {
       "@repo/ui/*": ["../../packages/ui/src/*"],
-      "@repo/shared-types/*": ["../../packages/shared-types/src/*"]
+      "@repo/shared-types/*": ["../../packages/shared-types/src/*"],
+      "../../packages/ui/src/error/error.component": ["../../packages/ui/src/error/error.component"]
     }
   },
   "include": ["src", "**/*.ts", "**/*.tsx", "tailwind.config.js"]

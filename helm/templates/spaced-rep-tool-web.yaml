@@ -52,7 +52,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           workingDir: /usr/src/server/             ############################## REWORK!!!!!
           command: ["npm"]
-          args: ["run", "dev"]
+          args: ["run", "dev", "--", "--host"]
           env:          
             - name: "GATEWAY_HOST"
               value: "nova-api-gateway-service.{{.Release.Namespace}}.svc.cluster.local"

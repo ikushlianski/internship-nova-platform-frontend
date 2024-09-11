@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import axios from 'axios'
-import { NavLink } from 'react-router-dom'
-import PagePhoto from '../../assets/man-and-woman-in-gadgets.svg'
+import { useState } from "react";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
+import PagePhoto from "../../assets/man-and-woman-in-gadgets.svg";
 
 const SignUpPage = () => {
-  const [privacyAccepted, setPrivacyAccepted] = useState(false)
-  const [error, setError] = useState('')
-  const [success] = useState('')
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [error, setError] = useState("");
+  const [success] = useState("");
 
   const handleGoogleAuth = async () => {
     //privacy policy validation
     if (!privacyAccepted) {
-      setError('Пожалуйста, примите политику конфиденциальности.')
-      return
+      setError("Пожалуйста, примите политику конфиденциальности.");
+      return;
     }
 
     try {
       // send data to backend
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_HOST}/auth/google/callback`,
-        { privacyAccepted }
-      )
+        { privacyAccepted },
+      );
 
       //redirect user to some URL, that ill get on FrontEnd
       if (response.data.redirectUrl) {
-        window.location.href = response.data.redirectUrl
+        window.location.href = response.data.redirectUrl;
       }
     } catch (err) {
-      setError('Ошибка при отправке запроса. Попробуйте снова.')
+      console.error(error);
+      setError("Ошибка при отправке запроса. Попробуйте снова.");
     }
-  }
+  };
 
   return (
     <div className="flex h-screen w-screen overflow-hidden">
@@ -65,7 +66,7 @@ const SignUpPage = () => {
               className="mr-2"
             />
             <label>
-              Я принимаю условия{' '}
+              Я принимаю условия{" "}
               <NavLink to="/privacy-policy" className="text-gray-700 underline">
                 Политики конфиденциальности
               </NavLink>
@@ -82,7 +83,7 @@ const SignUpPage = () => {
           </div>
 
           <p className="text-center mt-4">
-            Уже есть аккаунт?{' '}
+            Уже есть аккаунт?{" "}
             <NavLink to="/login" className="underline">
               Войдите
             </NavLink>
@@ -90,7 +91,7 @@ const SignUpPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignUpPage
+export default SignUpPage;

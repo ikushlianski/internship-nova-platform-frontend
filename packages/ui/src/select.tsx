@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import {
   Select,
   SelectContent,
@@ -17,12 +17,7 @@ interface SelectProps {
   props: prop[];
 }
 
-export const SelectComponent = ({
-  classNameSelect,
-  appName,
-  type = 'select',
-  props,
-}: SelectProps) => {
+export const SelectComponent = ({ classNameSelect, type = 'select', props }: SelectProps) => {
   const [selectedProp, setSelectedProp] = useState(props[0]);
 
   return (

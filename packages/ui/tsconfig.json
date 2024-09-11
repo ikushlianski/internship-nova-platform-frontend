@@ -3,6 +3,7 @@
   "compilerOptions": {
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "target": "ES2022",
     "outDir": "dist",
     "paths": {
       "@/*": [
@@ -11,7 +12,7 @@
     }
   },
   "include": [
-    "src",
+    "src"
   ],
   "exclude": [
     "node_modules",

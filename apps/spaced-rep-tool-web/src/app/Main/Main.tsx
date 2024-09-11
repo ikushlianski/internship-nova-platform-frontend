@@ -1,3 +1,3 @@
 export const Main = () => {
-  return <></>;
+  return <>This is the main page!</>;
 };

@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { Cards } from "../../components/Cards/Cards.component";
-import { getCards } from "../../shared/utils/cards/cards";
-import { BACKEND_URL } from "../../shared/utils/url";
-import { COL_NAMES } from "../../shared/utils/cards/constants";
+import { Cards } from '../../components/Cards/Cards.component';
+import { getCards } from '../../shared/utils/cards/cards';
+import { BACKEND_URL } from '../../shared/utils/url';
+import { COL_NAMES } from '../../shared/utils/cards/constants';
 
 export const CardsPage = () => {
   const [cards, setCards] = useState([]);

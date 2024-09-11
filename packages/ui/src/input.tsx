@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { Input } from './components/ui/input';
 import { SelectComponent } from './select';
 
@@ -47,9 +47,7 @@ export const InputComponent = ({
       <Input
         type={type}
         placeholder={placeholder}
-        className={`${classNameInput} border-0 outline-none ${
-          inputValue ? 'bg-secondary' : ''
-        }`}
+        className={`${classNameInput} border-0 outline-none ${inputValue ? 'bg-secondary' : ''}`}
         onChange={(event) => setInputValue(event.target.value)}
       ></Input>
     </div>

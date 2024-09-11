@@ -32,7 +32,7 @@ spec:
       initContainers:
       - name: {{ .Chart.Name }}-npm-ci
         image: busybox:latest
-        workingDir: /usr/share/nginx/html/                 ############################## REWORK!!!!!
+        workingDir: /usr/src/server/                  ############################## REWORK!!!!!
         # workingDir: {{ .Values.workingDir }}      ############################## REWORK!!!!!
         command: ["/bin/sh"]
         args:
@@ -43,14 +43,16 @@ spec:
               rm spaced-rep-tool-web.zip
         volumeMounts:                       ############################## REWORK!!!!!
         - name: nova-{{ $platform_name }}              ############################## REWORK!!!!!
-          mountPath: "/usr/share/nginx/html/"     ############################## REWORK!!!!!
+          mountPath: "/usr/src/server/"     ############################## REWORK!!!!!
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: nginx:latest            ############################## REWORK!!!!!
+          image: node:22            ############################## REWORK!!!!!
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          workingDir: /usr/share/nginx/html/              ############################## REWORK!!!!!
+          workingDir: /usr/src/server/             ############################## REWORK!!!!!
+          command: ["npm"]
+          args: ["run", "dev"]
           env:          
             - name: "GATEWAY_HOST"
               value: "nova-api-gateway-service.{{.Release.Namespace}}.svc.cluster.local"
@@ -60,7 +62,7 @@ spec:
           # args: ["run", "vite", "preview"]
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8000
               protocol: TCP
           livenessProbe:
             null
@@ -70,7 +72,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:                       ############################## REWORK!!!!!
           - name: nova-{{ $platform_name }}               ############################## REWORK!!!!!
-            mountPath: "/usr/share/nginx/html/"     ############################## REWORK!!!!!
+            mountPath: "/usr/src/server/"     ############################## REWORK!!!!!
 
       volumes:                              ############################## REWORK!!!!!
       - name: nova-{{ $platform_name }}         ############################## REWORK!!!!!

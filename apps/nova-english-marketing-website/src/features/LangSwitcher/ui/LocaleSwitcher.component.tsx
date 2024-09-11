@@ -6,13 +6,17 @@ export default function LocaleSwitcher() {
   const t = useTranslations('locale_switcher');
   const locale = useLocale();
 
+  const isLocaleSelectable = locales.length > 1;
+
   return (
-    <LocaleSwitcherSelect defaultValue={locale} label={t('label')}>
-      {locales.map((cur) => (
-        <option key={cur} value={cur}>
-          {t('locale', { locale: cur })}
-        </option>
-      ))}
-    </LocaleSwitcherSelect>
+    isLocaleSelectable && (
+      <LocaleSwitcherSelect defaultValue={locale} label={t('label')}>
+        {locales.map((cur) => (
+          <option key={cur} value={cur}>
+            {t('locale', { locale: cur })}
+          </option>
+        ))}
+      </LocaleSwitcherSelect>
+    )
   );
 }

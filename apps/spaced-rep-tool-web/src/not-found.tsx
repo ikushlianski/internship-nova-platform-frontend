@@ -1,9 +1,9 @@
-import { ErrorContainer, ErrorMessage, ErrorDescription } from '@repo/ui/error';
+//import { ErrorContainer, ErrorMessage, ErrorDescription } from '@repo/ui/error';
 
 export default function NotFound() {
   return (
     <>
-      <ErrorContainer className="gap-4 mt-0 m-auto">
+      {/* <ErrorContainer className="gap-4 mt-0 m-auto">
         <svg
           width="580"
           height="520"
@@ -497,7 +497,7 @@ export default function NotFound() {
             Main Page
           </a>
         </center>
-      </ErrorContainer>
+      </ErrorContainer> */}
     </>
   );
 }

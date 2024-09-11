@@ -1,0 +1,131 @@
+{{ $platform_name := "admin-portal"}}
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nova-front.fullname" . }}-{{ $platform_name }}
+  labels:
+    app: {{ include "nova-front.fullname" . }}-{{ $platform_name }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app: {{ include "nova-front.fullname" . }}-{{ $platform_name }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        app: {{ include "nova-front.fullname" . }}-{{ $platform_name }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "nova-front.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+      - name: {{ .Chart.Name }}-npm-ci
+        image: busybox:latest
+        workingDir: /usr/share/nginx/html/                 ############################## REWORK!!!!!
+        # workingDir: {{ .Values.workingDir }}      ############################## REWORK!!!!!
+        command: ["/bin/sh"]
+        args:
+          - -c
+          - >-
+              wget http://nginx-static-files.nova-dev.svc.cluster.local/admin-portal.zip &&
+              unzip -o admin-portal.zip &&
+              rm admin-portal.zip
+        volumeMounts:                       ############################## REWORK!!!!!
+        - name: nova-{{ $platform_name }}              ############################## REWORK!!!!!
+          mountPath: "/usr/share/nginx/html/"     ############################## REWORK!!!!!
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: nginx:latest            ############################## REWORK!!!!!
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          workingDir: /usr/share/nginx/html/              ############################## REWORK!!!!!
+          env:          
+            - name: "GATEWAY_HOST"
+              value: "nova-api-gateway-service.{{.Release.Namespace}}.svc.cluster.local"
+            - name: "NEXT_PUBLIC_API_V1_URL"
+              value: "http://{{ .Values.application_environment }}.admin.{{ .Values.domain_name }}/api/v1/" ### make variables for it
+          # command: ["npm"]
+          # args: ["run", "vite", "preview"]
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            null
+          readinessProbe:
+            null
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:                       ############################## REWORK!!!!!
+          - name: nova-{{ $platform_name }}               ############################## REWORK!!!!!
+            mountPath: "/usr/share/nginx/html/"     ############################## REWORK!!!!!
+
+      volumes:                              ############################## REWORK!!!!!
+      - name: nova-{{ $platform_name }}         ############################## REWORK!!!!!
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nova-front.fullname" . }}-{{ $platform_name }}-service
+  labels:
+    app: {{ include "nova-front.fullname" . }}-{{ $platform_name }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ include "nova-front.fullname" . }}-{{ $platform_name }}
+---
+{{ $platform_name := "admin-portal"}}
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "nova-front.fullname" . }}-{{ $platform_name }}-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - {{ .Values.application_environment }}.admin.{{ .Values.domain_name }}
+      secretName: qa1-admin-novaenglish-by-tls
+  rules:
+  - host: {{ .Values.application_environment }}.admin.{{ .Values.domain_name }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ include "nova-front.fullname" . }}-{{ $platform_name }}-service
+            port:
+              number: 80

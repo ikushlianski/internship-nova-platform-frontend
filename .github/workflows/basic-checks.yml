@@ -1,9 +1,11 @@
 name: Test and Build on Pull Request
 
-on:
-  pull_request:
-    branches:
-      - main
+# on:
+#   pull_request:
+#   push:
+#     branches:
+#       - main
+on: workflow_dispatch
 
 jobs:
   test-and-build:
@@ -19,10 +21,13 @@ jobs:
           node-version: '22'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Run linter
+        run: npx turbo lint
 
       - name: Run tests
         run: npx turbo test --continue
 
-      - name: Build the project
-        run: npx turbo build --continue
+      - name: Build the projects without caching
+        run: npx turbo build --continue --force

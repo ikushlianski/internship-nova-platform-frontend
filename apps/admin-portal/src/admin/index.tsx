@@ -6,9 +6,10 @@ import {
   ShowGuesser,
 } from "react-admin";
 import dataProvider from "../mocks/dataProvider";
+import NotFound from "../not-found.tsx";
 
 const App = () => (
-  <Admin dataProvider={dataProvider}>
+  <Admin dataProvider={dataProvider} catchAll={NotFound}>
     <Resource
       name="users"
       list={ListGuesser}

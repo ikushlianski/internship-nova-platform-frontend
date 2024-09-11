@@ -13,10 +13,20 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "@repo/shared-types": "*",
+    "@shadcn/ui": "^0.0.4",
     "babel-plugin-react-compiler": "^0.0.0-experimental-334f00b-20240725",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.2.0",
+    "lucide-react": "^0.429.0",
     "next": "14.2.5",
+    "next-transpile-modules": "^10.0.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.7.0",
@@ -28,6 +38,7 @@
     "@storybook/nextjs": "^8.2.9",
     "@storybook/react": "^8.2.9",
     "@storybook/test": "^8.2.9",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",

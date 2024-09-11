@@ -33,18 +33,20 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
+
+
+## Tailwind shadcn/ui
+
+When implement color styles  of component  it is better to use colors in HSL color scheme.
+
+
+
 ## Running Storybook
 
 To start Storybook in development mode, run the following command:
 
 ```bash
 npm run storybook
-# or
-yarn storybook
-# or
-pnpm storybook
-# or
-bun storybook.
 ```
 
 ## Building Storybook
@@ -53,10 +55,4 @@ To create a static build of your Storybook for deployment, use the following com
 
 ```bash
 npm run build-storybook
-# or
-yarn build-storybook
-# or
-pnpm build-storybook
-# or
-bun build-storybook
 ```

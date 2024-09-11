@@ -7,9 +7,9 @@ export default function SideMenuLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const noMenuRoutes = ["/login", "/logout"];
   return (
-    <>
+    <div className="flex">
       {!noMenuRoutes.includes(pathname) && <SideMenu />}
       {children}
-    </>
+    </div>
   );
 }

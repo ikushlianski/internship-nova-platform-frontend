@@ -1,11 +1,11 @@
 import { Title } from 'react-admin';
-//import { ErrorContainer, ErrorDescription, ErrorMessage } from '@repo/ui/error';
+import { ErrorContainer, ErrorDescription, ErrorMessage } from '@repo/ui/error';
 
 export default function NotFound() {
   return (
     <>
       <Title title="Not Found" defaultTitle="Not Found" />
-      {/* <ErrorContainer className="gap-4 mt-0 m-auto">
+      <ErrorContainer className="gap-4 mt-0 m-auto">
         <svg
           width="580"
           height="520"
@@ -499,7 +499,7 @@ export default function NotFound() {
             Main Page
           </a>
         </center>
-      </ErrorContainer> */}
+      </ErrorContainer>
     </>
   );
 }

@@ -1,18 +1,26 @@
-import { useEffect, useState } from 'react';
-
 import { Cards } from '../../components/Cards/Cards.component';
-import { getCards } from '../../shared/utils/cards/cards';
 import { BACKEND_URL } from '../../shared/utils/url';
 import { COL_NAMES } from '../../shared/utils/cards/constants';
+import { useQuery } from '@tanstack/react-query';
 
 export const CardsPage = () => {
-  const [cards, setCards] = useState([]);
+  const { isPending, isFetching, error, data } = useQuery({
+    queryKey: ['cardsData'],
+    queryFn: async () => {
+      const response = await fetch(`${BACKEND_URL}/cards`);
+      return await response.json();
+    },
+  });
 
-  useEffect(() => {
-    getCards(BACKEND_URL).then((data) => {
-      setCards(data);
-    });
-  }, []);
+  // loader goes here
+  if (isPending) return 'Loading...';
 
-  return <Cards cards={cards} colNames={COL_NAMES} />;
+  if (error) return 'An error has occurred: ' + error.message;
+
+  return (
+    <>
+      <Cards cards={data} colNames={COL_NAMES} />
+      <div>{isFetching ? 'Updating...' : ''}</div>
+    </>
+  );
 };

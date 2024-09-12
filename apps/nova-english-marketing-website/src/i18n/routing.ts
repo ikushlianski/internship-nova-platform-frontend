@@ -5,7 +5,6 @@ export const locales = ['en', 'ru'];
 
 export const pathnames = {
   '/': '/',
-  '/class/[class-title]': 'class/{class-title}',
 };
 
 export const routing = defineRouting({

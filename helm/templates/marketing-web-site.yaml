@@ -44,6 +44,7 @@ spec:
           - >-
               wget http://nginx-static-files.nova-dev.svc.cluster.local/{{.Release.Namespace}}/nova-english-marketing-website.zip &&
               unzip -o nova-english-marketing-website.zip &&
+              rm nova-english-marketing-website.zip &&
               chmod +x -R node_modules/ 
         volumeMounts:                       ############################## REWORK!!!!!
         - name: nova-{{ $front_name }}         ############################## REWORK!!!!!

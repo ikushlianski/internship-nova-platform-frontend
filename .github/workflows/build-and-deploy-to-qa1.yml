@@ -66,6 +66,10 @@ jobs:
           key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
           source: "nova-english-marketing-website.zip"
           target: /usr/share/nginx/html/nova-qa1/
+      - name: clean-up nova-english-marketing-website
+        run: |
+          rm -f nova-english-marketing-website.zip
+          rm -f -r apps/nova-english-marketing-website/node_modules/
 
       - name: Copy all modules student-platform
         run: |
@@ -83,6 +87,10 @@ jobs:
           key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
           source: "student-platform.zip"
           target: /usr/share/nginx/html/nova-qa1/
+      - name: clean-up student-platform
+        run: |
+          rm -f student-platform.zip
+          rm -f -r apps/student-platform/node_modules/
 
       # - name: Copy all modules spaced-rep-tool-web
       #   run: |

@@ -11,7 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@repo/ui/carousel';
-import { ErrorComponent } from '@repo/ui/reactErrorComponent';
+import { ErrorComponent } from '@repo/ui/error';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';

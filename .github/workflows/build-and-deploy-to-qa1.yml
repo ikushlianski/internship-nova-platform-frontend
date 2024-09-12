@@ -84,13 +84,13 @@ jobs:
           source: "student-platform.zip"
           target: /usr/share/nginx/html/nova-qa1/
 
-      - name: Copy all modules spaced-rep-tool-web
-        run: |
-          cp -r node_modules/ apps/spaced-rep-tool-web/
+      # - name: Copy all modules spaced-rep-tool-web
+      #   run: |
+      #     cp -r node_modules/ apps/spaced-rep-tool-web/
       - name: zip spaced-rep-tool-web
-        working-directory: ./apps/spaced-rep-tool-web
+        # working-directory: ./apps/spaced-rep-tool-web
         run: |
-          zip -r -y ../../spaced-rep-tool-web.zip *
+          zip -r -y spaced-rep-tool-web.zip *
       - name: Push spaced-rep-tool-web.zip via ssh 
         uses: appleboy/scp-action@v0.1.7
         with:

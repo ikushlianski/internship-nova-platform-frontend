@@ -1,16 +1,14 @@
-'use client';
-
-// Props for the ErrorComponent
+import { FC, ReactNode } from 'react';
 
 interface ErrorComponentProps {
   message: string; // The main error message
   description: string; // A description or additional information about the error
-  image?: string | React.ReactNode; // An optional image to display with the error
+  image?: string | ReactNode; // An optional image to display with the error
   className?: string; // Additional CSS class for styling
 }
 
 // ErrorComponent displays an error message with optional image and description
-export const ErrorComponent: React.FC<ErrorComponentProps> = ({
+export const ErrorComponent: FC<ErrorComponentProps> = ({
   message,
   description,
   image,
@@ -28,12 +26,12 @@ export const ErrorComponent: React.FC<ErrorComponentProps> = ({
 
 // Props for the ErrorContainer
 interface ErrorContainerProps {
-  children: React.ReactNode; // The content to display inside the container
+  children: ReactNode; // The content to display inside the container
   className?: string; // Additional CSS class for styling
 }
 
 // ErrorContainer is a container for displaying error messages
-export const ErrorContainer: React.FC<ErrorContainerProps> = ({ children, className }) => {
+export const ErrorContainer: FC<ErrorContainerProps> = ({ children, className }) => {
   return (
     <div
       className={`flex min-h-[200px] w-full flex-col items-center justify-center gap-6 rounded-lg bg-background p-6 shadow-sm md:min-h-[300px] ${className}`}
@@ -45,12 +43,12 @@ export const ErrorContainer: React.FC<ErrorContainerProps> = ({ children, classN
 
 // Props for the ErrorImage
 interface ErrorImageProps {
-  image?: string | React.ReactNode; // The image to display (either a string URL or a React component)
+  image?: string | ReactNode; // The image to display (either a string URL or a React component)
   className?: string; // Additional CSS class for styling
 }
 
 // ErrorImage displays an image for the error
-export const ErrorImage: React.FC<ErrorImageProps> = ({ image, className }) => {
+export const ErrorImage: FC<ErrorImageProps> = ({ image, className }) => {
   return (
     <div className={className}>
       {image && typeof image === 'string' ? (
@@ -84,7 +82,7 @@ interface ErrorDescriptionProps {
 }
 
 // ErrorDescription displays the description of the error
-export const ErrorDescription: React.FC<ErrorDescriptionProps> = ({ description, className }) => {
+export const ErrorDescription: FC<ErrorDescriptionProps> = ({ description, className }) => {
   return (
     <div className={className}>
       <p className="text-muted-foreground">{description}</p>
@@ -93,7 +91,7 @@ export const ErrorDescription: React.FC<ErrorDescriptionProps> = ({ description,
 };
 
 // ErrorLink displays a link to the homepage
-export const ErrorLink: React.FC = () => {
+export const ErrorLink: FC = () => {
   return (
     <div>
       <a

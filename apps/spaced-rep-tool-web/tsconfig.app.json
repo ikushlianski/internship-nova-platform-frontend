@@ -23,11 +23,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@packages/ui/*": ["../packages/ui/*"],
-      "@repo/ui/*": ["../packages/ui/*"]
+      "@repo/ui/*": ["../../packages/ui/src/*"],
+      "@repo/shared-types/*": ["../../packages/shared-types/src/*"]
     }
   },
-  "include": ["src", "tailwind.config.js"]
+  "include": ["src", "**/*.ts", "**/*.tsx", "tailwind.config.js"]
 }

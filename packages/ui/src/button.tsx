@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface ButtonProps {
   children?: ReactNode;
@@ -15,7 +15,6 @@ export const Button = ({
   children,
   classNameButton,
   classNameImage,
-  appName,
   imageLink,
   callback,
 }: ButtonProps) => {
@@ -25,13 +24,7 @@ export const Button = ({
       onClick={callback}
     >
       {children}
-      {imageLink && (
-        <img
-          src={imageLink}
-          alt="Button Icon"
-          className={`${classNameImage}`}
-        />
-      )}
+      {imageLink && <img src={imageLink} alt="Button Icon" className={`${classNameImage}`} />}
     </button>
   );
 };

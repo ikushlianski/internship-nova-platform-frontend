@@ -1,14 +1,31 @@
 /* eslint-disable no-unused-vars */
 
 export interface User {
-  email: string;
+  id: number
+  name: string
+  email?: string;
   roles: UserRole[];
+  studentId?: number
+  pathId?: number
+  teacherId?: number
+  adminId?: number
+  managerId?: number
+  salesId?: number
+  spectatorId?: number
+  noRoleId?: number
 }
 
 export enum UserRole {
-  Admin = 'Admin',
-  Manager = 'Manager',
-  Student = 'Student',
+  User = 'Users',
+  Student = 'Students',
+  Teacher = 'Teachers',
+  Path = 'Paths',
+  Class = 'Classes',
+  Admin = 'Admins',
+  Manager = 'Managers',
+  Spectator = 'Spectators',
   // People get this role when they sign up without buying a course
-  RegularUser = 'RegularUser',
+  NoRole = 'NoRoles',
+  Sale = 'Sales',
+  // RegularUser = 'RegularUser',
 }

@@ -1,18 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  Admin,
-  Resource,
-  ListGuesser,
-  EditGuesser,
-  ShowGuesser,
-  Layout,
-} from "react-admin";
-import dataProvider from "../mocks/dataProvider";
-import { InitNotification } from "../components/InitNotification";
-import { Button, Dialog, DialogTitle, DialogContent } from "@mui/material";
-import { useState } from "react";
-import UserCreateForm from "../components/UserCreateForm";
-import NotFound from "../not-found.tsx";
+import { Admin, Resource, ListGuesser, EditGuesser, ShowGuesser, Layout } from 'react-admin';
+import dataProvider from '../mocks/dataProvider';
+import { InitNotification } from '../components/InitNotification';
+import { Button, Dialog, DialogTitle, DialogContent } from '@mui/material';
+import { useState } from 'react';
+import UserCreateForm from '../components/UserCreateForm';
+import NotFound from '../not-found.tsx';
+import { UserRole as Role } from '@repo/shared-types/user';
 
 const CustomLayout = (props: any) => {
   const [open, setOpen] = useState(false);
@@ -32,10 +26,10 @@ const CustomLayout = (props: any) => {
       <Button
         onClick={handleOpen}
         style={{
-          position: "fixed",
+          position: 'fixed',
           right: 30,
           bottom: 30,
-          backgroundColor: "#CCC",
+          backgroundColor: '#CCC',
           zIndex: 2000,
         }}
       >
@@ -56,66 +50,15 @@ const App = () => {
     <>
       <InitNotification />
       <Admin dataProvider={dataProvider} layout={CustomLayout} catchAll={NotFound}>
-        <Resource
-          name="users"
-          list={ListGuesser}
-          edit={EditGuesser}
-          show={ShowGuesser}
-        />
-        <Resource
-          name="students"
-          list={ListGuesser}
-          edit={EditGuesser}
-          show={ShowGuesser}
-        />
-        <Resource
-          name="teachers"
-          list={ListGuesser}
-          edit={EditGuesser}
-          show={ShowGuesser}
-        />
-        <Resource
-          name="paths"
-          list={ListGuesser}
-          edit={EditGuesser}
-          show={ShowGuesser}
-        />
-        <Resource
-          name="classes"
-          list={ListGuesser}
-          edit={EditGuesser}
-          show={ShowGuesser}
-        />
-        <Resource
-          name="admins"
-          list={ListGuesser}
-          edit={EditGuesser}
-          show={ShowGuesser}
-        />
-        <Resource
-          name="managers"
-          list={ListGuesser}
-          edit={EditGuesser}
-          show={ShowGuesser}
-        />
-        <Resource
-          name="spectators"
-          list={ListGuesser}
-          edit={EditGuesser}
-          show={ShowGuesser}
-        />
-        <Resource
-          name="noRoles"
-          list={ListGuesser}
-          edit={EditGuesser}
-          show={ShowGuesser}
-        />
-        <Resource
-          name="sales"
-          list={ListGuesser}
-          edit={EditGuesser}
-          show={ShowGuesser}
-        />
+        {Object.values(Role).map((name) => (
+          <Resource
+            key={name}
+            name={name.charAt(0).toLowerCase() + name.slice(1)}
+            list={ListGuesser}
+            edit={EditGuesser}
+            show={ShowGuesser}
+          />
+        ))}
       </Admin>
     </>
   );

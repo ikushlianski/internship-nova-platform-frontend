@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { ROUTES } from '@sharedroutes/routes'
 import { Button } from '@componentsButton/Button'
-import { ErrorContainer, ErrorMessage, ErrorDescription } from '@repo/ui/reactErrorComponent'
+import { ErrorContainer, ErrorMessage, ErrorDescription } from '@repo/ui/error'
  
 export const metadata: Metadata = {
   title: '404 - Not Found',

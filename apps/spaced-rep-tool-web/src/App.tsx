@@ -5,12 +5,10 @@ import { RoutesEnum } from './utils/RoutesEnum';
 import { Main } from './app/Main/Main';
 import NotFound from './not-found';
 import SignIn from './features/SignIn/SignIn';
-import { Header } from 'components/Header/Header';
 
 function App() {
   return (
     <div>
-      <Header />
       <Routes>
         <Route index path={RoutesEnum.Main} element={<Main />} />
         <Route path={RoutesEnum.PrivacyPolicy} element={<PrivacyPolicy />} />

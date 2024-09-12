@@ -29,5 +29,5 @@
       "@repo/ui/*": ["../packages/ui/*"]
     }
   },
-  "include": ["src", "tailwind.config.js"]
+  "include": ["src", "tailwind.config.js", "src/mocks/i18n.ts"]
 }

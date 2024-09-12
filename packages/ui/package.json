@@ -2,9 +2,8 @@
 	"name": "@repo/ui",
 	"version": "0.0.0",
 	"private": true,
-	"rooDir": "./src/",
+	"rootDir": "./src/",
 	"exports": {
-    "./languageSwitcher": "./src/LanguageSwitcher/LanguageSwitcher.component.tsx",
 		"./button": "./src/button.tsx",
 		"./code": "./src/code.tsx",
 		"./input": "./src/input.tsx",

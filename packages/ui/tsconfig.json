@@ -13,7 +13,7 @@
   },
   "include": [
     "src"
-  ],
+, "../../apps/spaced-rep-tool-web/src/mocks/i18n.ts"  ],
   "exclude": [
     "node_modules",
     "dist"

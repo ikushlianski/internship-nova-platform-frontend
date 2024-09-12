@@ -1,3 +1,10 @@
+// import { Header } from '';
+
 export const Main = () => {
-  return <>This is the main page!</>;
+  return (
+    <>
+      {/* <Header /> */}
+      This is the main page!
+    </>
+  );
 };

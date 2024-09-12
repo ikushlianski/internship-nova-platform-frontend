@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App.tsx';
 import './globals.css';
-import './i18n';
+import './mocks/i18n.ts';
 
 async function enableMocking() {
   if (import.meta.env.VITE_API_MOCKING !== 'true') {

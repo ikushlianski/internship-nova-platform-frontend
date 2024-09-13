@@ -2,6 +2,7 @@ name: Test and Build on Pull Request
 
 on:
   pull_request:
+  push:
     branches:
       - main
 
@@ -16,13 +17,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm i
+
+      - name: Run linter
+        run: npx turbo lint
 
       - name: Run tests
         run: npx turbo test --continue
 
-      - name: Build the project
-        run: npx turbo build --continue
+      - name: Build the projects without caching
+        run: npx turbo build --continue --force

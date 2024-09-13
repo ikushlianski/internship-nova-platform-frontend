@@ -1,8 +1,16 @@
 {
+  "ignorePatterns": ["tailwind.config.js", "postcss.config.js", "*.config.js"],
   "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "outDir": "dist",
+    "rootDir": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src/**/*", "packages/ui/**/*", "storybook-static/**/*", "turbo/generators/**/*"],
   "exclude": ["node_modules", "dist"]
 }

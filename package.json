@@ -5,14 +5,13 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky"
   },
   "devDependencies": {
     "husky": "^9.1.5",
     "lint-staged": "^15.2.9",
     "prettier": "^3.2.5",
-    "turbo": "^2.0.9",
+    "turbo": "^2.1.1",
     "typescript": "^5.4.5"
   },
   "engines": {
@@ -27,7 +26,8 @@
     "vitest": "^2.0.5"
   },
   "lint-staged": {
-    "*.ts": "--max-warnings=0",
-    "*.tsx": "--max-warnings=0"
+    "**/*.{ts,tsx}": [
+      "eslint"
+    ]
   }
 }

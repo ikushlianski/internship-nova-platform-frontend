@@ -108,6 +108,25 @@ jobs:
           key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
           source: "spaced-rep-tool-web.zip"
           target: /usr/share/nginx/html/nova-qa1/
+      - name: clean-up spaced-rep-tool-web
+        run: |
+          rm -f spaced-rep-tool-web.zip
+
+      - name: zip admin-portal
+        run: |
+          zip -r -y admin-portal.zip *
+      - name: Push admin-portal.zip via ssh 
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST_FOR_UPLOAD }}
+          username: ${{ secrets.USERNAME_FOR_UPLOAD }}
+          port: ${{ secrets.PORT_FOR_UPLOAD }}
+          key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
+          source: "admin-portal.zip"
+          target: /usr/share/nginx/html/nova-qa1/
+      - name: clean-up admin-portal
+        run: |
+          rm -f admin-portal.zip
 
       - name: Update build hash in values.yaml    
         uses: fjogeleit/yaml-update-action@main

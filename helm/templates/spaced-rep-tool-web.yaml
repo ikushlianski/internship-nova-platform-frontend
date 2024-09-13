@@ -58,7 +58,7 @@ spec:
           env:          
             - name: "GATEWAY_HOST"
               value: "nova-api-gateway-service.{{.Release.Namespace}}.svc.cluster.local"
-            - name: "NEXT_PUBLIC_API_V1_URL"
+            - name: "VITE_API_V1_URL"
               value: "http://{{ .Values.application_environment }}.memo.{{ .Values.domain_name }}/api/v1/" ### make variables for it
           # command: ["npm"]
           # args: ["run", "vite", "preview"]

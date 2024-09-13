@@ -17,7 +17,7 @@ import { ISales } from "../types/Sales";
 import { ISpectator } from "../types/Spectator";
 import { INoRole } from "../types/NoRole";
 
-type ResourceTypes = IUser | IStudent | ITeacher | IAdmin | IManager | ISales | ISpectator | INoRole;
+type UserRoles = IUser | IStudent | ITeacher | IAdmin | IManager | ISales | ISpectator | INoRole;
 
 const dataProvider: DataProvider = {
   getList: async (resource, params) => {
@@ -58,7 +58,6 @@ const dataProvider: DataProvider = {
     if (items.length === 0) {
       throw new Error(`No resources found for IDs: ${params.ids.join(', ')}`);
     }
-
     return {
       data: items,
     };
@@ -114,7 +113,7 @@ const dataProvider: DataProvider = {
     };
   },
 
-  create: async <T extends Omit<ResourceTypes, "id">>(resource: string, params: CreateParams<T>): Promise<CreateResult<T & { id: Identifier }>> => {
+  create: async <T extends Omit<UserRoles, "id">>(resource: string, params: CreateParams<T>): Promise<CreateResult<T & { id: Identifier }>> => {
     const data = getDataForResource(resource);
     const newId = generateNewId(data);
     const newItem = { id: newId, ...params.data } as T & { id: Identifier };
@@ -134,17 +133,12 @@ const dataProvider: DataProvider = {
       throw new Error(`Resource ${resource} with ID ${params.id} not found`);
     }
 
-    // Обновить запись с указанным id
     const updatedItem = { ...data[itemIndex], ...params.data };
-
-    // Обновить массив данных с новыми значениями
     const updatedData = [
       ...data.slice(0, itemIndex),
       updatedItem,
       ...data.slice(itemIndex + 1),
     ];
-
-    // Сохранить обновленные данные в ресурс
     updateResourceData(resource, updatedData);
 
     return {

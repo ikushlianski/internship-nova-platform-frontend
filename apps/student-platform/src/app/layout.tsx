@@ -3,6 +3,7 @@ import { Manrope } from 'next/font/google';
 import './globals.css';
 import SideMenuLayout from '@/app/layouts/SideMenuLayout';
 import { Header } from '@/components/Header/Header';
+import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,7 +19,7 @@ const manrope = Manrope({
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">

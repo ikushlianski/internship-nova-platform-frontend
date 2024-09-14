@@ -1,7 +1,6 @@
-"use client";
+'use client';
 
 export default function Login() {
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleOauth = async (event: any) => {
     event.preventDefault();

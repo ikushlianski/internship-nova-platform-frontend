@@ -1,3 +1,4 @@
 rm -rf .next
 npx turbo run lint
+npx turbo run prettier
 npx turbo run test --continue

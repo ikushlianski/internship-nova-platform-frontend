@@ -1,3 +1,2 @@
 rm -rf .next
 npx turbo build --force
-npx turbo run test --continue

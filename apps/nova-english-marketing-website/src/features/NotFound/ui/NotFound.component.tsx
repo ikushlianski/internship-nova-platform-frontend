@@ -1,6 +1,5 @@
 import TGLogo from '@/assets/icons/telegramLogo.svg';
 import WALogo from '@/assets/icons/whatsAppLogo.svg';
-import { Class } from '@repo/shared-types/class';
 import { Card, CardDescription, CardHeader, CardTitle } from '@repo/ui/card';
 import {
   Carousel,
@@ -10,20 +9,18 @@ import {
   CarouselPrevious,
 } from '@repo/ui/carousel';
 import Link from 'next/link';
-import { fetchCourses } from '../api/fetchMockCourses';
+import { getAllClasses, getAllCourses } from '@/app/api/api';
+import { Class, Course } from '@/shared/types/data.types';
+import { GetStaticProps } from 'next';
 
-const NotFound = async () => {
-  let courses: Class[] = [];
+interface CoursesPageProps {
+  courses: Course[];
+  classes: Class[];
+  error: string | null;
+}
 
-  let error: string | null = null;
-
-  try {
-    courses = await fetchCourses();
-  } catch (err) {
-    error = 'Failed to fetch courses';
-  }
-
-  if (courses.length === 0) {
+export default function NotFound({ courses, classes, error }: CoursesPageProps) {
+  if (!courses || courses.length === 0) {
     return <div>No courses available</div>;
   }
 
@@ -36,14 +33,18 @@ const NotFound = async () => {
       <h1 className="text-2xl">Доступные курсы:</h1>
       <Carousel className="w-2/3">
         <CarouselContent>
-          {courses.map(({ classId, className, classLevel, classTime }) => (
-            <CarouselItem key={classId} className="md:basis-1/2 lg:basis-1/3">
-              <Link href={`/course/${classId}`}>
+          {courses.map(({ course_code, course_name, course_level }) => (
+            <CarouselItem key={course_code} className="md:basis-1/2 lg:basis-1/3">
+              <Link href={`/course/${course_code}`}>
                 <Card className="border-2 cursor-pointer">
                   <CardHeader>
-                    <CardTitle>{className}</CardTitle>
-                    <CardDescription>{classLevel}</CardDescription>
-                    <CardDescription>{classTime}</CardDescription>
+                    <CardTitle>{course_name}</CardTitle>
+                    <CardDescription>{course_level.course_level_name}</CardDescription>
+                    <CardDescription>
+                      {classes.map((classItem) => (
+                        <p key={classItem.class_id}>{classItem.time_of_day.time_of_day_name}</p>
+                      ))}
+                    </CardDescription>
                   </CardHeader>
                 </Card>
               </Link>
@@ -66,6 +67,31 @@ const NotFound = async () => {
       </div>
     </div>
   );
-};
+}
 
-export default NotFound;
+export const getStaticProps: GetStaticProps = async () => {
+  let courses = [];
+  let classes = [];
+  let error: string | null = null;
+
+  try {
+    courses = await getAllCourses();
+  } catch (err) {
+    error = (err as Error).message || 'An unknown error occurred while fetching courses';
+  }
+
+  try {
+    classes = await getAllClasses();
+  } catch (err) {
+    error = (err as Error).message || 'An unknown error occurred while fetching classes';
+  }
+
+  return {
+    props: {
+      courses,
+      classes,
+      error,
+    },
+    revalidate: 60,
+  };
+};

@@ -46,6 +46,9 @@ const App = () => (
           <Route path={AppRoutes.ClassManage} element={<div>manage class by id</div>} />
           <Route path={AppRoutes.ClassCreate} element={<div>create new class</div>} />
         </Route>
+        <Route path={AppRoutes.Leads}>
+          <Route path={AppRoutes.Leads} index element={<div>leads list</div>} />
+        </Route>
       </CustomRoutes>
     </Admin>
   </BrowserRouter>

@@ -1,10 +1,12 @@
 import type { Config } from 'tailwindcss';
-const defaultTheme = require('tailwindcss/defaultTheme');
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config = {
   darkMode: ['class'],
-  content: ['**/*.{ts,tsx}',
-    "../../packages/ui/**/*{.js,.ts,.jsx,.tsx}",
+  content: [
+    '**/*.{ts,tsx}',
+    '../../packages/ui/**/*{.js,.ts,.jsx,.tsx}',
+    '!../../packages/ui/node_modules/**/*',
   ],
   prefix: '',
   theme: {

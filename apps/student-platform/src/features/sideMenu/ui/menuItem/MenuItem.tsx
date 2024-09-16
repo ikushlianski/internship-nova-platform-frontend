@@ -1,19 +1,15 @@
-import Image from "next/image";
-import NavLink from "../navLink/NavLink";
-
+import Image from 'next/image';
+import NavLink from '../navLink/NavLink';
+import { MenuItemProps } from '../../types/types';
 export default function MenuItem({ img, title, link }: MenuItemProps) {
   return (
-    <li
-      className={
-        "box-border flex w-52 p-3 hover:bg-sky-100 rounded-3xl items-center"
-      }
-    >
+    <li className={'box-border flex w-52 p-3 hover:bg-sky-100 rounded-3xl items-center'}>
       <Image
         src={img}
-        alt={""}
+        alt={''}
         width={24}
         height={24}
-        className={"w-6 h-6 bg-sky-100 rounded-full mr-3"}
+        className={'w-6 h-6 bg-sky-100 rounded-full mr-3'}
       />
       <NavLink href={link}>{title}</NavLink>
     </li>

@@ -1,7 +1,7 @@
 'use client';
 
-import { ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
+import { ReactNode } from 'react';
 
 interface Link {
   title: string;
@@ -15,7 +15,7 @@ interface LinkProps {
   navLink: Link[];
 }
 
-export const LinkComponent = ({ children, className, appName, navLink }: LinkProps) => {
+export const LinkComponent = ({ className, navLink }: LinkProps) => {
   const router = useRouter();
   return (
     <ul>

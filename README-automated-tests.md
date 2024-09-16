@@ -2,17 +2,21 @@
 
 # Description
 
-This is the official documentation for setting up and running automated tests using Playwright and TypeScript. The tests are designed to cover various functionalities of the Nova Platform application.
+This is the official documentation for setting up and running automated tests
+using Playwright and TypeScript. The tests are designed to cover various
+functionalities of the Nova Platform application.
 Tech Stack
 
     Language: TypeScript
     Testing Framework: Playwright
     CI/CD Integration: GitHub Actions (or other CI services)
-  # Setting up the development environment
+
+# Setting up the development environment
 
 Step 1: Install Node.js and npm
 
-Before installing Playwright and TypeScript, ensure that Node.js and npm (Node Package Manager) are installed on your system.
+Before installing Playwright and TypeScript, ensure that Node.js and npm (Node
+Package Manager) are installed on your system.
 **For macOS:**
 
     Open the terminal.
@@ -20,7 +24,8 @@ Before installing Playwright and TypeScript, ensure that Node.js and npm (Node P
 
     bash
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl
+-fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 Install Node.js using Homebrew:
 
@@ -67,13 +72,15 @@ bash
     This command will create a package.json file that tracks your project's dependencies.
 
 Step 3: Install Playwright and TypeScript
+
 1. Install Playwright:
 
 bash
 
 npm install -D playwright
 
-This installs Playwright as a dev dependency. After installation, install the required browsers for Playwright:
+This installs Playwright as a dev dependency. After installation, install the
+required browsers for Playwright:
 
 bash
 
@@ -100,21 +107,22 @@ Add the following configuration to tsconfig.json:
 json
 
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "commonjs",
-    "lib": ["ESNext", "DOM"],
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": ["tests/**/*.ts"]
+"compilerOptions": {
+"target": "ESNext",
+"module": "commonjs",
+"lib": ["ESNext", "DOM"],
+"strict": true,
+"esModuleInterop": true,
+"skipLibCheck": true,
+"forceConsistentCasingInFileNames": true
+},
+"include": ["tests/**/*.ts"]
 }
 
 Step 4: Create Playwright Configuration
 
-You also need to set up Playwright configuration to define how your tests will run in different browsers.
+You also need to set up Playwright configuration to define how your tests will
+run in different browsers.
 
     Create a Playwright config file:
 
@@ -175,7 +183,8 @@ typescript
       expect(title).toBe('Example Domain');
     });
 
-This is a basic test that navigates to example.com and checks the title of the page.
+This is a basic test that navigates to example.com and checks the title of the
+page.
 Step 6: Running the Tests
 
 Now that everything is set up, you can run your tests using Playwright.
@@ -192,11 +201,9 @@ bash
 
     npx playwright test --project=chromium
 
-
-
 bash
 
 git remote add origin <repository_URL>
 git push -u origin main
 
-   
+

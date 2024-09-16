@@ -1,11 +1,10 @@
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import { PrivacyPolicy } from "./app/PrivacyPolicy/PrivacyPolicy";
-import { RoutesEnum } from "./utils/RoutesEnum";
-import { Main } from "./app/Main/Main";
-import NotFound from "./not-found";
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import { PrivacyPolicy } from './app/PrivacyPolicy/PrivacyPolicy';
+import { RoutesEnum } from './utils/RoutesEnum';
+import { Main } from './app/Main/Main';
+import NotFound from './not-found';
 import SignIn from './features/SignIn/SignIn';
-
 
 function App() {
   return (

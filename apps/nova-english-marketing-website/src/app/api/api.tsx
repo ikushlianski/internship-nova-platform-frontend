@@ -1,13 +1,16 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_V1_URL;
+console.log('API Base URL:', API_BASE_URL);
 
 export const getAllClasses = async () => {
+  console.log(`${API_BASE_URL}/curriculum/class`);
   const response = await fetch(`${API_BASE_URL}/curriculum/class`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
     },
   });
-
+  console.log('Response Status:', response.status);
+  console.log('Response Status Text:', response.statusText);
   if (!response.ok) {
     throw new Error('Failed to fetch classes');
   }
@@ -22,7 +25,8 @@ export const getClassByID = async (classId: string) => {
       Accept: 'application/json',
     },
   });
-
+  console.log('Response Status:', response.status);
+  console.log('Response Status Text:', response.statusText);
   if (!response.ok) {
     throw new Error('Failed to fetch class data');
   }

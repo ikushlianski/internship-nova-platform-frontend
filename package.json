@@ -24,6 +24,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "next-intl": "^3.19.0",
     "vitest": "^2.0.5"
   },
   "lint-staged": {

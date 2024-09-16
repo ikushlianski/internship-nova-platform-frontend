@@ -1,18 +1,18 @@
 /* eslint-disable no-unused-vars */
 
 export interface User {
-  id: number
-  name: string
+  id: number;
+  name: string;
   email?: string;
   roles: UserRole[];
-  studentId?: number
-  pathId?: number
-  teacherId?: number
-  adminId?: number
-  managerId?: number
-  salesId?: number
-  spectatorId?: number
-  noRoleId?: number
+  studentId?: number;
+  pathId?: number;
+  teacherId?: number;
+  adminId?: number;
+  managerId?: number;
+  salesId?: number;
+  spectatorId?: number;
+  noRoleId?: number;
 }
 
 export enum UserRole {

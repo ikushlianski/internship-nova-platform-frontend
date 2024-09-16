@@ -1,21 +1,32 @@
 /* eslint-disable prefer-const */
-import { http } from 'msw'
-import { Users, Students, Teachers, Paths, Classes, Admins, Managers, Sales, Spectators, NoRoles } from './data/entities.json'
-import { IUser } from '../types/User'
-import { IStudent } from '../types/Student'
-import { ITeacher } from '../types/Teacher'
-import { IPath } from '../types/Path'
-import { IClass } from '../types/Class'
-import { IAdmin } from '../types/Admin'
-import { IManager } from '../types/Manager'
-import { ISales } from '../types/Sales'
-import { ISpectator } from '../types/Spectator'
-import { INoRole } from '../types/NoRole'
-import { handleGetRequest } from '../utils/Utils'
-import { handlePostRequest } from '../utils/Utils'
-import { handlePutRequest } from '../utils/Utils'
-import { handleDeleteRequest } from '../utils/Utils'
-import { handleGetIdRequest } from '../utils/Utils'
+import { http } from 'msw';
+import {
+  Users,
+  Students,
+  Teachers,
+  Paths,
+  Classes,
+  Admins,
+  Managers,
+  Sales,
+  Spectators,
+  NoRoles,
+} from './data/entities.json';
+import { IUser } from '../types/User';
+import { IStudent } from '../types/Student';
+import { ITeacher } from '../types/Teacher';
+import { IPath } from '../types/Path';
+import { IClass } from '../types/Class';
+import { IAdmin } from '../types/Admin';
+import { IManager } from '../types/Manager';
+import { ISales } from '../types/Sales';
+import { ISpectator } from '../types/Spectator';
+import { INoRole } from '../types/NoRole';
+import { handleGetRequest } from '../utils/Utils';
+import { handlePostRequest } from '../utils/Utils';
+import { handlePutRequest } from '../utils/Utils';
+import { handleDeleteRequest } from '../utils/Utils';
+import { handleGetIdRequest } from '../utils/Utils';
 
 let users = [...(Users as IUser[])];
 let students = [...(Students as IStudent[])];
@@ -37,7 +48,6 @@ const managersPost = new Map<number, IManager>();
 const salesPost = new Map<number, ISales>();
 const spectatorsPost = new Map<number, ISpectator>();
 const noRolesPost = new Map<number, INoRole>();
-
 
 export const handlers = [
   // GET request
@@ -66,37 +76,81 @@ export const handlers = [
 
   // POST request
   http.post('/users', ({ request }) => handlePostRequest<IUser>(request, usersPost, 'user')),
-  http.post('/students', ({ request }) => handlePostRequest<IStudent>(request, studentsPost, 'students')),
-  http.post('/teachers', ({ request }) => handlePostRequest<ITeacher>(request, teachersPost, 'teachers')),
+  http.post('/students', ({ request }) =>
+    handlePostRequest<IStudent>(request, studentsPost, 'students'),
+  ),
+  http.post('/teachers', ({ request }) =>
+    handlePostRequest<ITeacher>(request, teachersPost, 'teachers'),
+  ),
   http.post('/paths', ({ request }) => handlePostRequest<IPath>(request, pathsPost, 'paths')),
-  http.post('/classes', ({ request }) => handlePostRequest<IClass>(request, classesPost, 'classes')),
+  http.post('/classes', ({ request }) =>
+    handlePostRequest<IClass>(request, classesPost, 'classes'),
+  ),
   http.post('/admins', ({ request }) => handlePostRequest<IAdmin>(request, adminsPost, 'admins')),
-  http.post('/managers', ({ request }) => handlePostRequest<IManager>(request, managersPost, 'managers')),
+  http.post('/managers', ({ request }) =>
+    handlePostRequest<IManager>(request, managersPost, 'managers'),
+  ),
   http.post('/sales', ({ request }) => handlePostRequest<ISales>(request, salesPost, 'sales')),
-  http.post('/spectators', ({ request }) => handlePostRequest<ISpectator>(request, spectatorsPost, 'spectators')),
-  http.post('/noRoles', ({ request }) => handlePostRequest<INoRole>(request, noRolesPost, 'noRoles')),
+  http.post('/spectators', ({ request }) =>
+    handlePostRequest<ISpectator>(request, spectatorsPost, 'spectators'),
+  ),
+  http.post('/noRoles', ({ request }) =>
+    handlePostRequest<INoRole>(request, noRolesPost, 'noRoles'),
+  ),
 
   // PUT request
-  http.put('/users/:id', ({ params, request }) => handlePutRequest<IUser>(params, request, users, usersPost, 'user')),
-  http.put('/students/:id', ({ params, request }) => handlePutRequest<IStudent>(params, request, students, studentsPost, 'student')),
-  http.put('/teachers/:id', ({ params, request }) => handlePutRequest<ITeacher>(params, request, teachers, teachersPost, 'teacher')),
-  http.put('/paths/:id', ({ params, request }) => handlePutRequest<IPath>(params, request, paths, pathsPost, 'path')),
-  http.put('/classes/:id', ({ params, request }) => handlePutRequest<IClass>(params, request, classes, classesPost, 'classe')),
-  http.put('/admins/:id', ({ params, request }) => handlePutRequest<IAdmin>(params, request, admins, adminsPost, 'admin')),
-  http.put('/managers/:id', ({ params, request }) => handlePutRequest<IManager>(params, request, managers, managersPost, 'manager')),
-  http.put('/sales/:id', ({ params, request }) => handlePutRequest<ISales>(params, request, sales, salesPost, 'sale')),
-  http.put('/spectators/:id', ({ params, request }) => handlePutRequest<ISpectator>(params, request, spectators, spectatorsPost, 'spectator')),
-  http.put('/noRoles/:id', ({ params, request }) => handlePutRequest<INoRole>(params, request, noRoles, noRolesPost, 'noRole')),
+  http.put('/users/:id', ({ params, request }) =>
+    handlePutRequest<IUser>(params, request, users, usersPost, 'user'),
+  ),
+  http.put('/students/:id', ({ params, request }) =>
+    handlePutRequest<IStudent>(params, request, students, studentsPost, 'student'),
+  ),
+  http.put('/teachers/:id', ({ params, request }) =>
+    handlePutRequest<ITeacher>(params, request, teachers, teachersPost, 'teacher'),
+  ),
+  http.put('/paths/:id', ({ params, request }) =>
+    handlePutRequest<IPath>(params, request, paths, pathsPost, 'path'),
+  ),
+  http.put('/classes/:id', ({ params, request }) =>
+    handlePutRequest<IClass>(params, request, classes, classesPost, 'classe'),
+  ),
+  http.put('/admins/:id', ({ params, request }) =>
+    handlePutRequest<IAdmin>(params, request, admins, adminsPost, 'admin'),
+  ),
+  http.put('/managers/:id', ({ params, request }) =>
+    handlePutRequest<IManager>(params, request, managers, managersPost, 'manager'),
+  ),
+  http.put('/sales/:id', ({ params, request }) =>
+    handlePutRequest<ISales>(params, request, sales, salesPost, 'sale'),
+  ),
+  http.put('/spectators/:id', ({ params, request }) =>
+    handlePutRequest<ISpectator>(params, request, spectators, spectatorsPost, 'spectator'),
+  ),
+  http.put('/noRoles/:id', ({ params, request }) =>
+    handlePutRequest<INoRole>(params, request, noRoles, noRolesPost, 'noRole'),
+  ),
 
   // DELETE request
   http.delete('/users/:id', ({ params }) => handleDeleteRequest<IUser>(params, users, 'user')),
-  http.delete('/students/:id', ({ params }) => handleDeleteRequest<IStudent>(params, students, 'student')),
-  http.delete('/teachers/:id', ({ params }) => handleDeleteRequest<ITeacher>(params, teachers, 'teacher')),
+  http.delete('/students/:id', ({ params }) =>
+    handleDeleteRequest<IStudent>(params, students, 'student'),
+  ),
+  http.delete('/teachers/:id', ({ params }) =>
+    handleDeleteRequest<ITeacher>(params, teachers, 'teacher'),
+  ),
   http.delete('/paths/:id', ({ params }) => handleDeleteRequest<IPath>(params, paths, 'path')),
-  http.delete('/classes/:id', ({ params }) => handleDeleteRequest<IClass>(params, classes, 'classe')),
+  http.delete('/classes/:id', ({ params }) =>
+    handleDeleteRequest<IClass>(params, classes, 'classe'),
+  ),
   http.delete('/admins/:id', ({ params }) => handleDeleteRequest<IAdmin>(params, admins, 'admin')),
-  http.delete('/managers/:id', ({ params }) => handleDeleteRequest<IManager>(params, managers, 'manager')),
+  http.delete('/managers/:id', ({ params }) =>
+    handleDeleteRequest<IManager>(params, managers, 'manager'),
+  ),
   http.delete('/sales/:id', ({ params }) => handleDeleteRequest<ISales>(params, sales, 'sale')),
-  http.delete('/spectators/:id', ({ params }) => handleDeleteRequest<ISpectator>(params, spectators, 'spectator')),
-  http.delete('/noRoles/:id', ({ params }) => handleDeleteRequest<INoRole>(params, noRoles, 'noRole')),
-]
+  http.delete('/spectators/:id', ({ params }) =>
+    handleDeleteRequest<ISpectator>(params, spectators, 'spectator'),
+  ),
+  http.delete('/noRoles/:id', ({ params }) =>
+    handleDeleteRequest<INoRole>(params, noRoles, 'noRole'),
+  ),
+];

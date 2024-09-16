@@ -10,12 +10,12 @@ import {
 import { updateResourceData, getDataForResource, generateNewId } from '../utils/Utils';
 import { IUser } from '../types/User';
 import { IStudent } from '../types/Student';
-import { ITeacher } from "../types/Teacher";
-import { IAdmin } from "../types/Admin";
-import { IManager } from "../types/Manager";
-import { ISales } from "../types/Sales";
-import { ISpectator } from "../types/Spectator";
-import { INoRole } from "../types/NoRole";
+import { ITeacher } from '../types/Teacher';
+import { IAdmin } from '../types/Admin';
+import { IManager } from '../types/Manager';
+import { ISales } from '../types/Sales';
+import { ISpectator } from '../types/Spectator';
+import { INoRole } from '../types/NoRole';
 
 type UserRoles = IUser | IStudent | ITeacher | IAdmin | IManager | ISales | ISpectator | INoRole;
 
@@ -113,7 +113,10 @@ const dataProvider: DataProvider = {
     };
   },
 
-  create: async <T extends Omit<UserRoles, "id">>(resource: string, params: CreateParams<T>): Promise<CreateResult<T & { id: Identifier }>> => {
+  create: async <T extends Omit<UserRoles, 'id'>>(
+    resource: string,
+    params: CreateParams<T>,
+  ): Promise<CreateResult<T & { id: Identifier }>> => {
     const data = getDataForResource(resource);
     const newId = generateNewId(data);
     const newItem = { id: newId, ...params.data } as T & { id: Identifier };
@@ -134,11 +137,7 @@ const dataProvider: DataProvider = {
     }
 
     const updatedItem = { ...data[itemIndex], ...params.data };
-    const updatedData = [
-      ...data.slice(0, itemIndex),
-      updatedItem,
-      ...data.slice(itemIndex + 1),
-    ];
+    const updatedData = [...data.slice(0, itemIndex), updatedItem, ...data.slice(itemIndex + 1)];
     updateResourceData(resource, updatedData);
 
     return {

@@ -6,6 +6,7 @@ import { UserRole as Role } from '@repo/shared-types/user'
 import { User } from '@repo/shared-types/user'
 
 // A user can have multiple roles in ecosystem applications, with
+// A user can have multiple roles in ecosystem applications, with
 // the most powerful role being dominant.
 
 export function getPrimaryRole(user: User): string {

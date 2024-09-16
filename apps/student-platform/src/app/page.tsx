@@ -1,7 +1,5 @@
-import Dashboard from "@/views/Dashboard/ui/Dashboard";
+import Dashboard from '@/views/Dashboard/ui/Dashboard';
 
 export default function Home() {
-  return (
-    <Dashboard />
-  );
+  return <Dashboard />;
 }

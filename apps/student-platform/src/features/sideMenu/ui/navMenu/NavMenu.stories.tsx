@@ -1,13 +1,13 @@
-import { Meta, StoryObj } from "@storybook/react";
-import NavMenu from "./NavMenu";
+import { Meta, StoryObj } from '@storybook/react';
+import NavMenu from './NavMenu';
 
 const meta = {
-  title: "Components/NavMenu",
+  title: 'Components/NavMenu',
   component: NavMenu,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof NavMenu>;
 
 export default meta;

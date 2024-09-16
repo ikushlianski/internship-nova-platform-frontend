@@ -4,7 +4,7 @@ import { showToast } from "../utils/ShowToast";
 
 export const url = `http://${import.meta.env.GATEWAY_HOST}:${import.meta.env.GATEWAY_PORT}`;
 
-const userSettingsEndpoint = "/user/settings";
+const userSettingsEndpoint = '/user/settings';
 const cardsEndpoint = `/cards`;
 const decksEndpoint = `/decks`;
 
@@ -15,7 +15,7 @@ export const handlers = [
     return HttpResponse.json(data.cards);
   }),
 
-  http.get(cardsEndpoint + "/:id", ({ params }) => {
+  http.get(cardsEndpoint + '/:id', ({ params }) => {
     const response = data.cards.find((item) => item.card_id === params.id);
     if (response) {
       showToast(`Card with ID: ${params.id} successfully found!`, "success")
@@ -32,28 +32,28 @@ export const handlers = [
     showToast("Card successfully created!", "success")
     return new HttpResponse(null, {
       status: 201,
-      statusText: "Created successfully",
+      statusText: 'Created successfully',
     });
   }),
 
-  http.put(cardsEndpoint + "/:id", async ({ request, params }) => {
+  http.put(cardsEndpoint + '/:id', async ({ request, params }) => {
     const { id } = params;
     const updatedCard = await request.json();
     console.log("*PUT* Card: ", id, "Updated card:", updatedCard);
     showToast(`Card with ID ${id} successfully updated!`, "success")
     return new HttpResponse(null, {
       status: 201,
-      statusText: "Updated successfully",
+      statusText: 'Updated successfully',
     });
   }),
 
-  http.delete(cardsEndpoint + "/:id", ({ params }) => {
+  http.delete(cardsEndpoint + '/:id', ({ params }) => {
     const { id } = params;
     console.log("*DELETE* Card: ", id);
     showToast(`Card with ID ${id} successfully deleted!`, "success")
     return new HttpResponse(null, {
       status: 204,
-      statusText: "Deleted successfully",
+      statusText: 'Deleted successfully',
     });
   }),
 
@@ -64,7 +64,7 @@ export const handlers = [
     return HttpResponse.json(data.decks);
   }),
 
-  http.get(decksEndpoint + "/:id", ({ params }) => {
+  http.get(decksEndpoint + '/:id', ({ params }) => {
     const response = data.decks.find((item) => item.deck_id === params.id);
     if (response) {
       showToast(`Decks with ID: ${params.id} successfully found!`, "success")
@@ -81,28 +81,28 @@ export const handlers = [
     showToast("Decks successfully created!", "success")
     return new HttpResponse(null, {
       status: 201,
-      statusText: "Created successfully",
+      statusText: 'Created successfully',
     });
   }),
 
-  http.put(decksEndpoint + "/:id", async ({ request, params }) => {
+  http.put(decksEndpoint + '/:id', async ({ request, params }) => {
     const { id } = params;
     const updatedDeck = await request.json();
     console.log("*PUT* Deck: ", id, "Updated deck:", updatedDeck);
     showToast(`Decks with ID ${id} successfully updated!`, "success")
     return new HttpResponse(null, {
       status: 201,
-      statusText: "Updated successfully",
+      statusText: 'Updated successfully',
     });
   }),
 
-  http.delete(decksEndpoint + "/:id", ({ params }) => {
+  http.delete(decksEndpoint + '/:id', ({ params }) => {
     const { id } = params;
     console.log("*DELETE* Deck: ", id);
     showToast(`Decks with ID ${id} successfully deleted!`, "success")
     return new HttpResponse(null, {
       status: 204,
-      statusText: "Deleted successfully",
+      statusText: 'Deleted successfully',
     });
   }),
 

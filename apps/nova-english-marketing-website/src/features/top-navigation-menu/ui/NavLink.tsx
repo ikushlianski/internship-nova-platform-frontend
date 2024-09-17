@@ -1,18 +1,18 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, StaticPathnames } from '@/i18n/routing';
+import { useSelectedLayoutSegment } from 'next/navigation';
 import { ReactNode } from 'react';
 
 interface NavLinkProps {
   label?: string;
-  path: string;
+  path: StaticPathnames;
   icon?: ReactNode;
 }
 
 const NavLink = ({ label, path, icon }: NavLinkProps) => {
-  const pathname = usePathname();
-
+  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const pathname = selectedLayoutSegment ? `/${selectedLayoutSegment}` : '/';
   const isActive = pathname === path;
 
   return (

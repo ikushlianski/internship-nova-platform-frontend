@@ -1,12 +1,20 @@
-let toastSetter: ((toast: { message: string; type: string } | null) => void) | null = null;
+import { IToast } from 'src/types/Toast';
 
-export const setToastFunction = (fn: (toast: { message: string; type: string } | null) => void) => {
+let toastSetter: ((toast: IToast | null) => void) | null = null;
+
+export const setToastFunction = (fn: (toast: IToast | null) => void) => {
   toastSetter = fn;
 };
 
 export const showToast = (message: string, type: 'success' | 'error' | 'warning' | 'info') => {
   if (toastSetter) {
-    toastSetter({ message, type });
+    toastSetter({
+      message,
+      type,
+      onClose: () => {
+        toastSetter?.(null);
+      },
+    });
     setTimeout(() => toastSetter?.(null), 3000);
   } else {
     console.warn('setToastFunction not initialized.');

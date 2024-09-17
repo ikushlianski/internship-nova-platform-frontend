@@ -1,6 +1,6 @@
 import { Admin, Resource, ListGuesser, EditGuesser, ShowGuesser } from 'react-admin';
 import dataProvider from '../mocks/dataProvider';
-import { InitNotification } from '../components/InitNotification';
+import { InitNotification } from '../hooks/useInitNotification.tsx';
 import NotFound from '../not-found.tsx';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { CustomLayout } from '../components/CustomLayout.tsx';

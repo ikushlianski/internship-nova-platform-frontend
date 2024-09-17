@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { InitNotification } from './InitNotification';
+import { InitNotification } from '../hooks/useInitNotification';
 import { Layout, LayoutProps } from 'react-admin';
 import { Button, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';

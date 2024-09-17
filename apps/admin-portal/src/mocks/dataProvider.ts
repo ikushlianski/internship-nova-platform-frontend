@@ -12,13 +12,15 @@ import { handleErrorResponse } from "../utils/Utils";
 
 type ResourceTypes = IUser | IStudent | ITeacher | IAdmin | IManager | ISales | ISpectator | INoRole;
 
+const apiV1: string = '';
+
 const dataProvider: DataProvider = {
   getList: async (resource, params) => {
     const { page = 1, perPage = 10 } = params.pagination || {}
     const { field = 'id', order = 'ASC' || 'DESC' } = params.sort || {}
 
     try {
-      const response = await fetch(`/api/${resource}?page=${page}&perPage=${perPage}`);
+      const response = await fetch(`/api/${apiV1}/${resource}?page=${page}&perPage=${perPage}`);
 
       if (!response.ok) {
         await handleErrorResponse(response);
@@ -46,7 +48,7 @@ const dataProvider: DataProvider = {
   },
   getOne: async (resource, params) => {
     try {
-      const response = await fetch(`/api/${resource}/${params.id}`);
+      const response = await fetch(`/api/${apiV1}/${resource}/${params.id}`);
 
       if (!response.ok) {
         await handleErrorResponse(response);
@@ -67,7 +69,7 @@ const dataProvider: DataProvider = {
   },
   getMany: async (resource, params) => {
     try {
-      const response = await fetch(`/api/${resource}/${params.ids.join(', ')}`);
+      const response = await fetch(`/api/${apiV1}/${resource}/${params.ids.join(', ')}`);
 
       if (!response.ok) {
         await handleErrorResponse(response);
@@ -92,7 +94,7 @@ const dataProvider: DataProvider = {
   },
   getManyReference: async (resource, params) => {
     try {
-      const response = await fetch(`/api/${resource}?${params.target}=${params.id}&page=${params.pagination?.page}&perPage=${params.pagination?.perPage}`);
+      const response = await fetch(`/api/${apiV1}/${resource}?${params.target}=${params.id}&page=${params.pagination?.page}&perPage=${params.pagination?.perPage}`);
 
       if (!response.ok) {
         await handleErrorResponse(response);
@@ -127,7 +129,7 @@ const dataProvider: DataProvider = {
 
   updateMany: async (resource, params) => {
     try {
-      const response = await fetch(`/api/${resource}/${params.ids}`, {
+      const response = await fetch(`/api/${apiV1}/${resource}/${params.ids}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -161,7 +163,7 @@ const dataProvider: DataProvider = {
   },
   deleteMany: async (resource, params) => {
     try {
-      const response = await fetch(`/api/${resource}`, {
+      const response = await fetch(`/api/${apiV1}/${resource}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -188,7 +190,7 @@ const dataProvider: DataProvider = {
 
   create: async <T extends Omit<ResourceTypes, "id">>(resource: string, params: CreateParams<T>): Promise<CreateResult<T & { id: Identifier }>> => {
     try {
-      const response = await fetch(`/api/${resource}`, {
+      const response = await fetch(`/api/${apiV1}/${resource}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(params.data),
@@ -214,7 +216,7 @@ const dataProvider: DataProvider = {
 
   update: async (resource, params) => {
     try {
-      const response = await fetch(`/api/${resource}/${params.id}`, {
+      const response = await fetch(`/api/${apiV1}/${resource}/${params.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(params.data),
@@ -249,7 +251,7 @@ const dataProvider: DataProvider = {
 
   delete: async <RecordType extends RaRecord>(resource: string, params: DeleteParams<RecordType>): Promise<DeleteResult<RecordType>> => {
     try {
-      const response = await fetch(`/api/${resource}/${params.id}`, {
+      const response = await fetch(`/api/${apiV1}/${resource}/${params.id}`, {
         method: 'DELETE',
       });
 

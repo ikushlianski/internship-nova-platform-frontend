@@ -18,8 +18,6 @@ export const Cards: FC<CardsProps> = ({ cards, colNames }) => {
             <td className="">DeckName</td>
             <td className="">{card.question}</td>
             <td className="">{card.answer}</td>
-            <td className="">{card.created_date}</td>
-            <td className="">{card.updated_date}</td>
             <td className="text-center">{card.lapses}</td>
           </tr>
         ))}

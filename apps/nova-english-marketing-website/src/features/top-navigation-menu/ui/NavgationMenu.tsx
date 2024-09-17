@@ -1,25 +1,28 @@
 import IconGift from '@/assets/icons/IconGift.svg';
-import Link from 'next/link';
-import { NavItem, NavPath, NavRoutes } from '../types/navigation.type';
+import TGLogo from '@/assets/icons/telegramLogo.svg';
+import LocaleSwitcher from '@/features/LangSwitcher/ui/LocaleSwitcher.component';
+import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
+import { NavItem } from '../types/navigation.type';
 import { Logo } from './Logo';
 import NavLink from './NavLink';
 
 const navItems: NavItem[] = [
   {
-    label: 'Почему мы',
-    path: NavPath[NavRoutes.WHY_US],
+    label: 'about_us',
+    path: '/why-us',
   },
   {
-    label: 'Цена',
-    path: NavPath[NavRoutes.PRICING],
+    label: 'pricing',
+    path: '/pricing',
   },
   {
-    label: 'FAQ',
-    path: NavPath[NavRoutes.FAQ],
+    label: 'faq',
+    path: '/faq',
   },
   {
-    label: 'Онлайн тест',
-    path: NavPath[NavRoutes.CHECK_ENGLISH_LEVEL],
+    label: 'level_assessment',
+    path: '/check-english-level-online',
     icon: (
       <>
         +<IconGift />
@@ -29,24 +32,27 @@ const navItems: NavItem[] = [
 ];
 
 export const NavgationMenu = () => {
+  const t = useTranslations('header');
+
   return (
     <div className="pb-[100px]">
       <header className="bg-white w-full h-[100px] fixed flex px-[250px] items-center justify-between text-sans">
-        <Link href={NavPath.main}>
+        <Link href={'/'}>
           <Logo />
         </Link>
         <ul className="flex gap-[52px]">
           {navItems.map(({ label, path, icon }) => (
             <li key={path}>
-              <NavLink label={label} path={path} icon={icon} />
+              <NavLink label={t(label)} path={path} icon={icon} />
             </li>
           ))}
         </ul>
 
-        {/*tg & lang switcher placeholders  */}
-        <div>
-          <span>tg icon </span>
-          <span>lang</span>
+        <div className="flex items-center">
+          <Link href={'/'}>
+            <TGLogo />
+          </Link>
+          <LocaleSwitcher />
         </div>
       </header>
     </div>

@@ -1,23 +1,39 @@
-import { CreateParams, CreateResult, DataProvider, DeleteParams, DeleteResult, Identifier, RaRecord } from "react-admin"
-import { updateResourceData, getDataForResource, generateNewId } from '../utils/Utils'
+import {
+  CreateParams,
+  CreateResult,
+  DataProvider,
+  DeleteParams,
+  DeleteResult,
+  Identifier,
+  RaRecord,
+} from 'react-admin';
+import { updateResourceData, getDataForResource, generateNewId } from '../utils/Utils';
 import { IUser } from '../types/User';
 import { IStudent } from '../types/Student';
-import { ITeacher } from "../types/Teacher";
-import { IAdmin } from "../types/Admin";
-import { IManager } from "../types/Manager";
-import { ISales } from "../types/Sales";
-import { ISpectator } from "../types/Spectator";
-import { INoRole } from "../types/NoRole";
-import { handleErrorResponse } from "../utils/Utils";
+import { ITeacher } from '../types/Teacher';
+import { IAdmin } from '../types/Admin';
+import { IManager } from '../types/Manager';
+import { ISales } from '../types/Sales';
+import { ISpectator } from '../types/Spectator';
+import { INoRole } from '../types/NoRole';
+import { handleErrorResponse } from '../utils/Utils';
 
-type ResourceTypes = IUser | IStudent | ITeacher | IAdmin | IManager | ISales | ISpectator | INoRole;
+type ResourceTypes =
+  | IUser
+  | IStudent
+  | ITeacher
+  | IAdmin
+  | IManager
+  | ISales
+  | ISpectator
+  | INoRole;
 
 const apiV1: string = '';
 
 const dataProvider: DataProvider = {
   getList: async (resource, params) => {
-    const { page = 1, perPage = 10 } = params.pagination || {}
-    const { field = 'id', order = 'ASC' || 'DESC' } = params.sort || {}
+    const { page = 1, perPage = 10 } = params.pagination || {};
+    const { field = 'id', order = 'ASC' || 'DESC' } = params.sort || {};
 
     try {
       const response = await fetch(`/api/${apiV1}/${resource}?page=${page}&perPage=${perPage}`);
@@ -26,21 +42,21 @@ const dataProvider: DataProvider = {
         await handleErrorResponse(response);
       }
 
-      const data = getDataForResource(resource)
+      const data = getDataForResource(resource);
 
-      const total = data.length
+      const total = data.length;
       const sortedData = [...data].sort((a, b) => {
         if (a[field] < b[field]) return order === 'ASC' ? -1 : 1;
         if (a[field] > b[field]) return order === 'ASC' ? 1 : -1;
         return 0;
       });
 
-      const paginatedData = sortedData.slice((page - 1) * perPage, page * perPage)
+      const paginatedData = sortedData.slice((page - 1) * perPage, page * perPage);
 
       return {
         data: paginatedData,
         total,
-      }
+      };
     } catch (error) {
       console.error(error);
       throw error;
@@ -54,14 +70,14 @@ const dataProvider: DataProvider = {
         await handleErrorResponse(response);
       }
       const data = getDataForResource(resource);
-      const item = data.find((item: { id: number }) => String(item.id) == params.id)
+      const item = data.find((item: { id: number }) => String(item.id) == params.id);
       if (!item) {
-        throw new Error(`Resource ${resource} with ID ${params.id} not found`)
+        throw new Error(`Resource ${resource} with ID ${params.id} not found`);
       }
 
       return {
-        data: item
-      }
+        data: item,
+      };
     } catch (error) {
       console.error(error);
       throw error;
@@ -76,8 +92,7 @@ const dataProvider: DataProvider = {
       }
       const data = getDataForResource(resource);
       const items = data.filter((item: { id: number }) => {
-
-        return params.ids.includes(item.id)
+        return params.ids.includes(item.id);
       });
 
       if (items.length === 0) {
@@ -85,7 +100,7 @@ const dataProvider: DataProvider = {
       }
 
       return {
-        data: items
+        data: items,
       };
     } catch (error) {
       console.error(error);
@@ -94,7 +109,9 @@ const dataProvider: DataProvider = {
   },
   getManyReference: async (resource, params) => {
     try {
-      const response = await fetch(`/api/${apiV1}/${resource}?${params.target}=${params.id}&page=${params.pagination?.page}&perPage=${params.pagination?.perPage}`);
+      const response = await fetch(
+        `/api/${apiV1}/${resource}?${params.target}=${params.id}&page=${params.pagination?.page}&perPage=${params.pagination?.perPage}`,
+      );
 
       if (!response.ok) {
         await handleErrorResponse(response);
@@ -175,7 +192,7 @@ const dataProvider: DataProvider = {
         await handleErrorResponse(response);
       }
       const data = getDataForResource(resource);
-      const filteredData = data.filter(item => !params.ids.includes(item.id));
+      const filteredData = data.filter((item) => !params.ids.includes(item.id));
 
       updateResourceData(resource, filteredData);
 
@@ -188,7 +205,10 @@ const dataProvider: DataProvider = {
     }
   },
 
-  create: async <T extends Omit<ResourceTypes, "id">>(resource: string, params: CreateParams<T>): Promise<CreateResult<T & { id: Identifier }>> => {
+  create: async <T extends Omit<ResourceTypes, 'id'>>(
+    resource: string,
+    params: CreateParams<T>,
+  ): Promise<CreateResult<T & { id: Identifier }>> => {
     try {
       const response = await fetch(`/api/${apiV1}/${resource}`, {
         method: 'POST',
@@ -233,11 +253,7 @@ const dataProvider: DataProvider = {
       }
 
       const updatedItem = { ...data[itemIndex], ...params.data };
-      const updatedData = [
-        ...data.slice(0, itemIndex),
-        updatedItem,
-        ...data.slice(itemIndex + 1),
-      ];
+      const updatedData = [...data.slice(0, itemIndex), updatedItem, ...data.slice(itemIndex + 1)];
       updateResourceData(resource, updatedData);
 
       return {
@@ -249,7 +265,10 @@ const dataProvider: DataProvider = {
     }
   },
 
-  delete: async <RecordType extends RaRecord>(resource: string, params: DeleteParams<RecordType>): Promise<DeleteResult<RecordType>> => {
+  delete: async <RecordType extends RaRecord>(
+    resource: string,
+    params: DeleteParams<RecordType>,
+  ): Promise<DeleteResult<RecordType>> => {
     try {
       const response = await fetch(`/api/${apiV1}/${resource}/${params.id}`, {
         method: 'DELETE',
@@ -265,10 +284,7 @@ const dataProvider: DataProvider = {
         throw new Error(`Resource ${resource} with ID ${params.id} not found`);
       }
 
-      const updatedData = [
-        ...data.slice(0, itemIndex),
-        ...data.slice(itemIndex + 1),
-      ];
+      const updatedData = [...data.slice(0, itemIndex), ...data.slice(itemIndex + 1)];
 
       updateResourceData(resource, updatedData);
 

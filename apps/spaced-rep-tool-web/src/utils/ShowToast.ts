@@ -4,14 +4,11 @@ export const setToastFunction = (fn: (toast: { message: string; type: string } |
   toastSetter = fn;
 };
 
-export const showToast = (
-  message: string,
-  type: "success" | "error" | "warning" | "info",
-) => {
+export const showToast = (message: string, type: 'success' | 'error' | 'warning' | 'info') => {
   if (toastSetter) {
     toastSetter({ message, type });
     setTimeout(() => toastSetter?.(null), 3000);
   } else {
-    console.warn("setToastFunction not initialized.");
+    console.warn('setToastFunction not initialized.');
   }
 };

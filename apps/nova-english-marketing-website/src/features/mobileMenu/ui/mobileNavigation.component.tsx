@@ -1,9 +1,10 @@
-// ui/mobileNavigation.component.tsx
 import React from 'react';
 import { MobileNavigationProps } from '../types/mobileNavigation.type';
-import { navLinks } from '../logic/navLinks.logic';
+import { useNavLinks } from '../logic/navLinks.logic';
 
 const MobileNavigation: React.FC<MobileNavigationProps> = ({ toggleMenu }) => {
+  const navLinks = useNavLinks();
+
   return (
     <nav
       className="fixed inset-0 bg-[hsl(var(--background))] z-1150 flex flex-col items-center justify-start mt-[80px]"

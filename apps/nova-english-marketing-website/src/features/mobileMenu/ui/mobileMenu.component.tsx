@@ -1,4 +1,3 @@
-// ui/mobileMenu.component.tsx
 'use client';
 
 import React, { useState } from 'react';

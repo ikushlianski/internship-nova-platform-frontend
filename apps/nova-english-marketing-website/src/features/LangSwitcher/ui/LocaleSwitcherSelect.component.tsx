@@ -16,7 +16,7 @@ export default function LocaleSwitcherSelect({ children, defaultValue, label }: 
     <label>
       <p className="sr-only">{label}</p>
       <select
-        className="flex items-center justify-center bg-transparent p-2 cursor-pointer"
+        className="flex items-center justify-center bg-transparent p-2 cursor-pointer text-2xl"
         defaultValue={defaultValue}
         disabled={isPending}
         onChange={handleLocaleChange}

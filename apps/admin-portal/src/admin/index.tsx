@@ -6,7 +6,7 @@ import { Button, Dialog, DialogTitle, DialogContent } from '@mui/material';
 import { useState } from 'react';
 import UserCreateForm from '../components/UserCreateForm';
 import NotFound from '../not-found.tsx';
-import { authProvider } from '../utils/authProvider.ts';
+import { authProvider } from '../../feature/Auth/logic/authProvider.ts';
 
 const CustomLayout = (props: any) => {
   const [open, setOpen] = useState(false);

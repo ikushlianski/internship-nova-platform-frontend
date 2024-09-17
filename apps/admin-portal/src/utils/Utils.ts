@@ -2,8 +2,8 @@
 import { IUser } from "../types/User"
 import { Users, Students, Teachers, Paths, Classes, Admins, Managers, Sales, Spectators, NoRoles } from '../mocks/data/entities.json'
 import { HttpResponse } from 'msw'
-import { showNotify } from "./globalNotify"
-import { authProvider } from "./authProvider"
+import { showNotify } from "./Notification/globalNotify"
+import { authProvider } from "../../feature/Auth/logic/authProvider"
 
 // A user can have multiple roles in ecosystem applications, with
 // the most powerful role being dominant.

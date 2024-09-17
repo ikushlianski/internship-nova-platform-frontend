@@ -29,5 +29,5 @@
       "@repo/shared-types/*": ["../../packages/shared-types/src/*"]
     }
   },
-  "include": ["src", "**/*.ts", "**/*.tsx"]
+  "include": ["src", "**/*.ts", "**/*.tsx", "feature/Auth"]
 }

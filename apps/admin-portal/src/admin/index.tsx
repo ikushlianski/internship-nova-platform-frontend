@@ -4,24 +4,30 @@ import { InitNotification } from '../hooks/useInitNotification.tsx';
 import NotFound from '../not-found.tsx';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { CustomLayout } from '../components/CustomLayout.tsx';
-
+import { roleToResourceMap } from '../utils/Utils.ts';
 const AdminPortal = () => {
   return (
     <>
       <InitNotification />
       <Admin dataProvider={dataProvider} layout={CustomLayout} catchAll={NotFound}>
-        {Object.values(Role).map((name) => (
-          <Resource
-            key={name}
-            name={name.toLowerCase()}
-            list={ListGuesser}
-            edit={EditGuesser}
-            show={ShowGuesser}
-          />
-        ))}
+        {Object.values(Role).map((role) => {
+          const resourceName = roleToResourceMap[role];
+          return (
+            <Resource
+              key={role}
+              name={resourceName}
+              list={ListGuesser}
+              edit={EditGuesser}
+              show={ShowGuesser}
+            />
+          );
+        })}
       </Admin>
     </>
   );
 };
 
 export default AdminPortal;
+///в индекс приходит User в нейм выходит users
+
+///в Utils приходит users

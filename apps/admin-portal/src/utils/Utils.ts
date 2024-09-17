@@ -36,8 +36,23 @@ export function getPrimaryRole(user: User): string {
   });
 }
 
+//when making roles singular, not plural, function to make rosourses in plural
+export const roleToResourceMap: Record<string, string> = {
+  [Role.User]: 'users',
+  [Role.Student]: 'students',
+  [Role.Teacher]: 'teachers',
+  [Role.Path]: 'paths',
+  [Role.Class]: 'classes',
+  [Role.Admin]: 'admins',
+  [Role.Manager]: 'managers',
+  [Role.Spectator]: 'spectators',
+  [Role.NoRole]: 'noroles',
+  [Role.Sale]: 'sales',
+};
+
 //Function for gettin data from `entities.json` file
 export const getDataForResource = (resource: string): any[] => {
+  console.log(`Requesting data for resource: ${resource}`);
   switch (resource) {
     case 'users':
       return Users;

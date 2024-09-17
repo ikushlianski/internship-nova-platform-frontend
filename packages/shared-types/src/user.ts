@@ -16,16 +16,16 @@ export interface User {
 }
 
 export enum UserRole {
-  User = 'Users',
-  Student = 'Students',
-  Teacher = 'Teachers',
-  Path = 'Paths',
-  Class = 'Classes',
-  Admin = 'Admins',
-  Manager = 'Managers',
-  Spectator = 'Spectators',
+  User = 'User',
+  Student = 'Student',
+  Teacher = 'Teacher',
+  Path = 'Path',
+  Class = 'Classe',
+  Admin = 'Admin',
+  Manager = 'Manager',
+  Spectator = 'Spectator',
   // People get this role when they sign up without buying a course
-  NoRole = 'NoRoles',
-  Sale = 'Sales',
+  NoRole = 'NoRole',
+  Sale = 'Sale',
   // RegularUser = 'RegularUser',
 }

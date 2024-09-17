@@ -11,17 +11,14 @@ const decksEndpoint = `/decks`;
 export const handlers = [
   // cards
   http.get(cardsEndpoint, () => {
-    showToast('Cards successfully loaded!', 'success');
     return HttpResponse.json(data.cards);
   }),
 
   http.get(cardsEndpoint + '/:id', ({ params }) => {
     const response = data.cards.find((item) => item.card_id === params.id);
     if (response) {
-      showToast(`Card with ID: ${params.id} successfully found!`, 'success');
       return HttpResponse.json(response);
     } else {
-      showToast(`Card with ID: ${params.id} not found!`, 'error');
       return HttpResponse.json(null, { status: 404 });
     }
   }),
@@ -58,17 +55,14 @@ export const handlers = [
   //decks
 
   http.get(decksEndpoint, () => {
-    showToast('Decks successfully loaded!', 'success');
     return HttpResponse.json(data.decks);
   }),
 
   http.get(decksEndpoint + '/:id', ({ params }) => {
     const response = data.decks.find((item) => item.deck_id === params.id);
     if (response) {
-      showToast(`Decks with ID: ${params.id} successfully found!`, 'success');
       return HttpResponse.json(response);
     } else {
-      showToast(`Decks with ID: ${params.id} not found!`, 'error');
       return HttpResponse.json(null, { status: 404 });
     }
   }),
@@ -105,7 +99,6 @@ export const handlers = [
   //user
 
   http.get(userSettingsEndpoint, () => {
-    showToast('Users successfully loaded!', 'success');
     return HttpResponse.json(data.settings);
   }),
 ];

@@ -1,11 +1,19 @@
 import { createLocalizedPathnamesNavigation } from 'next-intl/navigation';
 import { defineRouting } from 'next-intl/routing';
 
-export const locales = ['en', 'ru'];
+export type StaticPathnames = '/' | '/why-us' | '/faq' | '/pricing' | '/check-english-level-online';
+export type DynamicPathnames = '/class/[classId]';
 
-export const pathnames = {
+export const pathnames: Record<StaticPathnames | DynamicPathnames, string> = {
   '/': '/',
+  '/why-us': '/why-us',
+  '/faq': '/faq',
+  '/pricing': '/pricing',
+  '/check-english-level-online': '/check-english-level-online',
+  '/class/[classId]': '/class/[classId]',
 };
+
+export const locales = ['en', 'ru'];
 
 export const routing = defineRouting({
   locales,
@@ -29,14 +37,14 @@ export const routing = defineRouting({
     },
     {
       domain: 'localhost',
-      defaultLocale: 'en',
+      defaultLocale: 'ru',
       locales,
     },
   ],
   pathnames,
 });
 
-export type Pathnames = keyof typeof routing.pathnames;
+export type Pathnames = StaticPathnames | DynamicPathnames;
 export type Locale = (typeof routing.locales)[number];
 
 export const { Link, getPathname, redirect, usePathname, useRouter } =

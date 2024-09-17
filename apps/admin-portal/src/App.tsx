@@ -1,4 +1,4 @@
-import MyAdmin from "./admin";
+import MyAdmin from './admin';
 
 const App = () => <MyAdmin />;
 

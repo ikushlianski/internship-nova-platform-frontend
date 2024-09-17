@@ -1,18 +1,13 @@
-import { cookies } from "next/headers";
+import { cookies } from 'next/headers';
 
 export default async function PrivatePage() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_V1_URL}/users/1`,
-    {
-      headers: { Cookie: cookies().toString() },
-      cache: "no-store",
-    },
-  );
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_V1_URL}/users/1`, {
+    headers: { Cookie: cookies().toString() },
+    cache: 'no-store',
+  });
 
   if (!response.ok) {
-    return (
-      <div>Failed to fetch user data. Error code is {response.status}</div>
-    );
+    return <div>Failed to fetch user data. Error code is {response.status}</div>;
   }
 
   const data = await response.json();

@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
 import { data } from './mockData';
-import { showToast } from '../utils/ShowToast';
+import { showToast } from '../features/Toast/logic/ShowToast';
 
 export const url = `http://${import.meta.env.GATEWAY_HOST}:${import.meta.env.GATEWAY_PORT}`;
 

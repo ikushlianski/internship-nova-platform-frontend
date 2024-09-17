@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Toast from './Toast';
 import { IToast } from 'src/types/Toast';
-import { setToastFunction } from 'src/utils/ShowToast';
+import { setToastFunction } from 'src/features/Toast/logic/ShowToast';
 
 const ToastContainer: React.FC = () => {
   const [toast, setToast] = useState<IToast | null>(null);

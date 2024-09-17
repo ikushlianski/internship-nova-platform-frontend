@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { IToast } from '../../types/Toast';
-import { toastClasses } from '../../utils/ToastClasses';
+import { IToast } from 'src/types/Toast';
+import { toastClasses } from '../logic/ToastClasses';
 
 const Toast: React.FC<IToast> = ({ message, type, onClose }) => {
   useEffect(() => {

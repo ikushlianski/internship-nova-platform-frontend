@@ -1,4 +1,4 @@
-import Header from '@/components/header/ui/header.component';
+import { NavgationMenu } from '@/features/top-navigation-menu/ui/NavgationMenu';
 import { routing } from '@/i18n/routing';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-intl/server';
@@ -61,7 +61,7 @@ export default async function LocaleLayout({ children, params: { locale } }: Pro
     <html className="h-full" lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <Header />
+          <NavgationMenu />
           {children}
         </NextIntlClientProvider>
       </body>

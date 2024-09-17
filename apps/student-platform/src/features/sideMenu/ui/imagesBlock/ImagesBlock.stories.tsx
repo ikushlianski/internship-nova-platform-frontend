@@ -1,13 +1,13 @@
-import { Meta, StoryObj } from "@storybook/react";
-import ImagesBlock from "./ImagesBlock";
+import { Meta, StoryObj } from '@storybook/react';
+import ImagesBlock from './ImagesBlock';
 
 const meta = {
-  title: "Components/ImagesBlock",
+  title: 'Components/ImagesBlock',
   component: ImagesBlock,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof ImagesBlock>;
 
 export default meta;

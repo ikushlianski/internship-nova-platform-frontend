@@ -1,13 +1,13 @@
-import { Meta, StoryObj } from "@storybook/react";
-import Settings from "./Settings";
+import { Meta, StoryObj } from '@storybook/react';
+import Settings from './Settings';
 
 const meta = {
-  title: "Components/Settings",
+  title: 'Components/Settings',
   component: Settings,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof Settings>;
 
 export default meta;

@@ -61,7 +61,7 @@ spec:
             - name: "GATEWAY_HOST"
               value: "nova-api-gateway-service.{{.Release.Namespace}}.svc.cluster.local"
             - name: "NEXT_PUBLIC_API_V1_URL"
-              value: "{{ .Values.application_environment }}.{{ .Values.domain_name }}/api/v1/"
+              value: "https://{{ .Values.application_environment }}.{{ .Values.domain_name }}/api/v1/"
           command: ["npm"]
           args: ["start", "--loglevel", "verbose"]
           ports:

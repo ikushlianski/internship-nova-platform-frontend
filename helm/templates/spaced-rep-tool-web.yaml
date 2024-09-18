@@ -59,7 +59,7 @@ spec:
             - name: "GATEWAY_HOST"
               value: "nova-api-gateway-service.{{.Release.Namespace}}.svc.cluster.local"
             - name: "VITE_API_V1_URL"
-              value: "http://{{ .Values.application_environment }}.memo.{{ .Values.domain_name }}/api/v1/" ### make variables for it
+              value: "https://{{ .Values.application_environment }}.memo.{{ .Values.domain_name }}/api/v1/" ### make variables for it
           # command: ["npm"]
           # args: ["run", "vite", "preview"]
           ports:

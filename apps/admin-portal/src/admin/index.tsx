@@ -28,6 +28,3 @@ const AdminPortal = () => {
 };
 
 export default AdminPortal;
-///в индекс приходит User в нейм выходит users
-
-///в Utils приходит users

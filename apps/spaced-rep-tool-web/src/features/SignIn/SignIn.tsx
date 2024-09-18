@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import signInImg from '../../assets/man-and-woman-in-gadgets.svg';
 import { Link } from 'react-router-dom';
 
-export const SignIn = () => {
+const SignIn: FC = () => {
   const [acceptPolicy, setAcceptPolicy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -65,3 +65,5 @@ export const SignIn = () => {
     </div>
   );
 };
+
+export default SignIn;

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
-import Header from '../components/header/ui/header.component';
-import Footer from '../components/footer/ui/footer.components';
+import Header from "../components/header/ui/header.component";
+import Footer from "../components/footer/ui/footer.components";
 import "./globals.css";
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,11 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={manrope.className}>
-          <Header />
-          <main>
-            {children}
-          </main>
-          <Footer />
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

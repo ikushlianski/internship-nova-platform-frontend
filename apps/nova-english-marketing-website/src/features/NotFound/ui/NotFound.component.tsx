@@ -9,16 +9,12 @@ import {
   CarouselPrevious,
 } from '@repo/ui/carousel';
 import Link from 'next/link';
-import { CoursesPageProps } from '@/app/not-found';
+import { Course } from '@/shared/types/data.types';
+import { getAllCourses } from '@/app/api/api';
 
-export default function NotFound({ courses, classes, error }: CoursesPageProps) {
+export default function NotFound(courses: Course[]) {
   if (!courses) {
-    console.log(courses, classes, error);
     return <div>No courses available</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
   }
 
   return (
@@ -26,7 +22,7 @@ export default function NotFound({ courses, classes, error }: CoursesPageProps) 
       <h1 className="text-2xl">Доступные курсы:</h1>
       <Carousel className="w-2/3">
         <CarouselContent>
-          {courses.map(({ course_code, course_name, course_level }) => (
+          {courses.map(({ course_code, course_name, course_level, classes }) => (
             <CarouselItem key={course_code} className="md:basis-1/2 lg:basis-1/3">
               <Link href={`/course/${course_code}`}>
                 <Card className="border-2 cursor-pointer">
@@ -34,13 +30,9 @@ export default function NotFound({ courses, classes, error }: CoursesPageProps) 
                     <CardTitle>{course_name}</CardTitle>
                     <CardDescription>{course_level.course_level_name}</CardDescription>
                     <CardDescription>
-                      {classes.length > 0 ? (
-                        classes.map((classItem) => (
-                          <p key={classItem.class_id}>{classItem.time_of_day.time_of_day_name}</p>
-                        ))
-                      ) : (
-                        <p>No classes available</p>
-                      )}
+                      {classes.map((classItem) => (
+                        <p key={classItem.class_id}>{classItem.time_of_day.time_of_day_name}</p>
+                      ))}
                     </CardDescription>
                   </CardHeader>
                 </Card>
@@ -65,3 +57,12 @@ export default function NotFound({ courses, classes, error }: CoursesPageProps) 
     </div>
   );
 }
+
+async function getStaticParams() {
+  const courses = await getAllCourses();
+  return courses.map((course: Course) => ({
+    params: course.course_code ,
+  }));
+}
+
+export { getStaticParams };

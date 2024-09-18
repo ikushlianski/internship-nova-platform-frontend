@@ -7,4 +7,4 @@ export type Calendar = {
   endDate: string;
   allDay: boolean;
   color: string;
-}
+};

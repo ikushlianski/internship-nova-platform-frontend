@@ -1,12 +1,12 @@
-import { z } from "zod"
+import { z } from 'zod';
 
-const ClassTimeEnum = z.enum(["Утренний", "Дневной", "Вечерний"])
+const ClassTimeEnum = z.enum(['Утренний', 'Дневной', 'Вечерний']);
 
 const ClassSchema = z.object({
-	classId: z.number(),
-	className: z.string(),
-	classLevel: z.string(),
-	classTime: ClassTimeEnum
-})
+  classId: z.number(),
+  className: z.string(),
+  classLevel: z.string(),
+  classTime: ClassTimeEnum,
+});
 
-export type Class = z.infer<typeof ClassSchema>
+export type Class = z.infer<typeof ClassSchema>;

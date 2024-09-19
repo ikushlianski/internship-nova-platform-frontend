@@ -1,5 +1,5 @@
 import { Title } from 'react-admin';
-import { ErrorContainer, ErrorDescription, ErrorMessage } from '@repo/ui/reactErrorComponent';
+import { ErrorContainer, ErrorDescription, ErrorMessage } from '@repo/ui/error';
 
 export default function NotFound() {
   return (

@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import SideMenu from "./SideMenu";
-import NavMenu from "../navMenu/NavMenu";
-import ImagesBlock from "../imagesBlock/ImagesBlock";
-import Settings from "../settings/Settings";
+import type { Meta, StoryObj } from '@storybook/react';
+import SideMenu from './SideMenu';
+import NavMenu from '../navMenu/NavMenu';
+import ImagesBlock from '../imagesBlock/ImagesBlock';
+import Settings from '../settings/Settings';
 
 const meta = {
-  title: "Components/SideMenu",
+  title: 'Components/SideMenu',
   component: SideMenu,
   subcomponents: { NavMenu, ImagesBlock, Settings },
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof SideMenu>;
 
 export default meta;

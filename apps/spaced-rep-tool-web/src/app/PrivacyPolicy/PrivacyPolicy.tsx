@@ -1,12 +1,12 @@
-// import { Header } from 'components/Header/Header';
+import { useTranslation } from 'react-i18next';
 
 export const PrivacyPolicy = () => {
+  const { t } = useTranslation();
   return (
     <>
-      {/* <Header /> */}
       <div className=" w-1200px h-600px">
         <div className="w-100% h-300px">
-          <h1 className="text-center uppercase text-2xl">Hello World!</h1>
+          <h1 className="text-center uppercase text-2xl">{t('title')}</h1>
         </div>
       </div>
     </>

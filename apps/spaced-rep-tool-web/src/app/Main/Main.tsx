@@ -1,10 +1,13 @@
-// import { Header } from '';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const Main = () => {
+  const { t } = useTranslation();
+
   return (
-    <>
-      {/* <Header /> */}
-      This is the main page!
-    </>
+    <div>
+      <h1>{t('welcome')}</h1>
+      <p>{t('description')}</p>
+    </div>
   );
 };

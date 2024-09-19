@@ -8,7 +8,7 @@ export type FormState = {
   issues?: string[];
 };
 
-export async function onSubmitAction(prevState: FormState, data: any): Promise<FormState> {
+export async function onSubmitAction(prevState: FormState, data: FormData): Promise<FormState> {
   console.log(data);
   const formData = Object.fromEntries(data);
   const parsed = schema.safeParse(formData);

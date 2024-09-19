@@ -37,7 +37,7 @@ export default function HeroSection() {
         </div>
         <Button
           onClick={handleClick}
-          className="flex w-max text-white-foreground text-2xl font-bold bg-[#0092FC] hover:bg-[#3EADFF] gap-3 rounded-full px-14"
+          className="flex w-max text-white-foreground text-2xl font-bold bg-[#0092FC] hover:bg-[#3EADFF] gap-3 rounded-full px-14 h-[60px]"
         >
           {t('cta').toUpperCase()} <GiftIcon />
         </Button>

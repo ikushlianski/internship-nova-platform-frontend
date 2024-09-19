@@ -46,7 +46,6 @@ export const getClassByID = async (classId: string): Promise<Class> => {
 };
 
 export const getAllCourses = async (): Promise<Course[]> => {
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_V1_URL;
   try {
     const response = await fetch(`${API_BASE_URL}/curriculum/course`, {
       method: 'GET',

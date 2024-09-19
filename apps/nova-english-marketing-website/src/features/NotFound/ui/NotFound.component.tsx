@@ -10,10 +10,9 @@ import {
 } from '@repo/ui/carousel';
 import Link from 'next/link';
 import { Course } from '@/shared/types/data.types';
-import { getAllCourses } from '@/app/api/api';
 
-export default function NotFound(courses: Course[]) {
-  if (!courses) {
+export default function NotFound({ courses }: { courses: Course[] }) {
+  if (!courses || courses.length === 0) {
     return <div>No courses available</div>;
   }
 
@@ -22,15 +21,15 @@ export default function NotFound(courses: Course[]) {
       <h1 className="text-2xl">Доступные курсы:</h1>
       <Carousel className="w-2/3">
         <CarouselContent>
-          {courses.map(({ course_code, course_name, course_level, classes }) => (
+          {courses.map(({ course_code, course_name, course_level_id, classes }) => (
             <CarouselItem key={course_code} className="md:basis-1/2 lg:basis-1/3">
               <Link href={`/course/${course_code}`}>
                 <Card className="border-2 cursor-pointer">
                   <CardHeader>
-                    <CardTitle>{course_name}</CardTitle>
-                    <CardDescription>{course_level.course_level_name}</CardDescription>
+                    <CardTitle className="m-w-32">{course_name}</CardTitle>
+                    <CardDescription>{course_level_id}</CardDescription>
                     <CardDescription>
-                      {classes.map((classItem) => (
+                      {classes?.map((classItem) => (
                         <p key={classItem.class_id}>{classItem.time_of_day.time_of_day_name}</p>
                       ))}
                     </CardDescription>
@@ -57,12 +56,3 @@ export default function NotFound(courses: Course[]) {
     </div>
   );
 }
-
-async function getStaticParams() {
-  const courses = await getAllCourses();
-  return courses.map((course: Course) => ({
-    params: course.course_code ,
-  }));
-}
-
-export { getStaticParams };

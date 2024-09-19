@@ -1,7 +1,8 @@
 import { Admin, EditGuesser, ListGuesser, Resource, ShowGuesser } from 'react-admin';
 import { dataProvider } from '@/mocks';
-import { authProvider, LoginPage } from '@/features';
+import { authProvider } from '@/features';
 import NotFound from '@/not-found.tsx';
+import { LoginPage } from '@/features/auth/ui/LoginPage.tsx';
 
 const entities = [
   'users',

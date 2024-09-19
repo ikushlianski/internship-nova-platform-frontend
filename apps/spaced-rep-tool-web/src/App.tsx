@@ -12,6 +12,7 @@ function App() {
         <Route index path={RoutesEnum.Main} element={<Main />} />
         <Route path={RoutesEnum.PrivacyPolicy} element={<PrivacyPolicy />} />
         <Route path={RoutesEnum.Login} element={<SignIn />} />
+        <Route path="*" Component={NotFound} />
       </Routes>
     </div>
   );

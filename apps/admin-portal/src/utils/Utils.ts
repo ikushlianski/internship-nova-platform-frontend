@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IUser } from '../types/User';
 import {
   Users,
@@ -33,7 +34,6 @@ export function getPrimaryRole(user: IUser): string {
 }
 
 //Function for gettin data from `entities.json` file
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getDataForResource = (resource: string): any[] => {
   switch (resource) {
     case 'users':
@@ -62,7 +62,6 @@ export const getDataForResource = (resource: string): any[] => {
 };
 
 //Function for "UpdateMany "to update data in the `entities.json` file
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const updateResourceData = (resource: string, updatedData: any[]): void => {
   switch (resource) {
     case 'users':
@@ -100,7 +99,17 @@ export const updateResourceData = (resource: string, updatedData: any[]): void =
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const generateNewId = (data: any[]): number => {
   return data.length ? Math.max(...data.map((item) => item.id)) + 1 : 1;
+};
+
+//functions to make arrays in UserCreateForm
+export const parseToNumberArray = (input: any) => {
+  if (typeof input === 'string') {
+    return input.split(',').map((id: string) => Number(id.trim()));
+  }
+  if (Array.isArray(input)) {
+    return input.map((id: any) => Number(id));
+  }
+  return typeof input !== 'undefined' ? [Number(input)] : [];
 };

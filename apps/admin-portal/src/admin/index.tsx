@@ -1,9 +1,10 @@
 import { Admin, Resource, ListGuesser, EditGuesser, ShowGuesser } from 'react-admin';
 import dataProvider from '../mocks/dataProvider';
 import NotFound from '../not-found.tsx';
+import { CustomLayout } from '../components/CustomLayout.tsx';
 
 const App = () => (
-  <Admin dataProvider={dataProvider} catchAll={NotFound}>
+  <Admin dataProvider={dataProvider} layout={CustomLayout} catchAll={NotFound}>
     <Resource name="users" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
     <Resource name="students" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
     <Resource name="teachers" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />

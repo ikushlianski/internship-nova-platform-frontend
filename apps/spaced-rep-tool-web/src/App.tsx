@@ -4,6 +4,7 @@ import { PrivacyPolicy } from './app/PrivacyPolicy/PrivacyPolicy';
 import { RoutesEnum } from './utils/RoutesEnum';
 import { Main } from './app/Main/Main';
 import { SignIn } from './features/SignIn/SignIn';
+import NotFound from './not-found';
 
 function App() {
   return (

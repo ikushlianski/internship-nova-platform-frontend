@@ -1,3 +1,5 @@
+'use client';
+
 import TGLogo from '@/assets/icons/telegramLogo.svg';
 import WALogo from '@/assets/icons/whatsAppLogo.svg';
 import { Course } from '@/shared/types/data.types';
@@ -9,9 +11,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@repo/ui/carousel';
+import { ErrorComponent } from '@repo/ui/error';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 export default function NotFound({ courses }: { courses: Course[] }) {
+  const translation = useTranslations('not_found');
+
   if (!courses || courses.length === 0) {
     return <div>No courses available</div>;
   }
@@ -22,7 +28,7 @@ export default function NotFound({ courses }: { courses: Course[] }) {
 
   return (
     <div className="flex flex-col items-center justify-center gap-8 pt-6">
-      <h1 className="text-2xl">Доступные курсы:</h1>
+      <h1 className="text-2xl">{translation('courses')}</h1>
       <Carousel className="w-2/3">
         <CarouselContent>
           {courses.map(({ course_code, course_name, course_level_id, classes }) => (
@@ -47,7 +53,7 @@ export default function NotFound({ courses }: { courses: Course[] }) {
         <CarouselNext />
       </Carousel>
       <div className="flex flex-col gap-6">
-        <p className="text-xl">Остались вопросы? Свяжитесь с нами!</p>
+        <p className="text-xl"></p>
         <div className="flex justify-center gap-6">
           <Link href={'/'}>
             <WALogo />

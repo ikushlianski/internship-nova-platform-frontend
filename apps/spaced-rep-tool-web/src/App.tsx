@@ -2,10 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { PrivacyPolicy } from './app/PrivacyPolicy/PrivacyPolicy';
 import { RoutesEnum } from './utils/RoutesEnum';
-import { Menu } from './components/Menu/Menu';
 import { Main } from './app/Main/Main';
+import { SignIn } from './features/SignIn/SignIn';
 import NotFound from './not-found';
-import SignIn from './features/SignIn/SignIn';
+import { Menu } from './components/Menu/Menu';
 
 function App() {
   return (

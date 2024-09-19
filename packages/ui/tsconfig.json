@@ -6,8 +6,11 @@
     "moduleResolution": "NodeNext",
     "target": "ES2022",
     "outDir": "dist",
+    "rootDir": "./",
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "include": ["src/**/*", "packages/ui/**/*", "storybook-static/**/*", "turbo/generators/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

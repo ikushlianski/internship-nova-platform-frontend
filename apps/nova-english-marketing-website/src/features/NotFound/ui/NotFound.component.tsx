@@ -1,5 +1,6 @@
 import TGLogo from '@/assets/icons/telegramLogo.svg';
 import WALogo from '@/assets/icons/whatsAppLogo.svg';
+import { Course } from '@/shared/types/data.types';
 import { Card, CardDescription, CardHeader, CardTitle } from '@repo/ui/card';
 import {
   Carousel,
@@ -9,9 +10,12 @@ import {
   CarouselPrevious,
 } from '@repo/ui/carousel';
 import Link from 'next/link';
-import { Course } from '@/shared/types/data.types';
 
 export default function NotFound({ courses }: { courses: Course[] }) {
+    if (!courses || courses.length === 0) {
+    return <div>No courses available</div>;
+  }
+  
   if (!courses || courses.length === 0) {
     return <div>No courses available</div>;
   }

@@ -267,11 +267,11 @@
         "day": "Daytime",
         "evening": "Evening"
       },
-      "cta": "Start the Test"
-    },
-    "nda": {
-      "title": "By submitting the form, you accept the terms of the",
-      "link": "Privacy Policy"
+      "cta": "Start the Test",
+      "nda": {
+        "title": "By submitting the form, you accept the terms of the",
+        "link": "Privacy Policy"
+      }
     }
   }
 }

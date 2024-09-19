@@ -2,7 +2,6 @@ import { Course } from '@/shared/types/data.types';
 import { Class } from '@repo/shared-types/class';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_V1_URL;
-console.log('API Base URL:', API_BASE_URL);
 
 export const getAllClasses = async (): Promise<Class[]> => {
   try {

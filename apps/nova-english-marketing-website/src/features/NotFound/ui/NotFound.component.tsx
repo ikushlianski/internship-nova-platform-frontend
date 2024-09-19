@@ -12,10 +12,10 @@ import {
 import Link from 'next/link';
 
 export default function NotFound({ courses }: { courses: Course[] }) {
-    if (!courses || courses.length === 0) {
+  if (!courses || courses.length === 0) {
     return <div>No courses available</div>;
   }
-  
+
   if (!courses || courses.length === 0) {
     return <div>No courses available</div>;
   }

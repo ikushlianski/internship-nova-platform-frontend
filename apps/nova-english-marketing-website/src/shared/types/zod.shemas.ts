@@ -10,12 +10,7 @@ export const MeetingKindEnumSchema = z.enum([
   'OTHER',
 ]);
 
-export const ClassSizesEnumSchema = z.enum([
-  'INDIVIDUAL',
-  'GROUP_2_4',
-  'GROUP_5_8',
-  'GROUP_9_12',
-]);
+export const ClassSizesEnumSchema = z.enum(['INDIVIDUAL', 'GROUP_2_4', 'GROUP_5_8', 'GROUP_9_12']);
 
 export const CourseStructureSchema = z.object({
   course_id: z.string(),
@@ -86,6 +81,8 @@ export const CourseSchema = z.object({
   Module: z.array(z.any()),
   LessonCard: z.array(z.any()),
 });
+
+export const CoursesSchema = z.array(CourseSchema);
 
 export const CourseAdviceSchema = z.object({
   advice_id: z.string(),

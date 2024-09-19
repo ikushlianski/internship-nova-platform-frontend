@@ -1,3 +1,5 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 import ImportanceCard from './ImportanceCard.component';
 import CheckIcon from '/public/assets/icons/checkIcon.svg';

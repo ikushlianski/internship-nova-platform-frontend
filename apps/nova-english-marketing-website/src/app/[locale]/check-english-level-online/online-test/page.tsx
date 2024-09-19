@@ -1,3 +1,5 @@
+'use client';
+
 import { TestForm } from '@/features/TestForm/ui/TestForm.component';
 import { useTranslations } from 'next-intl';
 

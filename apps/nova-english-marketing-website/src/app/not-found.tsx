@@ -11,7 +11,6 @@ const NotFoundPage = async () => {
     console.error('Failed to fetch courses:', error);
     errorMessage = 'Не удалось загрузить доступные курсы.';
   }
-  console.log(courses);
   return (
     <div className="pt-16 flex flex-col justify-center items-center gap-16">
       <h1 className="text-xl font-bold">

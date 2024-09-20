@@ -1,5 +1,5 @@
-import HeroSection from '@/features/OnlineTest/ui/HeroSection.component';
-import ImportanceSection from '@/features/OnlineTest/ui/ImportanceSection.component';
+import HeroSection from '@/features/TestWelcomeView/ui/HeroSection.component';
+import ImportanceSection from '@/features/TestWelcomeView/ui/ImportanceSection.component';
 
 export default function CheckEnglishLevelPage() {
   return (

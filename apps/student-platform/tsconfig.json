@@ -23,7 +23,8 @@
       "@features*": ["./src/features/*"],
       "@shared*": ["./src/shared/*"],
       "@views*": ["./src/views/*"],
-      "@components*": ["./src/components/*"]
+      "@components*": ["./src/components/*"],
+      "@packages*": ["../../packages/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

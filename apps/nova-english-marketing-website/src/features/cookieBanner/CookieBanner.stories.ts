@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import CookieBanner from "./CookieBanner.component";
+import type { Meta, StoryObj } from '@storybook/react';
+import CookieBanner from './CookieBanner.component';
 
 const meta: Meta<typeof CookieBanner> = {
-  title: "CookieBanner",
+  title: 'CookieBanner',
   component: CookieBanner,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof CookieBanner>;
 
 export default meta;

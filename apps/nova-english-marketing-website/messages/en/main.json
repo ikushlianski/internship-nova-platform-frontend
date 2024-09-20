@@ -257,7 +257,7 @@
       "title": "You're on the right track",
       "description": "Fill out the form below to start the test and receive the results by email. We promise not to spam, only important information and test results!",
       "fields": {
-        "name_label": "Your Name",
+        "email_label": "Your Email",
         "country_label": "Your Country",
         "occupation_label": "What do you do in the IT field?"
       },

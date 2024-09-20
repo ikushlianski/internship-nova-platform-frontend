@@ -1,20 +1,55 @@
-import { Admin, Resource, ListGuesser, EditGuesser, ShowGuesser } from 'react-admin';
+import { Admin, CustomRoutes, EditGuesser, ListGuesser, Resource, ShowGuesser } from 'react-admin';
+import { BrowserRouter, Route } from 'react-router-dom';
 import dataProvider from '../mocks/dataProvider';
 import NotFound from '../not-found.tsx';
+import { AppRoutes } from '../shared';
+import { UserProfile } from 'src/features/UserProfile/ui/UserProfile.tsx';
+
+const entities = [
+  'students',
+  'teachers',
+  'paths',
+  'admins',
+  'managers',
+  'spectators',
+  'noRoles',
+  'sales',
+];
 
 const App = () => (
-  <Admin dataProvider={dataProvider} catchAll={NotFound}>
-    <Resource name="users" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
-    <Resource name="students" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
-    <Resource name="teachers" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
-    <Resource name="paths" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
-    <Resource name="classes" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
-    <Resource name="admins" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
-    <Resource name="managers" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
-    <Resource name="spectators" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
-    <Resource name="noRoles" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
-    <Resource name="sales" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
-  </Admin>
+  <BrowserRouter>
+    <Admin dataProvider={dataProvider} catchAll={NotFound}>
+      {entities.map((entity) => (
+        <Resource
+          key={entity}
+          name={entity}
+          list={ListGuesser}
+          edit={EditGuesser}
+          show={ShowGuesser}
+        />
+      ))}
+      <CustomRoutes>
+        <Route path={AppRoutes.Users}>
+          <Route path={AppRoutes.Users} index element={<div>users list</div>} />
+          <Route path={AppRoutes.User} element={<UserProfile />} />
+          <Route path={AppRoutes.UserEdit} element={<div>edit user by id</div>} />
+          <Route path={AppRoutes.UserCreate} element={<div>create new user</div>} />
+        </Route>
+        <Route path={AppRoutes.Courses}>
+          <Route path={AppRoutes.Courses} index element={<div>courses list</div>} />
+          <Route path={AppRoutes.Course} element={<div>course by id</div>} />
+          <Route path={AppRoutes.CourseManage} element={<div>manage course by id</div>} />
+          <Route path={AppRoutes.CourseCreate} element={<div>create new course</div>} />
+        </Route>
+        <Route path={AppRoutes.Classes}>
+          <Route path={AppRoutes.Classes} index element={<div>classes list</div>} />
+          <Route path={AppRoutes.Class} element={<div>class by id</div>} />
+          <Route path={AppRoutes.ClassManage} element={<div>manage class by id</div>} />
+          <Route path={AppRoutes.ClassCreate} element={<div>create new class</div>} />
+        </Route>
+      </CustomRoutes>
+    </Admin>
+  </BrowserRouter>
 );
 
 export default App;

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { MobileNavigationProps } from '../types/mobileNavigation.type';
 import { useNavLinks } from '../logic/navLinks.logic';
 
@@ -14,19 +15,16 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ toggleMenu }) => {
         <ul className="space-y-4 text-center w-full p-6">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleMenu();
-                }}
                 className={`text-lg font-medium leading-6 ${
                   link.highlight ? 'text-[hsl(var(--blue500))]' : 'text-[hsl(var(--foreground))]'
                 }`}
                 aria-label={link.label}
+                onClick={toggleMenu}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

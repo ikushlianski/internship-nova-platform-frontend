@@ -22,8 +22,8 @@ export function TestForm() {
       >
         <div className="grid grid-cols-2 grid-rows-2 gap-10">
           <FormFieldItem
-            name="username"
-            label={t('fields.name_label')}
+            name="email"
+            label={t('fields.email_label')}
             placeholder="Text"
             form={form}
             fieldType="input"
@@ -34,6 +34,7 @@ export function TestForm() {
             label={t('fields.country_label')}
             placeholder="Text"
             form={form}
+            tooltipText={t('tooltip_text')}
             fieldType="input"
           />
 

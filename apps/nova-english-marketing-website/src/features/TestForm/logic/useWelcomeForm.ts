@@ -14,7 +14,7 @@ export function useWelcomeForm() {
   const form: UseFormReturn<z.infer<typeof schema>> = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
-      username: '',
+      email: '',
       country: '',
       occupation: '',
       schedule: '',

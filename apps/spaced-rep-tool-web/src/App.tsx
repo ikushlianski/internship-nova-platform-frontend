@@ -6,6 +6,7 @@ import { Main } from './app/Main/Main';
 import NotFound from './not-found';
 import { SignIn } from './features/SignIn/SignIn';
 import ToastContainer from './features/Toast/ui/ToastContainer';
+import NotFound from './not-found';
 
 function App() {
   return (

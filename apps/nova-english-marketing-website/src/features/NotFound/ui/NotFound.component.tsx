@@ -11,12 +11,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@repo/ui/carousel';
-import { ErrorComponent } from '@repo/ui/error';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 export default function NotFound({ courses }: { courses: Course[] }) {
-  const translation = useTranslations('not_found');
+  const t = useTranslations('not_found');
 
   if (!courses || courses.length === 0) {
     return <div>No courses available</div>;
@@ -28,7 +27,7 @@ export default function NotFound({ courses }: { courses: Course[] }) {
 
   return (
     <div className="flex flex-col items-center justify-center gap-8 pt-6">
-      <h1 className="text-2xl">{translation('courses')}</h1>
+      <h1 className="text-2xl">{t('Courses')}</h1>
       <Carousel className="w-2/3">
         <CarouselContent>
           {courses.map(({ course_code, course_name, course_level_id, classes }) => (

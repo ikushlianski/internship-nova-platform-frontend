@@ -5,7 +5,7 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "prettier": "turbo prettier -- --write",
+    "prettier": "turbo prettier",
     "prepare": "husky"
   },
   "devDependencies": {

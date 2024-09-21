@@ -9,7 +9,10 @@ export const Unauthorized = () => {
         <br></br>
         Please sign in
       </p>
-      <Link to="/" className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-150">
+      <Link
+        to="/"
+        className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-150"
+      >
         Main page
       </Link>
     </div>

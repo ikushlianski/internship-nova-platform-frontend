@@ -5,20 +5,18 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 export const SignIn = () => {
   const [acceptPolicy, setAcceptPolicy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const navigate = useNavigate()
-  const location = useLocation()
-
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    const authError = params.get('error')
+    const params = new URLSearchParams(location.search);
+    const authError = params.get('error');
 
-    if(authError === '401') {
-      navigate('/401')
+    if (authError === '401') {
+      navigate('/401');
     }
-  }, [location, navigate])
+  }, [location, navigate]);
 
-  
   const handleGoogleSignIn = () => {
     if (!acceptPolicy) {
       setError('You must read and accept the Privacy Policy.');

@@ -7,7 +7,6 @@ import { SignIn } from './features/SignIn/SignIn';
 import NotFound from './not-found';
 import { Unauthorized } from './features/Unauthorized/Unauthorized';
 
-
 function App() {
   return (
     <div>

@@ -22,7 +22,7 @@ export default function NotFound({ courses }: { courses: Course[] }) {
   }
 
   if (!courses || courses.length === 0) {
-    return <div>No courses available</div>;
+    return <div>{t('No courses available')}</div>;
   }
 
   return (

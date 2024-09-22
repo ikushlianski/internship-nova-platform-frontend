@@ -29,5 +29,11 @@
       "@/*": ["./src/*"],
     }
   },
-  "include": ["src", "**/*.ts", "**/*.tsx", "feature/Auth"]
+  "include": [
+    "src",
+    "**/*.ts",
+    "**/*.tsx",
+    "../../packages/shared-types/src/**/*.ts",
+    "feature/Auth"
+  ],
 }

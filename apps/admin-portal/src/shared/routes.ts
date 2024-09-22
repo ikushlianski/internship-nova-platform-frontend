@@ -2,6 +2,7 @@ enum Directories {
   Users = '/users',
   Classes = '/classes',
   Courses = '/courses',
+  Leads = '/leads',
 }
 
 export const AppRoutes = {
@@ -22,4 +23,7 @@ export const AppRoutes = {
   Course: `${Directories.Courses}/:id`,
   CourseManage: `${Directories.Courses}/manage/:id`,
   CourseCreate: `${Directories.Courses}/create`,
+
+  // Leads Routes
+  Leads: `${Directories.Leads}`,
 };

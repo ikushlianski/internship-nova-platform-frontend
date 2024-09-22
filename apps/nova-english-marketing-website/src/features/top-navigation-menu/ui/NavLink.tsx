@@ -16,7 +16,7 @@ const NavLink = ({ label, path, icon }: NavLinkProps) => {
   const isActive = pathname === path;
 
   return (
-    <Link href={path} className={`${isActive ? 'text-[#0092fc]' : ''} text-2xl`}>
+    <Link href={path} className={`${isActive ? 'text-[#0092fc]' : ''} text-xl lg:text-2xl`}>
       <span className="flex items-center">
         {label}
         {icon}

@@ -1,5 +1,5 @@
+import { describe, expect, it } from 'vitest';
 import { phoneMask } from './phoneMask';
-import { describe, it, expect } from 'vitest';
 
 // just an example
 

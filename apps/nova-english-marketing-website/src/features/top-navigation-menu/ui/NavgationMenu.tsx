@@ -36,11 +36,11 @@ export const NavgationMenu = () => {
 
   return (
     <div className="pb-[100px]">
-      <header className="bg-white w-full h-[100px] fixed flex px-[250px] items-center justify-between text-sans">
+      <header className="bg-white w-full h-[100px] fixed flex px-10 lg:px-[5vw] xl:px-[13vw] items-center justify-between text-sans ">
         <Link href={'/'}>
           <Logo />
         </Link>
-        <ul className="flex gap-[52px]">
+        <ul className="flex gap-4 lg:gap-10 xl:gap-[52px]">
           {navItems.map(({ label, path, icon }) => (
             <li key={path}>
               <NavLink label={t(label)} path={path} icon={icon} />

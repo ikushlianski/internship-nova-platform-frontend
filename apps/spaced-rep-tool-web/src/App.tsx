@@ -1,3 +1,7 @@
+import './App.css'
+import { RoutesEnum } from './utils/RoutesEnum'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import SignUpPage from './features/SignUp/SignUpPage'
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { PrivacyPolicy } from './app/PrivacyPolicy/PrivacyPolicy';
@@ -6,17 +10,15 @@ import { Main } from './app/Main/Main';
 import { SignIn } from './features/SignIn/SignIn';
 import NotFound from './not-found';
 
+
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Routes>
-        <Route index path={RoutesEnum.Main} element={<Main />} />
-        <Route path={RoutesEnum.PrivacyPolicy} element={<PrivacyPolicy />} />
-        <Route path={RoutesEnum.Login} element={<SignIn />} />
-        <Route path="*" Component={NotFound} />
+        <Route path={RoutesEnum.SIGNUP} element={<SignUpPage />} />
       </Routes>
-    </div>
-  );
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

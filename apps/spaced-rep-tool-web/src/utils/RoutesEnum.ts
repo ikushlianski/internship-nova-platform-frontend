@@ -1,5 +1,9 @@
 export enum RoutesEnum {
-  Main = '/',
+
+  HOME = '/',
+  SIGNUP = '/signup',
+  LOGIN = '/login',
+   Main = '/',
   PrivacyPolicy = '/privacy-policy',
   Login = '/login',
 }

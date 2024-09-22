@@ -269,7 +269,7 @@
       },
       "cta": "Start the Test",
       "tooltip_text": "We are just curious about what countries our visitors are as we are an international school. You can skip answering if you don’t want to",
-      "nda": {
+      "privacy_policy": {
         "title": "By submitting the form, you accept the terms of the",
         "link": "Privacy Policy"
       }

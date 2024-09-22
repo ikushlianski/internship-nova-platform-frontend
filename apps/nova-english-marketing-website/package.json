@@ -17,9 +17,11 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@repo/shared-types": "*",
     "@shadcn/ui": "^0.0.4",
+    "autoprefixer": "^10.4.20",
     "babel-plugin-react-compiler": "^0.0.0-experimental-334f00b-20240725",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "css-loader": "^7.1.2",
     "embla-carousel-react": "^8.2.0",
     "lucide-react": "^0.429.0",
     "next": "14.2.5",
@@ -47,9 +49,9 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "eslint-plugin-storybook": "^0.8.0",
-    "postcss": "^8",
+    "postcss": "^8.4.47",
     "storybook": "^8.2.9",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.12",
     "typescript": "^5"
   }
 }

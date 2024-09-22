@@ -26,7 +26,7 @@ coverage
 out/
 build
 dist
-storybook-static
+packages/ui/storybook-static/
 
 
 # Debug

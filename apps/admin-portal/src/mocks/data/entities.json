@@ -6,7 +6,7 @@
     { "id": 4, "name": "Ervin Howell", "roles": ["Sales"], "salesId": 666 },
     { "id": 5, "name": "Clementine Bauch", "roles": ["Admin"], "adminId": 101 },
     { "id": 6, "name": "Patricia Lebsack", "roles": ["Spectator"], "spectatorId": 10002 },
-    { "id": 7, "name": "L'etoile du Nord", "roles": ["No role"], "noRoleId": 10001 },
+    { "id": 7, "name": "L'etoile du Nord", "roles": ["No role"], "noroleId": 10001 },
     { "id": 8, "name": "Chelsey Dietrich", "roles": ["Student"], "studentId": 1 },
     { "id": 9, "name": "Johnny Mnemonic", "roles": ["Student"], "studentId": 2 },
     { "id": 10, "name": "Kurtis Jackson", "roles": ["Student"], "studentId": 3 },

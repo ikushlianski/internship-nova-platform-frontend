@@ -1,5 +1,3 @@
-'use server';
-
 import { schema } from '../logic/formSchema';
 
 export type FormState = {

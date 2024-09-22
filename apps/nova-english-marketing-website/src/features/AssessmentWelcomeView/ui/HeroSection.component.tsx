@@ -13,7 +13,7 @@ export default function HeroSection() {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(pathnames['/check-english-level-online/online-test'] as Pathnames);
+    router.push(pathnames['/check-english-level-online/online-assessment'] as Pathnames);
   };
 
   return (

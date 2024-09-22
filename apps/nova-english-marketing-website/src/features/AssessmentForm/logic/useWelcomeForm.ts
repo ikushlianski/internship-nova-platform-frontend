@@ -4,7 +4,7 @@ import { useFormState } from 'react-dom';
 import { useForm, UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 import { onSubmitAction } from '../api/formSubmit';
-import { schema } from '../logic/formSchema';
+import { schema } from './formSchema';
 
 export function useWelcomeForm() {
   const [state, formAction] = useFormState(onSubmitAction, {

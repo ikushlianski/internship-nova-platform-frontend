@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { schema } from '../logic/formSchema';
 import { SelectOptions } from './selectOptions';
 
-type FormFieldItemProps = {
+type AssessmentFieldItemProps = {
   name: keyof z.infer<typeof schema>;
   label: string;
   placeholder: string;
@@ -16,14 +16,14 @@ type FormFieldItemProps = {
   tooltipText?: string;
 };
 
-export function FormFieldItem({
+export function AssessmentFieldItem({
   name,
   label,
   placeholder,
   form,
   fieldType,
   tooltipText,
-}: FormFieldItemProps) {
+}: AssessmentFieldItemProps) {
   const { errors } = form.formState;
 
   return (

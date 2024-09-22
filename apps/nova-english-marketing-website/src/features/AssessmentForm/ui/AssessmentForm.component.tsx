@@ -4,10 +4,10 @@ import { Button } from '@repo/ui/appButton';
 import { Form } from '@repo/ui/form';
 import { useTranslations } from 'next-intl';
 import { useWelcomeForm } from '../logic/useWelcomeForm';
-import { FormFieldItem } from './FormFieldItem.component';
+import { AssessmentFieldItem } from './AssessmentFieldItem.component';
 import { ScheduleToggleGroup } from './ScheduleToggleGroup.component';
 
-export function TestForm() {
+export function AssessmentForm() {
   const t = useTranslations('test_page.form');
 
   const { form, formRef, handleSubmit, formAction } = useWelcomeForm();
@@ -21,7 +21,7 @@ export function TestForm() {
         className="flex flex-col gap-10"
       >
         <div className="grid grid-cols-2 grid-rows-2 gap-10">
-          <FormFieldItem
+          <AssessmentFieldItem
             name="email"
             label={t('fields.email_label')}
             placeholder="Text"
@@ -29,7 +29,7 @@ export function TestForm() {
             fieldType="input"
           />
 
-          <FormFieldItem
+          <AssessmentFieldItem
             name="country"
             label={t('fields.country_label')}
             placeholder="Text"
@@ -38,7 +38,7 @@ export function TestForm() {
             fieldType="input"
           />
 
-          <FormFieldItem
+          <AssessmentFieldItem
             name="occupation"
             label={t('fields.occupation_label')}
             placeholder="Text"

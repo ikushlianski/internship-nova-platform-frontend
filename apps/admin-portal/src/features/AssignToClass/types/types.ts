@@ -1,8 +1,8 @@
 export interface AssignClassButtonProps {
-  classes: Class[];
+  classes: IClass[];
 }
 
-export interface Class {
+export interface IClass {
   id: number;
   name: string;
   pathId: number;

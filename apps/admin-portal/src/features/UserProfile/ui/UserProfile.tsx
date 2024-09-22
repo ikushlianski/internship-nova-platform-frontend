@@ -20,7 +20,9 @@ export const UserProfile = () => {
           <ul className="flex justify-center gap-4">
             {tabs.map((tab) => (
               // links to views
-              <button className="text-lg">{tab}</button>
+              <button key={tab} className="text-lg hover:bg-neutral-700 cursor-pointer">
+                {tab}
+              </button>
             ))}
           </ul>
         </nav>

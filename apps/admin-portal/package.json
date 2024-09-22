@@ -21,6 +21,7 @@
     "@mui/material": "^5.16.7",
     "@repo/shared-types": "*",
     "@repo/ui": "*",
+    "@tanstack/react-query": "^5.56.2",
     "attr-accept": "^2.2.2",
     "dom-helpers": "^5.2.1",
     "file-selector": "^0.6.0",

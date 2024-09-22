@@ -1,4 +1,16 @@
 import { http, HttpResponse } from 'msw';
+
+import { IAdmin } from '../types/Admin';
+import { IClass } from '../types/Class';
+import { IManager } from '../types/Manager';
+import { INoRole } from '../types/NoRole';
+import { IPath } from '../types/Path';
+import { ISales } from '../types/Sales';
+import { ISpectator } from '../types/Spectator';
+import { IStudent } from '../types/Student';
+import { ITeacher } from '../types/Teacher';
+import { IUser } from '../types/User';
+
 import {
   Users,
   Students,
@@ -11,22 +23,12 @@ import {
   Spectators,
   NoRoles,
 } from './data/entities.json';
-import { IUser } from '../types/User';
-import { IStudent } from '../types/Student';
-import { ITeacher } from '../types/Teacher';
-import { IPath } from '../types/Path';
-import { IClass } from '../types/Class';
-import { IAdmin } from '../types/Admin';
-import { IManager } from '../types/Manager';
-import { ISales } from '../types/Sales';
-import { ISpectator } from '../types/Spectator';
-import { INoRole } from '../types/NoRole';
 
 let users = [...(Users as IUser[])];
 let students = [...(Students as IStudent[])];
 let teachers = [...(Teachers as ITeacher[])];
 let paths = [...(Paths as IPath[])];
-let classes = [...(Classes as IClass[])];
+export let classes = [...(Classes as IClass[])];
 let admins = [...(Admins as IAdmin[])];
 let managers = [...(Managers as IManager[])];
 let sales = [...(Sales as ISales[])];

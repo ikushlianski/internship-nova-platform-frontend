@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { InitNotification } from '../hooks/useInitNotification';
 import { Layout, LayoutProps } from 'react-admin';
-import { Button, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { Button } from '@mui/material';
 import MentorCreateForm from './MentorCreateForm';
 import StudentCreateForm from './StudentCreateForm';
 import dataProvider from '../mocks/dataProvider';
+import CreateDialog from './CreateDialog';
 
 export const CustomLayout = (props: LayoutProps) => {
   const [openMetnorDialog, setOpenMetnorDialog] = useState(false);
@@ -54,44 +54,16 @@ export const CustomLayout = (props: LayoutProps) => {
       >
         Create Student
       </Button>
-      <Dialog open={openMetnorDialog} onClose={handleCloseMetnorDialog} maxWidth="md" fullWidth>
-        <DialogTitle>
-          Create Mentor
-          <IconButton
-            aria-label="close"
-            onClick={handleCloseMetnorDialog}
-            style={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent>
-          <MentorCreateForm dataProvider={dataProvider} {...props} />
-        </DialogContent>
-      </Dialog>
-      <Dialog open={openStudentDialog} onClose={handleCloseStudentDialog} maxWidth="md" fullWidth>
-        <DialogTitle>
-          Create Student
-          <IconButton
-            aria-label="close"
-            onClick={handleCloseStudentDialog}
-            style={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent>
-          <StudentCreateForm dataProvider={dataProvider} {...props} />
-        </DialogContent>
-      </Dialog>
+      <CreateDialog open={openMetnorDialog} onClose={handleCloseMetnorDialog} title="Create Mentor">
+        <MentorCreateForm dataProvider={dataProvider} {...props} />
+      </CreateDialog>
+      <CreateDialog
+        open={openStudentDialog}
+        onClose={handleCloseStudentDialog}
+        title="Create Student"
+      >
+        <StudentCreateForm dataProvider={dataProvider} {...props} />
+      </CreateDialog>
     </>
   );
 };

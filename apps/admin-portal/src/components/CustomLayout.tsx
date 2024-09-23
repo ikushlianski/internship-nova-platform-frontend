@@ -7,14 +7,22 @@ import UserCreateForm from './UserCreateForm';
 import dataProvider from '../mocks/dataProvider';
 
 export const CustomLayout = (props: LayoutProps) => {
-  const [open, setOpen] = useState(false);
+  const [openMetnorDialog, setOpenMetnorDialog] = useState(false);
+  const [openStudentDialog, setOpenStudentDialog] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
+  const handleOpenMetnorDialog = () => {
+    setOpenMetnorDialog(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseMetnorDialog = () => {
+    setOpenMetnorDialog(false);
+  };
+  const handleOpenStudentDialog = () => {
+    setOpenStudentDialog(true);
+  };
+
+  const handleCloseStudentDialog = () => {
+    setOpenStudentDialog(false);
   };
 
   return (
@@ -22,7 +30,19 @@ export const CustomLayout = (props: LayoutProps) => {
       <InitNotification />
       <Layout {...props} />
       <Button
-        onClick={handleOpen}
+        onClick={handleOpenMetnorDialog}
+        style={{
+          position: 'fixed',
+          right: 180,
+          bottom: 30,
+          backgroundColor: '#CCC',
+          zIndex: 2000,
+        }}
+      >
+        Create Mentor
+      </Button>
+      <Button
+        onClick={handleOpenStudentDialog}
         style={{
           position: 'fixed',
           right: 30,
@@ -31,14 +51,33 @@ export const CustomLayout = (props: LayoutProps) => {
           zIndex: 2000,
         }}
       >
-        Create User
+        Create Student
       </Button>
-      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
+      <Dialog open={openMetnorDialog} onClose={handleCloseMetnorDialog} maxWidth="md" fullWidth>
         <DialogTitle>
-          Create User
+          Create Mentor
           <IconButton
             aria-label="close"
-            onClick={handleClose}
+            onClick={handleCloseMetnorDialog}
+            style={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent>
+          <UserCreateForm dataProvider={dataProvider} {...props} />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={openStudentDialog} onClose={handleCloseStudentDialog} maxWidth="md" fullWidth>
+        <DialogTitle>
+          Create Student
+          <IconButton
+            aria-label="close"
+            onClick={handleCloseStudentDialog}
             style={{
               position: 'absolute',
               right: 8,

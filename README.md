@@ -17,7 +17,6 @@ See backend platform at [`nova-platform-api` repo](https://github.com/neo-soluti
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-
 ## Working locally
 
 - To run monorepo commands, install `turbo` globally: `npm install turbo --global`
@@ -64,11 +63,9 @@ npm run build
 
 `npx turbo gen workspace --copy`
 
-
 ### Adding a package as dependency to other packages
 
 1. `npx turbo gen workspace --copy`
 2. Choose `package` and copy from any existing package so most of files are auto-created
 3. Ensure your package is named `@repo/<your-package-name>`
 4. Add the package as a dependency to any apps you want: `@repo/<your-package-name>: "*"`
-

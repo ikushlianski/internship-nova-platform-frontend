@@ -9,10 +9,6 @@ export function StageBanner() {
     ? process.env.NEXT_PUBLIC_VITE_APP_ENV
     : process.env.NEXT_PUBLIC_VITE_APP_ENV;
 
-  console.log(window.location.hostname);
-
-  console.log(params);
-
   return (
     <div className={cn('w-full', 'h-10', 'text-center', 'bg-amber-500')}>
       <span className={cn('absolute', 'text-gray-50', 'text-l', 'pt-2')}>you are in {params}</span>

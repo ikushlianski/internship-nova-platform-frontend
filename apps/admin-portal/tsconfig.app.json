@@ -33,7 +33,6 @@
     "src",
     "**/*.ts",
     "**/*.tsx",
-    "../../packages/shared-types/src/**/*.ts",
-    "feature/Auth"
+    "../../packages/shared-types/src/**/*.ts"
   ],
 }

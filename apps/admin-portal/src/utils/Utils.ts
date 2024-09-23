@@ -12,7 +12,7 @@ import {
   NoRoles,
 } from '../mocks/data/entities.json';
 import { HttpResponse } from 'msw';
-import { showNotify } from './globalNotify';
+import { showNotify } from './Notification/globalNotify';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { User } from '@repo/shared-types/user';
 import { authProvider } from '../../feature/Auth/logic/authProvider';

@@ -8,6 +8,7 @@ import { ISales } from '../types/Sales';
 import { INoRole } from '../types/NoRole';
 import { ISpectator } from '../types/Spectator';
 import { parseToNumberArray } from '../utils/Utils';
+import { showNotify } from '../utils/Notification/globalNotify';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { UserCreateFormProps } from '../types/UserCreateProps';
 
@@ -101,8 +102,15 @@ const useCreateUser = ({ dataProvider }: UserCreateFormProps) => {
         };
         await dataProvider.create('spectators', { data: spectatorData });
       }
+
+      showNotify('User created successfully', { type: 'success', autoHideDuration: 1500 });
     } catch (error) {
-      if (error instanceof Error) throw error;
+      if (error instanceof Error) {
+        showNotify(`Error: ${error.message}`, { type: 'error', autoHideDuration: 1500 });
+      } else {
+        showNotify('Unknown error occurred', { type: 'error', autoHideDuration: 1500 });
+      }
+      throw error;
     }
   };
   return { role, setRole, handleSubmit };

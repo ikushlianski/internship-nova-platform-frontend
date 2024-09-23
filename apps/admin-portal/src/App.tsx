@@ -1,5 +1,5 @@
-import MyAdmin from './admin';
+import AdminPortal from './admin';
 
-const App = () => <MyAdmin />;
+const App = () => <AdminPortal />;
 
 export default App;

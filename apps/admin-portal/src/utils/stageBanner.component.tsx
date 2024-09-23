@@ -1,10 +1,10 @@
 import { cn } from '@repo/ui/lib/utils.ts';
 
 export const StageBanner = () => {
-  const searchParams = window.location.hostname;
-  const environments = ['qa1', 'qa2', 'qa3', 'dev'];
+  const hostname = window.location.hostname;
+  const lowerEnvironments = ['qa1.', 'qa2.', 'qa3.', 'dev.'];
 
-  const params = environments.some((env) => searchParams.includes(env))
+  const params = lowerEnvironments.some((env) => hostname.includes(env))
     ? import.meta.env.VITE_APP_ENV
     : import.meta.env.VITE_APP_ENV;
 

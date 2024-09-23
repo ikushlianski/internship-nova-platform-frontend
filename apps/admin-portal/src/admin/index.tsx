@@ -1,11 +1,11 @@
 import { Admin, Resource, ListGuesser, EditGuesser, ShowGuesser } from 'react-admin';
 import dataProvider from '../mocks/dataProvider';
 import NotFound from '../not-found.tsx';
-// import { StageBanner } from '../utils/stageBanner.component.tsx';
+import { StageBanner } from '../utils/stageBanner.component.tsx';
 
 const App = () => (
   <>
-    {/*{import.meta.env.VITE_APP_ENV !== 'prod' && <StageBanner />}*/}
+    {import.meta.env.VITE_APP_ENV !== 'prod' && <StageBanner />}
     <Admin dataProvider={dataProvider} catchAll={NotFound}>
       <Resource name="users" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />
       <Resource name="students" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} />

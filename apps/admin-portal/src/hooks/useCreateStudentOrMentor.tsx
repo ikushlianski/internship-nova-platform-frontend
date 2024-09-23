@@ -7,7 +7,7 @@ import { showNotify } from '../utils/Notification/globalNotify';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { UserCreateFormProps } from '../types/UserCreateProps';
 
-const useCreateUser = ({ dataProvider }: UserCreateFormProps) => {
+const useCreateStudentOrMentor = ({ dataProvider }: UserCreateFormProps) => {
   const [role, setRole] = useState(Role.Student);
 
   const handleSubmit = async (
@@ -79,4 +79,4 @@ const useCreateUser = ({ dataProvider }: UserCreateFormProps) => {
   return { role, setRole, handleSubmit };
 };
 
-export default useCreateUser;
+export default useCreateStudentOrMentor;

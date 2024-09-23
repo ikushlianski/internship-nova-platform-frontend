@@ -3,7 +3,7 @@ import { UserRole as Role } from '@repo/shared-types/user';
 import useCreateStudentOrMentor from '../hooks/useCreateStudentOrMentor';
 import { UserCreateFormProps } from '../types/UserCreateProps';
 
-const UserCreateForm = (props: UserCreateFormProps) => {
+const MentorCreateForm = (props: UserCreateFormProps) => {
   const { role, handleSubmit } = useCreateStudentOrMentor(props);
 
   return (
@@ -39,4 +39,4 @@ const UserCreateForm = (props: UserCreateFormProps) => {
   );
 };
 
-export default UserCreateForm;
+export default MentorCreateForm;

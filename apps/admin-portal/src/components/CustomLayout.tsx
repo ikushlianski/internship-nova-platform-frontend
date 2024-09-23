@@ -3,7 +3,8 @@ import { InitNotification } from '../hooks/useInitNotification';
 import { Layout, LayoutProps } from 'react-admin';
 import { Button, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import UserCreateForm from './UserCreateForm';
+import MentorCreateForm from './MentorCreateForm';
+import StudentCreateForm from './StudentCreateForm';
 import dataProvider from '../mocks/dataProvider';
 
 export const CustomLayout = (props: LayoutProps) => {
@@ -69,7 +70,7 @@ export const CustomLayout = (props: LayoutProps) => {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <UserCreateForm dataProvider={dataProvider} {...props} />
+          <MentorCreateForm dataProvider={dataProvider} {...props} />
         </DialogContent>
       </Dialog>
       <Dialog open={openStudentDialog} onClose={handleCloseStudentDialog} maxWidth="md" fullWidth>
@@ -88,7 +89,7 @@ export const CustomLayout = (props: LayoutProps) => {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <UserCreateForm dataProvider={dataProvider} {...props} />
+          <StudentCreateForm dataProvider={dataProvider} {...props} />
         </DialogContent>
       </Dialog>
     </>

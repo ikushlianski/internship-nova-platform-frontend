@@ -4,6 +4,7 @@ import './globals.css';
 import SideMenuLayout from '@/app/layouts/SideMenuLayout';
 import { Header } from '@/components/Header/Header';
 import { ReactNode } from 'react';
+import { SsrStageBanner } from '@sharedutils/ssrStageBanner.component';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={manrope.className}>
+        {process.env.NEXT_PUBLIC_VITE_APP_ENV !== 'prod' && <SsrStageBanner />}
         <Header />
         <SideMenuLayout>{children}</SideMenuLayout>
       </body>

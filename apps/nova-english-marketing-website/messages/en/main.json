@@ -15,17 +15,10 @@
   "cookie_banner": {
     "title": "We use cookies 🍪",
     "description": "We use cookies and other tracking technologies to improve your browsing experience in our website, to show you personalized content and targeted ads, to analyze our website traffic, ant to understand where out visitors are comming from.",
-    "cookies": [
-      "Only necessary",
-      "Performance",
-      "Targeting",
-      "Functionality"
-    ],
-    "buttons": [
-      "Decline all",
-      "Accept",
-      "Details"
-    ]
+    "buttons": {
+      "accept": "Accept",
+      "details": "Details"
+    }
   },
   "temporary": {
     "b1_b2_level_course": "Hello im B1 and B2 level course!!",

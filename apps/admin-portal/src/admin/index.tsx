@@ -2,7 +2,6 @@ import { Admin, CustomRoutes, EditGuesser, ListGuesser, Resource, ShowGuesser } 
 import { BrowserRouter, Route } from 'react-router-dom';
 import { authProvider, LoginPage } from '@/features';
 import { InitNotification } from '../hooks/useInitNotification.tsx';
-import { authProvider } from '../../feature/Auth/logic/authProvider.ts';
 import { AppRoutes } from '@/shared';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { CustomLayout } from '../components/CustomLayout.tsx';

@@ -1,0 +1,134 @@
+[33m4b6246c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/AP-34-401[m[33m)[m categorize utils into some groups
+[33md04e5b6[m[33m ([m[1;31morigin/feature/AP-34-401[m[33m)[m fix namings
+[33me1e742e[m refactor notification duration
+[33m1ddf1c9[m add CreateUser hook
+[33m1ef232d[m add custom layout as component & fix duplicate App naming & fix duplicate code
+[33mbb166ae[m fix ts config
+[33m0bed0b6[m Merge branch 'main' of https://github.com/ikushlianski/nova-platform-frontend-apps into feature/AP-34-401
+[33m1567ba7[m fix all comments
+[33m0f0a791[m Merge pull request #53 from ikushlianski/fix/MWS-77/error-component-import
+[33md0116a7[m remove unnecessary path from spaced-rep-tool-web/tsconfig.app.json
+[33m58cdca1[m attempt to fix import issue
+[33me415f0d[m initial commit
+[33md123c34[m Merge pull request #44 from ikushlianski/task/MWS-77/reusable-toast
+[33m7b84b9e[m Merge branch 'task/MWS-77/reusable-toast' of https://github.com/ikushlianski/nova-platform-frontend-apps into task/MWS-77/reusable-toast
+[33me8c91c8[m temporary remove error component imports
+[33m31731d6[m Change casing of error component in exports and folder structure
+[33m4a520b0[m Merge branch 'main' of github.com:ikushlianski/nova-platform-frontend-apps into task/MWS-77/reusable-toast
+[33m070c69b[m replace npm ci with i
+[33mca56579[m MWS-77: Fix tsconfig paths with an asterisk
+[33md05ef6f[m MWS-77: Add vite tsconfig paths plugin
+[33m79888f2[m MWS-77: Attempting to fix TS errors in github actions
+[33m3e48900[m update packages
+[33mb808974[m removed exception
+[33me51c3d5[m Merge branch 'main' of https://github.com/ikushlianski/nova-platform-frontend-apps into feature/AP-34-401
+[33m14b7add[m add create form component & create button
+[33m0a2d8ad[m Update and rename README.md automated testing to README.md for automated tests
+[33m0933b30[m Rename automatedtesting to README.md automated testing
+[33mf73a0d6[m automatedtesting
+[33m146aaa3[m Set node to 20 on github actions
+[33mec483f9[m Remove duplicate error component
+[33m218601b[m Set up ESLint in packages/ui
+[33mdeab936[m fix: import issue in admin-portal/not-found
+[33mb52ca31[m fix: lint issues
+[33m2383b1c[m fix: merge conflicts
+[33mf0bd234[m fix: eslint issues
+[33me03f397[m fix: eslint issues
+[33mb7bccb8[m Merge pull request #30 from ikushlianski/feature/MEMO-7/sign-in-page
+[33m9412346[m Remove continue flag from lint in GH actions
+[33mfd255a0[m Merge branch 'main' of github.com:ikushlianski/nova-platform-frontend-apps into feature/MEMO-7/sign-in-page
+[33mf4aa6db[m Send SSR param to BE as query param
+[33m05a239c[m update packages
+[33mfa28e63[m Merge branch 'main' into task/MWS-77/reusable-toast
+[33m9ede0b2[m improve request functions
+[33m24b6364[m make useNotify global to use it outside react components
+[33m9901f28[m Merge pull request #43 from ikushlianski/task/SP-33/error_component_for_react
+[33m70c6874[m fix wrong status
+[33m31b5794[m Added Not Found Page to Apps
+[33m9611483[m fix: storybook styles, add: buttons to trigger toasts, toast life duration
+[33mcc626cf[m fix: storybook styles, add: buttons to trigger toasts, toast life duration
+[33mc577b46[m Revert "Add reusable toast component"
+[33mc3823e9[m init
+[33ma1deecf[m set Toasts in Spaced repetition web
+[33m4772a99[m MEMO-7: Add .env.example
+[33m5db0dd0[m MEMO-7: Fix sign-in sign-up flow
+[33mdd6f0f6[m Add story for toast
+[33mb6c270c[m Added to export
+[33mda5abcc[m Merge branch 'main' into task/SP-33/error_component_for_react
+[33m29b72ba[m Add reusable toast component
+[33m037141d[m Merge pull request #40 from ikushlianski/feature/SP-41/dashboard-widget-component
+[33mf82188d[m Merge pull request #37 from ikushlianski/task/AP-35-401
+[33m0fc8252[m SP-41: fixed cell path and prop names
+[33mac7c27f[m SP-33: Error component for React
+[33m238fe74[m fixed
+[33m69492e2[m fix
+[33mac25aaa[m[33m ([m[1;31morigin/task/AP-35-401[m[33m, [m[1;32mtask/AP-35-401[m[33m)[m fixed emty alts in Header component
+[33mc7d40f6[m SP-41: added dashboard widget
+[33mdc9cbb2[m fix: Sign in page
+[33ma53fdc4[m Merge branch 'main' of https://github.com/ikushlianski/nova-platform-frontend-apps into task/AP-35-401
+[33md213e38[m Merge pull request #39 from ikushlianski/feature/MWS-72/implement_404_page
+[33m362e5e0[m MWS-72: implement 404 page
+[33m17e6d6c[m Merge pull request #32 from ikushlianski/feature/MWS-39/add_ui_for_disabled_course
+[33ma64e9f4[m MWS-39: update packages
+[33me77d49a[m MWS-39: MWS-39: move Carousel component to shared packages
+[33me7e2e14[m MWS-39: rename entity Course to Class
+[33m41eb66d[m MWS-39: add shared Button component for Carousel
+[33m4302305[m MWS-39: rename entity Course to Class
+[33m8a8ed20[m MWS-39: add dependecy for slider
+[33m7b9f72c[m MWS-39: move mock data
+[33m3ea7f6a[m MWS-39: move Card component to shared packages
+[33mb255676[m MWS-39: move Card component to shared packages
+[33md0b5120[m MWS-39: add dependecies
+[33m78e4c8a[m MWS-39: commit after merge main
+[33m4f2bd1f[m Merge branch 'main' into feature/MWS-39/add_ui_for_disabled_course
+[33mf9a3814[m fix pre-commit, returned "rm -rf .next" back
+[33mb6153c1[m Merge branch 'main' of https://github.com/ikushlianski/nova-platform-frontend-apps into task/AP-35-401
+[33maa7c85a[m Merge pull request #18 from ikushlianski/task/MWS-36/theming_basic_shared_components
+[33mce7b0a2[m Update package-lock.json
+[33m62b37fe[m delete plugins&change pre-commit command
+[33mf2bebf8[m fix all the notes
+[33mfd32ae6[m Merge branch 'main' of https://github.com/ikushlianski/nova-platform-frontend-apps into task/AP-35-401
+[33mde32e42[m add toast component
+[33m7a791ad[m Run actions on push as well
+[33m0c9616c[m Update react-admin, use npm ci in checks
+[33mca249b6[m MVS-39: implement zod
+[33m3d18c86[m Merge branch 'main' into feature/MWS-39/add_ui_for_disabled_course
+[33m8a9a47c[m MVS-39: commit before merge main
+[33m142a503[m Update package-lock.json
+[33m14eff98[m Update package-lock.json
+[33m2fe16ac[m Update package-lock.json
+[33m934940b[m Update package-lock.json
+[33ma39f748[m Update globals.css
+[33mbb8f965[m Update package.json
+[33mef82e59[m havent built without some modules
+[33m9b78817[m delete test files/test linux work
+[33m100840a[m Merge branch 'main' of https://github.com/ikushlianski/nova-platform-frontend-apps into task/AP-35-401
+[33m0b6aac6[m Update package.json
+[33mc8257ae[m Update package.json
+[33m316bd70[m Update package.json
+[33m36b105e[m Update package.json
+[33m7fdca25[m Merge branch 'main' into task/MWS-36/theming_basic_shared_components
+[33mb166970[m fix: delete test components from english for tech page
+[33maaf7caa[m fix: improve tsconfig packages ui
+[33m0809013[m Merge pull request #3 from ikushlianski/feature/MEMO-5/init-react-routing-&-create-privacy-policy-page
+[33m7ae622b[m fix: changed css to tailwindcss & routing way & pull another chenges
+[33me6e05ea[m fix: changed css to tailwindcss & routing way & pull another chenges
+[33me788c79[m fix: changed css to tailwindcss & routing way & pull another chenges
+[33m8022192[m fix: changed css to tailwindcss & routing way
+[33m1a7f844[m Merge branch 'main' into feature/MEMO-5/init-react-routing-&-create-privacy-policy-page
+[33mf9fad78[m fix: improve repo import
+[33mc1cf9a0[m fix: improve button active color
+[33m8a2952b[m fix: remove css modules
+[33m0cdecc6[m fix: improve select props
+[33m441da68[m fix: improve tailwind config and styles
+[33m663876d[m feat: add tailwind to select
+[33m79f22b8[m add README.md to husky folder
+[33m9e6002d[m add  delete .next to pre-commit
+[33m6e34b86[m Pre-hook test
+[33me601298[m Merge branch 'main' of https://github.com/ikushlianski/nova-platform-frontend-apps into task/AP-35-401
+[33me708a81[m fix: remove button css
+[33mea0c04a[m fix: add tailwind ti button component
+[33m31e0086[m Merge pull request #27 from ikushlianski/feature/SP-40/dashboard-page-skeleton
+[33m0bb3448[m feat: add tailwind styles in link component
+[33mfe118fc[m docs: edit readme file
+[33m7dba5b6[m feat: add f

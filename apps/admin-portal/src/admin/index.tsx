@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import dataProvider from '../mocks/dataProvider';
 import { InitNotification } from '../hooks/useInitNotification.tsx';
 import NotFound from '../not-found.tsx';
+import { authProvider } from '../../feature/Auth/logic/authProvider.ts';
 import { AppRoutes } from '../shared';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { CustomLayout } from '../components/CustomLayout.tsx';
@@ -12,7 +13,12 @@ const AdminPortal = () => {
     <>
       <BrowserRouter>
         <InitNotification />
-        <Admin dataProvider={dataProvider} layout={CustomLayout} catchAll={NotFound}>
+        <Admin
+          dataProvider={dataProvider}
+          authProvider={authProvider}
+          layout={CustomLayout}
+          catchAll={NotFound}
+        >
           {Object.values(Role).map((role) => {
             const resourceName = roleToResourceMap[role];
             return (

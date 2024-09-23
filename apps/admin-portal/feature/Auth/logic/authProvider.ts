@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { showNotify } from './globalNotify';
+import { showNotify } from '../../../src/utils/Notification/globalNotify';
 
 export const authProvider = {
   login: ({ username, password }: { username: string; password: string }) => {

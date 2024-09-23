@@ -22,8 +22,8 @@ export function ScheduleToggleGroup({ form, field, label, options }: ScheduleTog
       control={form.control}
       name={field}
       render={({ field }) => (
-        <FormItem className="flex flex-col gap-5">
-          <FormLabel className="text-2xl font-bold">{label}</FormLabel>
+        <FormItem className="flex flex-col gap-2 md:gap-5">
+          <FormLabel className="text-lg sm:text-2xl font-bold">{label}</FormLabel>
           <ToggleGroup
             value={field.value}
             onValueChange={(value) => {
@@ -31,13 +31,13 @@ export function ScheduleToggleGroup({ form, field, label, options }: ScheduleTog
               form.setValue(field.name, value);
             }}
             type="single"
-            className="justify-start"
+            className="justify-between lg:justify-center"
           >
             {options.map((option) => (
               <ToggleGroupItem
                 key={option.value}
                 value={option.value}
-                className="rounded-full bg-[#E9E9E9] w-[180px] h-[60px] text-2xl font-medium"
+                className="rounded-full bg-[#E9E9E9] w-[180px] md:h-[60px] text-xl md:text-2xl font-medium"
               >
                 {option.label}
               </ToggleGroupItem>

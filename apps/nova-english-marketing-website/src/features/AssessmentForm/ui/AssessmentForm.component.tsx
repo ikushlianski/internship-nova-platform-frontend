@@ -18,9 +18,9 @@ export function AssessmentForm() {
         ref={formRef}
         action={formAction}
         onSubmit={handleSubmit}
-        className="flex flex-col gap-10"
+        className="flex flex-col gap-4 md:gap-10"
       >
-        <div className="grid grid-cols-2 grid-rows-2 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-2 gap-4 md:gap-10">
           <AssessmentFieldItem
             name="email"
             label={t('fields.email_label')}
@@ -60,7 +60,7 @@ export function AssessmentForm() {
 
         <Button
           type="submit"
-          className="text-2xl font-bold w-max text-white-foreground bg-[#0092FC] hover:bg-[#3EADFF] rounded-full px-[60px] h-[60px] self-center"
+          className="text-xl md:text-2xl font-bold w-max text-white-foreground bg-[#0092FC] hover:bg-[#3EADFF] rounded-full px-5 md:px-[60px] md:h-[60px] self-center"
         >
           {t('cta')}
         </Button>

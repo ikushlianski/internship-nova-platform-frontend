@@ -3,7 +3,7 @@ import ImportanceSection from '@/features/AssessmentWelcomeView/ui/ImportanceSec
 
 export default function CheckEnglishLevelPage() {
   return (
-    <div className="px-[250px] ">
+    <div className="md:px-10 2xl:px-[13vw]">
       <HeroSection />
       <ImportanceSection />
     </div>

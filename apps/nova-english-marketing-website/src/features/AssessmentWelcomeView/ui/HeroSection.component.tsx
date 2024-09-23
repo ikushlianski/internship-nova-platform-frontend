@@ -17,10 +17,10 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="p-20 flex gap-16 bg-[radial-gradient(circle,_rgba(183,225,255,1)_0%,_rgba(230,245,255,1)_100%)] rounded-2xl mb-24">
-      <div className="flex flex-col gap-20">
-        <div className="flex flex-col gap-5 ">
-          <h1 className="text-5xl w-full font-semibold ">
+    <section className="p-10 xl:p-20 flex flex-col items-center lg:flex-row xl:gap-16 bg-[radial-gradient(circle,_rgba(183,225,255,1)_0%,_rgba(230,245,255,1)_100%)] rounded-2xl mb-24">
+      <div className="flex flex-col gap-5 lg:gap-20 items-center lg:items-start">
+        <div className="flex flex-col gap-5 text-center lg:text-left items-center lg:items-start">
+          <h1 className="text-xl md:text-3xl xl:text-5xl w-full font-semibold">
             {t.rich('title', {
               span: (chunks) => <span className="text-[#0092FC]">{chunks}</span>,
             })}
@@ -42,9 +42,9 @@ export default function HeroSection() {
           {t('cta').toUpperCase()} <GiftIcon />
         </Button>
       </div>
-      <div className="relative w-1/2">
+      <div className="relative w-max hidden sm:block">
         <ManAndLine />
-        <div className="absolute -top-12 -right-12">
+        <div className="absolute -top-12 -right-2">
           <GiftBox />
         </div>
       </div>

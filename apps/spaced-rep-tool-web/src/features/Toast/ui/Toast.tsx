@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { IToast } from '../../types/Toast';
-import { toastClasses } from '../../utils/ToastClasses';
+import { IToast } from 'src/types/Toast';
+import { toastClasses } from '../logic/ToastClasses';
 
 const Toast: React.FC<IToast> = ({ message, type, onClose }) => {
   useEffect(() => {
@@ -13,7 +13,7 @@ const Toast: React.FC<IToast> = ({ message, type, onClose }) => {
   }, [message, onClose]);
 
   return (
-    <div className={`fixed bottom-5 right-5 p-3 rounded-md shadow-lg z-20 ${toastClasses[type]}`}>
+    <div className={`p-3 rounded-md shadow-lg ${toastClasses[type]}`}>
       {message && <span>{message}</span>}
       <button onClick={onClose} className="ml-4 text-white">
         &#x2715;

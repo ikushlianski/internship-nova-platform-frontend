@@ -10,4 +10,5 @@ export interface IUser {
   salesId?: number;
   spectatorId?: number;
   noRoleId?: number;
+  manageUserIds?: number;
 }

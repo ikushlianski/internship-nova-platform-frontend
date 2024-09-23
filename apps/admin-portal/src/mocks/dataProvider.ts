@@ -18,15 +18,7 @@ import { ISpectator } from '../types/Spectator';
 import { INoRole } from '../types/NoRole';
 import { handleErrorResponse } from '../utils/Utils';
 
-type ResourceTypes =
-  | IUser
-  | IStudent
-  | ITeacher
-  | IAdmin
-  | IManager
-  | ISales
-  | ISpectator
-  | INoRole;
+type UserRoles = IUser | IStudent | ITeacher | IAdmin | IManager | ISales | ISpectator | INoRole;
 
 const apiV1: string = '';
 
@@ -95,6 +87,12 @@ const dataProvider: DataProvider = {
         return params.ids.includes(item.id);
       });
 
+      if (items.length === 0) {
+        throw new Error(`No resources found for IDs: ${params.ids.join(', ')}`);
+      }
+      return {
+        data: items,
+      };
       if (items.length === 0) {
         throw new Error(`No resources found for IDs: ${params.ids.join(', ')}`);
       }
@@ -205,7 +203,7 @@ const dataProvider: DataProvider = {
     }
   },
 
-  create: async <T extends Omit<ResourceTypes, 'id'>>(
+  create: async <T extends Omit<UserRoles, 'id'>>(
     resource: string,
     params: CreateParams<T>,
   ): Promise<CreateResult<T & { id: Identifier }>> => {
@@ -259,6 +257,9 @@ const dataProvider: DataProvider = {
       return {
         data: updatedItem,
       };
+      return {
+        data: updatedItem,
+      };
     } catch (error) {
       console.error(error);
       throw error;
@@ -288,6 +289,9 @@ const dataProvider: DataProvider = {
 
       updateResourceData(resource, updatedData);
 
+      return {
+        data: { id: params.id } as RecordType,
+      };
       return {
         data: { id: params.id } as RecordType,
       };

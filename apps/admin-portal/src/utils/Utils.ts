@@ -15,7 +15,7 @@ import { HttpResponse } from 'msw';
 import { showNotify } from './Notification/globalNotify';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { User } from '@repo/shared-types/user';
-import { authProvider } from '../../feature/Auth/logic/authProvider';
+import { authProvider } from '@/features';
 
 // A user can have multiple roles in ecosystem applications, with
 // A user can have multiple roles in ecosystem applications, with
@@ -247,6 +247,7 @@ export const parseToNumberArray = (input: any) => {
   }
   return typeof input !== 'undefined' ? [Number(input)] : [];
 };
+
 //function for initializing authProvider.checkError({ status: 401 })
 export const handleErrorResponse = async (response: Response) => {
   if (response.status === 401) {

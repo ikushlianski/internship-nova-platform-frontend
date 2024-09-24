@@ -28,7 +28,7 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 cd nova-platform-frontend-apps
 npm i
 npm run build
-turbo run dev
+npm run dev
 ```
 
 - You can run all tests from the root dir with `npx vitest` or `turbo test`. The latter will run tests in parallel and show you all test runs from all projects where there's a `test` script in `package.json`. Choose whatever option you like.

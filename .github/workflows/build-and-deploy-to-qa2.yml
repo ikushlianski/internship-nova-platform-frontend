@@ -1,0 +1,141 @@
+name: Build project and deploy to qa2
+
+on: workflow_dispatch
+
+permissions:
+  id-token: write
+  contents: write
+  checks: write
+  issues: write
+  packages: write
+  pull-requests: write
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npx turbo test --continue
+
+      - name: Build the project
+        run: npx turbo build --continue
+      
+      # - name: Archive production artifacts admin-portal
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: admin-portal
+      #     path: |
+      #       apps/admin-portal/dist
+      # - name: Archive production artifacts spaced-rep-tool-mobile
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: spaced-rep-tool-mobile
+      #     path: |
+      #       apps/spaced-rep-tool-mobile/dist
+      # - name: Archive production artifacts spaced-rep-tool-web
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: spaced-rep-tool-web
+      #     path: |
+      #       apps/spaced-rep-tool-web/dist
+      - name: Copy all modules nova-english-marketing-website
+        run: |
+          cp -r node_modules/ apps/nova-english-marketing-website/
+      - name: zip nova-english-marketing-website
+        working-directory: ./apps/nova-english-marketing-website
+        run: |
+          zip -r -y ../../nova-english-marketing-website.zip .next next.config.*js node_modules package.json
+      - name: Push nova-english-marketing-website.zip via ssh 
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST_FOR_UPLOAD }}
+          username: ${{ secrets.USERNAME_FOR_UPLOAD }}
+          port: ${{ secrets.PORT_FOR_UPLOAD }}
+          key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
+          source: "nova-english-marketing-website.zip"
+          target: /usr/share/nginx/html/nova-qa2/
+      - name: clean-up nova-english-marketing-website
+        run: |
+          rm -f nova-english-marketing-website.zip
+          rm -f -r apps/nova-english-marketing-website/node_modules/
+
+      - name: Copy all modules student-platform
+        run: |
+          cp -r node_modules/ apps/student-platform/
+      - name: zip student-platform
+        working-directory: ./apps/student-platform
+        run: |
+          zip -r -y ../../student-platform.zip .next next.config.*js node_modules package.json
+      - name: Push student-platform.zip via ssh 
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST_FOR_UPLOAD }}
+          username: ${{ secrets.USERNAME_FOR_UPLOAD }}
+          port: ${{ secrets.PORT_FOR_UPLOAD }}
+          key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
+          source: "student-platform.zip"
+          target: /usr/share/nginx/html/nova-qa2/
+      - name: clean-up student-platform
+        run: |
+          rm -f student-platform.zip
+          rm -f -r apps/student-platform/node_modules/
+
+      # - name: Copy all modules spaced-rep-tool-web
+      #   run: |
+      #     cp -r node_modules/ apps/spaced-rep-tool-web/
+      - name: zip spaced-rep-tool-web
+        # working-directory: ./apps/spaced-rep-tool-web
+        run: |
+          zip -r -y spaced-rep-tool-web.zip *
+      - name: Push spaced-rep-tool-web.zip via ssh 
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST_FOR_UPLOAD }}
+          username: ${{ secrets.USERNAME_FOR_UPLOAD }}
+          port: ${{ secrets.PORT_FOR_UPLOAD }}
+          key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
+          source: "spaced-rep-tool-web.zip"
+          target: /usr/share/nginx/html/nova-qa2/
+      - name: clean-up spaced-rep-tool-web
+        run: |
+          rm -f spaced-rep-tool-web.zip
+
+      - name: zip admin-portal
+        run: |
+          zip -r -y admin-portal.zip *
+      - name: Push admin-portal.zip via ssh 
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST_FOR_UPLOAD }}
+          username: ${{ secrets.USERNAME_FOR_UPLOAD }}
+          port: ${{ secrets.PORT_FOR_UPLOAD }}
+          key: ${{ secrets.KEY_SSH_FOR_UPLOAD }}
+          source: "admin-portal.zip"
+          target: /usr/share/nginx/html/nova-qa2/
+      - name: clean-up admin-portal
+        run: |
+          rm -f admin-portal.zip
+
+      - name: Update build hash in values.yaml    
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          valueFile: 'helm/values.yaml'
+          propertyPath: 'build_hash'
+          value: ${{ github.sha }}
+          commitChange: true
+          branch: ${{ github.head_ref || github.ref_name }} 
+          message: "Update build number"
+          token: ${{ secrets.GITHUB_TOKEN }}
+            

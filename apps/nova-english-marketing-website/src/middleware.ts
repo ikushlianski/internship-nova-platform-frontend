@@ -1,12 +1,12 @@
 import createMiddleware from 'next-intl/middleware';
-import { type NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
+import { NextRequest, NextResponse } from 'next/server';
 
 const intlMiddleware = createMiddleware(routing);
 
 const PUBLIC_FILE = /\.(.*)$/;
 
-export function middleware(req: NextRequest) {
+export function middleware(req: NextRequest): NextResponse {
   const { pathname } = req.nextUrl;
   const response = intlMiddleware(req);
 

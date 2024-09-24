@@ -3,8 +3,9 @@ import './App.css';
 import { PrivacyPolicy } from './app/PrivacyPolicy/PrivacyPolicy';
 import { RoutesEnum } from './utils/RoutesEnum';
 import { Main } from './app/Main/Main';
-import { SignIn } from './features/SignIn/SignIn';
 import NotFound from './not-found';
+import { SignIn } from './features/SignIn/SignIn';
+import { Unauthorized } from './features/Unauthorized/Unauthorized';
 import { Menu } from './components/Menu/Menu';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path={RoutesEnum.PrivacyPolicy} element={<PrivacyPolicy />} />
         <Route path={RoutesEnum.Login} element={<SignIn />} />
         <Route path="*" Component={NotFound} />
+        <Route path="/401" Component={Unauthorized} />
       </Routes>
     </div>
   );

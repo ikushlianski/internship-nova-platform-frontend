@@ -27,7 +27,7 @@ export default function NotFound({ courses }: { courses: Course[] }) {
 
   return (
     <div className="flex flex-col items-center justify-center gap-8 pt-6">
-      <h1 className="text-2xl">{t('Courses')}</h1>
+      <h1 className="text-2xl">{t('courses')}</h1>
       <Carousel className="w-2/3">
         <CarouselContent>
           {courses.map(({ course_code, course_name, course_level_id, classes }) => (
@@ -35,7 +35,7 @@ export default function NotFound({ courses }: { courses: Course[] }) {
               <Link href={`/course/${course_code}`}>
                 <Card className="border-2 cursor-pointer">
                   <CardHeader>
-                    <CardTitle className="m-w-32">{course_name}</CardTitle>
+                    <CardTitle>{course_name}</CardTitle>
                     <CardDescription>{course_level_id}</CardDescription>
                     <CardDescription>
                       {classes?.map((classItem) => (

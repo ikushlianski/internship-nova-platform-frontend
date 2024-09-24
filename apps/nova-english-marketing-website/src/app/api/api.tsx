@@ -8,6 +8,7 @@ export const getAllClasses = async (): Promise<Class[]> => {
   try {
     const response = await fetch(`${API_BASE_URL}/curriculum/class`, {
       method: 'GET',
+      mode: 'no-cors',
       headers: {
         Accept: 'application/json',
       },

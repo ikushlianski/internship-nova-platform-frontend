@@ -21,11 +21,14 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 ## Working locally
 
 - To run monorepo commands, install `turbo` globally: `npm install turbo --global`
+- Add .env.development.local files to projects https://www.notion.so/Environment-variables-50add7dc3b6a45ae993065ac0f3c7bdb
 - To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
-npm run dev
+cd nova-platform-frontend-apps
+npm i
+npm run build
+turbo run dev
 ```
 
 - You can run all tests from the root dir with `npx vitest` or `turbo test`. The latter will run tests in parallel and show you all test runs from all projects where there's a `test` script in `package.json`. Choose whatever option you like.

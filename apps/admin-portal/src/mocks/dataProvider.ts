@@ -20,7 +20,7 @@ import { handleErrorResponse } from '../utils/Utils';
 
 type UserRoles = IUser | IStudent | ITeacher | IAdmin | IManager | ISales | ISpectator | INoRole;
 
-const apiV1: string = '';
+const apiV1: string = 'v1';
 
 const dataProvider: DataProvider = {
   getList: async (resource, params) => {

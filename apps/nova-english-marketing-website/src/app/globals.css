@@ -9,14 +9,18 @@
     font-weight: 100 900;
     font-style: normal;
   }
+
   :root {
     --background: 200, 100%, 100%;
     --primary: 200, 100%, 100%;
     --secondary: 203, 100%, 96%;
+    --accent: 205, 100%, 49%;
     --hover: 205, 100%, 62%;
     --disabled: 0, 0%, 91%;
     --stroke: 205, 100%, 49%;
     --input: 0, 0%, 85%;
+    --error: 358, 87%, 58%;
+    --nefative: 19, 74%, 55%;
 
     --foreground: 0, 1%, 25%;
     --primary-foreground: 0, 1%, 25%;
@@ -37,6 +41,11 @@
     --blue900: 205, 100%, 10%;
     --blue950: 205, 100%, 5%;
 
+    --text-size-64: 64px;
+    --text-size-40: 40px;
+    --text-size-32: 32px;
+    --text-size-28: 28px;
+
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
@@ -51,6 +60,25 @@
   * {
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-5xl;
+  }
+}
+
+@layer components {
+  .bg-gradient-primary {
+    @apply bg-[radial-gradient(circle,_rgba(183,225,255,1)_0%,_rgba(230,245,255,1)_100%)];
+  }
+
+  h1 {
+    @apply font-bold text-28 sm:text-5xl xl:text-64;
+  }
+  h2 {
+    @apply font-semibold text-2xl sm:text-32 xl:text-5xl;
+  }
+  h3 {
+    @apply font-semibold text-xl sm:text-28 xl:text-40;
+  }
+  h4 {
+    @apply font-medium text-lg sm:text-2xl xl:text-32;
   }
 }

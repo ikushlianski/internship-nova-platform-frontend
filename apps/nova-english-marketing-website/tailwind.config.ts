@@ -26,6 +26,9 @@ const config = {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+        },
         hover: {
           DEFAULT: 'hsl(var(--hover))',
         },
@@ -44,7 +47,11 @@ const config = {
         tertiaru: {
           foreground: 'hsl(var(--tertiaru-foreground))',
         },
+        error: {
+          DEFAULT: 'hsl(var(--error))',
+        },
         negative: {
+          DEFAULT: 'hsl(var(--negative))',
           foreground: 'hsl(var(--negative-foreground))',
         },
         blue: {
@@ -60,6 +67,12 @@ const config = {
           900: 'hsl(var(--blue900))',
           950: 'hsl(var(--blue950))',
         },
+      },
+      fontSize: {
+        64: 'var(--text-size-64)',
+        40: 'var(--text-size-40)',
+        32: 'var(--text-size-32)',
+        28: 'var(--text-size-28)',
       },
       font: {
         normal: '--font-weight-normal',

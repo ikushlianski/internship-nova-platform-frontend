@@ -37,7 +37,7 @@ export const AssignToClassButton = () => {
   }
 
   function handleInputChange(e: ChangeEvent) {
-    let target = e.target as HTMLInputElement;
+    const target = e.target as HTMLInputElement;
     setSearchQuery(target.value);
   }
 
@@ -55,7 +55,7 @@ export const AssignToClassButton = () => {
         Select class to assign {isDropdownClicked ? '▲' : '▼'}
       </button>
       <div
-        className={`absolute flex flex-col left-0 bg-neutral-800 p-2 rounded-b-lg border-neutral-900 ${isDropdownClicked ? 'block' : 'hidden'}`}
+        className={`absolute flex flex-col left-0 bg-neutral-800 p-2 rounded-b-lg border-neutral-900 border-x-2 border-b-2 ${isDropdownClicked ? 'block' : 'hidden'}`}
       >
         <input
           onChange={handleInputChange}
@@ -63,8 +63,8 @@ export const AssignToClassButton = () => {
           type="text"
           placeholder="Search classes.."
         />
-        <table className={`grid grid-cols-1`}>
-          <thead>
+        <table className={`grid grid-cols-1 min-w-52`}>
+          <thead className="after:content-center after:block after:mx-auto after:my-2 after:w-full after:border-b-2">
             <tr className="grid grid-cols-3 justify-items-start gap-2">
               <th>Name</th>
               <th>Start Date</th>

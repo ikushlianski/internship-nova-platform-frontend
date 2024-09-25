@@ -28,6 +28,7 @@ const config = {
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
+          highlight: 'hsl(var(--highlight))',
         },
         hover: {
           DEFAULT: 'hsl(var(--hover))',
@@ -79,6 +80,14 @@ const config = {
         medium: '--font-weight-medium',
         semibold: '--font-weight-semibold',
         bold: '--font-weight-bold',
+      },
+      gap: {
+        52: 'var(--gap-52)',
+      },
+      maxWidth: { container: 'var(--container-width)' },
+      height: {
+        header: 'var(--header-height)',
+        icon: 'var(--icon-height)',
       },
       keyframes: {
         'accordion-down': {

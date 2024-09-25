@@ -8,7 +8,7 @@ import { ISales } from '../types/Sales';
 import { INoRole } from '../types/NoRole';
 import { ISpectator } from '../types/Spectator';
 import { parseToNumberArray } from '../utils/Utils';
-import { showNotify } from '../utils/globalNotify';
+import { showNotify } from '../utils/Notification/globalNotify';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { UserCreateFormProps } from '../types/UserCreateProps';
 

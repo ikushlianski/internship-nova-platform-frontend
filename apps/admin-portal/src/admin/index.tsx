@@ -1,18 +1,26 @@
 import { Admin, CustomRoutes, EditGuesser, ListGuesser, Resource, ShowGuesser } from 'react-admin';
 import { BrowserRouter, Route } from 'react-router-dom';
-import dataProvider from '../mocks/dataProvider';
+import { authProvider, LoginPage } from '@/features';
 import { InitNotification } from '../hooks/useInitNotification.tsx';
-import NotFound from '../not-found.tsx';
-import { AppRoutes } from '../shared';
+import { AppRoutes } from '@/shared';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { CustomLayout } from '../components/CustomLayout.tsx';
 import { roleToResourceMap } from '../utils/Utils.ts';
+import { dataProvider } from '@/mocks';
+import NotFound from '@/not-found.tsx';
+
 const AdminPortal = () => {
   return (
     <>
       <BrowserRouter>
         <InitNotification />
-        <Admin dataProvider={dataProvider} layout={CustomLayout} catchAll={NotFound}>
+        <Admin
+          dataProvider={dataProvider}
+          authProvider={authProvider}
+          layout={CustomLayout}
+          loginPage={LoginPage}
+          catchAll={NotFound}
+        >
           {Object.values(Role).map((role) => {
             const resourceName = roleToResourceMap[role];
             return (

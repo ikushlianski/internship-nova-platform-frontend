@@ -1,3 +1,4 @@
+import { PathSection } from '@/features/PathSection/PathSection';
 import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
 
@@ -18,6 +19,7 @@ export default function IndexPage({ params: { locale } }: Props) {
       <section>
         <h2>{t('path_section')}</h2>
       </section>
+      <PathSection />
       <section>
         <h2>{t('course_section')}</h2>
       </section>

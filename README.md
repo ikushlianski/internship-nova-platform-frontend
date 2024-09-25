@@ -22,10 +22,14 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 - To run monorepo commands, install `turbo` globally: `npm install turbo --global`
 - Add .env.development.local files to projects https://www.notion.so/Environment-variables-50add7dc3b6a45ae993065ac0f3c7bdb
-- To develop all apps and packages, run the following command:
+- To develop apps and packages, run the following command :
+	- please, don't run commands in the root ./nova-platform-frontend-apps, 
+	you will always get an error
+	- app must be started on port 8000 (it have done by default) or Google authn won't be
+	worked
 
 ```
-cd nova-platform-frontend-apps
+cd nova-platform-frontend-apps/apps/choose_folder_of_project_that's_needed:
 npm i
 npm run build
 npm run dev

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { User } from '@repo/shared-types/user';
 import { IStudent } from '../types/Student';
 import { ITeacher } from '../types/Teacher';
-import { parseToNumberArray } from '../utils/Utils';
 import { showNotify } from '../utils/Notification/globalNotify';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { UserCreateFormProps } from '../types/UserCreateProps';
@@ -13,17 +12,18 @@ const useCreateStudentOrMentor = ({ dataProvider }: UserCreateFormProps) => {
   const handleSubmit = async (
     data: Partial<
       User & {
-        trialPeriod?: boolean;
-        expertise?: string;
-        pathIds?: number[];
-        classIds?: number[];
-        studentIds?: number[];
+        first_name: string;
+        last_name: string;
+        phoneNumber?: string;
+        lessonRate?: number;
+        telegramNickname?: string;
       }
     >,
   ) => {
     try {
       const userData = {
-        name: data.name,
+        firstName: data.first_name,
+        lastName: data.last_name,
         roles: role,
         studentId: role === Role.Student ? Number(data.studentId) : undefined,
         teacherId: role === Role.Teacher ? Number(data.teacherId) : undefined,
@@ -36,13 +36,11 @@ const useCreateStudentOrMentor = ({ dataProvider }: UserCreateFormProps) => {
       if (role === Role.Student) {
         const studentData: Partial<IStudent> = {
           id: Number(data.studentId),
-          email: String(data.studentId),
-          firstName: String(data.studentId),
-          lastName: String(data.studentId),
+          user_email: String(data.studentId),
+          first_name: String(data.studentId),
+          last_name: String(data.studentId),
           phoneNumber: String(data.studentId),
           userId: userId,
-          pathId: Number(data.pathId),
-          teacherId: Number(data.teacherId),
         };
 
         await dataProvider.create('students', { data: studentData });
@@ -51,17 +49,13 @@ const useCreateStudentOrMentor = ({ dataProvider }: UserCreateFormProps) => {
       if (role === Role.Teacher) {
         const teacherData: Partial<ITeacher> = {
           id: Number(data.teacherId),
-          email: String(data.teacherId),
-          firstName: String(data.teacherId),
-          lastName: String(data.teacherId),
+          user_email: String(data.teacherId),
+          first_name: String(data.teacherId),
+          last_name: String(data.teacherId),
           phoneNumber: String(data.teacherId),
           lessonRate: Number(data.teacherId),
           telegramNickname: String(data.teacherId),
           userId: userId,
-          expertise: data.expertise,
-          pathIds: parseToNumberArray(data.pathIds),
-          classIds: parseToNumberArray(data.classIds),
-          studentIds: parseToNumberArray(data.studentIds),
         };
         await dataProvider.create('teachers', { data: teacherData });
       }

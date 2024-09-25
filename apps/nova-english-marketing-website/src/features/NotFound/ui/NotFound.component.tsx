@@ -22,7 +22,7 @@ export default function NotFound({ courses }: { courses: Course[] }) {
   }
 
   if (!courses || courses.length === 0) {
-    return <div>{t('No courses available')}</div>;
+    return <div>No courses available</div>;
   }
 
   return (
@@ -35,7 +35,7 @@ export default function NotFound({ courses }: { courses: Course[] }) {
               <Link href={`/course/${course_code}`}>
                 <Card className="border-2 cursor-pointer">
                   <CardHeader>
-                    <CardTitle>{course_name}</CardTitle>
+                    <CardTitle className="m-w-32">{course_name}</CardTitle>
                     <CardDescription>{course_level_id}</CardDescription>
                     <CardDescription>
                       {classes?.map((classItem) => (

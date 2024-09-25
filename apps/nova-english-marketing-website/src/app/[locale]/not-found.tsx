@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 
 const NotFoundPage = () => {
   const [courses, setCourses] = useState<Course[]>([]);
+  const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const t = useTranslations('not_found');
 
@@ -20,10 +21,14 @@ const NotFoundPage = () => {
       } catch (error) {
         console.error('Failed to fetch courses:', error);
         setErrorMessage('Не удалось загрузить доступные курсы.');
+      } finally {
+        setLoading(false);
       }
     };
     fetchCourses();
   }, []);
+
+  if (loading) return <div>Loading ...</div>;
 
   return (
     <div className="pt-16 flex flex-col justify-center items-center gap-16">

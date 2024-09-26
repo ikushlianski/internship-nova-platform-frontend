@@ -11,7 +11,7 @@ export default function IndexPage({ params: { locale } }: Props) {
   const t = useTranslations('temporary');
 
   return (
-    <>
+    <main>
       <section>
         <h2>{t('hero_section')}</h2>
       </section>
@@ -51,6 +51,6 @@ export default function IndexPage({ params: { locale } }: Props) {
       <section>
         <h2>{t('common_section')}</h2>
       </section>
-    </>
+    </main>
   );
 }

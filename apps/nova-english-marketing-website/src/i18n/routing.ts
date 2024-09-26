@@ -5,8 +5,6 @@ export const locales = ['en', 'ru'];
 
 export const pathnames = {
   '/': '/',
-  '/check-english-level-online': '/check-english-level-online',
-  '/check-english-level-online/online-assessment': '/check-english-level-online/online-assessment',
 };
 
 export const routing = defineRouting({

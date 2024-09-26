@@ -1,21 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import signInImg from '../../assets/man-and-woman-in-gadgets.svg';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const SignIn = () => {
   const [acceptPolicy, setAcceptPolicy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const authError = params.get('error');
-
-    if (authError === '401') {
-      navigate('/401');
-    }
-  }, [location, navigate]);
 
   const handleGoogleSignIn = () => {
     if (!acceptPolicy) {
@@ -76,5 +65,3 @@ export const SignIn = () => {
     </div>
   );
 };
-
-export default SignIn;

@@ -1,5 +1,3 @@
-import { ENVIRONMENTS } from './environments.ts';
-
 enum Directories {
   Users = '/users',
   Classes = '/classes',
@@ -28,8 +26,4 @@ export const AppRoutes = {
 
   // Leads Routes
   Leads: `${Directories.Leads}`,
-};
-
-export const GlobalRoutes = {
-  GoogleOAUTH: `${ENVIRONMENTS.VITE_API_V1_URL}/auth/google/callback?ssr=false&admin_portal=true`,
 };

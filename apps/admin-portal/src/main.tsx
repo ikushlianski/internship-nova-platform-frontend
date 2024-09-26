@@ -1,17 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
-
-import './index.css';
 import './globals.css';
 
-import '@fontsource/manrope/400.css';
-import '@fontsource/manrope/700.css';
-
-import { ENVIRONMENTS } from '@/shared';
-
 async function enableMocking() {
-  if (ENVIRONMENTS.NODE_ENV !== 'development') {
+  if (process.env.NODE_ENV !== 'development') {
     return;
   }
   // `worker.start()` returns a Promise that resolves

@@ -19,7 +19,6 @@
     "@emotion/styled": "^11.13.0",
     "@emotion/utils": "^1.4.0",
     "@mui/material": "^5.16.7",
-    "@fontsource/manrope": "^5.0.21",
     "@repo/shared-types": "*",
     "@repo/ui": "*",
     "attr-accept": "^2.2.2",

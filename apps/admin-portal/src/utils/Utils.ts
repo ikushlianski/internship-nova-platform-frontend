@@ -12,10 +12,9 @@ import {
   NoRoles,
 } from '../mocks/data/entities.json';
 import { HttpResponse } from 'msw';
-import { showNotify } from './Notification/globalNotify';
+import { showNotify } from './globalNotify';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { User } from '@repo/shared-types/user';
-import { authProvider } from '@/features';
 
 // A user can have multiple roles in ecosystem applications, with
 // A user can have multiple roles in ecosystem applications, with
@@ -246,14 +245,4 @@ export const parseToNumberArray = (input: any) => {
     return input.map((id: any) => Number(id));
   }
   return typeof input !== 'undefined' ? [Number(input)] : [];
-};
-
-//function for initializing authProvider.checkError({ status: 401 })
-export const handleErrorResponse = async (response: Response) => {
-  if (response.status === 401) {
-    await authProvider.checkError({ status: 401 });
-    throw new Error('Unauthorized');
-  }
-  const error = await response.json();
-  throw new Error(error.message || 'Unknown Error');
 };

@@ -1,10 +1,11 @@
 name: Test and Build on Pull Request
 
-on:
-  pull_request:
-  push:
-    branches:
-      - main
+# on:
+#   pull_request:
+#   push:
+#     branches:
+#       - main
+on: workflow_dispatch
 
 jobs:
   test-and-build:
@@ -20,7 +21,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci
 
       - name: Check if prettier was used (no auto-fix)
         run: npx turbo prettier

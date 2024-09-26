@@ -43,11 +43,11 @@ export const AssignToClassButton = () => {
         Select class to assign {isDropdownActive ? '▲' : '▼'}
       </button>
       <div
-        className={`absolute flex flex-col left-0 bg-neutral-800 p-2 rounded-lg border-neutral-900 border-2 ${isDropdownActive ? 'block' : 'hidden'}`}
+        className={`absolute flex flex-col left-0  p-2 rounded-lg border-2 ${isDropdownActive ? 'block' : 'hidden'}`}
       >
         <input
           onChange={handleInputChange}
-          className="bg-neutral-900 px-2 py-1 m-2 "
+          className="px-2 py-1 m-2 "
           type="text"
           placeholder="Search classes.."
         />

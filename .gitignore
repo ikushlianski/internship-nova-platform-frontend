@@ -39,4 +39,5 @@ yarn-error.log*
 
 # IDE
 .idea
+.vscode
 *storybook.log

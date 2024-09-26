@@ -1,5 +1,8 @@
-import MyAdmin from './admin';
+import AdminPortal from './admin';
 
-const App = () => <MyAdmin />;
+import '@fontsource/manrope/500.css';
+import '@fontsource/manrope/700.css';
+
+const App = () => <AdminPortal />;
 
 export default App;

@@ -14,17 +14,17 @@ export const UserProfile = () => {
   return (
     <>
       {/* user info here */}
-      <div className="relative w-full min-h-52 max-w-3xl p-4 mt-6 mx-auto bg-neutral-800 rounded-2xl">
+      <div className="relative w-full min-h-52 max-w-3xl p-4 mt-6 mx-auto rounded-2xl">
         <h3>User name here</h3>
         <h3>User email here</h3>
         <div className="flex justify-end align-bottom">
-          <button className="absolute bottom-2 right-4 text-lg hover:bg-neutral-600 px-4 py-2">
+          <button className="absolute bottom-2 right-4 text-lg  px-4 py-2">
             Generate signup link
           </button>
         </div>
       </div>
 
-      <div className="relative w-full min-h-52 max-w-3xl p-4 mt-6 mx-auto bg-neutral-800 rounded-2xl">
+      <div className="relative w-full min-h-52 max-w-3xl p-4 mt-6 mx-auto  rounded-2xl">
         <nav
           className="after:content-center after:block after:mx-auto after:my-2 after:w-full after:border-b-2"
           aria-label="user-profile-tabs"
@@ -34,7 +34,7 @@ export const UserProfile = () => {
               <button
                 onClick={handleTabClick}
                 key={tab}
-                className={`text-lg hover:bg-neutral-700 cursor-pointer px-4 border-2 border-transparent transition-all ${activeTab === tab ? ' border-neutral-300' : ''}`}
+                className={`text-lg  cursor-pointer px-4 border-2 border-transparent transition-all ${activeTab === tab ? ' border-neutral-300' : ''}`}
               >
                 {tab}
               </button>

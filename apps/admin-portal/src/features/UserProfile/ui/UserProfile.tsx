@@ -17,8 +17,10 @@ export const UserProfile = () => {
       <div className="relative w-full min-h-52 max-w-3xl p-4 mt-6 mx-auto bg-neutral-800 rounded-2xl">
         <h3>User name here</h3>
         <h3>User email here</h3>
-        <div className="flex justify-end">
-          <button className="text-lg  hover:bg-neutral-600 px-4 py-2">Generate signup link</button>
+        <div className="flex justify-end align-bottom">
+          <button className="absolute bottom-2 right-4 text-lg hover:bg-neutral-600 px-4 py-2">
+            Generate signup link
+          </button>
         </div>
       </div>
 
@@ -32,7 +34,7 @@ export const UserProfile = () => {
               <button
                 onClick={handleTabClick}
                 key={tab}
-                className="text-lg hover:bg-neutral-700 cursor-pointer"
+                className={`text-lg hover:bg-neutral-700 cursor-pointer px-4 border-2 border-transparent transition-all ${activeTab === tab ? ' border-neutral-300' : ''}`}
               >
                 {tab}
               </button>

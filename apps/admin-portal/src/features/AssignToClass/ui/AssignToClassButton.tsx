@@ -1,35 +1,24 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useNotify } from 'react-admin';
 import { classes as mockClasses } from 'src/mocks/handlers';
+import { getClass } from '../logic/getClass';
+import { useDebounce } from '../logic/useDebounce';
 
 export const AssignToClassButton = () => {
   const notify = useNotify();
-  const [isDropdownClicked, setIsDropdownClicked] = useState(false);
+
+  const [isDropdownActive, setIsDropdownActive] = useState(false);
   const [classes, setClasses] = useState(mockClasses);
   const [searchQuery, setSearchQuery] = useState('');
-
-  // const { isPending, error, data } = useQuery({
-  //   queryKey: ['repoData'],
-  //   queryFn: () =>
-  //     fetch(
-  //       `https://${import.meta.env.VITE_GATEWAY_HOST}:${import.meta.env.VITE_GATEWAY_PORT}/c`,
-  //     ).then((res) => res.json()),
-  // });
-
-  // useEffect(() => {
-  //   setClasses(data);
-  // }, [data]);
-
-  // if (isPending) return 'Loading...';
-
-  // if (error) return <h2>An error has occured: {error.message}</h2>;
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
 
   function handleDropdownClick() {
-    setIsDropdownClicked(!isDropdownClicked);
+    setIsDropdownActive(!isDropdownActive);
   }
 
   function handleClassClick() {
     try {
+      // backend integration goes here
       notify(`Enlisted to class!`, { type: 'success' });
     } catch (err) {
       notify(`An error occured..`, { type: 'error' });
@@ -41,10 +30,9 @@ export const AssignToClassButton = () => {
     setSearchQuery(target.value);
   }
 
-  // debounce?
   useEffect(() => {
-    setClasses(mockClasses.filter((item) => item.name.includes(searchQuery)));
-  }, [searchQuery]);
+    setClasses(getClass(debouncedSearchQuery));
+  }, [debouncedSearchQuery]);
 
   return (
     <div className="relative">
@@ -52,10 +40,10 @@ export const AssignToClassButton = () => {
         className="hover:bg-neutral-700 hover:cursor-pointer text-lg p-2"
         onClick={handleDropdownClick}
       >
-        Select class to assign {isDropdownClicked ? '▲' : '▼'}
+        Select class to assign {isDropdownActive ? '▲' : '▼'}
       </button>
       <div
-        className={`absolute flex flex-col left-0 bg-neutral-800 p-2 rounded-b-lg border-neutral-900 border-x-2 border-b-2 ${isDropdownClicked ? 'block' : 'hidden'}`}
+        className={`absolute flex flex-col left-0 bg-neutral-800 p-2 rounded-lg border-neutral-900 border-2 ${isDropdownActive ? 'block' : 'hidden'}`}
       >
         <input
           onChange={handleInputChange}
@@ -75,7 +63,6 @@ export const AssignToClassButton = () => {
             {classes.map((item) => (
               // class item here
               // some classes needs to be highlighted
-              // notifify use when he joined the class
               <tr
                 key={item.id}
                 className="grid grid-cols-3 justify-items-start gap-2 hover:bg-neutral-700 cursor-pointer"

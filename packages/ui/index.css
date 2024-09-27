@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+  :root {
+    --accent: 205, 100%, 49%;
+    --hover: 205, 100%, 62%;
+    --disabled: 0, 0%, 91%;
+    --error: 358, 87%, 58%;
+    --negative: 19, 74%, 55%;
+    --negative-foreground: 358, 87%, 58%;
+  }
+}

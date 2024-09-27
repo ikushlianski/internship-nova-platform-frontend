@@ -41,7 +41,7 @@ export const AssignToClassButton = () => {
         Select class to assign {isDropdownActive ? '▲' : '▼'}
       </button>
       <div
-        className={`absolute flex flex-col left-0  p-2 rounded-lg border-2 ${isDropdownActive ? 'block' : 'hidden'}`}
+        className={`absolute flex flex-col left-0  p-2 rounded-lg border-2 ${isDropdownActive ? 'block' : 'hidden'} `}
       >
         <TextField
           variant="outlined"

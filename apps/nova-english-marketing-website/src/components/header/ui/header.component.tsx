@@ -4,7 +4,7 @@ import React from 'react';
 const Header: React.FC = () => {
   return (
     <header>
-      <nav className="flex gap-12">
+      <nav className="layout">
         <LocaleSwitcher />
       </nav>
     </header>

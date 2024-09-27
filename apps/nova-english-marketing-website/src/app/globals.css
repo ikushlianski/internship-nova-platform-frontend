@@ -9,14 +9,19 @@
     font-weight: 100 900;
     font-style: normal;
   }
+
   :root {
     --background: 200, 100%, 100%;
     --primary: 200, 100%, 100%;
     --secondary: 203, 100%, 96%;
+    --accent: 205, 100%, 49%;
+    --highlight: 205, 100%, 88%;
     --hover: 205, 100%, 62%;
     --disabled: 0, 0%, 91%;
     --stroke: 205, 100%, 49%;
     --input: 0, 0%, 85%;
+    --error: 358, 87%, 58%;
+    --nefative: 19, 74%, 55%;
 
     --foreground: 0, 1%, 25%;
     --primary-foreground: 0, 1%, 25%;
@@ -37,10 +42,27 @@
     --blue900: 205, 100%, 10%;
     --blue950: 205, 100%, 5%;
 
+    --text-size-64: 64px;
+    --text-size-40: 40px;
+    --text-size-32: 32px;
+    --text-size-28: 28px;
+
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
+
+    --container-width: 1420px;
+
+    --gap-52: 52px;
+
+    --header-height: 72px;
+    --icon-height: 40px;
+
+    @media (min-width: 768px) {
+      --header-height: 100px;
+      --icon-height: 48px;
+    }
 
     .dark {
     }
@@ -51,6 +73,41 @@
   * {
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-primary-foreground text-base font-normal lg:text-2xl lg:font-medium;
+  }
+}
+
+@layer components {
+  .layout {
+    @apply mx-auto w-full max-w-container px-5 md:px-10;
+  }
+
+  .bg-gradient-primary {
+    @apply bg-[radial-gradient(circle,_rgba(183,225,255,1)_0%,_rgba(230,245,255,1)_100%)];
+  }
+
+  .link {
+    @apply text-sm font-normal md:text-base lg:text-xl;
+  }
+
+  .highlight {
+    @apply relative inline-block before:absolute before:-left-2 before:-right-2 lg:before:-left-4 lg:before:-right-4 before:bottom-0 lg:before:-bottom-2 before:h-2 lg:before:h-4 before:bg-accent-highlight before:rounded-full before:-z-10;
+  }
+
+  .placeholder {
+    @apply text-xs font-normal md:text-base;
+  }
+
+  h1 {
+    @apply font-bold text-28 leading-none sm:text-5xl xl:text-64;
+  }
+  h2 {
+    @apply font-semibold text-2xl leading-none sm:text-32 xl:text-5xl;
+  }
+  h3 {
+    @apply font-semibold text-xl leading-none sm:text-28 xl:text-40;
+  }
+  h4 {
+    @apply font-medium text-lg leading-none sm:text-2xl xl:text-32;
   }
 }

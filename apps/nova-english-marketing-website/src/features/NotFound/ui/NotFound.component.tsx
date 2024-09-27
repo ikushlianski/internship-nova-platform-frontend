@@ -66,10 +66,10 @@ const NotFound = () => {
         <p>{t('contact')}</p>
         <div className="flex justify-center gap-6">
           <Link href={'/'}>
-            <WALogo />
+            <WALogo className="h-icon" />
           </Link>
           <Link href={'/'}>
-            <TGLogo />
+            <TGLogo className="h-icon" />
           </Link>
         </div>
       </div>

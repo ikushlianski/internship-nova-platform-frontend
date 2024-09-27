@@ -7,14 +7,13 @@ export const UserProfile = () => {
   function handleTabClick(e: MouseEvent) {
     const target = e.target as HTMLButtonElement;
     const tabName = target.innerText;
-
     setActiveTab(tabName);
   }
 
   return (
     <>
       {/* user info here */}
-      <div className="relative w-full min-h-52 max-w-3xl p-4 mt-6 mx-auto rounded-2xl">
+      <div className="relative w-full min-h-52 max-w-3xl p-4 mt-6 mx-auto rounded-2xl border-2">
         <h3>User name here</h3>
         <h3>User email here</h3>
         <div className="flex justify-end align-bottom">
@@ -24,7 +23,7 @@ export const UserProfile = () => {
         </div>
       </div>
 
-      <div className="relative w-full min-h-52 max-w-3xl p-4 mt-6 mx-auto  rounded-2xl">
+      <div className="relative w-full min-h-52 max-w-3xl p-4 mt-6 mx-auto rounded-2xl border-2">
         <nav
           className="after:content-center after:block after:mx-auto after:my-2 after:w-full after:border-b-2"
           aria-label="user-profile-tabs"
@@ -34,7 +33,7 @@ export const UserProfile = () => {
               <button
                 onClick={handleTabClick}
                 key={tab}
-                className={`text-lg  cursor-pointer px-4 border-2 border-transparent transition-all ${activeTab === tab ? ' border-neutral-300' : ''}`}
+                className={`text-lg  cursor-pointer px-4 border-2 border-transparent transition-all ${activeTab === tab ? 'font-bold' : ''}`}
               >
                 {tab}
               </button>

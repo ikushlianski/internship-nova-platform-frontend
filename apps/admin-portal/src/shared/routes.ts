@@ -11,11 +11,6 @@ export const AppRoutes = {
   // User Routes
   Users: `${Directories.Users}`,
   User: `${Directories.Users}/:id`,
-  UserClasses: `${Directories.Users}/:id/classes`,
-  UserRequests: `${Directories.Users}/:id/requests`,
-  UserPurchases: `${Directories.Users}/:id/purchases`,
-  UserDocs: `${Directories.Users}/:id/docs`,
-  UserCrm: `${Directories.Users}/:id/crm`,
   UserEdit: `${Directories.Users}/edit/:id`,
   UserCreate: `${Directories.Users}/create`,
 

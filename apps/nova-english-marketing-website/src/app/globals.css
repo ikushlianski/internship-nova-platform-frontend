@@ -51,6 +51,18 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
 
+    --container-width: 1420px;
+
+    --gap-52: 52px;
+
+    --header-height: 72px;
+    --icon-height: 40px;
+
+    @media (min-width: 768px) {
+      --header-height: 100px;
+      --icon-height: 48px;
+    }
+
     .dark {
     }
   }
@@ -60,13 +72,29 @@
   * {
   }
   body {
-    @apply bg-background text-foreground text-5xl;
+    @apply text-primary-foreground text-base font-normal lg:text-2xl lg:font-medium;
   }
 }
 
 @layer components {
+  .layout {
+    @apply mx-auto w-full max-w-container px-5 md:px-10;
+  }
+
   .bg-gradient-primary {
     @apply bg-[radial-gradient(circle,_rgba(183,225,255,1)_0%,_rgba(230,245,255,1)_100%)];
+  }
+
+  .link {
+    @apply text-sm font-normal md:text-base lg:text-xl;
+  }
+
+  .highlight {
+    @apply relative inline-block before:absolute before:-left-2 before:-right-2 lg:before:-left-4 lg:before:-right-4 before:bottom-0 lg:before:-bottom-2 before:h-2 lg:before:h-4 before:bg-accent-highlight before:rounded-full before:-z-10;
+  }
+
+  .placeholder {
+    @apply text-xs font-normal md:text-base;
   }
 
   h1 {

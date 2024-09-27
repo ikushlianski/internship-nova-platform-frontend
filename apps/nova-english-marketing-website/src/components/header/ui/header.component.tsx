@@ -6,6 +6,7 @@ const Header: React.FC = () => {
     <header>
       <nav className="layout">
         <LocaleSwitcher />
+        test
       </nav>
     </header>
   );

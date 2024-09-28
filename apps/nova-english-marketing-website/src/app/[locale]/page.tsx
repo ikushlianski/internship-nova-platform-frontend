@@ -1,3 +1,4 @@
+import Assessment from '@/features/Assessment/Assessment';
 import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
 
@@ -36,9 +37,7 @@ export default function IndexPage({ params: { locale } }: Props) {
       <section>
         <h2>{t('price_section')}</h2>
       </section>
-      <section>
-        <h2>{t('test_section')}</h2>
-      </section>
+      <Assessment />
       <section>
         <h2>{t('contact_form_section')}</h2>
       </section>

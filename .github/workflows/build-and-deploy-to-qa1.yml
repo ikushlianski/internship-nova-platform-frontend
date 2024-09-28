@@ -135,7 +135,8 @@ jobs:
           propertyPath: 'build_hash'
           value: ${{ github.sha }}
           commitChange: true
-          branch: ${{ github.head_ref || github.ref_name }} 
+          # branch: ${{ github.head_ref || github.ref_name }} 
+          branch: stage-qa1
           message: "Update build number"
           token: ${{ secrets.GITHUB_TOKEN }}
             

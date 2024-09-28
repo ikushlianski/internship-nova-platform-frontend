@@ -4,14 +4,12 @@ import { SsrStageBanner } from '@/shared/ssrStageBanner.component';
 
 const Header: React.FC = () => {
   return (
-    <>
+    <header>
       {process.env.NEXT_PUBLIC_VITE_APP_ENV !== 'prod' && <SsrStageBanner />}
-      <header>
-        <nav className="flex gap-12">
-          <LocaleSwitcher />
-        </nav>
-      </header>
-    </>
+      <nav className="layout">
+        <LocaleSwitcher />
+      </nav>
+    </header>
   );
 };
 

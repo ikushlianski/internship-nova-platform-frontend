@@ -8,6 +8,8 @@ import { CustomLayout } from '../components/CustomLayout.tsx';
 import { roleToResourceMap } from '../utils/Utils.ts';
 import { dataProvider } from '@/mocks';
 import NotFound from '@/not-found.tsx';
+import { CoursesListPage } from '@/pages/CoursesListPage.tsx';
+import { CourseCreatePage } from '@/pages/CourseCreatePage.tsx';
 
 const AdminPortal = () => {
   return (
@@ -41,10 +43,10 @@ const AdminPortal = () => {
               <Route path={AppRoutes.UserCreate} element={<div>create new user</div>} />
             </Route>
             <Route path={AppRoutes.Courses}>
-              <Route path={AppRoutes.Courses} index element={<div>courses list</div>} />
+              <Route path={AppRoutes.Courses} index element={<CoursesListPage />} />
               <Route path={AppRoutes.Course} element={<div>course by id</div>} />
               <Route path={AppRoutes.CourseManage} element={<div>manage course by id</div>} />
-              <Route path={AppRoutes.CourseCreate} element={<div>create new course</div>} />
+              <Route path={AppRoutes.CourseCreate} element={<CourseCreatePage />} />
             </Route>
             <Route path={AppRoutes.Classes}>
               <Route path={AppRoutes.Classes} index element={<div>classes list</div>} />

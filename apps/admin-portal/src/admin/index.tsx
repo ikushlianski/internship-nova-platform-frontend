@@ -1,6 +1,6 @@
 import { Admin, CustomRoutes, EditGuesser, ListGuesser, Resource, ShowGuesser } from 'react-admin';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { authProvider, LoginPage } from '@/features';
+import { authProvider, LoginPage, UserList } from '@/features';
 import { InitNotification } from '../hooks/useInitNotification.tsx';
 import { AppRoutes } from '@/shared';
 import { UserRole as Role } from '@repo/shared-types/user';
@@ -21,8 +21,14 @@ const AdminPortal = () => {
           loginPage={LoginPage}
           catchAll={NotFound}
         >
-          {Object.values(Role).map((role) => {
+          <Resource name="users" list={UserList}>
+            <Route path={AppRoutes.User} element={<div>user by id</div>} />
+            <Route path={AppRoutes.UserEdit} element={<div>edit user by id</div>} />
+            <Route path={AppRoutes.UserCreate} element={<div>create new user</div>} />
+          </Resource>
+          {Object.values(Role).flatMap((role) => {
             const resourceName = roleToResourceMap[role];
+            if (resourceName === 'users') return [];
             return (
               <Resource
                 key={role}
@@ -34,12 +40,6 @@ const AdminPortal = () => {
             );
           })}
           <CustomRoutes>
-            <Route path={AppRoutes.Users}>
-              <Route path={AppRoutes.Users} index element={<div>users list</div>} />
-              <Route path={AppRoutes.User} element={<div>user by id</div>} />
-              <Route path={AppRoutes.UserEdit} element={<div>edit user by id</div>} />
-              <Route path={AppRoutes.UserCreate} element={<div>create new user</div>} />
-            </Route>
             <Route path={AppRoutes.Courses}>
               <Route path={AppRoutes.Courses} index element={<div>courses list</div>} />
               <Route path={AppRoutes.Course} element={<div>course by id</div>} />

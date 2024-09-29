@@ -1,7 +1,7 @@
 import { ENVIRONMENTS } from './environments.ts';
 
 enum Directories {
-  Users = '/users',
+  Users = 'users',
   Classes = '/classes',
   Courses = '/courses',
   Leads = '/leads',

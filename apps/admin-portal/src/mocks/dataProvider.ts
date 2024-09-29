@@ -17,6 +17,7 @@ import { ISales } from '../types/Sales';
 import { ISpectator } from '../types/Spectator';
 import { INoRole } from '../types/NoRole';
 import { handleErrorResponse } from '../utils/Utils';
+import { usersApi } from '@/features';
 
 type UserRoles = IUser | IStudent | ITeacher | IAdmin | IManager | ISales | ISpectator | INoRole;
 
@@ -28,15 +29,17 @@ const dataProvider: DataProvider = {
     const { field = 'id', order = 'ASC' || 'DESC' } = params.sort || {};
 
     try {
-      const response = await fetch(`/api/${apiV1}/${resource}?page=${page}&perPage=${perPage}`);
-
-      if (!response.ok) {
-        await handleErrorResponse(response);
+      let data;
+      if (resource === 'users') {
+        data = await usersApi.getUsers();
+      } else {
+        const response = await fetch(`/api/${apiV1}/${resource}?page=${page}&perPage=${perPage}`);
+        if (!response.ok) {
+          await handleErrorResponse(response);
+        }
+        data = getDataForResource(resource);
       }
 
-      const data = getDataForResource(resource);
-
-      const total = data.length;
       const sortedData = [...data].sort((a, b) => {
         if (a[field] < b[field]) return order === 'ASC' ? -1 : 1;
         if (a[field] > b[field]) return order === 'ASC' ? 1 : -1;
@@ -47,7 +50,7 @@ const dataProvider: DataProvider = {
 
       return {
         data: paginatedData,
-        total,
+        total: data.length,
       };
     } catch (error) {
       console.error(error);
@@ -90,13 +93,6 @@ const dataProvider: DataProvider = {
       if (items.length === 0) {
         throw new Error(`No resources found for IDs: ${params.ids.join(', ')}`);
       }
-      return {
-        data: items,
-      };
-      if (items.length === 0) {
-        throw new Error(`No resources found for IDs: ${params.ids.join(', ')}`);
-      }
-
       return {
         data: items,
       };
@@ -257,9 +253,6 @@ const dataProvider: DataProvider = {
       return {
         data: updatedItem,
       };
-      return {
-        data: updatedItem,
-      };
     } catch (error) {
       console.error(error);
       throw error;
@@ -289,9 +282,6 @@ const dataProvider: DataProvider = {
 
       updateResourceData(resource, updatedData);
 
-      return {
-        data: { id: params.id } as RecordType,
-      };
       return {
         data: { id: params.id } as RecordType,
       };

@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { showNotify } from '@/utils';
 
 export const tryCatchResponse = async <T>(

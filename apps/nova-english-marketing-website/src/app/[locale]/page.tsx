@@ -1,5 +1,5 @@
 import Assessment from '@/features/Assessment/Assessment';
-import WhoIsNovaEnglishFor from '@/features/WhoIsNovaEnglishFor/WhoIsNovaEnglishFor.component';
+import WhoIsNovaEnglishFor from '@/features/WhoIsNovaEnglishFor/ui/WhoIsNovaEnglishFor.component';
 
 import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';

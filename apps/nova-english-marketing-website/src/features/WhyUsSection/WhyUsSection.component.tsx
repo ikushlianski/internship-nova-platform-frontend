@@ -35,7 +35,6 @@ const WhyUsSection = () => {
                 className="object-cover"
               />
             </div>
-
             <div>
               <h2 className="mb-3 sm:mb-5 text-[#0092FC] font-semibold text-xl sm:text-[40px] leading-tight text-center">
                 <span className="text-[#3f3e3e]">
@@ -43,6 +42,9 @@ const WhyUsSection = () => {
                 </span>{' '}
                 {textConfigure(t('features.learning_in_english'), 1)}
               </h2>
+              <p className="font-medium text-sm sm:text-[24px] leading-snug text-center">
+                {t('features.no_worries')}
+              </p>
             </div>
           </div>
 
@@ -56,7 +58,6 @@ const WhyUsSection = () => {
                 className="object-cover"
               />
             </div>
-
             <div>
               <h2 className="mb-3 sm:mb-5 text-[#0092FC] font-semibold text-xl sm:text-[40px] leading-tight text-center">
                 {textConfigure(t('features.interactive_lessons'), 0, 1)}{' '}
@@ -64,6 +65,9 @@ const WhyUsSection = () => {
                   {textConfigure(t('features.interactive_lessons'), 1)}
                 </span>
               </h2>
+              <p className="font-medium text-sm sm:text-[24px] leading-snug text-center">
+                {t('features.interactive_situations')}
+              </p>
             </div>
           </div>
 
@@ -77,7 +81,6 @@ const WhyUsSection = () => {
                 className="object-cover"
               />
             </div>
-
             <div>
               <h2 className="mb-3 sm:mb-5 text-[#0092FC] font-semibold text-xl sm:text-[40px] leading-tight text-center">
                 <span className="text-[#3f3e3e]">
@@ -85,6 +88,9 @@ const WhyUsSection = () => {
                 </span>{' '}
                 {textConfigure(t('features.it_teachers'), 1)}
               </h2>
+              <p className="font-medium text-sm sm:text-[24px] leading-snug text-center">
+                {t('features.teachers_experience')}
+              </p>
             </div>
           </div>
         </div>

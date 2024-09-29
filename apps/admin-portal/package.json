@@ -23,6 +23,7 @@
     "@repo/shared-types": "*",
     "@repo/ui": "*",
     "attr-accept": "^2.2.2",
+    "axios": "^1.7.7",
     "dom-helpers": "^5.2.1",
     "file-selector": "^0.6.0",
     "hoist-non-react-statics": "^3.3.2",

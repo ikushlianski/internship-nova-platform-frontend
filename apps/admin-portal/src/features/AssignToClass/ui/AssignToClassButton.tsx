@@ -20,7 +20,7 @@ export const AssignToClassButton = () => {
   function handleClassClick() {
     try {
       // backend integration goes here
-      notify(`Enlisted to class!`, { type: 'success' });
+      notify(`Assigned to class!`, { type: 'success' });
     } catch (err) {
       notify(`An error occured..`, { type: 'error' });
     }

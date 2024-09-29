@@ -26,13 +26,8 @@
     "paths": {
       "@repo/ui/*": ["../../packages/ui/src/*"],
       "@repo/shared-types/*": ["../../packages/shared-types/src/*"],
-      "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src",
-    "**/*.ts",
-    "**/*.tsx",
-    "../../packages/shared-types/src/**/*.ts"
-  ],
+  "include": ["src", "**/*.ts", "**/*.tsx", "../../packages/shared-types/src/**/*.ts"]
 }

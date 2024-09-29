@@ -205,5 +205,3 @@ bash
 
 git remote add origin <repository_URL>
 git push -u origin main
-
-

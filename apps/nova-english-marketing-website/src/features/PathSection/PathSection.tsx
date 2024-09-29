@@ -41,7 +41,7 @@ export const PathSection = () => {
             className=""
           />
         </div>
-        <div className="absolute inset-x-0 bottom-[-5px] left-[125px] -z-10 flex justify-center sm:hidden">
+        <div className="absolute inset-x-0 bottom-[-5px] -z-10 flex justify-center sm:hidden">
           <Image
             src="/assets/images/small-line.svg"
             alt="Small Line"
@@ -88,7 +88,7 @@ export const PathSection = () => {
               height={20}
               className="mt-[5px] sm:w-[32px] sm:h-[32px] lg:w-[40px] lg:h-[40px]"
             />
-            <p className="text-[#3F3E3E] w-full font-semibold w-[880px] ml-[12px] text-[20px] sm:text-[28px] lg:text-[40px] w-[300px] sm:w-[468px] lg:w-[940px] leading-[20px] sm:leading-[32px] lg:leading-[48px]">
+            <p className="text-[#3F3E3E] font-semibold ml-[12px] text-[20px] sm:text-[28px] lg:text-[40px] w-[307px] sm:w-[468px] lg:w-[940px] leading-[20px] sm:leading-[32px] lg:leading-[48px]">
               {t.rich('challenges.no_client_understanding', {
                 strong: (chunks) => <span className="text-[#0092FC]">{chunks}</span>,
               })}

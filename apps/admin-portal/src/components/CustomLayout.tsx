@@ -34,7 +34,7 @@ export const CustomLayout = (props: LayoutProps) => {
         style={{
           padding: '4px 5px',
           position: 'fixed',
-          left: 300,
+          left: 248,
           top: 55,
           backgroundColor: '#CCC',
           zIndex: 1,
@@ -47,7 +47,7 @@ export const CustomLayout = (props: LayoutProps) => {
         style={{
           padding: '4px 5px',
           position: 'fixed',
-          left: 445,
+          left: 390,
           top: 55,
           backgroundColor: '#CCC',
           zIndex: 1,

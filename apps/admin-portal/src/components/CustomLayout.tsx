@@ -11,11 +11,11 @@ export const CustomLayout = (props: LayoutProps) => {
   const [openMetnorDialog, setOpenMetnorDialog] = useState(false);
   const [openStudentDialog, setOpenStudentDialog] = useState(false);
 
-  const handleOpenMetnorDialog = () => {
+  const handleOpenMentorDialog = () => {
     setOpenMetnorDialog(true);
   };
 
-  const handleCloseMetnorDialog = () => {
+  const handleCloseMentorDialog = () => {
     setOpenMetnorDialog(false);
   };
   const handleOpenStudentDialog = () => {
@@ -31,7 +31,7 @@ export const CustomLayout = (props: LayoutProps) => {
       <InitNotification />
       <Layout {...props} />
       <Button
-        onClick={handleOpenMetnorDialog}
+        onClick={handleOpenMentorDialog}
         style={{
           padding: '4px 5px',
           position: 'fixed',
@@ -56,7 +56,7 @@ export const CustomLayout = (props: LayoutProps) => {
       >
         Create Student
       </Button>
-      <CreateDialog open={openMetnorDialog} onClose={handleCloseMetnorDialog} title="Create Mentor">
+      <CreateDialog open={openMetnorDialog} onClose={handleCloseMentorDialog} title="Create Mentor">
         <MentorCreateForm dataProvider={dataProvider} {...props} />
       </CreateDialog>
       <CreateDialog

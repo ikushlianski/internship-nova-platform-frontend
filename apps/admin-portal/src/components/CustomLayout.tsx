@@ -32,11 +32,12 @@ export const CustomLayout = (props: LayoutProps) => {
       <Button
         onClick={handleOpenMetnorDialog}
         style={{
+          padding: '4px 5px',
           position: 'fixed',
-          right: 180,
-          bottom: 30,
+          left: 300,
+          top: 55,
           backgroundColor: '#CCC',
-          zIndex: 2000,
+          zIndex: 1,
         }}
       >
         Create Mentor
@@ -44,11 +45,12 @@ export const CustomLayout = (props: LayoutProps) => {
       <Button
         onClick={handleOpenStudentDialog}
         style={{
+          padding: '4px 5px',
           position: 'fixed',
-          right: 30,
-          bottom: 30,
+          left: 445,
+          top: 55,
           backgroundColor: '#CCC',
-          zIndex: 2000,
+          zIndex: 1,
         }}
       >
         Create Student

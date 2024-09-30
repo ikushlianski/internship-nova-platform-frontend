@@ -155,13 +155,13 @@
     "title": "Not sure?",
     "intro": {
       "description": "Test your English knowledge by taking the test",
-      "benefits": "Our test will help determine your level and choose a course that best suits your needs"
+      "benefits": "Our test will help determine <span>your level and choose a course that best suits your needs</span>"
     },
     "steps": {
       "how_it_works": "How it works:",
-      "take_the_test": "Take the test, which takes about 10 minutes",
-      "get_instant_result": "Get an instant result with your level assessment",
-      "course_recommendation": "Based on the results, we will recommend a course that will help you achieve your English learning goals"
+      "take_the_test": "Take the test, which takes about <b>10 minutes</b>",
+      "get_instant_result": "Get an <b>instant result</b> with your level assessment",
+      "course_recommendation": "Based on the results, we will recommend a course that will <b>help you achieve your English learning goals</b>"
     },
     "cta": {
       "test_now": "Test your knowledge right now and become more competitive in the IT world!",

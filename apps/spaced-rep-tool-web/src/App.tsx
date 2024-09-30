@@ -5,22 +5,19 @@ import { RoutesEnum } from './utils/RoutesEnum';
 import { Main } from './app/Main/Main';
 import NotFound from './not-found';
 import { SignIn } from './features/SignIn/SignIn';
-import ToastContainer from './features/Toast/ui/ToastContainer';
+import { Unauthorized } from './features/Unauthorized/Unauthorized';
 
 function App() {
   return (
-    <>
-      <div>
-        <ToastContainer />
-        <Routes>
-          <Route index path={RoutesEnum.Main} element={<Main />} />
-
-          <Route path={RoutesEnum.PrivacyPolicy} element={<PrivacyPolicy />} />
-          <Route path={RoutesEnum.Login} element={<SignIn />} />
-          <Route path="*" Component={NotFound} />
-        </Routes>
-      </div>
-    </>
+    <div>
+      <Routes>
+        <Route index path={RoutesEnum.Main} element={<Main />} />
+        <Route path={RoutesEnum.PrivacyPolicy} element={<PrivacyPolicy />} />
+        <Route path={RoutesEnum.Login} element={<SignIn />} />
+        <Route path="*" Component={NotFound} />
+        <Route path="/401" Component={Unauthorized} />
+      </Routes>
+    </div>
   );
 }
 

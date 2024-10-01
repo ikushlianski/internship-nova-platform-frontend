@@ -33,6 +33,6 @@
     "src",
     "**/*.ts",
     "**/*.tsx",
-    "../../packages/shared-types/src/**/*.ts"
+    "../../packages/shared-types/src/**/*"
   ],
 }

@@ -14,33 +14,34 @@ const useCreateStudentOrMentor = ({ dataProvider }: UserCreateFormProps) => {
       User & {
         first_name: string;
         last_name: string;
-        phoneNumber?: string;
-        lessonRate?: number;
-        telegramNickname?: string;
+       // phone_number?: string;
+       // lessonRate?: number;
+        //telegramNickname?: string;
+        user_email:string;
       }
     >,
   ) => {
     try {
-      const userData = {
-        firstName: data.first_name,
-        lastName: data.last_name,
-        roles: role,
-        studentId: role === Role.Student ? Number(data.studentId) : undefined,
-        teacherId: role === Role.Teacher ? Number(data.teacherId) : undefined,
-      };
-      const userResponse = await dataProvider.create('users', {
-        data: userData,
-      });
-      const userId = userResponse.data.id;
+      // const userData = {
+      //   firstName: data.first_name,
+      //   lastName: data.last_name,
+      //   roles: role,
+      //   studentId: role === Role.Student ? Number(data.studentId) : undefined,
+      //   teacherId: role === Role.Teacher ? Number(data.teacherId) : undefined,
+      // };
+      // const userResponse = await dataProvider.create('users', {
+      //   data: userData,
+      // });
+      // const userId = userResponse.data.id;
 
       if (role === Role.Student) {
         const studentData: Partial<IStudent> = {
-          id: Number(data.studentId),
-          user_email: String(data.studentId),
-          first_name: String(data.studentId),
-          last_name: String(data.studentId),
-          phoneNumber: String(data.studentId),
-          userId: userId,
+          //id: Number(data.studentId),
+          user_email: String(data.user_email),
+          first_name: String(data.first_name),
+          last_name: String(data.last_name),
+          //phoneNumber: String(data.studentId),
+          //userId: userId,
         };
 
         await dataProvider.create('students', { data: studentData });
@@ -55,7 +56,7 @@ const useCreateStudentOrMentor = ({ dataProvider }: UserCreateFormProps) => {
           phoneNumber: String(data.teacherId),
           lessonRate: Number(data.teacherId),
           telegramNickname: String(data.teacherId),
-          userId: userId,
+          //userId: userId,
         };
         await dataProvider.create('teachers', { data: teacherData });
       }

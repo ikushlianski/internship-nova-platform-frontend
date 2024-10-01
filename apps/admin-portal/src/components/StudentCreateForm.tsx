@@ -20,10 +20,10 @@ const StudentCreateForm = (props: UserCreateFormProps) => {
 
         {role === Role.Student && (
           <>
-            <TextInput source="email" label="Email" validate={required()} />
-            <TextInput source="firstName" label="First Name" validate={required()} />
-            <TextInput source="lastName" label="Last Name" validate={required()} />
-            <TextInput source="phoneNumber" label="Phone Number" />
+            <TextInput source="user_email" label="Email" validate={required()} />
+            <TextInput source="first_name" label="First Name" validate={required()} />
+            <TextInput source="last_name" label="Last Name" validate={required()} />
+            //<TextInput source="phone_number" label="Phone Number" />
           </>
         )}
       </SimpleForm>

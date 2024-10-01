@@ -1,17 +1,28 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useNotify } from 'react-admin';
-import { classes as mockClasses } from 'src/mocks/handlers';
-import { getClass } from '../logic/getClass';
-import { useDebounce } from '../logic/useDebounce';
+// import { useDebounce } from '../logic/useDebounce';
 import { TextField } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+
+const classes = [
+  {
+    id: 1,
+    name: 'Pavel',
+    startDate: 'asdasd',
+    endDate: 'dasdas',
+  },
+];
 
 export const AssignToClassButton = () => {
   const notify = useNotify();
-
   const [isDropdownActive, setIsDropdownActive] = useState(false);
-  const [classes, setClasses] = useState(mockClasses);
   const [searchQuery, setSearchQuery] = useState('');
-  const debouncedSearchQuery = useDebounce(searchQuery, 300);
+  // const debouncedSearchQuery = useDebounce(searchQuery, 300);
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ['classesData'],
+    queryFn: () => fetch(`http://localhost:3000/api/v1/users`).then((res) => res.json()),
+  });
 
   function handleDropdownClick() {
     setIsDropdownActive(!isDropdownActive);
@@ -31,9 +42,16 @@ export const AssignToClassButton = () => {
     setSearchQuery(target.value);
   }
 
-  useEffect(() => {
-    setClasses(getClass(debouncedSearchQuery));
-  }, [debouncedSearchQuery]);
+  // useEffect(() => {
+  //   setClasses(getClass(debouncedSearchQuery));
+  // }, [debouncedSearchQuery]);
+
+  if (isPending) return <h2>Loading...</h2>;
+
+  if (error) {
+    notify(`An error occured.. ${error.message}`, { type: 'error' });
+    return <h2>Unable to load classes</h2>;
+  }
 
   return (
     <div className="relative">
@@ -67,7 +85,6 @@ export const AssignToClassButton = () => {
                 className="grid grid-cols-3 justify-items-start px-2 gap-2 hover:bg-neutral-500 cursor-pointer"
                 onClick={handleClassClick}
               >
-                {/* column with all people in class is needed */}
                 <td>{item.name}</td>
                 <td>{item.startDate}</td>
                 <td>{item.endDate}</td>
@@ -76,6 +93,8 @@ export const AssignToClassButton = () => {
           </tbody>
         </table>
       </div>
+      {searchQuery}
+      {data}
     </div>
   );
 };

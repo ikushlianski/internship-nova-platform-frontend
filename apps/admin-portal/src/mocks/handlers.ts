@@ -12,6 +12,7 @@ import {
   Spectators,
   NoRoles,
 } from './data/entities.json';
+
 import { IUser } from '../types/User';
 import { IStudent } from '../types/Student';
 import { ITeacher } from '../types/Teacher';
@@ -22,17 +23,19 @@ import { IManager } from '../types/Manager';
 import { ISales } from '../types/Sales';
 import { ISpectator } from '../types/Spectator';
 import { INoRole } from '../types/NoRole';
-import { handleGetRequest } from '../utils/Utils';
-import { handlePostRequest } from '../utils/Utils';
-import { handlePutRequest } from '../utils/Utils';
-import { handleDeleteRequest } from '../utils/Utils';
-import { handleGetIdRequest } from '../utils/Utils';
+import {
+  handleGetRequest,
+  handlePostRequest,
+  handlePutRequest,
+  handleDeleteRequest,
+  handleGetIdRequest,
+} from '../utils/Utils';
 
 let users = [...(Users as IUser[])];
 let students = [...(Students as IStudent[])];
 let teachers = [...(Teachers as ITeacher[])];
 let paths = [...(Paths as IPath[])];
-let classes = [...(Classes as IClass[])];
+export let classes = [...(Classes as IClass[])];
 let admins = [...(Admins as IAdmin[])];
 let managers = [...(Managers as IManager[])];
 let sales = [...(Sales as ISales[])];

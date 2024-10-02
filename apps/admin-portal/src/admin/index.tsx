@@ -1,14 +1,15 @@
 import { Admin, CustomRoutes, EditGuesser, ListGuesser, Resource, ShowGuesser } from 'react-admin';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { authProvider, LoginPage } from '@/features';
-import { InitNotification } from '../hooks/useInitNotification.tsx';
-import { AppRoutes } from '@/shared';
+import { AppRoutes } from '../shared';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { CustomLayout } from '../components/CustomLayout.tsx';
 import { roleToResourceMap } from '../utils/Utils.ts';
 import { StageBanner } from '../utils/stageBanner.component.tsx';
 import { dataProvider } from '@/mocks';
 import NotFound from '@/not-found.tsx';
+import { UserProfile } from '@/features/UserProfile/ui/UserProfile.tsx';
+import { authProvider, LoginPage } from '@/features/index.ts';
+import { InitNotification } from '@/hooks/useInitNotification.tsx';
 
 const AdminPortal = () => {
   return (
@@ -38,7 +39,7 @@ const AdminPortal = () => {
           <CustomRoutes>
             <Route path={AppRoutes.Users}>
               <Route path={AppRoutes.Users} index element={<div>users list</div>} />
-              <Route path={AppRoutes.User} element={<div>user by id</div>} />
+              <Route path={AppRoutes.User} element={<UserProfile />} />
               <Route path={AppRoutes.UserEdit} element={<div>edit user by id</div>} />
               <Route path={AppRoutes.UserCreate} element={<div>create new user</div>} />
             </Route>

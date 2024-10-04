@@ -42,7 +42,7 @@ const NotFound = () => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-8 pt-6">
-      <h1 className="text-2xl">{t('courses')}</h1>
+      <h3>{t('courses')}</h3>
       <Carousel className="w-2/3">
         <CarouselContent>
           {courses.map(({ classId, className, classLevel, classTime }) => (
@@ -63,7 +63,7 @@ const NotFound = () => {
         <CarouselNext />
       </Carousel>
       <div className="flex flex-col gap-6">
-        <p className="text-xl"></p>
+        <p>{t('contact')}</p>
         <div className="flex justify-center gap-6">
           <Link href={'/'}>
             <WALogo />

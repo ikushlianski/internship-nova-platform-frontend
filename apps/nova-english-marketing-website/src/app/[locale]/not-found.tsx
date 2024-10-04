@@ -6,7 +6,7 @@ const NotFoundPage = () => {
 
   return (
     <div className="pt-16 flex flex-col justify-center items-center gap-16">
-      <h1 className="text-xl font-bold">{t('title')} </h1>
+      <h3 className="text-center">{t('title')} </h3>
       <NotFound />
     </div>
   );

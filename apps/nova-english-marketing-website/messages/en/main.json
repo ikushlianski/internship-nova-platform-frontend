@@ -69,20 +69,20 @@
 	},
 
 	"path_section": {
-		"title": "Your path to confident English at Nova English",
+		"title": "Your path to confident English at <strong>Nova English</strong>",
 		"challenges": {
-			"missed_opportunities": "You miss interesting projects and promotions, which go to those who know English",
-			"no_client_understanding": "You don't understand clients",
-			"slow_reaction": "You can't keep up in dialogues or express your thoughts clearly",
-			"constant_dissatisfaction": "Constant dissatisfaction and lack of self-confidence",
-			"no_participation": "You can't fully participate in important discussions",
-			"no_promotion": "You can't move to a higher grade"
+			"missed_opportunities": "You miss interesting projects and promotions, <strong>which go to those who know English</strong>",
+			"no_client_understanding": "You <strong>don't understand clients</strong>",
+			"slow_reaction": "<strong>You can't keep up</strong> in dialogues or express your thoughts clearly",
+			"constant_dissatisfaction": "<strong>Constant dissatisfaction</strong> and lack of self-confidence",
+			"no_participation": "You can't fully participate in <strong>important discussions</strong>",
+			"no_promotion": "You can't move to a <strong>higher grade</strong>"
 		},
 		"benefits": {
-			"advanced_communication": "Advanced communication in a professional environment",
-			"native_phrases": "Phrases used by native speakers in conversation",
-			"communication_skills": "Improvement of communication skills",
-			"lots_of_practice": "Lots of practice"
+			"advanced_communication": "<strong>Advanced communication</strong> in a professional environment",
+			"native_phrases": "Phrases used by <strong>native speakers in conversation</strong>",
+			"communication_skills": "Improvement of <strong>communication</strong> skills",
+			"lots_of_practice": "Lots of <strong>practice</strong>"
 		},
 		"cta": "Enroll now"
 	},
@@ -155,13 +155,13 @@
 		"title": "Not sure?",
 		"intro": {
 			"description": "Test your English knowledge by taking the test",
-			"benefits": "Our test will help determine your level and choose a course that best suits your needs"
+			"benefits": "Our test will help determine <span>your level and choose a course that best suits your needs</span>"
 		},
 		"steps": {
 			"how_it_works": "How it works:",
-			"take_the_test": "Take the test, which takes about 10 minutes",
-			"get_instant_result": "Get an instant result with your level assessment",
-			"course_recommendation": "Based on the results, we will recommend a course that will help you achieve your English learning goals"
+			"take_the_test": "Take the test, which takes about <b>10 minutes</b>",
+			"get_instant_result": "Get an <b>instant result</b> with your level assessment",
+			"course_recommendation": "Based on the results, we will recommend a course that will <b>help you achieve your English learning goals</b>"
 		},
 		"cta": {
 			"test_now": "Test your knowledge right now and become more competitive in the IT world!",

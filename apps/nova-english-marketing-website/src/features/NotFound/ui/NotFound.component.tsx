@@ -2,7 +2,7 @@
 
 import TGLogo from '@/assets/icons/telegramLogo.svg';
 import WALogo from '@/assets/icons/whatsAppLogo.svg';
-import { Class } from '@repo/shared-types/class';
+import { Course } from '@/shared/types/zod.shemas';
 import { Card, CardDescription, CardHeader, CardTitle } from '@repo/ui/card';
 import {
   Carousel,
@@ -11,33 +11,18 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@repo/ui/carousel';
-import { ErrorComponent } from '@repo/ui/error';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { fetchCourses } from '../api/fetchMockCourses';
 
-const NotFound = () => {
-  const [courses, setCourses] = useState<Class[]>([]);
-  const [error, setError] = useState<string | null>(null);
-
+export default function NotFound({ courses }: { courses: Course[] }) {
   const t = useTranslations('not_found');
 
-  useEffect(() => {
-    const fetchCoursesData = async () => {
-      try {
-        const fetchedCourses = await fetchCourses();
-        setCourses(fetchedCourses);
-      } catch (err) {
-        setError('Failed to fetch courses');
-      }
-    };
+  if (!courses || courses.length === 0) {
+    return <div>No courses available</div>;
+  }
 
-    fetchCoursesData();
-  }, []);
-
-  if (error) {
-    return <ErrorComponent message={'an Error occured'} description={error} />;
+  if (!courses || courses.length === 0) {
+    return <div>No courses available</div>;
   }
 
   return (
@@ -45,14 +30,18 @@ const NotFound = () => {
       <h3>{t('courses')}</h3>
       <Carousel className="w-2/3">
         <CarouselContent>
-          {courses.map(({ classId, className, classLevel, classTime }) => (
-            <CarouselItem key={classId} className="md:basis-1/2 lg:basis-1/3">
-              <Link href={`/course/${classId}`}>
+          {courses.map(({ course_code, course_name, course_level_id, classes }) => (
+            <CarouselItem key={course_code} className="md:basis-1/2 lg:basis-1/3">
+              <Link href={`/course/${course_code}`}>
                 <Card className="border-2 cursor-pointer">
                   <CardHeader>
-                    <CardTitle>{className}</CardTitle>
-                    <CardDescription>{classLevel}</CardDescription>
-                    <CardDescription>{classTime}</CardDescription>
+                    <CardTitle className="m-w-32">{course_name}</CardTitle>
+                    <CardDescription>{course_level_id}</CardDescription>
+                    <CardDescription>
+                      {classes?.map((classItem) => (
+                        <p key={classItem.class_id}>{classItem.time_of_day.time_of_day_name}</p>
+                      ))}
+                    </CardDescription>
                   </CardHeader>
                 </Card>
               </Link>
@@ -75,6 +64,4 @@ const NotFound = () => {
       </div>
     </div>
   );
-};
-
-export default NotFound;
+}

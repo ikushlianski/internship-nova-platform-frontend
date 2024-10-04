@@ -82,6 +82,8 @@ export const CourseSchema = z.object({
   LessonCard: z.array(z.any()),
 });
 
+export type Course = z.infer<typeof CourseSchema>;
+
 export const CoursesSchema = z.array(CourseSchema);
 
 export const CourseAdviceSchema = z.object({

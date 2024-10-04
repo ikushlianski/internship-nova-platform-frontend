@@ -2,7 +2,7 @@
 
 import TGLogo from '@/assets/icons/telegramLogo.svg';
 import WALogo from '@/assets/icons/whatsAppLogo.svg';
-import { Course } from '@/shared/types/data.types';
+import { Course } from '@/shared/types/zod.shemas';
 import { Card, CardDescription, CardHeader, CardTitle } from '@repo/ui/card';
 import {
   Carousel,

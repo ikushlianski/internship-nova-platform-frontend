@@ -1,4 +1,4 @@
-import { Course } from '@/shared/types/data.types';
+import { Course } from '@/shared/types/zod.shemas';
 import { Class } from '@repo/shared-types/class';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_V1_URL;

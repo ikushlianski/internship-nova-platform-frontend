@@ -3,7 +3,7 @@
 import NotFound from '@/features/NotFound/ui/NotFound.component';
 import { useTranslations } from 'next-intl';
 import { getAllCourses } from '../api/api';
-import { Course } from '@/shared/types/data.types';
+import { Course } from '@/shared/types/zod.shemas';
 import { useEffect, useState } from 'react';
 
 const NotFoundPage = () => {

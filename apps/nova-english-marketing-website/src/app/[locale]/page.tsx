@@ -2,6 +2,7 @@ import { PathSection } from '@/features/PathSection/PathSection';
 import Assessment from '@/features/Assessment/Assessment';
 import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import FAQSection from '@/features/FAQSection/FAQSection';
 
 type Props = {
   params: { locale: string };
@@ -44,7 +45,7 @@ export default function IndexPage({ params: { locale } }: Props) {
         <h2>{t('contact_form_section')}</h2>
       </section>
       <section>
-        <h2>{t('faq_section')}</h2>
+        <FAQSection />
       </section>
       <section>
         <h2>{t('support_common_section')}</h2>

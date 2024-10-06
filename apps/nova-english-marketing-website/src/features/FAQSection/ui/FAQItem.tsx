@@ -16,7 +16,11 @@ const FAQItem: FC<IFAQItemProps> = ({ ind, question, answer }) => {
           <p className="mr-5 text-blue-500">{`/0${ind + 1}`} </p>
           <div>
             <p>{question}</p>
-            <p className={`${state ? 'hidden' : ''} mt-6 text-base sm:text-xl lg:text-2xl`}>
+            <p
+              className={`mt-6 text-base sm:text-xl lg:text-2xl transition-all duration-500 ease-in-out overflow-hidden ${
+                state ? 'opacity-0 max-h-0' : 'opacity-100 max-h-screen'
+              }`}
+            >
               {answer}
             </p>
           </div>

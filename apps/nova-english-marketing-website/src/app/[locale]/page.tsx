@@ -2,7 +2,7 @@ import { PathSection } from '@/features/PathSection/PathSection';
 import Assessment from '@/features/Assessment/Assessment';
 import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
-import FAQSection from '@/features/FAQSection/FAQSection';
+import FAQSection from '@/features/FAQSection/ui/FAQSection';
 
 type Props = {
   params: { locale: string };

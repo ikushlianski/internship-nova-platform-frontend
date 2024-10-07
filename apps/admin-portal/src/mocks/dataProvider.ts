@@ -17,6 +17,7 @@ import { ISales } from '../types/Sales';
 import { ISpectator } from '../types/Spectator';
 import { INoRole } from '../types/NoRole';
 import { handleErrorResponse } from '../utils/Utils';
+import { classesApi } from '../../feature';
 
 type UserRoles = IUser | IStudent | ITeacher | IAdmin | IManager | ISales | ISpectator | INoRole;
 
@@ -28,13 +29,16 @@ const dataProvider: DataProvider = {
     const { field = 'id', order = 'ASC' || 'DESC' } = params.sort || {};
 
     try {
-      const response = await fetch(`/api/${apiV1}/${resource}?page=${page}&perPage=${perPage}`);
-
-      if (!response.ok) {
-        await handleErrorResponse(response);
+      let data;
+      if (resource === 'classes') {
+        data = await classesApi.getClasses();
+      } else {
+        const response = await fetch(`/api/${apiV1}/${resource}?page=${page}&perPage=${perPage}`);
+        if (!response.ok) {
+          await handleErrorResponse(response);
+        }
       }
-
-      const data = getDataForResource(resource);
+      data = getDataForResource(resource);
 
       const total = data.length;
       const sortedData = [...data].sort((a, b) => {
@@ -44,7 +48,6 @@ const dataProvider: DataProvider = {
       });
 
       const paginatedData = sortedData.slice((page - 1) * perPage, page * perPage);
-
       return {
         data: paginatedData,
         total,

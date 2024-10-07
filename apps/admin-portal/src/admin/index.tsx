@@ -8,6 +8,8 @@ import { AppRoutes } from '../shared';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { CustomLayout } from '../components/CustomLayout.tsx';
 import { roleToResourceMap } from '../utils/Utils.ts';
+import { ClassesList } from '../../feature/index.ts';
+
 const AdminPortal = () => {
   return (
     <>
@@ -45,7 +47,7 @@ const AdminPortal = () => {
               <Route path={AppRoutes.CourseCreate} element={<div>create new course</div>} />
             </Route>
             <Route path={AppRoutes.Classes}>
-              <Route path={AppRoutes.Classes} index element={<div>classes list</div>} />
+              <Route path={AppRoutes.Classes} index element={<ClassesList />} />
               <Route path={AppRoutes.Class} element={<div>class by id</div>} />
               <Route path={AppRoutes.ClassManage} element={<div>manage class by id</div>} />
               <Route path={AppRoutes.ClassCreate} element={<div>create new class</div>} />

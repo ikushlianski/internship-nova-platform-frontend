@@ -1,46 +1,66 @@
-replicaCount: 1
-image:
-  repository: nginx
-  pullPolicy: IfNotPresent
-  tag: ''
-imagePullSecrets: []
-nameOverride: ''
-fullnameOverride: ''
-serviceAccount:
+# Default values for nova-api.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+images: 
+  repository: registry.novaenglish.by
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: latest
+
+serviceAccounts:
+  # Specifies whether service accounts should be created.
+  create: false
+  # Annotations to add to the service accounts.
+  annotations: {}
+
+marketing:
   create: true
-  annotations: {}
-  name: ''
-podAnnotations: {}
-podSecurityContext: {}
-securityContext: {}
-service:
-  type: ClusterIP
-  port: 80
-ingress:
-  enabled: false
-  className: ''
-  annotations: {}
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-resources: {}
-volumes:
-  - name: nova-front
-volumeMounts:
-  - name: nova-front
-    mountPath: /usr/share/nginx/html/
-workingDir: /usr/share/nginx/html/
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-nodeSelector: {}
-tolerations: []
-affinity: {}
-application_environment: dev
-domain_name: nova.local
-build_hash: 895c533ba5f2a48fff2e3f37fff6f2ab9b8736ba
+  name: marketing
+  image:
+    name: nova-front-marketing
+  replicas: 1
+  service:
+    name: marketing
+    port: 3000
+    targetPort: 3000
+  resources: {}
+  #   requests:
+  #     cpu: 500m
+  #     memory: 800Mi
+  #   limits:
+  #     cpu: 900m
+  #     memory: 1200Mi
+
+envFrom:
+- configMapRef:
+    name: nova-env
+- secretRef:
+    name: nova-secret-env
+
+configmap:
+  HOST: "database"
+  POSTGRES_USER: "postgres"
+  DATABASE_PORT: "5432"
+  POSTGRES_DB: "nova-platform-main-db-dev"
+  APP_ENV: "dev"
+  NODE_ENV: "development"
+  FRONTEND_URL: "http://nova-front.nova-dev.svc.cluster.local/"
+# - name: "GOOGLE_CALLBACK_URL"
+#   value: "https://qa1.nova.local/api/v1/auth/google/callback"
+  # GATEWAY_PORT: 3000
+  # USER_SERVICE_PORT: 3001
+  ENV_FILE: ".env.development.local"
+  RABBITMQ_USER: guest
+  RABBITMQ_PORT: 5672
+  RABBITMQ_MC_PORT: 15672
+  RABBITMQ_HOST: "rabbitmq"
+  RABBITMQ_URL: amqp://rabbitmq:5672
+  CURRICULUM_SERVICE_PORT: 3003
+  GOOGLE_CLIENT_ID: 634293760963-9e379hughfejbm4j6093mpoi2s6btsos.apps.googleusercontent.com
+  GOOGLE_CLIENT_SECRET: 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
+  GOOGLE_CALLBACK_URL: http://localhost:3000/api/v1/auth/google/callback
+  JWT_SECRET: supersecuresecret
+
+secrets:
+  POSTGRES_PASSWORD: "randompassword"
+  RABBITMQ_PASSWORD: guest

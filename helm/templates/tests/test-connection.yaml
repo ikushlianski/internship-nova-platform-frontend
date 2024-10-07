@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "nova-front.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "nova-front.fullname" . }}:{{ .Values.marketing.service.port }}']
   restartPolicy: Never

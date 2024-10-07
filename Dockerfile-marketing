@@ -1,0 +1,19 @@
+FROM node:22-alpine AS development
+
+WORKDIR /app
+
+COPY packages/ ./packages
+COPY apps/ ./apps
+COPY *.json ./
+
+RUN npm ci
+RUN cd apps/nova-english-marketing-website && npx turbo build --continue
+
+FROM node:22-alpine AS production
+
+WORKDIR /usr/src/server
+
+COPY apps/nova-english-marketing-website ./
+COPY --from=development /app/node_modules ./node_modules
+
+ENTRYPOINT ["npm", "start"]

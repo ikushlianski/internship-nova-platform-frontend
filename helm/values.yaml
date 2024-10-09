@@ -16,6 +16,7 @@ serviceAccounts:
 marketing:
   create: true
   name: marketing
+  fqdn: qa3.novaenglish.by
   image:
     name: nova-front-marketing
   replicas: 1

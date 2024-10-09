@@ -83,7 +83,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ env.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
+          password: ${{ env.REGISTRY_PASSWORD }}
 
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v4.0.1

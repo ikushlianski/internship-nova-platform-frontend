@@ -14,6 +14,7 @@ on:
 env:
   REGISTRY: registry.novaenglish.by
   REGISTRY_USERNAME: novaenglishby
+  REGISTRY_PASSWORD: Str0ngP@ssw0rd!
 
 jobs:
   build:
@@ -42,7 +43,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ env.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
+          password: ${{ env.REGISTRY_PASSWORD }}
 
       - name: Get short SHA
         id: slug

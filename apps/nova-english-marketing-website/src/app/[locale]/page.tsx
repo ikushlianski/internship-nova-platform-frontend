@@ -1,5 +1,6 @@
 import { PathSection } from '@/features/PathSection/PathSection';
 import Assessment from '@/features/Assessment/Assessment';
+import WhoIsNovaEnglishFor from '@/features/WhoIsNovaEnglishFor/ui/WhoIsNovaEnglishFor.component';
 import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
 
@@ -9,9 +10,7 @@ type Props = {
 
 export default function IndexPage({ params: { locale } }: Props) {
   unstable_setRequestLocale(locale);
-
   const t = useTranslations('temporary');
-
   return (
     <main>
       <section>
@@ -52,6 +51,7 @@ export default function IndexPage({ params: { locale } }: Props) {
       <section>
         <h2>{t('common_section')}</h2>
       </section>
+      <WhoIsNovaEnglishFor />
     </main>
   );
 }

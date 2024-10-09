@@ -6,6 +6,7 @@ import { AppRoutes } from '@/shared';
 import { UserRole as Role } from '@repo/shared-types/user';
 import { CustomLayout } from '../components/CustomLayout.tsx';
 import { roleToResourceMap } from '../utils/Utils.ts';
+import { StageBanner } from '../utils/stageBanner.component.tsx';
 import { dataProvider } from '@/mocks';
 import NotFound from '@/not-found.tsx';
 
@@ -14,6 +15,7 @@ const AdminPortal = () => {
     <>
       <BrowserRouter>
         <InitNotification />
+        {import.meta.env.VITE_APP_ENV !== 'prod' && <StageBanner />}
         <Admin
           dataProvider={dataProvider}
           authProvider={authProvider}

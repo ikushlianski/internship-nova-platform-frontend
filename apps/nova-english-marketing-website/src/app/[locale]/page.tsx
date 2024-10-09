@@ -1,3 +1,4 @@
+import { PathSection } from '@/features/PathSection/PathSection';
 import Assessment from '@/features/Assessment/Assessment';
 import WhoIsNovaEnglishFor from '@/features/WhoIsNovaEnglishFor/ui/WhoIsNovaEnglishFor.component';
 import { useTranslations } from 'next-intl';
@@ -18,6 +19,7 @@ export default function IndexPage({ params: { locale } }: Props) {
       <section>
         <h2>{t('path_section')}</h2>
       </section>
+      <PathSection />
       <section>
         <h2>{t('course_section')}</h2>
       </section>

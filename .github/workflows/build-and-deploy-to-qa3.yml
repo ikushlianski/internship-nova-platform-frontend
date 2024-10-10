@@ -14,7 +14,6 @@ on:
 env:
   REGISTRY: registry.novaenglish.by
   REGISTRY_USERNAME: novaenglishby
-  REGISTRY_PASSWORD: Str0ngP@ssw0rd!
 
 jobs:
   build:
@@ -43,7 +42,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ env.REGISTRY_USERNAME }}
-          password: ${{ env.REGISTRY_PASSWORD }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Get short SHA
         id: slug
@@ -83,7 +82,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ env.REGISTRY_USERNAME }}
-          password: ${{ env.REGISTRY_PASSWORD }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v4.0.1

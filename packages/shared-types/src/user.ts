@@ -2,8 +2,12 @@
 
 export interface User {
   id: number;
-  name: string;
-  email?: string;
+  user_email: string;
+  first_name: string;
+  last_name: string;
+  phoneNumber?: string;
+  lessonRate?: number;
+  telegramNickname?: string;
   roles: UserRole[];
   studentId?: number;
   pathId?: number;

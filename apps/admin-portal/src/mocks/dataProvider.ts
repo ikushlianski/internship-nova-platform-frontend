@@ -20,7 +20,7 @@ import { handleErrorResponse } from '../utils/Utils';
 
 type UserRoles = IUser | IStudent | ITeacher | IAdmin | IManager | ISales | ISpectator | INoRole;
 
-const apiV1: string = '';
+const apiV1: string = 'v1';
 
 const dataProvider: DataProvider = {
   getList: async (resource, params) => {
@@ -208,14 +208,16 @@ const dataProvider: DataProvider = {
     params: CreateParams<T>,
   ): Promise<CreateResult<T & { id: Identifier }>> => {
     try {
-      const response = await fetch(`/api/${apiV1}/${resource}`, {
+      const response = await fetch(`http://localhost:3000/api/${apiV1}/${resource}`, {
         method: 'POST',
+        credentials:"include",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(params.data),
       });
 
-      if (!response.ok) {
-        await handleErrorResponse(response);
+        const responseBody = await response.json();
+      if (!response.ok||responseBody.status!=200) {
+        await handleErrorResponse(new Response(JSON.stringify(responseBody)));
       }
       const data = getDataForResource(resource);
       const newId = generateNewId(data);

@@ -1,20 +1,29 @@
 import { useState } from 'react';
 import { InitNotification } from '../hooks/useInitNotification';
 import { Layout, LayoutProps } from 'react-admin';
-import { Button, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import UserCreateForm from './UserCreateForm';
+import { Button } from '@mui/material';
 import dataProvider from '../mocks/dataProvider';
+import CreateDialog from './CreateDialog';
+import MentorCreateForm from './MentorCreateForm';
+import StudentCreateForm from './StudentCreateForm';
 
 export const CustomLayout = (props: LayoutProps) => {
-  const [open, setOpen] = useState(false);
+  const [openMetnorDialog, setOpenMetnorDialog] = useState(false);
+  const [openStudentDialog, setOpenStudentDialog] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
+  const handleOpenMentorDialog = () => {
+    setOpenMetnorDialog(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseMentorDialog = () => {
+    setOpenMetnorDialog(false);
+  };
+  const handleOpenStudentDialog = () => {
+    setOpenStudentDialog(true);
+  };
+
+  const handleCloseStudentDialog = () => {
+    setOpenStudentDialog(false);
   };
 
   return (
@@ -22,36 +31,41 @@ export const CustomLayout = (props: LayoutProps) => {
       <InitNotification />
       <Layout {...props} />
       <Button
-        onClick={handleOpen}
+        onClick={handleOpenMentorDialog}
         style={{
+          padding: '4px 5px',
           position: 'fixed',
-          right: 30,
-          bottom: 30,
+          left: 248,
+          top: 55,
           backgroundColor: '#CCC',
-          zIndex: 2000,
+          zIndex: 1,
         }}
       >
-        Create User
+        Create Mentor
       </Button>
-      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-        <DialogTitle>
-          Create User
-          <IconButton
-            aria-label="close"
-            onClick={handleClose}
-            style={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent>
-          <UserCreateForm dataProvider={dataProvider} {...props} />
-        </DialogContent>
-      </Dialog>
+      <Button
+        onClick={handleOpenStudentDialog}
+        style={{
+          padding: '4px 5px',
+          position: 'fixed',
+          left: 390,
+          top: 55,
+          backgroundColor: '#CCC',
+          zIndex: 1,
+        }}
+      >
+        Create Student
+      </Button>
+      <CreateDialog open={openMetnorDialog} onClose={handleCloseMentorDialog} title="Create Mentor">
+        <MentorCreateForm dataProvider={dataProvider} {...props} />
+      </CreateDialog>
+      <CreateDialog
+        open={openStudentDialog}
+        onClose={handleCloseStudentDialog}
+        title="Create Student"
+      >
+        <StudentCreateForm dataProvider={dataProvider} {...props} />
+      </CreateDialog>
     </>
   );
 };
